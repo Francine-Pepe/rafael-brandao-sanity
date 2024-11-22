@@ -47,7 +47,7 @@ function SingleShow() {
           </div>
 
           <button>
-            <NavLink to={"/shows"}>Veja mais shows</NavLink>
+            <NavLink to={"/agenda"}>Veja mais shows</NavLink>
           </button>
         </section>
       )}

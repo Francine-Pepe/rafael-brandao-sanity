@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import client from "../client";
 import { NavLink } from "react-router-dom";
 
-function Shows() {
+function Agenda() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function Shows() {
             <img src={show.mainImage.asset.url} alt={show.title} />
             <h4>{show.title}</h4>
             <button>
-              <NavLink to={`/shows/${show.slug.current}`}>
+              <NavLink to={`/agenda/${show.slug.current}`}>
                 Clique para saber mais
               </NavLink>
             </button>
@@ -40,4 +40,4 @@ function Shows() {
   );
 }
 
-export default Shows;
+export default Agenda;
