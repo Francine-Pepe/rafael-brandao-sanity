@@ -1,18 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import NavProps from "../components/Navbar/NavProps";
-import { Navigation } from "../data";
-import Navbar from "../components/Navbar/Navbar";
-import BackgroundImage from "../assets/01.jpg";
+import { carouselImages } from "../data";
+import Carousel from "../components/Carousel";
 
 function Homepage() {
   return (
     <section className="homepage-container container">
-      <img src={BackgroundImage} alt="" />
-      {/* <h1>Shows Agenda</h1>
-      <button>
-        <NavLink to="/agenda">Go to the Agenda</NavLink>
-      </button> */}
+      <div className="carousel-in-homepage">
+        <Carousel data={carouselImages} />
+      </div>
     </section>
   );
 }
