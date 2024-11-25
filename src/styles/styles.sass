@@ -32,13 +32,32 @@ svg
 .navlinks-props
     @include mixins.gap-center
 
-.navbar-container 
+.navbar-container
     @include mixins.flex-wrap
+
+.navbar-container, .navbar-mobile-container
     position: fixed
     z-index: 2
 
 .navigation-social-media
     @include mixins.gap
+
+.navbar-mobile-container
+    display: none
+
+    .navbar-mobile-content
+        @include mixins.flex-space-between
+        width: 90vw
+        position: absolute
+        border: 1px solid red
+        padding: 2rem 0
+        top: 8vh
+        left: 50%
+        transform: translate(-50%, -50%)
+
+    .navbar-mobile
+        background-color: rgba(37, 1, 1, 0.6)
+        width: inherit
 
 .homepage-container
     width: 100%
@@ -78,6 +97,39 @@ svg
 
         .active
             background-color: #6a0dad
+
+// Media Queries
+
+@media screen and (max-width: variables.$breakpoint-lg)
+    .navbar-mobile-container
+        display: block
+
+        nav ul li
+            font-size: variables.$font-size-mobile
+
+            a
+                font-weight: variables.$font-weight-medium
+
+    .navbar-container
+        display: none
+
+    .navlinks-props
+        @include mixins.flex-column-center
+        gap: 3rem
+        height: 100vh
+
+@media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
+    .logo
+        img
+            width: 30vw
+
+@media screen and (max-width: variables.$breakpoint-sm)
+    .logo
+        img
+            width: 40vw
+
+        
+
 
 
 
