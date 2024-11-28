@@ -17,8 +17,14 @@ ul
 
     a
         text-decoration: none
-        font-weight: variables.$font-weight-light
+        font-weight: variables.$font-weight-medium
         color: variables.$white-font-color
+
+.logo img
+    height: 4rem
+
+.footer-logo img
+    height: 2.2rem
 
 svg
     color: variables.$white-font-color
@@ -28,6 +34,11 @@ svg
 
 .navbar-container, nav
     @include mixins.flex-space-around
+
+/* .navbar-container
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    backdrop-filter: blur(4.9px)
+    -webkit-backdrop-filter: blur(4.9px) */
 
 .navlinks-props
     @include mixins.gap-center
@@ -49,7 +60,6 @@ svg
         @include mixins.flex-space-between
         width: 90vw
         position: absolute
-        border: 1px solid red
         padding: 2rem 0
         top: 8vh
         left: 50%
@@ -70,7 +80,7 @@ svg
 
     .slideshowSlider
         white-space: nowrap
-        transition: ease 1000ms
+        transition: ease-in 2000ms
 
         .slide
             width: 100%
@@ -97,6 +107,43 @@ svg
 
         .active
             background-color: #6a0dad
+
+.footer-container, .copyright-container
+    @include mixins.flex-space-between
+    background-color: variables.$dark-cherry-color
+    color: variables.$white-font-color
+
+    h3
+        color: variables.$white-font-color
+        font-weight: 100
+
+    .footer-content
+        @include mixins.flex-space-between
+        width: inherit
+        padding: 0 5rem
+
+        .footer-icons
+            @include mixins.flex-space-between
+            width: 30%
+            padding-bottom: 1.5rem 
+
+.listen-container, .contact-container
+    @include mixins.gap
+
+.copyright-container
+    display: flex
+    justify-content: center
+
+    section
+        @include mixins.flex-column-center
+        width: 90vw
+        gap: 1rem
+        padding: 1rem 0
+        border-top: 1px solid variables.$cherry-color
+
+        a
+            color: variables.$white-font-color
+
 
 // Media Queries
 

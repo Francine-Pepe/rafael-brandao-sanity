@@ -22,7 +22,7 @@ export function Spotify(props: SVGProps<SVGSVGElement>) {
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5}
+          strokeWidth={1}
         >
           <path
             strokeDasharray={64}

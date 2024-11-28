@@ -11,6 +11,8 @@ import Galeria from "./pages/Galeria";
 import News from "./pages/News";
 import Videos from "./pages/Videos";
 import Contato from "./pages/Contato";
+import Footer from "./pages/Footer/Footer";
+import { FooterLinks } from "./data";
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           <Route path="/contato" element={<Contato />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer data={FooterLinks} />
       </BrowserRouter>
     </>
   );

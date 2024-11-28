@@ -1,9 +1,9 @@
 import React from "react";
 import NavProps from "./NavProps";
 import { Navigation } from "../../data";
-import { Spotify } from "../../icons/Spotify";
+import { Spotify } from "../../icons/Footer/Spotify";
 import { Instagram } from "../../icons/Instagram";
-import { Youtube } from "../../icons/Youtube";
+import { Youtube } from "../../icons/Footer/Youtube";
 import Logo from "../../icons/Logo";
 import NavbarMobile from "./NavbarMobile";
 
