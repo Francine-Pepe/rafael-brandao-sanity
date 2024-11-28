@@ -35,7 +35,7 @@ export function Youtube(props: SVGProps<SVGSVGElement>) {
           strokeDashoffset={64}
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5}
+          strokeWidth={1}
           d="M12 5c9 0 9 0 9 7c0 7 0 7 -9 7c-9 0 -9 0 -9 -7c0 -7 0 -7 9 -7Z"
         >
           <animate
