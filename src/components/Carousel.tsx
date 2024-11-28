@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const delay = 3000;
+const delay = 4000;
 
 function Carousel(props: any) {
   const [index, setIndex] = useState(0);
