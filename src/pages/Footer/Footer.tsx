@@ -1,14 +1,8 @@
-import { Navigation } from "../../data";
-import RBLogo from "../../icons/RBLogo";
-import WhereListen from "../../components/WhereListen";
-import FooterContact from "../../components/FooterContact";
 import Logo from "../../icons/Logo";
 import Copyright from "./Copyright";
 
 function Footer(props: any) {
   const { data } = props;
-
-  
 
   return (
     <>
@@ -28,7 +22,6 @@ function Footer(props: any) {
       <footer>
         <Copyright />
       </footer>
-      
     </>
   );
 }

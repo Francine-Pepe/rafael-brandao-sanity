@@ -6,7 +6,7 @@ import ErrorPage from "./pages/ErrorPage";
 import SingleShow from "./pages/SingleShow";
 import Header from "./components/Header";
 import Agenda from "./pages/Agenda";
-import Biografia from "./pages/Biografia";
+import Biografia from "./pages/Biografia/Biografia";
 import Galeria from "./pages/Galeria";
 import News from "./pages/News";
 import Videos from "./pages/Videos";

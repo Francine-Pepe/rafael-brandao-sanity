@@ -14,7 +14,11 @@ function Copyright() {
           <span> Rafa Brandão</span>
         </small>
         <small>
-          <Link to="https://www.francinemelopepe.de/">
+          <Link
+            to="https://www.francinemelopepe.de/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <cite>Desenvolvido por Francine Pêpe</cite>
           </Link>
         </small>

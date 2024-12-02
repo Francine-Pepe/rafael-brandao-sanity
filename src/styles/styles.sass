@@ -40,11 +40,15 @@ svg
     backdrop-filter: blur(4.9px)
     -webkit-backdrop-filter: blur(4.9px) */
 
+.colorChange
+    background-color: variables.$main-background-color
+
 .navlinks-props
     @include mixins.gap-center
 
 .navbar-container
     @include mixins.flex-wrap
+    width: 100vw
 
 .navbar-container, .navbar-mobile-container
     position: fixed
@@ -144,6 +148,30 @@ svg
         a
             color: variables.$white-font-color
 
+.grid-container
+    @include mixins.padding-top
+    @include mixins.flex-center
+
+    .grid-content
+        width: 90vw
+
+        .grid
+            position: relative
+
+            img
+            :hover
+                background-color: variables.$opacity-color-hover
+
+            .grid-label
+                position: absolute
+                top: 2rem
+                right: 0
+                border-bottom: 4px solid variables.$cherry-color
+                color: variables.$white-font-color
+                text-align: center
+                background-color: transparent
+                font-family: inherit
+
 
 // Media Queries
 
@@ -170,10 +198,20 @@ svg
         img
             width: 30vw
 
+@media screen and (max-width: variables.$breakpoint-md)
+    .grid-container
+        display: grid
+        grid-template-columns: 2
+        .grid-content
+            display: flex
+            flex-wrap: wrap
+
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
         img
             width: 40vw
+
+    
 
         
 
