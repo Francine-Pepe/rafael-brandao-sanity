@@ -3,7 +3,13 @@ import CarouselImage2 from "../src/assets/A7C01168-2.jpg";
 import CarouselImage3 from "../src/assets/_RAF0170.png";
 import CarouselImage4 from "../src/assets/_RAF0401.jpg";
 import WhereListen from "./components/WhereListen";
-import FooterContact from "./components/FooterContact";
+import FooterContact from "./pages/Footer/FooterContact";
+import GridFoto1 from "./assets/01 - pb.jpg";
+import GridFoto2 from "./assets/A7C01168-2.jpg";
+import GridFoto3 from "./assets/_RAF0170.png";
+import GridFoto4 from "./assets/_RAF0401.jpg";
+import GridFoto5 from "./assets/01.jpg";
+import GridFoto6 from "./assets/01 - pb.jpg";
 
 export const Navigation = [
   {
@@ -58,14 +64,60 @@ export const carouselImages = [
 ];
 
 export const FooterLinks = [
-    {
-        id: 0,
-        title: "Onde ouvir",
-        icons: <WhereListen />
-    },
-    {
-        id: 1,
-        title: "Contato",
-        icons: <FooterContact />
-    },
-]
+  {
+    id: 0,
+    title: "Onde ouvir",
+    icons: <WhereListen />,
+  },
+  {
+    id: 1,
+    title: "Contato",
+    icons: <FooterContact />,
+  },
+];
+
+export const GridLinkImages = [
+  {
+    id: 0,
+    img: GridFoto1,
+    alt: "",
+    link: "",
+    datas: "1985 - 1992",
+  },
+  {
+    id: 1,
+    img: GridFoto2,
+    alt: "",
+    link: "",
+    datas: "1992 - 1995",
+  },
+  {
+    id: 2,
+    img: GridFoto3,
+    alt: "",
+    link: "",
+    datas: "1995 - 2002",
+  },
+  {
+    id: 3,
+    img: GridFoto4,
+    alt: "",
+    link: "",
+    datas: "2002 - 2015",
+  },
+  {
+    id: 4,
+    img: GridFoto5,
+    alt: "",
+    link: "",
+    datas: "Portugal",
+  },
+  {
+    id: 5,
+    img: GridFoto6,
+    alt: "",
+    link: "",
+    datas: "Alemanha",
+  },
+];
+
