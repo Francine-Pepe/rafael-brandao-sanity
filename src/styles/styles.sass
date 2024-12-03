@@ -128,7 +128,7 @@ svg
 
         .footer-icons
             @include mixins.flex-space-between
-            width: 30%
+            width: 30vw
             padding-bottom: 1.5rem 
 
 .listen-container, .contact-container
@@ -175,6 +175,18 @@ svg
 
 // Media Queries
 
+@media screen and (min-width: 1500px)
+    .footer-container
+        .footer-content
+            padding: 0 8.3vw
+
+@media screen and (max-width: variables.$breakpoint-xl)
+    .footer-container
+        .footer-content
+            .footer-icons
+                width: 40vw
+
+
 @media screen and (max-width: variables.$breakpoint-lg)
     .navbar-mobile-container
         display: block
@@ -192,6 +204,20 @@ svg
         @include mixins.flex-column-center
         gap: 3rem
         height: 100vh
+
+    .footer-container
+        .footer-content
+            display: flex
+            flex-direction: column
+            text-align: center
+            padding: 0
+            text-align: center
+
+            .footer-icons
+                width: 100vw
+                display: flex
+                flex-direction: column
+                justify-content: center
 
 @media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
     .logo
