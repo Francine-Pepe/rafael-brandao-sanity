@@ -8,7 +8,7 @@ function Agenda() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "post"] { title, slug, body, mainImage {
+        `*[_type == "post"] { title, date, time, slug, body, mainImage {
           asset -> { _id, url },
           alt
         }
@@ -30,7 +30,7 @@ function Agenda() {
               <img src={show.mainImage.asset.url} alt={show.title} />
               <div>
                 <h3>{show.title}</h3>
-                <h3>{show.data}</h3>
+                <h3>{show.date}</h3>
               </div>
               <button>
                 <NavLink to={`/agenda/${show.slug.current}`}>
