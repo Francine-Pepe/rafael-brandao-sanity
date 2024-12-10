@@ -1,12 +1,11 @@
-import React from "react";
-import GridLayout from "./GridLayout";
 import { GridLinkImages } from "../../data";
+import GridLayout from "./GridLayout";
 
 function Biografia() {
   return (
-    <div className="biografia-container container">
-      <GridLayout data={GridLinkImages} />
-    </div>
+    <main className="biografia-container container">
+      <GridLayout data={GridLinkImages} />  
+    </main>
   );
 }
 
