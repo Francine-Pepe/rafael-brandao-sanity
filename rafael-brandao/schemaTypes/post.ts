@@ -22,8 +22,10 @@ export default defineType({
     defineField({
       name: 'date',
       title: 'Date',
-      type: 'datetime',
-      initialValue: () => new Date().toISOString(),
+      type: 'date',
+      options: {
+        dateFormat: 'DD-MM-YYYY',
+      },
     }),
     defineField({
       name: 'eventHour',
@@ -35,11 +37,7 @@ export default defineType({
       title: 'Description',
       type: 'string',
     }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'date',
-    }),
+
     defineField({
       name: 'author',
       title: 'Author',
