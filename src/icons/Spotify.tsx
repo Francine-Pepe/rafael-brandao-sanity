@@ -1,82 +1,47 @@
 import React from "react";
 import type { SVGProps } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function Spotify(props: SVGProps<SVGSVGElement>) {
+  const homeUrl = useLocation().pathname;
+
   return (
-    <Link
-      to="https://open.spotify.com/artist/3asI6zkTnF6ZnTtGqOGr68?si=rfC1CqQbTuqhm3dPg3QD1w"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="2rem"
-        height="2rem"
-        viewBox="0 0 24 24"
-        {...props}
-        className="icon"
+    <>
+      <Link
+        to="https://open.spotify.com/artist/3b7ohV6kChpxpIh3cOKxWy?si=WjjFzr_2S-uI1O-ZaGFHTg"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <g
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2rem"
+          height="2rem"
+          viewBox="0 0 48 48"
+          {...props}
+          style={{
+            filter: `${homeUrl === "/" ? "brightness(0) saturate(100%) invert(100%) sepia(55%) saturate(1529%) hue-rotate(181deg) brightness(112%) contrast(90%)" : "brightness(0) saturate(100%) invert(8%) sepia(13%) saturate(2785%) hue-rotate(279deg) brightness(94%) contrast(112%)"}`,
+          }}
         >
+          <title>Spotify</title>
+
+          <circle
+            cx={24}
+            cy={24}
+            r={21.5}
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></circle>
           <path
-            strokeDasharray={64}
-            strokeDashoffset={64}
-            d="M2 12c0 -5.52 4.48 -10 10 -10c5.52 0 10 4.48 10 10c0 5.52 -4.48 10 -10 10c-5.52 0 -10 -4.48 -10 -10Z"
-          >
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              dur="0.6s"
-              values="64;0"
-            ></animate>
-          </path>
-          <path
-            strokeDasharray={8}
-            strokeDashoffset={8}
-            d="M8.63 15.31c2.18 -0.58 4.49 -0.34 6.5 0.69"
-          >
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              begin="0.6s"
-              dur="0.2s"
-              values="8;0"
-            ></animate>
-          </path>
-          <path
-            strokeDasharray={12}
-            strokeDashoffset={12}
-            d="M7.5 12.07c1.1 -0.37 2.28 -0.57 3.5 -0.57c2.02 0 3.92 0.55 5.55 1.5"
-          >
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              begin="0.8s"
-              dur="0.2s"
-              values="12;0"
-            ></animate>
-          </path>
-          <path
-            strokeDasharray={14}
-            strokeDashoffset={14}
-            d="M7 8.91c1.38 -0.59 2.9 -0.91 4.5 -0.91c2.41 0 4.65 0.74 6.5 2"
-          >
-            <animate
-              fill="freeze"
-              attributeName="stroke-dashoffset"
-              begin="1s"
-              dur="0.2s"
-              values="14;0"
-            ></animate>
-          </path>
-        </g>
-      </svg>
-    </Link>
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12.333 30.67c8.19-1.872 15.215-1.066 20.882 2.397m-21.648-8.786c7.808-2.37 17.515-1.222 24.152 2.856M10.35 17.32c7.595-2.305 20.22-1.86 28.198 2.876"
+          ></path>
+        </svg>
+      </Link>
+    </>
   );
 }
