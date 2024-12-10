@@ -33,7 +33,7 @@ function Agenda() {
                 <div className="agenda-date-time">
                   <h3>{show.date}</h3> | <h3>{show.eventHour} horas</h3>
                 </div>
-                <p>Description</p>
+                <p>{show.description}</p>
                 <button>
                   <NavLink to={`/agenda/${show.slug.current}`}>
                     Ver evento
