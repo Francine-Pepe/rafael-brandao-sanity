@@ -240,6 +240,25 @@ svg
                 right: 4rem
                 top: 5rem
 
+.agenda-container
+    @include mixins.padding-top
+
+    .agenda-content
+        @include mixins.flex-column-center
+        gap: 2rem
+
+        .agenda-information
+            @include mixins.flex-space-between
+            width: 90vw
+            border-top: 1px solid red
+            border-bottom: 1px solid red
+            padding: 2rem
+
+            img
+                width: 20rem
+                height: auto
+
+
 
 // Media Queries
 

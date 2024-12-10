@@ -20,6 +20,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',

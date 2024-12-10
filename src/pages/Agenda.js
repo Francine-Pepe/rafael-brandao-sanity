@@ -19,20 +19,25 @@ function Agenda() {
   }, []);
 
   return (
-    <section>
+    <section className="agenda-container container">
       <h1>Shows page</h1>
       <h2>You are viewing {shows.length} shows </h2>
 
-      <div>
+      <div className="agenda-content container">
         {shows.map((show) => (
           <article>
-            <img src={show.mainImage.asset.url} alt={show.title} />
-            <h4>{show.title}</h4>
-            <button>
-              <NavLink to={`/agenda/${show.slug.current}`}>
-                Clique para saber mais
-              </NavLink>
-            </button>
+            <div className="agenda-information ">
+              <img src={show.mainImage.asset.url} alt={show.title} />
+              <div>
+                <h3>{show.title}</h3>
+                <h3>{show.data}</h3>
+              </div>
+              <button>
+                <NavLink to={`/agenda/${show.slug.current}`}>
+                  Clique para saber mais
+                </NavLink>
+              </button>
+            </div>
           </article>
         ))}
       </div>
