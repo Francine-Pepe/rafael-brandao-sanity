@@ -131,6 +131,7 @@ svg
             width: 30vw
             padding-bottom: 1.5rem 
 
+
 .listen-container, .contact-container
     @include mixins.gap
 
@@ -197,7 +198,7 @@ svg
         background-color: variables.$main-background-color
         border-radius: 15px
         height: 80vh
-        padding: 2rem
+        padding: 2rem 
 
         .modal-content-wrap
             display: flex
@@ -268,11 +269,13 @@ svg
             .modal-image, .modal-text
                 width: 100%
 
+
                 .grid-modal-images
                     display: flex
                     justify-content: center
                     position: relative
                     width: inherit
+                    
 
                     .modal-image1, .modal-image2, .modal-image3 
                         position: absolute
@@ -292,8 +295,6 @@ svg
                     .modal-image3
                         right: 0
                         top: 9rem
-
-
 
 @media screen and (max-width: variables.$breakpoint-lg)
     .navbar-mobile-container
