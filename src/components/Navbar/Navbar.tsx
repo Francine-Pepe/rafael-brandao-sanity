@@ -44,7 +44,10 @@ function Navbar() {
           <Youtube />
         </section>
       </div>
-      <div className="mobile">
+      <div
+        className="mobile"
+        
+      >
         <NavbarMobile />
       </div>
     </>
