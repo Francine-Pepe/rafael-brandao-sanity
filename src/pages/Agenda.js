@@ -8,7 +8,7 @@ function Agenda() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "post"] { title, date, time, slug, body, mainImage {
+        `*[_type == "post"] { title, date, eventHour, description, slug, body, mainImage {
           asset -> { _id, url },
           alt
         }
@@ -28,15 +28,18 @@ function Agenda() {
           <article>
             <div className="agenda-information ">
               <img src={show.mainImage.asset.url} alt={show.title} />
-              <div>
+              <div className="agenda-information-place-time">
                 <h3>{show.title}</h3>
-                <h3>{show.date}</h3>
+                <div className="agenda-date-time">
+                  <h3>{show.date}</h3> | <h3>{show.eventHour} horas</h3>
+                </div>
+                <p>Description</p>
+                <button>
+                  <NavLink to={`/agenda/${show.slug.current}`}>
+                    Ver evento
+                  </NavLink>
+                </button>
               </div>
-              <button>
-                <NavLink to={`/agenda/${show.slug.current}`}>
-                  Clique para saber mais
-                </NavLink>
-              </button>
             </div>
           </article>
         ))}

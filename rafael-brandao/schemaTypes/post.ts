@@ -22,6 +22,22 @@ export default defineType({
     defineField({
       name: 'date',
       title: 'Date',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+    }),
+    defineField({
+      name: 'eventHour',
+      title: 'Event hour',
+      type: 'string',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Published at',
       type: 'date',
     }),
     defineField({
@@ -44,17 +60,7 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
-    defineField({
-      name: 'eventDate',
-      title: 'Event date',
-      type: 'datetime',
-      initialValue: () => new Date().toISOString(),
-    }),
-    defineField({
-      name: 'eventHour',
-      title: 'Event hour',
-      type: 'time',
-    }),
+
     defineField({
       name: 'body',
       title: 'Body',
