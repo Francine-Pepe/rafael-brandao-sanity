@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 function NavProps(props: any) {
-  const { data } = props;
+  const { data, style } = props;
   const homeUrl = useLocation().pathname;
 
   return (
@@ -13,7 +13,7 @@ function NavProps(props: any) {
             <NavLink
               to={item.link}
               style={{
-                color: `${homeUrl === "/" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
+                color: `${homeUrl === "/" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}` 
               }}
             >
               {item.name}

@@ -20,8 +20,7 @@ function NavbarMobile() {
         className="navbar-mobile-content"
         style={{
           backgroundColor:
-            `${homeUrl === "/" ? "transparent" : "#F2F2F2"}` ||
-            `${isActive && homeUrl === "/biografia"  ? "transparent" : "#F2F2F2"}`,
+            `${homeUrl === "/" ? "transparent" : "#F2F2F2"}` 
         }}
       >
         <div className="mobile-logo">
@@ -31,7 +30,14 @@ function NavbarMobile() {
       </div>
 
       <div onClick={toggle} className="navbar-mobile">
-        {isActive && <NavProps data={Navigation} />}
+        {isActive && (
+          <NavProps
+            data={Navigation}
+            style={{
+              backgroundColor: `${ homeUrl === "/biografia"  ? "transparent" : "#F2F2F2"}`,
+            }}
+          />
+        )}
       </div>
     </section>
   );
