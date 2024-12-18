@@ -59,7 +59,6 @@ export default function Gridlayout(props: any) {
               </div>
             </NavLink>
             <div onClick={closeModal}>
-              <CloseMenu />
               {visibleDetails === item.id && (
                 <Modal
                   datas={item.datas}
