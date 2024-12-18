@@ -17,6 +17,7 @@ export function Email(props: SVGProps<SVGSVGElement>) {
             height="2rem"
             viewBox="0 0 48 48"
             {...props}
+            className="icon"
           >
             <path
               fill="none"

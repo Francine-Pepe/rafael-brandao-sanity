@@ -16,6 +16,7 @@ export function AmazonMusic(props: SVGProps<SVGSVGElement>) {
           height="2rem"
           viewBox="0 0 48 48"
           {...props}
+          className="icon"
         >
           <title>Amazon Music</title>
 
