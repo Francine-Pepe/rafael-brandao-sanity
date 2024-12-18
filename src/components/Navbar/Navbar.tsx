@@ -36,7 +36,7 @@ function Navbar() {
           <Logo />
         </section>
         <section className="navigation-links">
-          <NavProps data={Navigation} />
+          <NavProps data={Navigation} style={{color: "rgba(32, 0, 15, 1)"}} />
         </section>
         <section className="navigation-social-media">
           <Spotify />

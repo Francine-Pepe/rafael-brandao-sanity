@@ -17,7 +17,7 @@ export function Spotify(props: SVGProps<SVGSVGElement>) {
           height="2rem"
           viewBox="0 0 48 48"
           {...props}
-          
+          className="icon"
         >
           <title>Spotify</title>
 

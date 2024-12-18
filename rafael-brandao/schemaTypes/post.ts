@@ -37,6 +37,11 @@ export default defineType({
       title: 'Description',
       type: 'string',
     }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'url',
+    }),
 
     defineField({
       name: 'author',

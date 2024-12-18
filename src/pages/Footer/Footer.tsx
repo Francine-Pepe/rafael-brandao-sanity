@@ -6,9 +6,14 @@ function Footer(props: any) {
 
   return (
     <>
-      <footer className="footer-container container">
+      <footer className="footer-container container" id="footer">
         <section className="footer-content">
-          <Logo />
+          <Logo
+            style={{
+              filter:
+                "brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(54%) hue-rotate(174deg) brightness(113%) contrast(90%)",
+            }}
+          />
           <div className="footer-icons">
             {data.map((item: { title: string; icons: any }, index: any) => (
               <div key={index}>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import client from "../client";
 import { NavLink } from "react-router-dom";
+import Ticket from "../icons/Ticket";
 
 function Agenda() {
   const [shows, setShows] = useState([]);
@@ -8,7 +9,7 @@ function Agenda() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "post"] { title, date, eventHour, description, slug, body, mainImage {
+        `*[_type == "post"] { title, date, eventHour, link, description, slug, body, mainImage {
           asset -> { _id, url },
           alt
         }
@@ -20,8 +21,8 @@ function Agenda() {
 
   return (
     <section className="agenda-container container">
-      <h1>Shows page</h1>
-      <h2>You are viewing {shows.length} shows </h2>
+      {/* <h1>Shows page</h1>
+      <h2>You are viewing {shows.length} shows </h2> */}
 
       <div className="agenda-content container">
         {shows.map((show) => (
@@ -35,8 +36,16 @@ function Agenda() {
                 </div>
                 <p>{show.description}</p>
                 <button>
-                  <NavLink to={`/agenda/${show.slug.current}`}>
+                  {/* <NavLink to={`/agenda/${show.slug.current}`}>
                     Ver evento
+                  </NavLink> */}
+                  <NavLink
+                    to={show.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Ticket />
+                    <h4>Tickets</h4>
                   </NavLink>
                 </button>
               </div>
