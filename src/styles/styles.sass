@@ -15,10 +15,40 @@ ul
         list-style-type: none
         text-transform: uppercase
 
+        a
+            color: variables.$white-font-color
+
+            &:hover, &:active
+                font-weight: variables.$font-weight-bold
+                color: variables.$orange-color
+                transition: 0.5s ease-in
+
+            &:active
+                color: yellow
+
+
+a
+    text-decoration: none
+    font-weight: variables.$font-weight-medium
+    text-transform: uppercase
+    color: variables.$cherry-color
+
+button
+    border: 1px solid variables.$cherry-color
+    width: fit-content
+    padding: 0 2rem
+    border-radius: 5px
+
+    &:hover
+        background-color: variables.$orange-color
+        border: 2px solid variables.$white-font-color
+
     a
-        text-decoration: none
-        font-weight: variables.$font-weight-medium
-        color: variables.$white-font-color
+        color: variables.$cherry-color
+
+.icon
+    &:hover
+        filter: brightness(0) saturate(100%) invert(41%) sepia(69%) saturate(2264%) hue-rotate(357deg) brightness(97%) contrast(96%)
 
 .logo img
     height: 4rem
@@ -56,13 +86,19 @@ svg
     display: none
     position: relative
     z-index: 3
+    width: 100vw
+    background: rgba(255, 255, 255, 0.26)
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    backdrop-filter: blur(8.6px)
+    -webkit-backdrop-filter: blur(8.6px)
+
 
     .navbar-mobile-content
         @include mixins.flex-space-between
-        width: 90vw
+        width: 90%
         position: absolute
         padding: 1rem 0
-        top: 5vh
+        top: 4vh
         left: 50%
         transform: translate(-50%, -50%)
 
@@ -94,8 +130,6 @@ svg
                 object-fit: cover
                 object-position: center
 
-            img:hover
-                background-color: yellow
 
     .slideshowDots
         text-align: center
@@ -245,29 +279,49 @@ svg
 
     .agenda-content
         @include mixins.flex-column-center
-        gap: 2rem
 
         .agenda-information
             @include mixins.flex-space-between
             width: 90vw
-            border-top: 1px solid red
-            border-bottom: 1px solid red
+            border-top: 1px solid variables.$dark-blue
             padding: 2rem
 
             img
-                width: 20rem
-                height: auto
+                width: 30%
+                height: 30vh
+                object-fit: cover
+                border-radius: 5px
 
             .agenda-information-place-time
                 @include mixins.flex-column
-
-                .agenda-date-time
-                    @include mixins.flex-space-between
-                    gap: 1rem
+                width: 60vw
 
                 p
-                    
+                    margin-top: 0
+                
 
+                .agenda-date-time
+                    @include mixins.gap
+                    align-items: flex-start
+                    width: auto
+                    color: variables.$dark-blue
+
+                button 
+                    .ticket
+                        display: none
+
+                button:hover
+                    transform: scale(1.1)
+                    transition: 0.5s ease-in
+
+                    .ticket
+                        display: block
+                    
+                    h4
+                        display: none
+
+                h3
+                    margin: 0 0 1rem 0
 
 
 // Media Queries
@@ -330,6 +384,8 @@ svg
         display: block
         position: fixed
         z-index: 2
+        width: 100%
+
 
         nav ul li
             font-size: variables.$font-size-mobile
@@ -344,6 +400,23 @@ svg
         @include mixins.flex-column-center
         gap: 3rem
         height: 100vh
+
+
+    .agenda-container, .grid-container
+        @include mixins.smaller-padding-top
+        .agenda-content
+            .agenda-information
+                flex-direction: column
+                width: 89vw
+                padding: 2rem 0
+
+                img
+                    width: inherit
+
+                .agenda-information-place-time 
+                    width: inherit
+                    padding-top: 2rem
+
 
     .footer-container
         .footer-content
@@ -373,6 +446,8 @@ svg
         .grid-content
             display: flex
             flex-wrap: wrap
+
+    
 
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
