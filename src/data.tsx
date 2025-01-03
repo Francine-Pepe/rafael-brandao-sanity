@@ -1,19 +1,19 @@
-import CarouselImage1 from "../src/assets/01.jpg";
-import CarouselImage2 from "../src/assets/A7C01168-2.jpg";
-import CarouselImage3 from "../src/assets/_RAF0170.png";
-import CarouselImage4 from "../src/assets/_RAF0401.jpg";
+import CarouselImage1 from "../src/assets/01.webp";
+import CarouselImage2 from "../src/assets/A7C01168-2.webp";
+import CarouselImage3 from "../src/assets/_RAF0170.webp";
+import CarouselImage4 from "../src/assets/_RAF0401.webp";
 import WhereListen from "./components/WhereListen";
 import FooterContact from "./pages/Footer/FooterContact";
-import GridFoto0 from "./assets/kid.jpg";
-import GridFoto1 from "./assets/FILE187.jpg";
-import GridFoto2 from "./assets/A7C01168-2.jpg";
-import GridFoto3 from "./assets/_RAF0170.png";
-import GridFoto4 from "./assets/_RAF0401.jpg";
-import GridFoto5 from "./assets/FILE216.jpg";
-import GridFoto6 from "./assets/01 - pb.jpg";
-import GridFoto7 from "./assets/FILE200.jpg";
-import GridFoto8 from "./assets/01.jpg";
-import GridFoto9 from "./assets/01 - pb.jpg";
+import GridFoto0 from "./assets/kid.webp";
+import GridFoto1 from "./assets/FILE187.webp";
+import GridFoto2 from "./assets/A7C01168-2.webp";
+import GridFoto3 from "./assets/_RAF0170.webp";
+import GridFoto4 from "./assets/_RAF0401.webp";
+import GridFoto5 from "./assets/FILE216.webp";
+import GridFoto6 from "./assets/01 - pb.webp";
+import GridFoto7 from "./assets/FILE200.webp";
+import GridFoto8 from "./assets/01.webp";
+import GridFoto9 from "./assets/01 - pb.webp";
 
 export const Navigation = [
   {
