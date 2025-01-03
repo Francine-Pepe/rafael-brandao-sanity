@@ -20,7 +20,6 @@ ul
 
             &:hover, &:active
                 font-weight: variables.$font-weight-bold
-                color: variables.$orange-color
                 transition: 0.5s ease-in
 
             &:active
@@ -32,6 +31,9 @@ a
     font-weight: variables.$font-weight-medium
     text-transform: uppercase
     color: variables.$cherry-color
+
+.changeLinkColor
+    color: white
 
 button
     border: 1px solid variables.$cherry-color
@@ -48,7 +50,7 @@ button
 
 .icon
     &:hover
-        filter: brightness(0) saturate(100%) invert(41%) sepia(69%) saturate(2264%) hue-rotate(357deg) brightness(97%) contrast(96%)
+        filter: brightness(0) saturate(100%) invert(41%) sepia(69%) saturate(2264%) hue-rotate(357deg) brightness(97%) contrast(96%) !important
 
 .logo img
     height: 4rem
@@ -401,7 +403,6 @@ svg
         gap: 3rem
         height: 100vh
 
-
     .agenda-container, .grid-container
         @include mixins.smaller-padding-top
         .agenda-content
@@ -416,6 +417,7 @@ svg
                 .agenda-information-place-time 
                     width: inherit
                     padding-top: 2rem
+
 
 
     .footer-container

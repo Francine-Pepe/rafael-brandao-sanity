@@ -8,19 +8,30 @@ import { useLocation } from "react-router-dom";
 
 function NavbarMobile() {
   const [isActive, setIsActive] = useState(false);
+  const [style, setStyle] = useState("#F2F2F2");
   const homeUrl = useLocation().pathname;
 
   function toggle() {
     setIsActive((isActive) => !isActive);
   }
+
+  const changeLinkColor = () => {
+    if (isActive) {
+      setStyle(style);
+    } else {
+      setStyle("rgba(32, 0, 15, 1)");
+    }
+  };
+
+  window.addEventListener("click", changeLinkColor);
+
   return (
     <section className="navbar-mobile-container container">
       <div
         onClick={() => setIsActive(!isActive)}
         className="navbar-mobile-content"
         style={{
-          backgroundColor:
-            `${homeUrl === "/" ? "transparent" : "#F2F2F2"}` 
+          backgroundColor: `${homeUrl === "/" || isActive ? "transparent" : "#F2F2F2"}`,
         }}
       >
         <div className="mobile-logo">
@@ -29,15 +40,14 @@ function NavbarMobile() {
         <div>{isActive ? <CloseMenu /> : <OpenMenu />}</div>
       </div>
 
-      <div onClick={toggle} className="navbar-mobile">
-        {isActive && (
-          <NavProps
-            data={Navigation}
-            style={{
-              backgroundColor: `${ homeUrl === "/biografia"  ? "transparent" : "#F2F2F2"}`,
-            }}
-          />
-        )}
+      <div
+        onClick={() => {
+          toggle();
+          changeLinkColor();
+        }}
+        className={style ? "navbar-mobile changeLinkColor" : "navbar-mobile "}
+      >
+        {isActive && <NavProps data={Navigation} />}
       </div>
     </section>
   );

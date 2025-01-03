@@ -17,9 +17,9 @@ function Modal(props: any) {
         <div className="modal-content-wrap">
           <div className="modal-image">
             <div className="grid-modal-images">
-              <img src={image1} alt={alt} className="modal-image1" />
-              <img src={image2} alt={alt} className="modal-image2" />
-              <img src={image3} alt={alt} className="modal-image3" />
+              <img src={image1} alt={alt} className="modal-image1" loading="lazy" />
+              <img src={image2} alt={alt} className="modal-image2" loading="lazy" />
+              <img src={image3} alt={alt} className="modal-image3" loading="lazy" />
             </div>
           </div>
           <div className="modal-text">
