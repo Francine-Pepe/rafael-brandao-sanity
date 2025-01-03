@@ -28,7 +28,7 @@ function Agenda() {
         {shows.map((show) => (
           <article>
             <div className="agenda-information ">
-              <img src={show.mainImage.asset.url} alt={show.title} />
+              <img src={show.mainImage.asset.url} alt={show.title} loading="lazy" />
               <div className="agenda-information-place-time">
                 <h3>{show.title}</h3>
                 <div className="agenda-date-time">
