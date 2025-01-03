@@ -36,7 +36,7 @@ function Navbar() {
           <Logo />
         </section>
         <section className="navigation-links">
-          <NavProps data={Navigation} style={{color: "rgba(32, 0, 15, 1)"}} />
+          <NavProps data={Navigation} style={{ color: "rgba(32, 0, 15, 1)" }} />
         </section>
         <section className="navigation-social-media">
           <Spotify />
@@ -44,11 +44,8 @@ function Navbar() {
           <Youtube />
         </section>
       </div>
-      <div
-        className="mobile"
-        
-      >
-        <NavbarMobile />
+      <div className="mobile" >
+        <NavbarMobile   />
       </div>
     </>
   );
