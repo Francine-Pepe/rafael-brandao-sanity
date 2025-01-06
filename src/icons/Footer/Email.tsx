@@ -18,6 +18,8 @@ export function Email(props: SVGProps<SVGSVGElement>) {
             viewBox="0 0 48 48"
             {...props}
             className="icon"
+            strokeWidth="0.12rem"
+
           >
             <path
               fill="none"

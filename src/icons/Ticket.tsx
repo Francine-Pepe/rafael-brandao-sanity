@@ -9,6 +9,7 @@ function Ticket() {
         height="48"
         viewBox="0 0 48 48"
         className="ticket"
+        strokeWidth="0.12rem"
       >
         <path
           fill="none"
