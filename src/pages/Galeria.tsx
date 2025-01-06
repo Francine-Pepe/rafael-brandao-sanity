@@ -1,5 +1,7 @@
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import PageTitle from "../components/PageTitle";
+import { PageTitles } from "../data";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -13,7 +15,7 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 export default function QuiltedImageList() {
   return (
     <main className="gallery-container container">
-
+      <PageTitle data={PageTitles} />
       <ImageList
         sx={{
           width: "90vw",
