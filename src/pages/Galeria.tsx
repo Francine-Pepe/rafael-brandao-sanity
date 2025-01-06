@@ -2,6 +2,8 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import PageTitle from "../components/PageTitle";
 import { PageTitles } from "../data";
+import { useEffect, useState } from "react";
+import client from "../client";
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
   return {
@@ -13,6 +15,20 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 }
 
 export default function QuiltedImageList() {
+  const [gallery, setGallery] = useState([]);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "gallery] {image {
+          asset -> {_id, url},
+          alt
+        } }`
+      )
+      .then((data) => setGallery(data))
+      .catch(console.log);
+  }, []);
+
   return (
     <main className="gallery-container container">
       <PageTitle data={PageTitles} />
@@ -28,7 +44,7 @@ export default function QuiltedImageList() {
         rowHeight={"auto"}
         className="gallery-image-list container"
       >
-        {itemData.map((item) => (
+        {gallery.map((item: any) => (
           <ImageListItem
             key={item.img}
             cols={item.cols || 1}
