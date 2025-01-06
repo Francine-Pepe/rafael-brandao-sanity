@@ -185,3 +185,10 @@ export const BiografiaCarouselImages = [
     image: GridFoto0,
   },
 ];
+
+export const PageTitles = [
+  {
+    id: 1,
+    title: "Galeria",
+  },
+];
