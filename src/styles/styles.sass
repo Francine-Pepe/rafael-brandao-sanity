@@ -32,7 +32,7 @@ a
     text-transform: uppercase
     color: variables.$cherry-color
 
-.changeLinkColor
+.changeLinkColor 
     color: white
 
 button
@@ -91,8 +91,8 @@ svg
     width: 100vw
     background: rgba(255, 255, 255, 0.26)
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
-    backdrop-filter: blur(8.6px)
-    -webkit-backdrop-filter: blur(8.6px)
+    backdrop-filter: blur(20px)
+    -webkit-backdrop-filter: blur(20px)
 
 
     .navbar-mobile-content
@@ -105,8 +105,11 @@ svg
         transform: translate(-50%, -50%)
 
     .navbar-mobile
-        background-color: rgba(37, 1, 1, 0.6)
+        /* background-color: rgba(37, 1, 1, 0.6) */
         width: inherit
+
+        a
+            font-weight: 300
 
 .homepage-container
     width: 100%
@@ -276,6 +279,28 @@ svg
                 right: 4rem
                 top: 5rem
 
+.gallery-container
+    width: 100%
+    height: auto
+
+.page-title-container
+    width: 100%
+    height: 100%
+    transform: rotate(-90deg)
+    
+  
+    .title
+        display: flex
+        align-items: center
+
+        h4
+            font-weight: 200  
+
+        hr
+            width: 30rem
+            height: 1px 
+        
+
 .agenda-container
     @include mixins.padding-top
 
@@ -324,6 +349,7 @@ svg
 
                 h3
                     margin: 0 0 1rem 0
+
 
 
 // Media Queries

@@ -57,3 +57,19 @@
 @mixin smaller-padding-top
     padding: 8rem 0 2rem 0
 
+@mixin theme-colors($light-theme: true) 
+    @if $light-theme 
+        background-color: variables.$light-background
+        color: variables.$light-text
+    @else 
+        background-color: variables.$dark-background
+        color: variables.$dark-text
+
+.banner 
+    @include theme-colors($light-theme: true)
+    
+    body.dark & 
+        @include theme-colors($light-theme: false)
+  
+
+

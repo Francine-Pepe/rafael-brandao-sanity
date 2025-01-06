@@ -21,6 +21,8 @@ export function Instagram(props: SVGProps<SVGSVGElement>) {
           filter: `${homeUrl === "/" ? "brightness(0) saturate(100%) invert(100%) sepia(55%) saturate(1529%) hue-rotate(181deg) brightness(112%) contrast(90%)" : "brightness(0) saturate(100%) invert(8%) sepia(13%) saturate(2785%) hue-rotate(279deg) brightness(94%) contrast(112%)"}`,
         }}
         className="icon"
+        strokeWidth="0.12rem"
+
       >
         <rect
           width={37}
