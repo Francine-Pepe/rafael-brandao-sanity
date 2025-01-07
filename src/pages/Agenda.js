@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import client from "../client";
 import { NavLink } from "react-router-dom";
 import Ticket from "../icons/Ticket";
+import PageTitle from "../components/PageTitle";
+import { Navigation } from "../data";
 
 function Agenda() {
   const [shows, setShows] = useState([]);
@@ -21,14 +23,17 @@ function Agenda() {
 
   return (
     <section className="agenda-container container">
-      {/* <h1>Shows page</h1>
-      <h2>You are viewing {shows.length} shows </h2> */}
+      <PageTitle data={Navigation} />
 
       <div className="agenda-content container">
         {shows.map((show) => (
           <article>
             <div className="agenda-information ">
-              <img src={show.mainImage.asset.url} alt={show.title} loading="lazy" />
+              <img
+                src={show.mainImage.asset.url}
+                alt={show.title}
+                loading="lazy"
+              />
               <div className="agenda-information-place-time">
                 <h3>{show.title}</h3>
                 <div className="agenda-date-time">
