@@ -225,6 +225,7 @@ svg
     left: 0
     right: 0
     height: 100vh
+    padding: 5vh
 
     .modal-close-button
         @include mixins.flex-end
@@ -279,27 +280,41 @@ svg
                 right: 4rem
                 top: 5rem
 
-.gallery-container
-    width: 100%
-    height: auto
 
 .page-title-container
-    width: 100%
-    height: 100%
-    transform: rotate(-90deg)
+    top: 30vh
+    height: 100%    
+    position: fixed
+    
     
   
     .title
         display: flex
-        align-items: center
+        transform: rotate(-90deg)
+        line-height: 1
 
-        h4
-            font-weight: 200  
+        h3
+            font-weight: 300  
+            color: variables.$cherry-color
+            text-transform: uppercase
 
-        hr
-            width: 30rem
-            height: 1px 
-        
+        ::first-letter
+            initial-letter: 1.5
+
+        .page-title-bottom-box
+            position: absolute
+            width: 12rem
+            height: 0.1rem
+            background-color: variables.$cherry-color
+            z-index: -1
+            left: 50%
+            top: 70%
+
+
+.gallery-container
+    display: flex
+    width: 100%
+
 
 .agenda-container
     @include mixins.padding-top
@@ -310,7 +325,7 @@ svg
         .agenda-information
             @include mixins.flex-space-between
             width: 90vw
-            border-top: 1px solid variables.$dark-blue
+            /*border-top: 1px solid variables.$cherry-color
             padding: 2rem
 
             img
