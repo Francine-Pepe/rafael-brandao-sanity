@@ -7,12 +7,12 @@ import SingleShow from "./pages/SingleShow";
 import Header from "./components/Header";
 import Agenda from "./pages/Agenda";
 import Biografia from "./pages/Biografia/Biografia";
-import Galeria from "./pages/Galeria";
 import News from "./pages/News";
 import Videos from "./pages/Videos";
 import Contato from "./pages/Contato";
 import Footer from "./pages/Footer/Footer";
 import { FooterLinks } from "./data";
+import Gallery from "./pages/Gallery";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route path="/biografia" element={<Biografia />} />
           <Route path="/agenda/:slug" element={<SingleShow />} />
           <Route path="/agenda" element={<Agenda />} />
-          <Route path="/galeria" element={<Galeria />} />
+          <Route path="/galeria" element={<Gallery />} />
           <Route path="/news" element={<News />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/contato" element={<Contato />} />
