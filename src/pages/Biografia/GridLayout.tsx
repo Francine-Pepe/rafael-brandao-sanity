@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Modal from "./Modal";
 import { CloseMenu } from "../../icons/CloseMenu";
+import PageTitle from "../../components/PageTitle";
+import { Navigation } from "../../data";
 
 const Label = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -28,52 +30,55 @@ export default function Gridlayout(props: any) {
   };
 
   return (
-    <Box className="grid-container container">
-      <Masonry
-        columns={{ xs: 1, sm: 2, md: 3 }}
-        spacing={2}
-        className="grid-content"
-      >
-        {data.map((item: any, index: any) => (
-          <div key={index}>
-            <NavLink to={""}>
-              <div key={item.id} className="grid">
-                <Label className="grid-label">
-                  {item.datas} | {item.country}
-                </Label>
+    <div>
+      <PageTitle data={Navigation} />
+      <Box className="grid-container container">
+        <Masonry
+          columns={{ xs: 1, sm: 2, md: 3 }}
+          spacing={2}
+          className="grid-content"
+        >
+          {data.map((item: any, index: any) => (
+            <div key={index}>
+              <NavLink to={""}>
+                <div key={item.id} className="grid">
+                  <Label className="grid-label">
+                    {item.datas} | {item.country}
+                  </Label>
 
-                <img
-                  srcSet={`${item.image}?w=162&auto=format&dpr=2 2x`}
-                  src={`${item.image}?w=162&auto=format`}
-                  alt={item.alt}
-                  loading="lazy"
-                  style={{
-                    borderRadius: 4,
-                    display: "block",
-                    width: "100%",
-                    fill: "red",
-                  }}
-                  className="grid-image"
-                  onClick={() => handleClick(item.id)}
-                />
+                  <img
+                    srcSet={`${item.image}?w=162&auto=format&dpr=2 2x`}
+                    src={`${item.image}?w=162&auto=format`}
+                    alt={item.alt}
+                    loading="lazy"
+                    style={{
+                      borderRadius: 4,
+                      display: "block",
+                      width: "100%",
+                      fill: "red",
+                    }}
+                    className="grid-image"
+                    onClick={() => handleClick(item.id)}
+                  />
+                </div>
+              </NavLink>
+              <div onClick={closeModal}>
+                {visibleDetails === item.id && (
+                  <Modal
+                    datas={item.datas}
+                    text={item.text}
+                    image={item.image}
+                    alt={item.alt}
+                    image1={item.image1}
+                    image2={item.image2}
+                    image3={item.image3}
+                  />
+                )}
               </div>
-            </NavLink>
-            <div onClick={closeModal}>
-              {visibleDetails === item.id && (
-                <Modal
-                  datas={item.datas}
-                  text={item.text}
-                  image={item.image}
-                  alt={item.alt}
-                  image1={item.image1}
-                  image2={item.image2}
-                  image3={item.image3}
-                />
-              )}
             </div>
-          </div>
-        ))}
-      </Masonry>
-    </Box>
+          ))}
+        </Masonry>
+      </Box>
+    </div>
   );
 }

@@ -186,9 +186,4 @@ export const BiografiaCarouselImages = [
   },
 ];
 
-export const PageTitles = [
-  {
-    id: 1,
-    title: "Galeria",
-  },
-];
+

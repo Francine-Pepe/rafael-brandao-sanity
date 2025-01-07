@@ -6,10 +6,10 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-        name: 'title',
-        title: 'Title',
-        type: 'string',
-      }),
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
     defineField({
       name: 'image',
       title: 'Image',
@@ -19,20 +19,15 @@ export default defineType({
       },
     }),
     defineField({
-        name: 'description',
-        title: 'Description',
-        type: 'string',
-      }),
-      defineField({
-        name: 'rows',
-        title: 'Rows',
-        type: 'number',
-      }),
-      defineField({
-        name: 'cols',
-        title: 'Cols',
-        type: 'number',
-      }),
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'alt',
+      title: 'Alt',
+      type: 'string',
+    }),
   ],
 
   preview: {
