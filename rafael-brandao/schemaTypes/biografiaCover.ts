@@ -6,19 +6,24 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'id',
-      title: 'Id',
-      type: 'number',
+      name: 'title',
+      title: 'Title',
+      type: 'string',
     }),
     defineField({
-        name: 'slug',
-        title: 'Slug',
-        type: 'slug',
-        options: {
-          source: 'id',
-          maxLength: 96,
-        },
-      }),
+      name: 'id',
+      title: 'Id',
+      type: 'string',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'id',
+        maxLength: 96,
+      },
+    }),
     defineField({
       name: 'image',
       title: 'Image',
@@ -43,34 +48,34 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-        name: 'text',
-        title: 'Text',
-        type: 'string',
-      }),
-      defineField({
-        name: 'image1',
-        title: 'Image 1',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      }),
-      defineField({
-        name: 'image2',
-        title: 'Image 2',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      }),
-      defineField({
-        name: 'image3',
-        title: 'Image 3',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      }),
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'image1',
+      title: 'Image 1',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'image2',
+      title: 'Image 2',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'image3',
+      title: 'Image 3',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
 
   preview: {
