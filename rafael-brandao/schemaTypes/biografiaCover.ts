@@ -43,7 +43,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-        name: 'text',
+        name: 'description',
         title: 'Text',
         type: 'string',
       }),
