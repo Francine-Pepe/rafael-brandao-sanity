@@ -30,9 +30,17 @@ export default function Gridlayout(props: any) {
   };
 
   return (
-    <div>
+    <>
       <PageTitle data={Navigation} />
-      <Box className="grid-container container">
+      <Box
+        className="grid-container container"
+        /* sx={{
+          "@media(max-width: 1200px)": {
+            width: "90vw",
+            padding: "8rem 0",
+          },
+        }} */
+      >
         <Masonry
           columns={{ xs: 1, sm: 2, md: 3 }}
           spacing={2}
@@ -47,8 +55,8 @@ export default function Gridlayout(props: any) {
                   </Label>
 
                   <img
-                    srcSet={`${item.image}?w=162&auto=format&dpr=2 2x`}
-                    src={`${item.image}?w=162&auto=format`}
+                    srcSet={`${item.image}?w=500&auto=format&dpr=2 2x`}
+                    src={`${item.image}?w=500&auto=format`}
                     alt={item.alt}
                     loading="lazy"
                     style={{
@@ -79,6 +87,6 @@ export default function Gridlayout(props: any) {
           ))}
         </Masonry>
       </Box>
-    </div>
+    </>
   );
 }

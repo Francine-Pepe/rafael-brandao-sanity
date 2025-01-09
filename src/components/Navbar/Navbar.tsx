@@ -29,7 +29,7 @@ function Navbar() {
           colorChange ? "navbar-container colorChange" : "navbar-container"
         }
         style={{
-          backgroundColor: `${homeUrl === "/" ? "transparent" : "#F2F2F2"}`,
+          backgroundColor: `${homeUrl === "/" ? "transparent" : "rgb(239, 239, 239"}`,
         }}
       >
         <section className="navigation-logo">
