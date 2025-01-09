@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import client from "../client";
 import PageTitle from "../components/PageTitle";
 import { Navigation } from "../data";
-import { Button } from "../../rafael-brandao/node_modules/sanity-plugin-media/node_modules/@sanity/ui/dist/index.esm";
 
 export default function ImageMasonry() {
   const [gallery, setGallery] = useState([]);

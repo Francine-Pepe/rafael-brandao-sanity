@@ -3,6 +3,6 @@ import category from './category'
 import post from './post'
 import author from './author'
 import gallery from './gallery'
-import biografiaCover from './biografiaCover'
+import biografia from './biografia'
 
-export const schemaTypes = [post, author, category, blockContent, gallery, biografiaCover]
+export const schemaTypes = [post, author, category, blockContent, gallery, biografia]
