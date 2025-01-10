@@ -4,14 +4,27 @@ import { useEffect, useState } from "react";
 import client from "../client";
 import PageTitle from "../components/PageTitle";
 import { Navigation } from "../data";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export default function ImageMasonry() {
   const [gallery, setGallery] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(-1);
+
+  const handleClick = (slug) => {
+    setOpen(!open && slug);
+    setIndex(slug + 1);
+  };
+
+  const closeModal = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "gallery"] {image {
+        `*[_type == "gallery"] { image {
             asset -> {_id, url},
             alt
           } }`
@@ -38,20 +51,33 @@ export default function ImageMasonry() {
         >
           <Masonry spacing={1} columns={{ xs: 1, sm: 2, md: 3 }}>
             {gallery.map((item, index) => (
-              <div key={index} className="gallery-image">
-                <img
-                  srcSet={`${item.image.asset.url}?w=1000&auto=format&dpr=2 2x`}
-                  src={`${item.image.asset.url}?w=1000&auto=format`}
-                  alt={item.alt}
-                  loading="lazy"
-                  style={{
-                    borderRadius: 4,
-                    display: "block",
-                    width: "100%",
-                    quality: 100,
-                  }}
-                />
-              </div>
+              <>
+                <div
+                  key={index}
+                  className="gallery-image"
+                  onClick={() => handleClick(item.slug)}
+                >
+                  <img
+                    srcSet={`${item.image.asset.url}?w=1000&auto=format&dpr=2 2x`}
+                    src={`${item.image.asset.url}?w=1000&auto=format`}
+                    alt={item.alt}
+                    loading="lazy"
+                    style={{
+                      borderRadius: 4,
+                      display: "block",
+                      width: "100%",
+                      quality: 100,
+                    }}
+                  />
+                  {open === item.slug && (
+                    <Lightbox
+                      open={open}
+                      close={() => closeModal(false)}
+                      slides={[{ src: item.image.asset.url }]}
+                    />
+                  )}
+                </div>
+              </>
             ))}
           </Masonry>
         </Box>
