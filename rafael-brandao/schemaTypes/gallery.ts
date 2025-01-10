@@ -2,44 +2,43 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'gallery',
+  type: 'object',
   title: 'Gallery',
-  type: 'array',
-  of: [
+  fields: [
     {
-      title: 'Image',
-      type: 'image',
-    },
-    {
-      title: 'Image',
-      type: 'object',
-      fields: [
-        defineField({
-          title: 'Title',
-          name: 'title',
-          type: 'string',
-        }),
-        defineField({
-          name: 'slug',
-          title: 'Slug',
-          type: 'slug',
-          options: {
-            source: 'title',
-            maxLength: 96,
-          },
-        }),
-        defineField({
-          title: 'Image',
+      name: 'images',
+      type: 'array',
+      title: 'Images',
+      of: [
+        {
           name: 'image',
           type: 'image',
+          title: 'Image',
           options: {
             hotspot: true,
           },
-        }),
-        defineField({
-          title: 'Alternative text',
-          name: 'alt',
-          type: 'string',
-        }),
+          fields: [
+            {
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            },
+            {
+              name: 'slug',
+              title: 'Slug',
+              type: 'slug',
+              options: {
+                source: 'title',
+                maxLength: 96,
+              },
+            },
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            },
+          ],
+        },
       ],
     },
   ],
