@@ -231,6 +231,7 @@ svg
     right: 0
     height: 100vh
     padding: 5vh
+    
 
     .modal-close-button
         @include mixins.flex-end
@@ -244,6 +245,7 @@ svg
         border-radius: 15px
         height: 80vh
         padding: 2rem 
+        overflow-y: scroll
 
         .modal-content-wrap
             display: flex
@@ -264,23 +266,24 @@ svg
 
             img
                 width: 20vw
+                height: auto
                 border-radius: 5px
-                -webkit-box-shadow: 0px 0px 23px -2px rgba(0,0,0,0.82)
-                box-shadow: 0px 0px 23px -2px rgba(0,0,0,0.82)
+                -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
+                box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
 
             .modal-image1
                 position: absolute
                 left: 0
 
             .modal-image2
-                width: 25vw
+                max-width: 25vw
                 position: absolute
                 left: 4rem
                 top: 16rem
                 z-index: 2
 
             .modal-image3
-                width: 27vw
+                max-width: 27vw
                 position: absolute
                 right: 4rem
                 top: 5rem
@@ -414,43 +417,43 @@ svg
             .footer-icons
                 width: 40vw
 
-    .modal-content 
-        overflow-y: scroll
-        height: auto
+    .modal
+        .modal-content 
+            overflow-y: scroll
+            height: 80%
 
-        .modal-content-wrap
-            flex-wrap: wrap-reverse
-            height: auto
+            .modal-content-wrap
+                flex-wrap: wrap-reverse
+                height: auto
 
-            .modal-image, .modal-text
-                width: 100%
+                .modal-image, .modal-text
+                    width: 100%
 
+                    .grid-modal-images
+                        display: flex
+                        justify-content: center
+                        position: relative
+                        width: inherit
+                        
 
-                .grid-modal-images
-                    display: flex
-                    justify-content: center
-                    position: relative
-                    width: inherit
-                    
+                        .modal-image1, .modal-image2, .modal-image3 
+                            position: absolute
 
-                    .modal-image1, .modal-image2, .modal-image3 
-                        position: absolute
+                            img
+                            width: 50vw
 
-                        img
-                        width: 50vw
+                        .modal-image1
+                            left: 0
+                            top: 0
 
-                    .modal-image1
-                        left: 0
-                        top: 0
+                        .modal-image2
+                            left: 4rem
+                            top: 20rem
+                            z-index: 2
 
-                    .modal-image2
-                        left: 4rem
-                        top: 20rem
-                        z-index: 2
-
-                    .modal-image3
-                        right: 0
-                        top: 9rem
+                        .modal-image3
+                            right: 0
+                            top: 9rem
 
     .grid-container 
         width: 90vw
