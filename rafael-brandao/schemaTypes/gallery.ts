@@ -6,11 +6,15 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+    defineField({
       name: 'gallery',
       title: 'Gallery',
       type: 'array',
       of: [{type: 'reference', to: {type: 'imageGallery'}}],
     }),
-    
   ],
 })
