@@ -20,8 +20,8 @@ export default function Gridlayout() {
   const [visibleDetails, setVisibleDetails] = useState(false);
   const [biografia, setBiografia] = useState([]);
 
-  const handleClick = (id) => {
-    setVisibleDetails(!visibleDetails && id);
+  const handleClick = (slug) => {
+    setVisibleDetails(!visibleDetails && slug);
   };
 
   const closeModal = () => {
@@ -31,14 +31,14 @@ export default function Gridlayout() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "biografia"] {id, image, datas, country, description, image1, image2, image3 {
-              asset -> {_id, url},
-              alt
-            } }`
+        `*[_type == "biografia"] { slug, datas, country, body, image {asset -> { _id, url }}, image1 {asset -> { _id, url }}, image2 {asset -> { _id, url }}, image3 {
+            asset -> { _id, url },
+            alt
+          }
+        }`
       )
-
       .then((data) => setBiografia(data))
-      .catch(console.log);
+      .catch(console.error);
   }, []);
 
   return (
@@ -60,9 +60,9 @@ export default function Gridlayout() {
         >
           {biografia
             .sort((a, b) => (a.datas > b.datas ? 1 : -1))
-            .map((item, index) => (
-              <div key={index}>
-                <NavLink to={""}>
+            .map((item, index) => {
+              return (
+                <div key={index}>
                   <div key={item.id} className="grid">
                     <Label className="grid-label">
                       {item.datas} | {item.country}
@@ -80,25 +80,25 @@ export default function Gridlayout() {
                         fill: "red",
                       }}
                       className="grid-image"
-                      onClick={() => handleClick(item.id)}
+                      onClick={() => handleClick(item.slug)}
                     />
                   </div>
-                </NavLink>
-                <div onClick={closeModal}>
-                  {visibleDetails === item.id && (
-                    <Modal
-                      datas={item.datas}
-                      text={item.description}
-                      image={item.image.asset.url}
-                      alt={item.alt}
-                      image1={item.image1.asset.url}
-                      image2={item.image2.asset.url}
-                      image3={item.image3.asset.url}
-                    />
-                  )}
+                  <div onClick={closeModal}>
+                    {visibleDetails === item.slug && (
+                      <Modal
+                        datas={item.datas}
+                        body={item.body}
+                        image={item.image.asset.url}
+                        alt={item.alt}
+                        image1={item.image1.asset.url}
+                        image2={item.image2.asset.url}
+                        image3={item.image3.asset.url}
+                      />
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </Masonry>
       </Box>
     </>

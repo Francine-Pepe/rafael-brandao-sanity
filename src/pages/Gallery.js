@@ -17,7 +17,7 @@ export default function ImageMasonry() {
           } }`
       )
       .then((data) => setGallery(data))
-      .catch(console.log);
+      .catch(console.error);
   }, []);
   return (
     <>

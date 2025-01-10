@@ -43,7 +43,7 @@ function SingleShow() {
           )}
 
           <div>
-            <BlockContent blocks={singleShow.body} projectId="564knp01" database="production" />
+            <BlockContent blocks={singleShow.body} projectId="" database="" />
           </div>
 
           <button>

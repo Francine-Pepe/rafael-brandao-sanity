@@ -3,7 +3,6 @@ import "./App.css";
 import "./styles/styles.sass";
 import Homepage from "./pages/Homepage";
 import ErrorPage from "./pages/ErrorPage";
-import SingleShow from "./pages/SingleShow";
 import Header from "./components/Header";
 import Agenda from "./pages/Agenda";
 import Biografia from "./pages/Biografia/Biografia";
@@ -22,7 +21,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/biografia" element={<Biografia />} />
-          <Route path="/agenda/:slug" element={<SingleShow />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/galeria" element={<Gallery />} />
           <Route path="/news" element={<News />} />

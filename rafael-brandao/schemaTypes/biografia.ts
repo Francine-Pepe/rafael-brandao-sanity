@@ -11,16 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'id',
-      title: 'Id',
-      type: 'string',
-    }),
-    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'id',
+        source: 'title',
         maxLength: 96,
       },
     }),
@@ -48,9 +43,9 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     }),
     defineField({
       name: 'image1',
@@ -81,12 +76,7 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      media: 'image',
     },
   },
 })
