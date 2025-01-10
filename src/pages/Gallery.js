@@ -8,7 +8,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 export default function ImageMasonry() {
-  const [imageGallery, setGallery] = useState([]);
+  const [gallery, setGallery] = useState([]);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(-1);
 
@@ -24,7 +24,7 @@ export default function ImageMasonry() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "imageGallery"] { slug, image {
+        `*[_type == "imageGallery"] {  slug, image {
             asset -> {_id, url},
             alt
           } }`
@@ -50,7 +50,7 @@ export default function ImageMasonry() {
           }}
         >
           <Masonry spacing={1} columns={{ xs: 1, sm: 2, md: 3 }}>
-            {imageGallery.map((item, index) => (
+            {gallery.map((item, index) => (
               <>
                 <div
                   key={index}
