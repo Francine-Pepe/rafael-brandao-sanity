@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import {media} from 'sanity-plugin-media'
+import {codeInput} from '@sanity/code-input'
 
 
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
   projectId: '564knp01',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool(), vercelDeployTool(), media()],
+  plugins: [structureTool(), visionTool(), vercelDeployTool(), media(), codeInput()],
 
   schema: {
     types: schemaTypes,

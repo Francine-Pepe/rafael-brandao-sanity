@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'gallery',
-  title: 'Gallery',
+  name: 'videos',
+  title: 'Videos',
   type: 'document',
   fields: [
     defineField({
