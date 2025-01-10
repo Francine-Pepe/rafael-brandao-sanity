@@ -6,10 +6,10 @@ export default defineType({
   title: 'Gallery',
   fields: [
     {
-      name: 'image',
+      name: 'images',
       type: 'array',
-      title: 'Image',
-      of: [{type: 'reference'}, {type: 'imageGallery'}]
+      title: 'Images',
+      of: [{type: 'reference', to: {type: 'imageGallery'}}],
     },
   ],
 })
