@@ -1,4 +1,3 @@
-import { GridLinkImages } from "../../data";
 import GridLayout from "./GridLayout";
 
 function Biografia() {
