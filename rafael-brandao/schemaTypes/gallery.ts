@@ -2,14 +2,15 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'gallery',
-  type: 'object',
   title: 'Gallery',
+  type: 'document',
   fields: [
-    {
-      name: 'images',
+    defineField({
+      name: 'gallery',
+      title: 'Gallery',
       type: 'array',
-      title: 'Images',
       of: [{type: 'reference', to: {type: 'imageGallery'}}],
-    },
+    }),
+    
   ],
 })
