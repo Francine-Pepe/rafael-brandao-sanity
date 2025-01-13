@@ -8,6 +8,9 @@ body, html
     max-width: 100%
     overflow-x: hidden
 
+h1, h2, h3, h4, h5
+    font-weight: 450
+
 ul 
     margin: 0
     padding: 0
@@ -85,7 +88,7 @@ svg
 
 .navbar-container, .navbar-mobile-container
     position: fixed
-    z-index: 2
+    z-index: 3
 
 .navigation-social-media
     @include mixins.gap
@@ -109,6 +112,8 @@ svg
         top: 4vh
         left: 50%
         transform: translate(-50%, -50%)
+        background-color: white
+        z-index: 3
 
     .navbar-mobile
         /* background-color: rgba(37, 1, 1, 0.6) */
@@ -161,6 +166,8 @@ svg
     @include mixins.flex-space-between
     background-color: variables.$dark-cherry-color
     color: variables.$white-font-color
+    position: relative
+    z-index: 2
 
     h3
         color: variables.$white-font-color
@@ -295,6 +302,8 @@ svg
     height: auto
     z-index: 1
     padding: 10rem 0 2rem 4.8rem
+    position: relative
+    z-index: 2
 
     .title
         position: relative        
@@ -345,9 +354,56 @@ svg
             top: 70% */
 
 
+.fixed-bg-image-container
+    position: relative
+    top: 0
+    width: 100%
+
+    .fixed-image-opacity-box
+        width: 100vw
+        height: 30dvh
+        top: 0
+        margin: 0 auto
+        
+
+    .fixed-bg
+        @include mixins.flex-center
+        position: fixed
+        top: 10rem
+        left: 0
+        bottom: 0
+        width: 100%
+        z-index: 1
+
+    img
+        width: 97vw
+        object-fit: contain
+        background-position: bottom
+        opacity: 0.2
+
+.gallery-header
+    position: relative
+    z-index: 2
+    width: auto
+    height: 30vh
+
+    p
+        @include mixins.flex-center
+        color: variables.$dark-cherry-color-darker-opacity
+        width: inherit
+        height: 80vh
+        margin: 0 auto
+        font-size: variables.$font-size-medium
+        font-weight: 200
+
+        
+
 .gallery-container
     display: flex
     width: 100%
+    position: relative
+    z-index: 2
+    background-color: variables.$main-background-color
 
 .agenda-container
 
@@ -480,8 +536,8 @@ svg
     .navbar-mobile-container
         display: block
         position: fixed
-        z-index: 2
-        width: 100%
+        z-index: 3
+        width: 100vw
 
 
         nav ul li
