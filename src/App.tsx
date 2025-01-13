@@ -12,22 +12,25 @@ import Contato from "./pages/Contato";
 import Footer from "./pages/Footer/Footer";
 import { FooterLinks } from "./data";
 import Gallery from "./pages/Gallery";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/biografia" element={<Biografia />} />
-          <Route path="/agenda" element={<Agenda />} />
-          <Route path="/galeria" element={<Gallery />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/biografia" element={<Biografia />} />
+            <Route path="/agenda" element={<Agenda />} />
+            <Route path="/galeria" element={<Gallery />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </ScrollToTop>
         <Footer data={FooterLinks} />
       </BrowserRouter>
     </>
