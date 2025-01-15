@@ -86,3 +86,48 @@ export const BiografiaCarouselImages = [
     image: GridFoto0,
   },
 ];
+
+export const ContactFormData = [
+  {
+    id: "name",
+    title: "Nome:",
+    htmlFor: "name",
+    name: "user_name",
+    type: "text",
+    placeholder: "John Daves",
+  },
+  {
+    id: "email",
+    title: "E-mail:",
+    htmlFor: "email",
+    name: "user_email",
+    type: "text",
+    placeholder: "johndaves@johndaves.com",
+  },
+  {
+    id: "phone",
+    title: "Telefone:",
+    htmlFor: "phone",
+    name: "user_phone",
+    type: "tel",
+    placeholder: ""
+  },
+  
+];
+
+export const ContactBox = [
+  {
+    id: 1,
+    text: "Para contato, preencha o formulário, ou entre em contato diretamente pelo e-mail:",
+    link: "mailto:contato@rafa-brandao.com",
+    linkText: "contato@rafa-brandao.com"
+  },
+  {
+    id: 2,
+    text: "Para shows:",
+    link: "mailto:shows@rafa-brandao.com",
+    linkText: "shows@rafa-brandao.com"
+
+  },
+
+]

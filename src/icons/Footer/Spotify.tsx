@@ -7,7 +7,7 @@ export function Spotify(props: SVGProps<SVGSVGElement>) {
   return (
     <>
       <Link
-        to="https://open.spotify.com/artist/3b7ohV6kChpxpIh3cOKxWy?si=WjjFzr_2S-uI1O-ZaGFHTg"
+        to="https://open.spotify.com/album/2vUJ1m0EB22BI9szb7dBVz?si=OFfnD4dQTGm19nMPPVmzzQ"
         target="_blank"
         rel="noopener noreferrer"
       >

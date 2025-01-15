@@ -78,6 +78,7 @@ export default function Gridlayout() {
                         display: "block",
                         width: "100%",
                         fill: "red",
+                        
                       }}
                       className="grid-image"
                       onClick={() => handleClick(item.slug)}

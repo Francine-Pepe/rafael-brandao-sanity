@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import rb from "../assets/rb-logo-cherry.svg";
+import rb from "../assets/logo-rafa-contact.svg";
 
 function RBLogo() {
   return (
