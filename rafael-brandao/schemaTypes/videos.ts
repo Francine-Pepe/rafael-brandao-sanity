@@ -1,39 +1,39 @@
 import {defineField, defineType} from 'sanity'
+import getYoutubeId from 'get-youtube-id';
+import Youtube from 'react-youtube';
 
 export default defineType({
-  name: 'videos',
-  title: 'Videos',
-  type: 'document',
+  name: 'youtubeEmbed',
+  title: 'Youtube Videos',
+  type: 'object',
   fields: [
-    defineField({
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
-    }),
-    defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
-    }),
-    defineField({
-      name: 'alt',
-      title: 'Alt',
-      type: 'string',
-    }),
+    },
+    {
+      name: 'url',
+      type: 'url',
+      title: 'YouTube Video URL'
+    },
+    {
+      name: 'autoplay',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
+      name: 'controls',
+      type: 'boolean',
+      initialValue: true,
+    },
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'image',
+      image: 'url',
+      url: 'url',
     },
   },
 })

@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import client from "../client";
+import VideoTabs from "../components/VideoTabs";
+import PageTitle from "../components/PageTitle";
+import { Navigation } from "../data";
+import YoutubeVideos from "../components/YoutubeVideos";
 
 function Videos() {
   const [videos, setVideos] = useState([]);
@@ -17,24 +21,8 @@ function Videos() {
   }, []);
   return (
     <div>
-      {videos.map((item, index) => {
-        return (
-          <div key={index} className="gallery-image">
-            <img
-              src={item.image.asset.url}
-              alt={item.alt}
-              loading="lazy"
-              style={{
-                borderRadius: 4,
-                display: "block",
-                width: "100%",
-                height: "100%",
-              }}
-            />
-            <p>{item.description}</p>
-          </div>
-        );
-      })}
+      <PageTitle data={Navigation} />
+      <VideoTabs />
     </div>
   );
 }
