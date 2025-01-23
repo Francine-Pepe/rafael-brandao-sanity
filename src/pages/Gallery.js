@@ -2,8 +2,6 @@ import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
 import { useEffect, useState } from "react";
 import client from "../client";
-import PageTitle from "../components/PageTitle";
-import { Navigation } from "../data";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import FixedImage from "../components/FixedImage";
@@ -25,7 +23,7 @@ export default function ImageMasonry() {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "imageGallery"] {  slug, image {
+        `*[_type == "imageGallery" ] {  slug, alt, image {
             asset -> {_id, url},
             alt
           } }`
