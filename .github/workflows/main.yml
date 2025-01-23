@@ -16,7 +16,7 @@ jobs:
       - name: Deploy over FTP
         uses: SamKirkland/FTP-Deploy-Action@3.2.0
         with:
-          server: hosting213449.ae972.netcup.net
+          server: rafa-brandao.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: https://github.com/Francine-Pepe/rafael-brandao-sanity
