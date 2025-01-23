@@ -61,10 +61,9 @@ export default defineType({
     // as a block type.
     defineArrayMember({
       type: 'image',
-      options: {hotspot: true},
     }),
     defineArrayMember({
-      type: 'youtube'
-    })
+      type: 'youtube',
+    }),
   ],
 })
