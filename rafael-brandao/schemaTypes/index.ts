@@ -4,11 +4,11 @@ import post from './post'
 import author from './author'
 import gallery from './gallery'
 import biografia from './biografia'
-import videos from './videos'
 import imageGallery from './imageGallery'
 import tabs from './tabs'
 import {youtube} from './youtube'
-import youtubeVideos from './youtubeVideos'
+import photo from './photo'
+import imagePortableText from './imagePortableText'
 
 export const schemaTypes = [
   post,
@@ -17,9 +17,9 @@ export const schemaTypes = [
   blockContent,
   gallery,
   biografia,
-  videos,
   imageGallery,
+  imagePortableText,
   tabs,
+  photo,
   youtube,
-  youtubeVideos,
 ]

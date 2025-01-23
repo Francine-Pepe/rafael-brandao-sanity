@@ -3,7 +3,7 @@ import client from "../client";
 import VideoTabs from "../components/VideoTabs";
 import PageTitle from "../components/PageTitle";
 import { Navigation } from "../data";
-import YoutubeVideos from "../components/YoutubeVideos";
+import YoutubeVideos from "../components/YouTubeComponent";
 
 function Videos() {
   const [videos, setVideos] = useState([]);
