@@ -2,15 +2,11 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { VideoTabsContent } from "../data";
-import YoutubeVideos from "./YoutubeVideos";
 import { useEffect, useState } from "react";
 import client from "../client";
-import BlockContent from "@sanity/block-content-to-react";
-import ReactPlayer from "react-player";
-import YouTubePlayer from "react-player/youtube";
 import { PortableText } from "@portabletext/react";
-import YouTube from "react-youtube";
+import ImageComponent from "./ImageComponent";
+import YouTubeComponent from "./YouTubeComponent";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -23,7 +19,7 @@ function CustomTabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
 }
@@ -45,15 +41,19 @@ export default function VideoTabs() {
 
   useEffect(() => {
     client
-      .fetch(
-        `*[_type == "tabs"] {   title, slug, label, body, url {
-                  asset -> {_id, url},
-                  alt
-                } }`
-      )
+      .fetch(`*[_type == "tabs" ] { title, slug, label, body } 
+        `)
       .then((data) => setTabs(data))
       .catch(console.error);
   }, []);
+
+
+  const components = {
+    types: {
+      image: ImageComponent,
+      youtube: YouTubeComponent,
+    },
+  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -112,11 +112,11 @@ export default function VideoTabs() {
             ))}
         </Tabs>
       </Box>
+
       {tabs.map((item, index) => (
         <CustomTabPanel value={value} index={index} key={index}>
           <div className="tab-content-body">
-            <BlockContent blocks={item.body} />
-            <YouTube videoId={item.url} />;
+            <PortableText value={item.body} components={components} />
           </div>
         </CustomTabPanel>
       ))}
