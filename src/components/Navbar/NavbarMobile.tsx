@@ -37,7 +37,7 @@ function NavbarMobile() {
         <div className="mobile-logo">
           <Logo />
         </div>
-        <div>{isActive ? <CloseMenu /> : <OpenMenu />}</div>
+        <div className="mobile-menu">{isActive ? <CloseMenu /> : <OpenMenu />}</div>
       </div>
 
       <div
