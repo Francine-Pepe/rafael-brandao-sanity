@@ -29,13 +29,13 @@ function ContactForm() {
   }; 
 
   return (
-    <main className="contact-form-container container">
+    <main className="contact-form-container">
       <form ref={form} onSubmit={sendEmail}>
         {ContactFormData.map(
-          ({ id, title, htmlFor, name, type, placeholder }) => {
+          ({ id, title, name, type, placeholder }) => {
             return (
-              <div className="contact-inputs">
-                <label htmlFor={htmlFor}>{title}</label>
+              <div className="contact-inputs" key={id}>
+                <label htmlFor={id}>{title}</label>
                 <input
                   type={type}
                   name={name}

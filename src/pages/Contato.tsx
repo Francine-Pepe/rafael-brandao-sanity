@@ -9,12 +9,9 @@ function Contato(props: any) {
   const { data } = props;
 
   return (
-    <section className="contact-container container">
+    <section className="contact-container">
       <PageTitle data={Navigation} />
       <div className="contact-content">
-        <div className="contact-logo">
-          <RBLogo />
-        </div>
         <div className="contact">
           {data.map(
             (item: {
@@ -23,12 +20,15 @@ function Contato(props: any) {
               link: string;
               linkText: string;
             }) => (
-              <div className="contact-text-container">
+              <div className="contact-text-container" key={item.id}>
                 <p>{item.text}</p>
                 <Link to={item.link}>{item.linkText}</Link>
               </div>
             )
           )}
+          <div className="contact-logo">
+            <RBLogo />
+          </div>
         </div>
 
         <div className="contact-form">
