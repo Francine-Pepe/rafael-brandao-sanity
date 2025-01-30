@@ -13,7 +13,6 @@ import Footer from "./pages/Footer/Footer";
 import { ContactBox, FooterLinks } from "./data";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
-import BiografiaGrid from "./pages/Biografia/BiografiaGrid";
 
 function App() {
   return (
