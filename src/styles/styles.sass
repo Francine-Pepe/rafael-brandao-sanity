@@ -7,6 +7,7 @@ body, html
     font-family: variables.$font-family
     max-width: 100%
     overflow-x: hidden
+    scroll-behavior: smooth
 
 h1, h2, h3, h4, h5
     font-weight: 450
@@ -26,10 +27,9 @@ ul
             &:hover, &:active
                 font-weight: variables.$font-weight-bold
                 transition: 0.5s ease-in
+                color: variables.$dark-cherry-color
 
-            &:active
-/*                 color: yellow
- */
+
 p
     line-height: 2
 
@@ -210,6 +210,7 @@ svg
 
 .grid-container
     @include mixins.flex-center
+    padding-top: 4rem
 
     .grid-content
         width: 90vw
@@ -239,12 +240,12 @@ svg
     display: flex
     flex-direction: column
     align-items: center
-    z-index: 3
+    z-index: 50
     top: 0
     left: 0
     right: 0
     height: 100vh
-    padding: 5vh
+    /*padding-top: 20vh
     
 
     .modal-close-button
@@ -257,9 +258,12 @@ svg
         width: 90vw
         background-color: variables.$main-background-color
         border-radius: 15px
-        height: 80vh
+        height: auto
         padding: 2rem 
         overflow-y: scroll
+        position: relative
+        z-index: 100
+        margin-top: 10rem
 
         .modal-content-wrap
             display: flex
@@ -366,12 +370,11 @@ svg
 
 .fixed-bg-image-container
     position: relative
-    top: 0
     width: 100%
 
     .fixed-image-opacity-box
         width: 100vw
-        height: 30dvh
+        /*height: 30dvh
         top: 0
         margin: 0 auto
     .fixed-bg
@@ -387,24 +390,22 @@ svg
         width: inherit
         object-fit: contain
         background-position: bottom
-        opacity: 0.2
+        /*opacity: 0.2
 
 .gallery-header
     position: relative
     z-index: 2
     width: auto
-    height: 30vh
+    height: 60vh
 
     p
         @include mixins.flex-center
-        color: variables.$dark-cherry-color-darker-opacity
+        color: variables.$white-font-color
         width: inherit
         height: 80vh
         margin: 0 auto
         font-size: variables.$font-size-medium
-        font-weight: 200
-        
-
+        font-weight: 300
 
 .gallery-container
     display: flex
@@ -419,11 +420,10 @@ svg
         @include mixins.flex-column-center
 
         .agenda-information
-            padding: 0 2rem 4rem 2rem
-            @include mixins.flex-space-between
+            @include mixins.flex-space-between-top
             width: 90vw
-            /*border-top: 1px solid variables.$cherry-color
-            /*padding: 2rem
+            border-top: 1px solid variables.$cherry-color
+            padding: 2rem 2rem 4rem 2rem
 
             img
                 width: 30%
@@ -535,49 +535,99 @@ svg
 
 /* BiografiaGrid */
 
+.biografia-white-box
+    padding: 5rem 0
+    background-color: variables.$white-font-color
+    opacity: 1
+    position: relative
+    z-index: 2
+    text-align: center
+    text-transform: uppercase
+    margin: 2rem 0
+
 .grid-container
-    display: grid
-    grid-template-columns: 1fr 1fr 1fr
-    grid-template-rows: 1fr 1fr 1fr
-    gap: 1rem
+    /* display: grid
+    /*grid-template-columns: 1fr 1fr 1fr
+    /*grid-template-rows: 1fr 1fr 1fr
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    gap: 3rem
     margin: 0 auto
-    width: 90vw
     padding-bottom: 2rem
+    z-index: 2
 
     .biografia-grid-content
-        border-radius: 5px
-
         
         .grid-images
-            width: 30vw
-            height: 30vh
+            /*width: 16.1vw
+            /*width: 42vw
+            width: 25vw
+            height: 50vh
             position: relative
+            background-color: white
+            border-radius: 5px
+
+
+            &:hover 
+                
+                .grid-images-text
+                    width: inherit
+                    
+
+                    h2
+                        font-size: 2.5rem
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        opacity: 1
+                        transition: margin-right 2s ease-in-out .5s
+                        transition-delay: 500ms
+
+                img
+                    object-fit: cover
+                    object-position: top
+                    filter: grayscale(100%)
+
+                    &:hover
+                        filter: grayscale(0)
             
 
             .grid-images-text
-                width: 8rem
+                /*width: 20vw
+                height: auto
                 position: absolute
                 z-index: 1
-                /*border: 2px solid variables.$main-background-color
-                background-color: variables.$black-opacity-color-hover
-                padding: 0 1rem
-                text-align: center
-                right: 0
+                /*background-color: variables.$black-opacity-color-hover
+                left: 0
+                top: 50%
+                translate: -50% -50%
                 /*opacity: 0.5
-
-                h4
-                    color: variables.$main-background-color
-
+                transform: rotate(-90deg)
 
             img
-                width: 30vw
-                height: 30vh
+                border-radius: 5px
+                width: inherit
+                height: inherit
                 object-fit: cover
                 object-position: top
                 filter: grayscale(100%)
 
                 &:hover
-                    filter: grayscale(0)
+                    filter: grayscale(0) 
+
+            .grid-image-country
+                position: absolute
+                bottom: 0
+                left: 0
+                z-index: 1
+                padding: 0 2rem
+
+            .grid-images-text, .grid-image-country
+                h2, h3
+                    color: variables.$main-background-color
+                    text-shadow: 2px 2px 2px variables.$dark-cherry-color
+
 
 .tab-content-body
     width: 90vw
@@ -594,18 +644,86 @@ svg
     border-radius: 8px
 
 .youtube-embed
-    width: 100vw
-    height: 70vh
+    width: 100%
+    height: auto
     margin: 0 auto
     padding: 2rem 0
+    display: flex
+    justify-content: center
 
     iframe
-        width: 90vw
-        height: 100%
+        width: 90%
+        height: auto
         border: none
         border-radius: 5px
+        aspect-ratio: 16/9
+        
 
-// Media Queries
+.text-container
+    position: relative
+    padding: 4rem 2rem
+    height: auto
+    background-color: variables.$dark-background
+    display: flex
+    justify-content: center
+
+    .text-content
+        width: 90vw
+        height: auto
+
+
+/* Animations */
+
+@keyframes fadeInUp 
+    from 
+        opacity: 0
+        -webkit-transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 100%, 0)
+
+    to 
+        opacity: 1
+        -webkit-transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0)
+ 
+.animate__fadeInUp
+    -webkit-animation-name: fadeInUp
+    animation-name: fadeInUp
+
+.animate__fadeInDown
+    -webkit-animation-name: fadeInDown
+    animation-name: fadeInDown
+
+.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content
+    animation: fadeInUp
+    animation-duration: 2s
+
+.modal-content
+    animation: fadeInDown
+    animation-duration: 2s
+
+.text-container
+    @keyframes opacity
+
+        from 
+            opacity: 0
+            -webkit-transform: translate3d(0, 100%, 0)
+            transform: translate3d(0, 100%, 0)
+
+        to 
+            opacity: 1
+            -webkit-transform: translate3d(0, 0, 0)
+            transform: translate3d(0, 0, 0)
+
+    
+    -webkit-animation-name: fadeInUp
+    animation-name: fadeInUp
+
+    
+    animation: fadeInUp
+    animation-duration: 2s
+ 
+
+/* Media Queries */
 
 @media screen and (min-width: 1500px)
     .footer-container
@@ -614,7 +732,7 @@ svg
 
     .grid-container
         .grid-content
-            width: 85vw
+            /* width: 85vw */
 
 @media screen and (max-width: variables.$breakpoint-xl)
     .footer-container
@@ -626,6 +744,7 @@ svg
         .modal-content 
             overflow-y: scroll
             height: 80%
+            width: 80vw
 
             .modal-content-wrap
                 flex-wrap: wrap-reverse
@@ -661,8 +780,7 @@ svg
                             top: 9rem
 
     .grid-container 
-        width: 90vw
-        margin: 0 auto
+        /*width: 90vw
 
     /* .page-title-container
         top: 10vh
@@ -768,14 +886,10 @@ svg
 
 @media screen and (max-width: variables.$breakpoint-md)
     .grid-container
-        display: grid
-        grid-template-columns: 2
-        .grid-content
-            display: flex
-            flex-wrap: wrap
-
-    .youtube-embed
-        height: 50vh
+        .biografia-grid-content
+            .grid-images
+                width: 42vw
+    
 
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
@@ -795,12 +909,18 @@ svg
                         top: 6rem
 
     .youtube-embed
-        width: 100vw
-        height: 40vh
         padding: 0.5rem 0
+
+        iframe
+            aspect-ratio: 9 / 16
 
     .page-title-container
         padding: 5.5rem 0 2rem 0
+
+    .grid-container
+        .biografia-grid-content
+            .grid-images
+                width: 90vw
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
 
