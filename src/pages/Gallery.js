@@ -5,6 +5,7 @@ import client from "../client";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import FixedImage from "../components/FixedImage";
+import bgImage from "../assets/_RAF0401.webp";
 
 export default function ImageMasonry() {
   const [gallery, setGallery] = useState([]);
@@ -35,10 +36,11 @@ export default function ImageMasonry() {
   console.log(gallery);
   return (
     <>
+      <FixedImage image={bgImage} />
       <section className="gallery-header">
         <p>Galeria de recordações e trajetória de uma vida musical</p>
       </section>
-      <FixedImage />
+
       <section className="gallery-container container">
         <Box
           sx={{
