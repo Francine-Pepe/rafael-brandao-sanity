@@ -3,8 +3,10 @@ import { Navigation } from "../../data";
 import client from "../../client";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
-import ImageGallery from "../ImageGallery";
-import { keyframes } from "@emotion/react";
+import Text from "../../components/Text";
+import { BioText } from "../../data";
+import FixedImage from "../../components/FixedImage";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 function BiografiaGrid() {
   const [visibleDetails, setVisibleDetails] = useState(false);
@@ -33,24 +35,31 @@ function BiografiaGrid() {
   return (
     <>
       <PageTitle data={Navigation} />
+      <Text data={BioText} />
+      {/* <FixedImage image={bioImage} /> */}
       <section className="grid-container container">
         {biografia
           .sort((a, b) => (a.datas > b.datas ? 1 : -1))
           .map((item, index) => {
             return (
               <div key={index} className="biografia-grid-content">
-                <div className="grid-images">
-                  <div className="grid-images-text">
-                    <h4>{item.title}</h4>
+                <AnimationOnScroll animateIn="animate__fadeInUp ">
+                  <div className="grid-images ">
+                    <div className="grid-images-text">
+                      <h2>{item.title}</h2>
+                    </div>
+                    <div className="grid-image-country">
+                      <h3>{item.country}</h3>
+                    </div>
+                    <img
+                      src={item.image.asset.url}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="grid-image "
+                      onClick={() => handleClick(item.slug)}
+                    />
                   </div>
-                  <img
-                    src={item.image.asset.url}
-                    alt={item.alt}
-                    loading="lazy"
-                    className="grid-image"
-                    onClick={() => handleClick(item.slug)}
-                  />
-                </div>
+                </AnimationOnScroll>
                 <div onClick={closeModal}>
                   {visibleDetails === item.slug && (
                     <Modal
