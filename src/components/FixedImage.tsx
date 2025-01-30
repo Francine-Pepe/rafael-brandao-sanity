@@ -1,11 +1,11 @@
-import bgImage from "../assets/_RAF0401.webp";
 
-function FixedImage() {
+function FixedImage(props: any) {
+  const { image } = props;
   return (
     <div className="fixed-bg-image-container container">
       <div className="fixed-image-opacity-box"></div>
       <div className="fixed-bg">
-        <img src={bgImage} alt="" />
+          <img src={image} alt=""  />
       </div>
     </div>
   );
