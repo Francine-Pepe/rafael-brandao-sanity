@@ -14,6 +14,7 @@ import GridFoto6 from "./assets/01 - pb.webp";
 import GridFoto7 from "./assets/FILE200.webp";
 import GridFoto8 from "./assets/01.webp";
 import GridFoto9 from "./assets/01 - pb.webp";
+import { imageListClasses } from "@mui/material";
 
 export const Navigation = [
   {
@@ -159,3 +160,11 @@ export const VideoTabsContent = [
     youtubeId: "8Gc9-JT9gRM",
   },
 ];
+
+export const BioText = [
+  {
+    id: 1,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet magna diam, sed euismod tellus laoreet vitae. Praesent porttitor arcu ultrices tortor pulvinar, a sodales mauris euismod. Suspendisse fringilla dictum neque nec pulvinar. Proin feugiat risus odio, at tincidunt tellus pharetra a. Donec gravida ornare nisi. Vestibulum non tincidunt diam. Quisque mollis volutpat egestas. Suspendisse quis orci non diam iaculis posuere ut eget tellus. Nulla facilisi. Vivamus vitae massa semper, commodo dui a, placerat ligula. Maecenas efficitur eros quis accumsan congue. Nam a tincidunt risus. Donec et bibendum eros, vitae semper augue. Ut eget nisi et est sollicitudin sagittis et at felis. Duis sollicitudin efficitur libero, id aliquet urna ullamcorper vel. Sed a condimentum turpis. Duis scelerisque mi risus, at elementum quam tristique ac. Integer fringilla ex non ex lacinia molestie. Mauris eget neque vitae metus volutpat dictum vitae a est. Praesent porta quam ac ex congue lacinia. Nullam diam velit, suscipit ac tellus eu, ultrices facilisis mi. Morbi lorem tellus, ullamcorper a finibus a, rutrum id magna. Curabitur venenatis urna et tortor tristique malesuada. Ut et sollicitudin risus. Phasellus malesuada, mi id sollicitudin dictum, justo arcu viverra ante, in venenatis ligula nisi in lorem. Cras nec velit nec nunc auctor ullamcorper. Suspendisse ornare diam sit amet risus commodo, eu ullamcorper leo suscipit. Morbi eget accumsan ipsum. Nullam interdum pellentesque venenatis. Ut efficitur eu ligula vitae ultrices. Phasellus eu enim diam. Proin placerat justo vitae mauris malesuada sollicitudin. Suspendisse molestie dui at metus placerat, eget iaculis ante volutpat. Nam quis neque ultricies, feugiat libero quis, accumsan ipsum. Sed at ante vulputate, faucibus sem sed, imperdiet sem. Suspendisse ut est eu lectus rhoncus lacinia. Nulla facilisi. Integer viverra ex lacus, ac tincidunt erat scelerisque sit amet. Morbi at dictum turpis. In non mi ultricies, vulputate ex sit amet, fermentum dolor. Donec neque nisi, vestibulum eu nibh non, posuere ultrices elit. Quisque commodo mattis tellus quis tempus. Aenean varius sit amet massa ac ullamcorper. In pharetra consectetur metus, sit amet ultricies nibh eleifend quis. Curabitur id tristique mi. Donec nec viverra dui. Cras eget tincidunt tellus, ut porta diam. Cras vehicula ligula at magna accumsan luctus vel tempus libero. Donec porttitor nec odio eu laoreet.Vestibulum faucibus tellus id tincidunt dignissim. Proin fermentum nunc sit amet interdum scelerisque. Integer dui diam, molestie eu viverra ut, scelerisque mattis enim. Praesent lacinia vitae diam eget pretium. Vestibulum imperdiet arcu at porttitor porttitor. Praesent semper metus nec augue egestas, quis lobortis justo maximus. Praesent ac velit vel enim molestie bibendum et non turpis. Cras cursus purus enim, id dictum magna sagittis ac.",
+    image: GridFoto3 
+  }
+]
