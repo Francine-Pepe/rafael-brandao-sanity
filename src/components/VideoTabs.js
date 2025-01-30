@@ -56,7 +56,7 @@ export default function VideoTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} className="tabs-box-container">
       <Box
         sx={{
           borderBottom: 1,
@@ -115,7 +115,7 @@ export default function VideoTabs() {
 
       {tabs.map((item, index) => (
         <CustomTabPanel value={value} index={index} key={index}>
-          <div className="tab-content-body">
+          <div className="tab-content-body animate__fadeInUp">
             <PortableText value={item.body} components={components} />
           </div>
         </CustomTabPanel>
