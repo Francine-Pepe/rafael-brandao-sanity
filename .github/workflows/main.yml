@@ -20,6 +20,5 @@ jobs:
           server: hosting213449.ae972.netcup.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
           local-dir: ./src/
           timeout: 60000
