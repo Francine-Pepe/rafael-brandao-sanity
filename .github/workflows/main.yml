@@ -22,3 +22,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /rafa-brandao.com/httpdocs/
           local-dir: ./src/
+          timeout: 60000
