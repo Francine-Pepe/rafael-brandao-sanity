@@ -24,4 +24,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /rafa-brandao.com/httpdocs/
           local-dir: ./
+          exclude: "[**/.git*/**, **/node_modules/**, **/build/, .README.MD, .gitignore]"
+          protocol: ftps
+          log-level: verbose
           timeout: 60000
