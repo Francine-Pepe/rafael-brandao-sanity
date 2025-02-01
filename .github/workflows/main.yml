@@ -6,7 +6,9 @@ on:
     branches:
       - master
     paths:
-      - 'src/*' 
+      - 'src/**'
+      - 'public/**'
+      - 'rafael-brandao/**'
 
 jobs:
   deploy:
