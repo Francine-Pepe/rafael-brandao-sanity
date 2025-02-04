@@ -32,6 +32,8 @@ ul
 
 p
     line-height: 2
+    white-space: pre-wrap
+    
 
 a
     text-decoration: none
@@ -320,13 +322,16 @@ svg
     z-index: 2
 
     .title
-        position: relative        
+        position: absolute  
+        width: fit-content    
+        z-index: inherit 
+        opacity: 0.2
 
         h3
-            font-weight: 300  
+            font-weight: 400  
             color: variables.$cherry-color
             text-transform: uppercase
-            font-size: variables.$font-size-small
+            letter-spacing: 0.3rem
 
         /*::first-letter
             initial-letter: 1.5
@@ -422,8 +427,8 @@ svg
         .agenda-information
             @include mixins.flex-space-between-top
             width: 90vw
-            border-top: 1px solid variables.$cherry-color
-            padding: 2rem 2rem 4rem 2rem
+            border-bottom: 1px solid variables.$cherry-color
+            padding: 2rem 
 
             img
                 width: 30%
@@ -502,6 +507,8 @@ svg
 
     .contact-content
         display: flex
+        padding-top: 2rem
+
 
         .contact-logo
             position: absolute
@@ -546,15 +553,12 @@ svg
     margin: 2rem 0
 
 .grid-container
-    /* display: grid
-    /*grid-template-columns: 1fr 1fr 1fr
-    /*grid-template-rows: 1fr 1fr 1fr
     position: relative
     display: flex
     flex-wrap: wrap
     gap: 3rem
     margin: 0 auto
-    padding-bottom: 2rem
+    padding: 5rem 0 2rem 0
     z-index: 2
 
     .biografia-grid-content
@@ -666,6 +670,7 @@ svg
     background-color: variables.$dark-background
     display: flex
     justify-content: center
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
 
     .text-content
         width: 90vw
@@ -693,9 +698,19 @@ svg
     -webkit-animation-name: fadeInDown
     animation-name: fadeInDown
 
-.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content
+.animate__fadeOutUp
+    -webkit-animation-name: fadeOutUp
+    animation-name: fadeOutUp
+
+.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title
     animation: fadeInUp
     animation-duration: 2s
+
+.title
+    animation: fadeInUp
+    animation-duration: 2s 
+    transform: scale(1)
+    transform-origin: top left
 
 .modal-content
     animation: fadeInDown
@@ -857,7 +872,7 @@ svg
 
         .contact-content
             flex-wrap: wrap
-            
+
             .contact
                 @include mixins.flex-column   
             
