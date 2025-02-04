@@ -16,24 +16,22 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <ScrollToTop>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/biografia" element={<Biografia />} />
-            <Route path="/agenda" element={<Agenda />} />
-            <Route path="/galeria" element={<Gallery />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/videos" element={<Videos />} />
-            <Route path="/contato" element={<Contato data={ContactBox} />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </ScrollToTop>
-        <Footer data={FooterLinks} />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Header />
+      <ScrollToTop>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/biografia" element={<Biografia />} />
+          <Route path="/agenda" element={<Agenda />} />
+          <Route path="/galeria" element={<Gallery />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/videos" element={<Videos />} />
+          <Route path="/contato" element={<Contato data={ContactBox} />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </ScrollToTop>
+      <Footer data={FooterLinks} />
+    </BrowserRouter>
   );
 }
 
