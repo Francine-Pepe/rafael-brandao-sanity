@@ -19,7 +19,7 @@ function CustomTabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
     </div>
   );
 }
@@ -59,8 +59,9 @@ export default function VideoTabs() {
     <Box sx={{ width: "100%" }} className="tabs-box-container">
       <Box
         sx={{
-          borderBottom: 1,
+          borderBottom: "none",
           borderColor: "rgb(115, 2, 54)",
+          paddingTop: "2rem",
           "@media(max-width: 945px)": {
             borderBottom: "none",
           },
@@ -81,13 +82,14 @@ export default function VideoTabs() {
               display: "none",
             },
             ".Mui-selected": {
-              borderRadius: "5px 5px 0 0",
-              border: "1px solid rgb(115, 2, 54)",
-              borderBottom: "none",
+              borderRadius: "5px ",
+              border: "none",
+              backgroundColor: "rgba(32, 0, 15, 0.1)",
+              color: "#ffffff"
             },
             "@media(max-width: 945px)": {
               ".Mui-selected": {
-                borderBottom: "1px solid rgb(115, 2, 54)",
+                borderBottom: "none",
               },
             },
           }}
@@ -104,8 +106,8 @@ export default function VideoTabs() {
                   fontWeight: "300",
                   color: "rgba(32, 0, 15, 1)",
                   "&.Mui-selected, &:hover": {
-                    backgroundColor: "rgba(242, 242, 242, 0.2)",
-                    color: "rgb(115, 2, 54)",
+                    backgroundColor: "rgba(32, 0, 15, 0.1)",
+                    color: "rgba(32, 0, 15, 1)",
                   },
                 }}
               />

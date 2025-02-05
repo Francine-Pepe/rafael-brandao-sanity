@@ -61,6 +61,16 @@
 @mixin smaller-padding-top
     padding: 8rem 0 2rem 0
 
+@mixin borders
+.news-text, button, textarea, input, .tab-content-body
+    border: 1px solid variables.$cherry-color
+    border-radius: 5px
+
+@mixin margin-auto
+body, html, .container, .slideshow, .page-title-container, .fixed-image-opacity-box, .gallery-header p, .grid-container, .tab-content-body, .youtube-embed
+    margin: 0 auto
+
+
 @mixin theme-colors($light-theme: true) 
     @if $light-theme 
         background-color: variables.$light-background
@@ -68,6 +78,7 @@
     @else 
         background-color: variables.$dark-background
         color: variables.$dark-text
+
 
 .banner 
     @include theme-colors($light-theme: true)

@@ -12,7 +12,6 @@ import {muxInput} from 'sanity-plugin-mux-input'
 export default defineConfig({
   name: 'default',
   title: 'Rafael-Brandao',
-
   projectId: '564knp01',
   dataset: 'production',
 

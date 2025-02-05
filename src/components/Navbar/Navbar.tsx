@@ -7,6 +7,7 @@ import { Youtube } from "../../icons/Youtube";
 import Logo from "../../icons/Logo";
 import NavbarMobile from "./NavbarMobile";
 import { useLocation } from "react-router-dom";
+import WhereListen from "../WhereListen";
 
 function Navbar() {
   const [colorChange, setColorChange] = useState(false);
@@ -44,8 +45,8 @@ function Navbar() {
           <Youtube />
         </section>
       </div>
-      <div className="mobile" >
-        <NavbarMobile   />
+      <div className="mobile">
+        <NavbarMobile />
       </div>
     </>
   );
