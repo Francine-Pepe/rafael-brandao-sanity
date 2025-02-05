@@ -40,7 +40,7 @@ function Agenda() {
                       <h3>{show.date}</h3> | <h3>{show.eventHour} horas</h3>
                     </div>
                     <p>{show.description}</p>
-                    <button>
+                    <button style={{display: show.link ? "block" : "none"}}>
                       {/* <NavLink to={`/agenda/${show.slug.current}`}>
                     Ver evento
                   </NavLink> */}
@@ -48,6 +48,7 @@ function Agenda() {
                         to={show.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        
                       >
                         <Ticket />
                         <h4>Tickets</h4>

@@ -9,6 +9,7 @@ import tabs from './tabs'
 import {youtube} from './youtube'
 import photo from './photo'
 import imagePortableText from './imagePortableText'
+import news from './news'
 
 export const schemaTypes = [
   post,
@@ -22,4 +23,5 @@ export const schemaTypes = [
   tabs,
   photo,
   youtube,
+  news,
 ]

@@ -2,7 +2,7 @@
 @use 'mixins'
 
 body, html
-    margin: 0 auto
+    /*margin: 0 auto
     background-color: variables.$main-background-color
     font-family: variables.$font-family
     max-width: 100%
@@ -41,14 +41,16 @@ a
     text-transform: uppercase
     color: variables.$cherry-color
 
+img
+    object-fit: cover
+    object-position: center
+
 .changeLinkColor 
     color: white
 
 button, textarea, input
-    border: 1px solid variables.$cherry-color
     width: fit-content
     padding: 0 2rem
-    border-radius: 5px
 
     &:hover
         background-color: variables.$cherry-color
@@ -60,8 +62,9 @@ button, textarea, input
     &:hover
         filter: brightness(0) saturate(100%) invert(41%) sepia(69%) saturate(2264%) hue-rotate(357deg) brightness(97%) contrast(96%) !important
 
-.logo img
-    height: 4rem
+.logo 
+    img
+        width: 18vw
 
 .footer-logo img
     width: 15vw
@@ -71,10 +74,7 @@ svg
 
 .container
     width: 100vw
-    margin: 0 auto
-
-/* .grid-container, .agenda-container, .galeria-container
-    padding-top: 25rem */
+    /*margin: 0 auto
 
 .navbar-container, nav
     @include mixins.flex-space-around
@@ -95,7 +95,8 @@ svg
     z-index: 3
 
 .navigation-social-media
-    @include mixins.gap
+    @include mixins.flex-space-evenly
+    width: 18vw
 
 .navbar-mobile-container
     display: none
@@ -136,7 +137,7 @@ svg
     height: 100vh
 
 .slideshow
-    margin: 0 auto
+    /*margin: 0 auto
     overflow: hidden
     max-width: 100%
 
@@ -152,9 +153,6 @@ svg
             img
                 width: inherit
                 height: inherit
-                object-fit: cover
-                object-position: center
-
 
     .slideshowDots
         text-align: center
@@ -317,7 +315,7 @@ svg
     display: flex
     justify-self: flex-start
     padding: 8rem 0 2rem 0
-    margin: 0 auto
+    /*margin: 0 auto
     position: relative
     z-index: 2
 
@@ -381,7 +379,7 @@ svg
         width: 100vw
         /*height: 30dvh
         top: 0
-        margin: 0 auto
+        /*margin: 0 auto
     .fixed-bg
         @include mixins.flex-center
         position: fixed
@@ -408,7 +406,7 @@ svg
         color: variables.$white-font-color
         width: inherit
         height: 80vh
-        margin: 0 auto
+        /*margin: 0 auto
         font-size: variables.$font-size-medium
         font-weight: 300
 
@@ -427,7 +425,7 @@ svg
         .agenda-information
             @include mixins.flex-space-between-top
             width: 90vw
-            border-bottom: 1px solid variables.$cherry-color
+            border-bottom: 1px solid variables.$dark-cherry-color-opacity
             padding: 2rem 
 
             img
@@ -557,7 +555,7 @@ svg
     display: flex
     flex-wrap: wrap
     gap: 3rem
-    margin: 0 auto
+    /*margin: 0 auto
     padding: 5rem 0 2rem 0
     z-index: 2
 
@@ -635,7 +633,10 @@ svg
 
 .tab-content-body
     width: 90vw
-    margin: 0 auto
+    padding: 2rem
+    margin-bottom: 2rem
+    border-color: rgba(32, 0, 15, 0.1)
+    /*margin: 0 auto
 
 .image-container 
     max-width: 100%
@@ -650,7 +651,7 @@ svg
 .youtube-embed
     width: 100%
     height: auto
-    margin: 0 auto
+    /*margin: 0 auto
     padding: 2rem 0
     display: flex
     justify-content: center
@@ -675,6 +676,44 @@ svg
     .text-content
         width: 90vw
         height: auto
+
+.news-container
+    height: auto
+    position: relative
+
+    .news-wrapper
+        position: absolute
+        z-index: 1
+        top: 0
+        padding-top: 2rem
+
+        .news-content
+            display: flex
+            /*justify-content: center
+            padding: 1rem 0
+
+            &:nth-child(2n + 1)
+                flex-direction: row-reverse
+
+
+            .news-image, .news-text
+                width: 50%
+                height: auto
+                padding: 2rem
+                z-index: 1
+                top: 0
+
+            .news-image
+                img
+                    width: 100%
+                    height: 50vh
+                    object-fit: cover
+                    border-radius: 5px
+
+            .news-text
+                border-color: variables.$dark-cherry-color-opacity
+                margin: 0 2rem
+
 
 
 /* Animations */
@@ -897,7 +936,7 @@ svg
 @media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
     .logo
         img
-            width: 30vw
+            width: 12rem
 
 @media screen and (max-width: variables.$breakpoint-md)
     .grid-container
