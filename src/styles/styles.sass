@@ -6,6 +6,7 @@ body, html
     background-color: variables.$main-background-color
     font-family: variables.$font-family
     max-width: 100%
+    min-height: 100vh
     overflow-x: hidden
     scroll-behavior: smooth
 
@@ -169,6 +170,9 @@ svg
         .active
             background-color: #6a0dad
 
+footer
+    margin-top: auto
+
 .footer-container, .copyright-container
     @include mixins.flex-space-between
     background-color: variables.$dark-cherry-color
@@ -285,7 +289,6 @@ svg
             img
                 width: 20vw
                 height: auto
-                border-radius: 5px
                 -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
                 box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
 
@@ -305,6 +308,9 @@ svg
                 position: absolute
                 right: 4rem
                 top: 5rem
+.lightbox-news
+    .yarl__navigation_next, .yarl__navigation_prev
+        display: none
 
 /* Page title css */
 
@@ -315,7 +321,6 @@ svg
     display: flex
     justify-self: flex-start
     padding: 8rem 0 2rem 0
-    /*margin: 0 auto
     position: relative
     z-index: 2
 
@@ -331,55 +336,14 @@ svg
             text-transform: uppercase
             letter-spacing: 0.3rem
 
-        /*::first-letter
-            initial-letter: 1.5
-
-        /*.page-title-bottom-box
-            width: 5rem
-            height: 0.1rem
-            background-color: variables.$cherry-color
-            left: 2%
-            bottom: 0
-            position: absolute
-
-/* .page-title-container
-    top: 30vh
-    height: 100%    
-    position: fixed
-
-    .title
-        display: flex
-        transform: rotate(-90deg)
-        line-height: 1
-
-        h3
-            font-weight: 300  
-            color: variables.$cherry-color
-            text-transform: uppercase
-            font-size: variables.$font-size-small
-
-        ::first-letter
-            initial-letter: 1.5
-
-        .page-title-bottom-box
-            position: absolute
-            width: 12rem
-            height: 0.1rem
-            background-color: variables.$cherry-color
-            z-index: -1
-            left: 50%
-            top: 70% */
-
-
+        
 .fixed-bg-image-container
     position: relative
     width: 100%
 
     .fixed-image-opacity-box
         width: 100vw
-        /*height: 30dvh
         top: 0
-        /*margin: 0 auto
     .fixed-bg
         @include mixins.flex-center
         position: fixed
@@ -393,7 +357,6 @@ svg
         width: inherit
         object-fit: contain
         background-position: bottom
-        /*opacity: 0.2
 
 .gallery-header
     position: relative
@@ -406,7 +369,6 @@ svg
         color: variables.$white-font-color
         width: inherit
         height: 80vh
-        /*margin: 0 auto
         font-size: variables.$font-size-medium
         font-weight: 300
 
@@ -432,7 +394,6 @@ svg
                 width: 30%
                 height: 30vh
                 object-fit: cover
-                border-radius: 5px
 
             .agenda-information-place-time
                 @include mixins.flex-column
@@ -555,21 +516,16 @@ svg
     display: flex
     flex-wrap: wrap
     gap: 3rem
-    /*margin: 0 auto
     padding: 5rem 0 2rem 0
     z-index: 2
 
     .biografia-grid-content
         
         .grid-images
-            /*width: 16.1vw
-            /*width: 42vw
             width: 25vw
             height: 50vh
             position: relative
             background-color: white
-            border-radius: 5px
-
 
             &:hover 
                 
@@ -596,19 +552,15 @@ svg
             
 
             .grid-images-text
-                /*width: 20vw
                 height: auto
                 position: absolute
                 z-index: 1
-                /*background-color: variables.$black-opacity-color-hover
                 left: 0
                 top: 50%
                 translate: -50% -50%
-                /*opacity: 0.5
                 transform: rotate(-90deg)
 
             img
-                border-radius: 5px
                 width: inherit
                 height: inherit
                 object-fit: cover
@@ -635,8 +587,7 @@ svg
     width: 90vw
     padding: 2rem
     margin-bottom: 2rem
-    border-color: rgba(32, 0, 15, 0.1)
-    /*margin: 0 auto
+    border-top: 1px solid rgba(32, 0, 15, 0.1)
 
 .image-container 
     max-width: 100%
@@ -646,12 +597,11 @@ svg
 .image-container img 
     width: 100%
     height: auto
-    border-radius: 8px
+
 
 .youtube-embed
     width: 100%
     height: auto
-    /*margin: 0 auto
     padding: 2rem 0
     display: flex
     justify-content: center
@@ -660,7 +610,6 @@ svg
         width: 90%
         height: auto
         border: none
-        border-radius: 5px
         aspect-ratio: 16/9
         
 
@@ -678,23 +627,25 @@ svg
         height: auto
 
 .news-container
-    height: auto
-    position: relative
+    height: 100%
+
+    img
+        height: 100%
 
     .news-wrapper
-        position: absolute
-        z-index: 1
-        top: 0
+        background-image: url("https://live.staticflickr.com/65535/54319069184_ceea7e6148_k.jpg")
+        background-position: 0 0
+        background-size: auto 100%
+        background-repeat: repeat
         padding-top: 2rem
+        width: 100%
 
         .news-content
             display: flex
-            /*justify-content: center
             padding: 1rem 0
 
             &:nth-child(2n + 1)
                 flex-direction: row-reverse
-
 
             .news-image, .news-text
                 width: 50%
@@ -708,13 +659,11 @@ svg
                     width: 100%
                     height: 50vh
                     object-fit: cover
-                    border-radius: 5px
 
             .news-text
                 border-color: variables.$dark-cherry-color-opacity
                 margin: 0 2rem
-
-
+                height: fit-content
 
 /* Animations */
 
@@ -943,7 +892,28 @@ svg
         .biografia-grid-content
             .grid-images
                 width: 42vw
-    
+
+    .news-container
+        .news-wrapper
+            /*position: unset
+            height: 100%
+
+            .news-content
+                @include mixins.flex-column-center-reverse
+                position: unset
+                
+                &:nth-child(2n + 1)
+                    @include mixins.flex-column-center-reverse
+
+                .news-image, .news-text
+                    width: 80vw
+
+                .news-image    
+                    img
+                        width: inherit
+                    
+                
+        
 
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo

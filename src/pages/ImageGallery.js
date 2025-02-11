@@ -1,6 +1,9 @@
+// ESSE COMPONENTE NAO ESTÁ SENDO USADO, MAS CONFERIR ANTES DE DELETAR!!!
+
 import { useEffect, useState } from "react";
 import client from "../client";
 import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 function ImageGallery() {
   const [gallery, setGallery] = useState([]);
@@ -52,6 +55,7 @@ function ImageGallery() {
               open={open}
               close={() => closeModal(false)}
               slides={[{ src: item.image.asset.url }]}
+              styles={{ container: { backgroundColor: "rgba(0, 0, 0, .8)" } }}
             />
           )}
         </div>

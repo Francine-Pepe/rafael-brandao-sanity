@@ -37,7 +37,7 @@ function News() {
     <>
       <PageTitle data={Navigation} />
       <section className="news-container container">
-        <img src={TextBg} alt="Text background" />
+        {/* <img src={TextBg} alt="Text background" /> */}
         <div className="news-wrapper">
           {[...news]
             .slice()
@@ -51,10 +51,11 @@ function News() {
                   <img src={item.image.asset.url} alt={item.slug} />
                   {open === item.slug && (
                     <Lightbox
+                      styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
                       open={open}
                       close={() => closeModal(false)}
-                      /* slides={[{ src: item.image.asset.url }]} */
                       slides={[{ src: item.image.asset.url }]}
+                      className="lightbox lightbox-news"
                     />
                   )}
                 </div>

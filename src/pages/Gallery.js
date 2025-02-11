@@ -83,6 +83,8 @@ export default function ImageMasonry() {
                     open={open}
                     close={() => closeModal(false)}
                     slides={[{ src: item.image.asset.url }]}
+                    styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
+
                   />
                 )}
               </div>

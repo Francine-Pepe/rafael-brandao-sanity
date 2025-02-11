@@ -36,6 +36,11 @@
     flex-direction: column
     align-items: center
 
+@mixin flex-column-center-reverse
+    display: flex
+    flex-direction: column-reverse
+    align-items: center
+
 @mixin flex-column
     display: flex
     flex-direction: column
@@ -62,8 +67,12 @@
     padding: 8rem 0 2rem 0
 
 @mixin borders
-.news-text, button, textarea, input, .tab-content-body
-    border: 1px solid variables.$cherry-color
+.news-text, button, textarea, input
+    border-bottom: 1px  solid variables.$cherry-color
+    border-radius: 5px
+
+@mixin border-radius
+.modal-image img, .agenda-information img, .grid-images, .grid-images img, .image-container img, iframe, .news-image img
     border-radius: 5px
 
 @mixin margin-auto
