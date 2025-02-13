@@ -1,11 +1,13 @@
-function Text(props: any) {
-  const { data } = props;
+import { useTranslation } from "react-i18next";
+
+function Text() {
+
+  const {t} = useTranslation()
+
   return (
     <section className="text-container">
       <div className="text-content">
-        {data.map((item: { text: string; image: string }, index: any) => (
-          <p key={index}>{item.text}</p>
-        ))}
+          <p>{t("text")}</p>
       </div>
     </section>
   );

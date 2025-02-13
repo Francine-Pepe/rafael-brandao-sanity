@@ -4,8 +4,7 @@ import client from "../../client";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import Text from "../../components/Text";
-import { BioText } from "../../data";
-import FixedImage from "../../components/FixedImage";
+
 import { AnimationOnScroll } from "react-animation-on-scroll";
 
 function BiografiaGrid() {
@@ -35,7 +34,7 @@ function BiografiaGrid() {
   return (
     <>
       <PageTitle data={Navigation} />
-      <Text data={BioText} />
+      <Text />
       {/* <FixedImage image={bioImage} /> */}
       <section className="grid-container container">
         {biografia
