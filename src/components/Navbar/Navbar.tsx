@@ -8,10 +8,14 @@ import Logo from "../../icons/Logo";
 import NavbarMobile from "./NavbarMobile";
 import { useLocation } from "react-router-dom";
 import WhereListen from "../WhereListen";
+import LanguageSelector from "../LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [colorChange, setColorChange] = useState(false);
   const homeUrl = useLocation().pathname;
+
+  const {t, i18n} = useTranslation()
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
@@ -43,6 +47,7 @@ function Navbar() {
           <Spotify />
           <Instagram />
           <Youtube />
+          <LanguageSelector />
         </section>
       </div>
       <div className="mobile">
