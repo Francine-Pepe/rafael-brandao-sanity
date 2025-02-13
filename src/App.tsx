@@ -13,8 +13,19 @@ import Footer from "./pages/Footer/Footer";
 import { ContactBox, FooterLinks } from "./data";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
+import { useTranslation } from "react-i18next";
+import "./i18n"
+import { useEffect } from "react";
+ 
 
 function App() {
+
+  const {t, i18n} = useTranslation()
+
+  useEffect(() => {
+    i18n.changeLanguage(navigator.language)
+  }, []);
+
   return (
     <BrowserRouter>
       <Header />
