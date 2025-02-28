@@ -43,7 +43,7 @@ export default function Gridlayout() {
 
   return (
     <>
-      <PageTitle data={Navigation} />
+      <PageTitle />
       <Box
         className="grid-container container"
         /* sx={{
@@ -78,7 +78,6 @@ export default function Gridlayout() {
                         display: "block",
                         width: "100%",
                         fill: "red",
-                        
                       }}
                       className="grid-image"
                       onClick={() => handleClick(item.slug)}

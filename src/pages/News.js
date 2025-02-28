@@ -35,7 +35,7 @@ function News() {
 
   return (
     <>
-      <PageTitle data={Navigation} />
+      <PageTitle />
       <section className="news-container container">
         {/* <img src={TextBg} alt="Text background" /> */}
         <div className="news-wrapper">
