@@ -5,6 +5,7 @@ import NavProps from "./NavProps";
 import { Navigation } from "../../data";
 import Logo from "../../icons/Logo";
 import { useLocation } from "react-router-dom";
+import LanguageSelector from "../LanguageSelector";
 
 function NavbarMobile() {
   const [isActive, setIsActive] = useState(false);
@@ -37,7 +38,9 @@ function NavbarMobile() {
         <div className="mobile-logo">
           <Logo />
         </div>
-        <div className="mobile-menu">{isActive ? <CloseMenu /> : <OpenMenu />}</div>
+        <div className="mobile-menu">
+          {isActive ? <CloseMenu /> : <OpenMenu />}
+        </div>
       </div>
 
       <div
@@ -47,7 +50,14 @@ function NavbarMobile() {
         }}
         className={style ? "navbar-mobile changeLinkColor" : "navbar-mobile "}
       >
-        {isActive && <NavProps data={Navigation} />}
+        {isActive && (
+          <>
+            <div className="lng-selector-mobile">
+              <LanguageSelector />
+            </div>
+            <NavProps data={Navigation} />
+          </>
+        )}
       </div>
     </section>
   );
