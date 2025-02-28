@@ -10,20 +10,18 @@ import News from "./pages/News";
 import Videos from "./pages/Videos";
 import Contato from "./pages/Contato";
 import Footer from "./pages/Footer/Footer";
-import { ContactBox, FooterLinks } from "./data";
+import {  FooterLinks } from "./data";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 import { useTranslation } from "react-i18next";
-import "./i18n"
+import "./i18n";
 import { useEffect } from "react";
- 
 
 function App() {
-
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    i18n.changeLanguage(navigator.language)
+    i18n.changeLanguage(navigator.language);
   }, []);
 
   return (
@@ -37,7 +35,7 @@ function App() {
           <Route path="/galeria" element={<Gallery />} />
           <Route path="/news" element={<News />} />
           <Route path="/videos" element={<Videos />} />
-          <Route path="/contato" element={<Contato data={ContactBox} />} />
+          <Route path="/contato" element={<Contato />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ScrollToTop>

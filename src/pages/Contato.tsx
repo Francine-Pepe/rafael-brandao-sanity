@@ -1,19 +1,20 @@
 import React from "react";
 import ContactForm from "../components/ContactForm";
 import PageTitle from "../components/PageTitle";
-import { Navigation } from "../data";
 import { Link } from "react-router-dom";
 import RBLogo from "../icons/RBLogo";
+import { useTranslation } from "react-i18next";
 
-function Contato(props: any) {
-  const { data } = props;
+function Contato() {
+
+  const { t } = useTranslation();
 
   return (
     <section className="contact-container">
-      <PageTitle data={Navigation} />
+      <PageTitle />
       <div className="contact-content">
         <div className="contact">
-          {data.map(
+          {(t("contactBox", { returnObjects: true }) as []).map(
             (item: {
               id: any;
               text: string;
@@ -26,6 +27,8 @@ function Contato(props: any) {
               </div>
             )
           )}
+
+          
           <div className="contact-logo">
             <RBLogo />
           </div>

@@ -21,7 +21,7 @@ function Videos() {
   }, []);
   return (
     <div>
-      <PageTitle data={Navigation} />
+      <PageTitle  />
       <VideoTabs />
     </div>
   );

@@ -23,7 +23,7 @@ function Agenda() {
 
   return (
     <>
-      <PageTitle data={Navigation} />
+      <PageTitle  />
       <section className="agenda-container container">
         <div className="agenda-content container">
           {shows.map((show, index) => (

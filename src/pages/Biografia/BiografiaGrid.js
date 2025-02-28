@@ -33,7 +33,7 @@ function BiografiaGrid() {
   }, []);
   return (
     <>
-      <PageTitle data={Navigation} />
+      <PageTitle  />
       <Text />
       {/* <FixedImage image={bioImage} /> */}
       <section className="grid-container container">
