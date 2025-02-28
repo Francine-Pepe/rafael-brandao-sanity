@@ -6,28 +6,26 @@ function NavProps(props: any) {
   const { data, style } = props;
   const homeUrl = useLocation().pathname;
 
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
-
-
-  return (
+   return (
     <nav className="navlinks-props">
-    {(t('nav',  {returnObjects: true} ) as []).map((item: { name: string, link: string}, index: any) => (
-      <ul key={index}>
-      <li>
-        <NavLink
-          to={item.link}
-          style={{
-            color: `${homeUrl === "/" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
-          }}
-        >
-          {item.name}
-        </NavLink>
-      </li>
-    </ul>
-    ))}
-      
-      
+      {(t("nav", { returnObjects: true }) as []).map(
+        (item: { name: string; link: string }, index: any) => (
+          <ul key={index}>
+            <li>
+              <NavLink
+                to={item.link}
+                style={{
+                  color: `${homeUrl === "/" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
+                }}
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          </ul>
+        )
+      )}
     </nav>
   );
 }
