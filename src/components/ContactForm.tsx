@@ -1,9 +1,11 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { ContactFormData } from "../data";
+import { useTranslation } from "react-i18next";
 
 function ContactForm() {
   const form = useRef(null);
+
+  const { t } = useTranslation();
 
   const sendEmail = (e: {
     target: any | HTMLFormElement;
@@ -26,29 +28,35 @@ function ContactForm() {
         }
       );
     e.target.reset();
-  }; 
+  };
 
   return (
     <main className="contact-form-container">
       <form ref={form} onSubmit={sendEmail}>
-        {ContactFormData.map(
-          ({ id, title, name, type, placeholder }) => {
-            return (
-              <div className="contact-inputs" key={id}>
-                <label htmlFor={id}>{title}</label>
-                <input
-                  type={type}
-                  name={name}
-                  placeholder={placeholder}
-                  required
-                  min="2"
-                />
-              </div>
-            );
-          }
+        {(t("contactFormData", { returnObjects: true }) as []).map(
+          (item: {
+            id: string;
+            title: string;
+            type: string;
+            name: string;
+            placeholder: string;
+          }) => (
+            <div className="contact-inputs" key={item.id}>
+              <label htmlFor={item.id}>{item.title}</label>
+              <input
+                type={item.type}
+                name={item.name}
+                placeholder={item.placeholder}
+                required
+                min="2"
+              />
+            </div>
+          )
         )}
+
+        
         <div className="contact-label">
-          <label htmlFor="message">Mensagem:</label>
+          <label htmlFor="message">{t("message")}</label>
           <textarea id="message" name="message" required />
         </div>
 
@@ -63,7 +71,8 @@ function ContactForm() {
             })
           } */
         >
-          Enviar
+          {
+            t("send")}
         </button>
       </form>
     </main>
