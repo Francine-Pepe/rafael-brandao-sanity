@@ -1,3 +1,4 @@
+import {object} from 'prop-types'
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
@@ -48,11 +49,16 @@ export default defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'language',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
+      name: 'translations',
+      type: 'object',
+      title: 'Translations',
+      fields: [
+        {name: 'pt', type: 'array', title: 'Português', of: [{type: 'blockContent'}]},
+        {name: 'en', type: 'array', title: 'English', of: [{type: 'blockContent'}]},
+        {name: 'de', type: 'array', title: 'Deutsch', of: [{type: 'blockContent'}]},
+      ],
     }),
+
     defineField({
       name: 'image1',
       title: 'Image 1',
