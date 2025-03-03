@@ -1,4 +1,4 @@
-import {defineConfig} from 'sanity'
+import {defineConfig, defineField} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
@@ -8,6 +8,7 @@ import {codeInput} from '@sanity/code-input'
 import {youtubeInput} from 'sanity-plugin-youtube-input'
 import {myYoutubeVideos} from './environment'
 import {muxInput} from 'sanity-plugin-mux-input'
+import {documentInternationalization} from '@sanity/document-internationalization'
 
 export default defineConfig({
   name: 'default',
@@ -23,6 +24,40 @@ export default defineConfig({
     codeInput(),
     youtubeInput({apiKey: `${myYoutubeVideos}`}),
     muxInput(),
+    documentInternationalization({
+      supportedLanguages: [
+        {
+          id: 'pt',
+          title: 'Português',
+        },
+        {
+          id: 'en',
+          title: 'English',
+        },
+        {
+          id: 'de',
+          title: 'Deutsch',
+        },
+      ],
+      schemaTypes: [
+        'biografia',
+        'tabs',
+        'news',
+        'videos',
+        'gallery',
+        'agenda',
+        'contato',
+        'footer',
+        'translation',
+      ],
+      languageField: 'language',
+      metadataFields: [
+        defineField({
+          name: 'slug',
+          type: 'slug',
+        }),
+      ],
+    }),
   ],
 
   schema: {
