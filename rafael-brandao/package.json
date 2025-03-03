@@ -17,6 +17,7 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/code-input": "^5.1.2",
+    "@sanity/document-internationalization": "^3.3.1",
     "@sanity/ui": "^2.11.2",
     "@sanity/vision": "^3.69.0",
     "get-youtube-id": "^1.0.1",
