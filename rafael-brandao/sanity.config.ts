@@ -25,67 +25,6 @@ export default defineConfig({
     codeInput(),
     youtubeInput({apiKey: `${myYoutubeVideos}`}),
     muxInput(),
-    I18nFields({
-      prefix: 'string',
-      ui: {
-        type: 'dropdown',
-        position: 'top',
-        selected: 'border',
-      },
-
-      locales: [
-        {
-          code: 'pt',
-          label: 'Português',
-          title: 'string',
-          default: true,
-        },
-        {
-          code: 'en',
-          label: 'English',
-          title: 'string',
-        },
-        {
-          code: 'de',
-          label: 'Deutsch',
-          title: 'string',
-        },
-      ],
-    }),
-    documentInternationalization({
-      supportedLanguages: [
-        {
-          id: 'pt',
-          title: 'Português',
-        },
-        {
-          id: 'en',
-          title: 'English',
-        },
-        {
-          id: 'de',
-          title: 'Deutsch',
-        },
-      ],
-      schemaTypes: [
-        'biografia',
-        'tabs',
-        'news',
-        'videos',
-        'gallery',
-        'agenda',
-        'contato',
-        'footer',
-        'translation',
-      ],
-      languageField: 'language',
-      metadataFields: [
-        defineField({
-          name: 'slug',
-          type: 'slug',
-        }),
-      ],
-    }),
   ],
 
   schema: {
