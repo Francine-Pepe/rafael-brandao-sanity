@@ -12,10 +12,6 @@ export default {
       name: 'id',
       title: 'Id',
       type: 'id',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
     },
     {
       name: 'content',
