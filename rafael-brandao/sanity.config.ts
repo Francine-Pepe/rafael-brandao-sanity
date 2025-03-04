@@ -25,6 +25,14 @@ export default defineConfig({
     codeInput(),
     youtubeInput({apiKey: `${myYoutubeVideos}`}),
     muxInput(),
+    documentInternationalization({
+      supportedLanguages: [
+        {id: 'pt', title: 'Português'},
+        {id: 'en', title: 'English'},
+        {id: 'de', title: 'Deutsch'},
+      ],
+      schemaTypes: ['biografia'],
+    }),
   ],
 
   schema: {
