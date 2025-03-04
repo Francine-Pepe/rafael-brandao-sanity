@@ -9,9 +9,13 @@ export default {
       title: 'Title',
     },
     {
-      name: 'id',
-      title: 'Id',
-      type: 'string || number',
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
     },
     {
       name: 'content',
