@@ -31,7 +31,7 @@ export default defineConfig({
         {id: 'en', title: 'English'},
         {id: 'de', title: 'Deutsch'},
       ],
-      schemaTypes: ['biografia'],
+      schemaTypes: ['biografia', 'news', 'post', 'tabs'],
     }),
   ],
 
