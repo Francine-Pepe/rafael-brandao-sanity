@@ -11,7 +11,7 @@ export default {
     {
       name: 'id',
       title: 'Id',
-      type: 'id',
+      type: 'string || number',
     },
     {
       name: 'content',
