@@ -14,7 +14,7 @@ export default {
       title: 'Content',
       fields: [
         {name: 'en', type: 'array', title: 'English', of: [{type: 'block'}]},
-        {name: 'es', type: 'array', title: 'Spanish', of: [{type: 'block'}]},
+        {name: 'pt', type: 'array', title: 'Português', of: [{type: 'block'}]},
       ],
     },
   ],
