@@ -10,8 +10,6 @@ import {youtube} from './youtube'
 import photo from './photo'
 import imagePortableText from './imagePortableText'
 import news from './news'
-import translation from './translation'
-import article from './article'
 
 export const schemaTypes = [
   post,
@@ -26,6 +24,5 @@ export const schemaTypes = [
   photo,
   youtube,
   news,
-  translation,
-  article
+  
 ]
