@@ -9,9 +9,9 @@ export default {
       title: 'Title',
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: 'id',
+      title: 'Id',
+      type: 'id',
       options: {
         source: 'title',
         maxLength: 96,
