@@ -49,14 +49,10 @@ export default defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'translations',
-      type: 'object',
-      title: 'Translations',
-      fields: [
-        {name: 'pt', type: 'array', title: 'Português', of: [{type: 'blockContent'}]},
-        {name: 'en', type: 'array', title: 'English', of: [{type: 'blockContent'}]},
-        {name: 'de', type: 'array', title: 'Deutsch', of: [{type: 'blockContent'}]},
-      ],
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      /*       hidden: true,*/
     }),
 
     defineField({
