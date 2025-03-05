@@ -7,7 +7,7 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
+      name: 'title_pt',
       title: 'Title - Português',
       type: 'string',
     }),
@@ -54,7 +54,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'body',
+      name: 'body_pt',
       title: 'Body - Português',
       type: 'blockContent',
     }),
