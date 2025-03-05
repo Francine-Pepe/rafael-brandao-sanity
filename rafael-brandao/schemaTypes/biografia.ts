@@ -7,20 +7,11 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title_pt',
-      title: 'Title - Português',
+      name: 'title',
+      title: 'Title',
       type: 'string',
     }),
-    defineField({
-      name: 'title_en',
-      title: 'Title - English',
-      type: 'string',
-    }),
-    defineField({
-      name: 'title_de',
-      title: 'Title - Deutsch',
-      type: 'string',
-    }),
+    
     defineField({
       name: 'slug',
       title: 'Slug',
