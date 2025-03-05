@@ -8,7 +8,17 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Title - Português',
+      type: 'string',
+    }),
+    defineField({
+      name: 'title_en',
+      title: 'Title - English',
+      type: 'string',
+    }),
+    defineField({
+      name: 'title_de',
+      title: 'Title - Deutsch',
       type: 'string',
     }),
     defineField({
@@ -45,7 +55,17 @@ export default defineType({
     }),
     defineField({
       name: 'body',
-      title: 'Body',
+      title: 'Body - Português',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'body_en',
+      title: 'Body - English',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'body_de',
+      title: 'Body - Deutsch',
       type: 'blockContent',
     }),
     defineField({
