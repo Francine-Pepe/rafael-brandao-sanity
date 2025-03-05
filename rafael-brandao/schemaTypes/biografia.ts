@@ -26,40 +26,22 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
-        documentInternationalization: {
-          exclude: true,
-        },
       },
     }),
     defineField({
       name: 'alt',
       title: 'Alt',
       type: 'string',
-      options: {
-        documentInternationalization: {
-          exclude: true,
-        },
-      },
     }),
     defineField({
       name: 'datas',
       title: 'Datas',
       type: 'string',
-      options: {
-        documentInternationalization: {
-          exclude: true,
-        },
-      },
     }),
     defineField({
       name: 'country',
       title: 'Country',
       type: 'string',
-      options: {
-        documentInternationalization: {
-          exclude: true,
-        },
-      },
     }),
     defineField({
       name: 'body',
@@ -79,9 +61,6 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
-        documentInternationalization: {
-          exclude: true,
-        },
       },
     }),
     defineField({
@@ -90,9 +69,6 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
-        documentInternationalization: {
-          exclude: true,
-        },
       },
     }),
     defineField({
@@ -101,9 +77,6 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
-        documentInternationalization: {
-          exclude: true,
-        },
       },
     }),
   ],

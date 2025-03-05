@@ -10,7 +10,7 @@ import News from "./pages/News";
 import Videos from "./pages/Videos";
 import Contato from "./pages/Contato";
 import Footer from "./pages/Footer/Footer";
-import {  FooterLinks } from "./data";
+import { FooterLinks } from "./data";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 import { useTranslation } from "react-i18next";

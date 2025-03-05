@@ -7,6 +7,7 @@ import client from "../client";
 import { PortableText } from "@portabletext/react";
 import ImageComponent from "./ImageComponent";
 import YouTubeComponent from "./YouTubeComponent";
+import { useTranslation } from "react-i18next";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,14 +40,17 @@ export default function VideoTabs() {
     setValue(newValue);
   };
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     client
-      .fetch(`*[_type == "tabs" ] { title, slug, label, body } 
-        `)
+      .fetch(
+        `*[_type == "tabs" ] { title, slug, label, body } 
+        `
+      )
       .then((data) => setTabs(data))
       .catch(console.error);
   }, []);
-
 
   const components = {
     types: {
@@ -85,7 +89,7 @@ export default function VideoTabs() {
               borderRadius: "5px ",
               border: "none",
               backgroundColor: "rgba(32, 0, 15, 0.1)",
-              color: "#ffffff"
+              color: "#ffffff",
             },
             "@media(max-width: 945px)": {
               ".Mui-selected": {

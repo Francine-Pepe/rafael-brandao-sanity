@@ -1,6 +1,11 @@
 @use 'variables'
 @use 'mixins'
 
+.article-page
+    margin-top: 15rem
+    height: 100vh
+    border: 1px solid red
+
 body, html
     /*margin: 0 auto
     background-color: variables.$main-background-color
@@ -753,6 +758,11 @@ footer
     
     animation: fadeInUp
     animation-duration: 2s
+
+.error-page
+    @include mixins.flex-column-center
+    padding-top: 10rem
+    height: 100vh
 
  
 
