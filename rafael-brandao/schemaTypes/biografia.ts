@@ -76,9 +76,9 @@ export default defineType({
               title: 'Language',
               options: {
                 list: [
-                  {title: 'Portuguese', value: 'pt'},
-                  {title: 'English', value: 'en'},
-                  {title: 'German', value: 'de'},
+                  {name: "body_pt", title: 'Portuguese', value: 'pt'},
+                  {name: "body_en", title: 'English', value: 'en'},
+                  {name: "body_de", title: 'German', value: 'de'},
                 ],
               },
             },
