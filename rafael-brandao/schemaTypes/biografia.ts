@@ -44,7 +44,7 @@ export default defineType({
       title: 'Country',
       type: 'string',
     }),
-    defineField({
+    /* defineField({
       name: 'body_pt',
       title: 'Body - Português',
       type: 'array',
@@ -61,6 +61,36 @@ export default defineType({
       title: 'Body - Deutsch',
       type: 'array',
       of: [{type: 'block'}],
+    }), */
+    defineField({
+      name: 'body',
+      type: 'array',
+      title: 'Translations',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'lang',
+              type: 'string',
+              title: 'Language',
+              options: {
+                list: [
+                  {title: 'Portuguese', value: 'pt'},
+                  {title: 'English', value: 'en'},
+                  {title: 'German', value: 'de'},
+                ],
+              },
+            },
+            {
+              name: 'content',
+              type: 'array',
+              title: 'Translated Content',
+              of: [{type: 'block'}], 
+            },
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'language',
