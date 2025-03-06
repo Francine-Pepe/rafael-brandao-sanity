@@ -11,7 +11,7 @@ export default defineType({
       title: 'Title',
       type: 'string',
     }),
-    
+
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -47,17 +47,20 @@ export default defineType({
     defineField({
       name: 'body_pt',
       title: 'Body - Português',
-      type: 'blockContent',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'body_en',
       title: 'Body - English',
-      type: 'blockContent',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'body_de',
       title: 'Body - Deutsch',
-      type: 'blockContent',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'language',
