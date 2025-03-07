@@ -1,8 +1,22 @@
 export default {
-  name: 'modalTranslation',
+  name: 'textTranslation',
   type: 'document',
-  title: 'Modal Translation',
+  title: 'Text Translation',
   fields: [
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
     {
       name: 'body',
       type: 'object',
