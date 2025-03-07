@@ -33,7 +33,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'body',
+      name: 'agendaText',
       title: 'Agenda text',
       type: 'reference',
       to: {type: 'textTranslation'},
