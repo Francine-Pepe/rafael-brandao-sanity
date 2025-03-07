@@ -33,9 +33,10 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
+      name: 'body',
+      title: 'Agenda text',
+      type: 'reference',
+      to: {type: 'textTranslation'},
     }),
     defineField({
       name: 'link',
@@ -62,12 +63,6 @@ export default defineType({
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
-    }),
-
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
     }),
   ],
 
