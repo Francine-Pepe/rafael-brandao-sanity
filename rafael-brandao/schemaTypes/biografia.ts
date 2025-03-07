@@ -44,54 +44,19 @@ export default defineType({
       title: 'Country',
       type: 'string',
     }),
-    defineField({
+    /* defineField({
       name: 'body',
       title: 'Body - Português',
       type: 'array',
       of: [{type: 'block'}],
-    }),
-    defineField({
-      name: 'body_en',
-      title: 'Body - English',
-      type: 'array',
-      of: [{type: 'block'}],
-    }),
-    defineField({
-      name: 'body_de',
-      title: 'Body - Deutsch',
-      type: 'array',
-      of: [{type: 'block'}],
-    }),
-    /* defineField({
-      name: 'body',
-      type: 'array',
-      title: 'Translations',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'lang',
-              type: 'string',
-              title: 'Language',
-              options: {
-                list: [
-                  {name: "body_pt", title: 'Portuguese', value: 'pt'},
-                  {name: "body_en", title: 'English', value: 'en'},
-                  {name: "body_de", title: 'German', value: 'de'},
-                ],
-              },
-            },
-            {
-              name: 'content',
-              type: 'array',
-              title: 'Translated Content',
-              of: [{type: 'block'}], 
-            },
-          ],
-        },
-      ],
     }), */
+    defineField({
+      name: 'body',
+      title: 'Biography text',
+      type: 'reference',
+      to: {type: 'textTranslation'},
+    }),
+
     defineField({
       name: 'language',
       type: 'string',
