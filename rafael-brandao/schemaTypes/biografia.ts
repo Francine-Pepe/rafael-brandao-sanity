@@ -45,7 +45,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'body_pt',
+      name: 'body',
       title: 'Body - Português',
       type: 'array',
       of: [{type: 'block'}],
