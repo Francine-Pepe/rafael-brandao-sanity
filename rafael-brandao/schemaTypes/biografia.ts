@@ -54,7 +54,7 @@ export default defineType({
       name: 'body',
       title: 'Biography text',
       type: 'reference',
-      to: {type: 'textTranslation'},
+      to: [{type: 'textTranslation'}],
     }),
 
     defineField({
