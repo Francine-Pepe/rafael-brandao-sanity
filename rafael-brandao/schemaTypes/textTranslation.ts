@@ -1,5 +1,29 @@
 export default {
   name: 'textTranslation',
+  title: 'Text Translation',
+  type: 'document', 
+  fields: [
+    {
+      name: 'pt',
+      title: 'Portuguese',
+      type: 'text',
+      validation: (Rule: { required: () => any; }) => Rule.required()
+    },
+    {
+      name: 'en',
+      title: 'English',
+      type: 'text',
+    },
+    {
+      name: 'de',
+      title: 'German',
+      type: 'text',
+    }
+  ]
+};
+
+/* export default {
+  name: 'textTranslation',
   type: 'document',
   title: 'Text Translation',
   fields: [
@@ -29,3 +53,4 @@ export default {
     },
   ],
 }
+ */
