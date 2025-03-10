@@ -1,13 +1,27 @@
 export default {
   name: 'textTranslation',
   title: 'Text Translation',
-  type: 'document', 
+  type: 'document',
   fields: [
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
     {
       name: 'pt',
       title: 'Portuguese',
       type: 'text',
-      validation: (Rule: { required: () => any; }) => Rule.required()
+      validation: (Rule: {required: () => any}) => Rule.required(),
     },
     {
       name: 'en',
@@ -18,9 +32,9 @@ export default {
       name: 'de',
       title: 'German',
       type: 'text',
-    }
-  ]
-};
+    },
+  ],
+}
 
 /* export default {
   name: 'textTranslation',
