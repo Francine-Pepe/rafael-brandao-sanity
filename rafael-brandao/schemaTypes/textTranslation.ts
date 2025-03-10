@@ -18,7 +18,7 @@ export default {
       },
     },
     {
-      name: 'body',
+      name: 'textTranslation',
       type: 'object',
       title: 'Content',
       fields: [
