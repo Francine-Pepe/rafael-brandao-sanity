@@ -1,4 +1,3 @@
-import {object} from 'prop-types'
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
@@ -22,6 +21,7 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'image',
       title: 'Image',
@@ -30,26 +30,47 @@ export default defineType({
         hotspot: true,
       },
     }),
+
     defineField({
       name: 'alt',
       title: 'Alt',
       type: 'string',
     }),
+
     defineField({
       name: 'datas',
       title: 'Datas',
       type: 'string',
     }),
+
     defineField({
       name: 'country',
       title: 'Country',
       type: 'string',
     }),
+
+    // Translatable Body Content
     defineField({
-      name: 'textTranslation',
-      title: 'Biography text',
-      type: 'reference',
-      to: [{type: 'textTranslation'}],
+      name: 'body',
+      title: 'Body',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'pt',
+          title: 'Português',
+          type: 'blockContent',
+        }),
+        defineField({
+          name: 'en',
+          title: 'English',
+          type: 'blockContent',
+        }),
+        defineField({
+          name: 'de',
+          title: 'Deutsch',
+          type: 'blockContent',
+        }),
+      ],
     }),
 
     defineField({
@@ -67,6 +88,7 @@ export default defineType({
         hotspot: true,
       },
     }),
+
     defineField({
       name: 'image2',
       title: 'Image 2',
@@ -75,6 +97,7 @@ export default defineType({
         hotspot: true,
       },
     }),
+
     defineField({
       name: 'image3',
       title: 'Image 3',
