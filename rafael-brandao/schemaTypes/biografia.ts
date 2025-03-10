@@ -20,6 +20,7 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
@@ -44,14 +45,8 @@ export default defineType({
       title: 'Country',
       type: 'string',
     }),
-    /* defineField({
-      name: 'body',
-      title: 'Body - Português',
-      type: 'array',
-      of: [{type: 'block'}],
-    }), */
     defineField({
-      name: 'body',
+      name: 'textTranslation',
       title: 'Biography text',
       type: 'reference',
       to: [{type: 'textTranslation'}],
