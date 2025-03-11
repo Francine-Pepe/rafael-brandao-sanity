@@ -50,7 +50,13 @@ export default defineType({
     }),
 
     // Translatable Body Content
+
     defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
+    }),
+    /*   defineField({
       name: 'body',
       title: 'Body',
       type: 'array',
@@ -71,7 +77,7 @@ export default defineType({
           ],
         },
       ],
-    }),
+    }), */
 
     /* defineField({
       name: 'body',
