@@ -53,6 +53,29 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Body',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'lang',
+              title: 'Language',
+              type: 'string',
+            }),
+            defineField({
+              name: 'content',
+              title: 'Content',
+              type: 'blockContent',
+            }),
+          ],
+        },
+      ],
+    }),
+
+    /* defineField({
+      name: 'body',
+      title: 'Body',
       type: 'object',
       fields: [
         defineField({
@@ -71,7 +94,7 @@ export default defineType({
           type: 'blockContent',
         }),
       ],
-    }),
+    }), */
 
     defineField({
       name: 'language',
