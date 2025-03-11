@@ -51,11 +51,11 @@ export default defineType({
 
     // Translatable Body Content
 
-    defineField({
+    /* defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-    }),
+    }), */
     /*   defineField({
       name: 'body',
       title: 'Body',
@@ -79,7 +79,7 @@ export default defineType({
       ],
     }), */
 
-    /* defineField({
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'object',
@@ -100,7 +100,7 @@ export default defineType({
           type: 'blockContent',
         }),
       ],
-    }), */
+    }),
 
     defineField({
       name: 'language',
