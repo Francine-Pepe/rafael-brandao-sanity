@@ -90,7 +90,9 @@ export default function LanguageFlag() {
             ) : null}
             <Option
               value={option.value}
-              onClick={() => changeLanguage(option.value)}
+              onClick={() => {
+                changeLanguage(option.value);
+              }}
               sx={{
                 backgroundColor: "trasparent",
                 "&:hover": {
