@@ -51,11 +51,31 @@ export default defineType({
     }),
 
     // Translatable Body Content
-    defineField({
-      name: 'name',
-      type: 'localeString',
-    }),
-
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'object',
+      fields: [
+        {
+          name: 'pt',
+          title: 'Portuguese',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'de',
+          title: 'German',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
     defineField({
       name: 'language',
       type: 'string',
@@ -95,7 +115,6 @@ export default defineType({
     select: {
       title: 'title',
       media: 'image',
-      subtitle: `title.${baseLanguage?.id ?? ''}`,
     },
   },
 })
