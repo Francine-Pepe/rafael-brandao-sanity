@@ -32,12 +32,7 @@ export default defineType({
       title: 'Event hour',
       type: 'string',
     }),
-    defineField({
-      name: 'agendaText',
-      title: 'Agenda text',
-      type: 'reference',
-      to: {type: 'textTranslation'},
-    }),
+    
     defineField({
       name: 'link',
       title: 'Link',

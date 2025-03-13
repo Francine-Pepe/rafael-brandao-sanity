@@ -52,7 +52,7 @@ export default defineType({
 
     // Translatable Body Content
     defineField({
-      name: 'title',
+      name: 'name',
       type: 'localeString',
     }),
 
