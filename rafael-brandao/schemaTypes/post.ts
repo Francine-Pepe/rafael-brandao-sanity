@@ -32,7 +32,31 @@ export default defineType({
       title: 'Event hour',
       type: 'string',
     }),
-    
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'object',
+      fields: [
+        {
+          name: 'pt',
+          title: 'Portuguese',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'de',
+          title: 'German',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
     defineField({
       name: 'link',
       title: 'Link',

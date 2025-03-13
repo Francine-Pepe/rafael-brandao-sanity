@@ -24,11 +24,31 @@ export default defineType({
       title: 'Label',
       type: 'string',
     }),
-    defineField({
+    {
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
-    }),
+      type: 'object',
+      fields: [
+        {
+          name: 'pt',
+          title: 'Portuguese',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'de',
+          title: 'German',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
   ],
 
   preview: {

@@ -32,11 +32,31 @@ export default defineType({
         hotspot: true,
       },
     }),
-    defineField({
+    {
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
-    }),
+      type: 'object',
+      fields: [
+        {
+          name: 'pt',
+          title: 'Portuguese',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'de',
+          title: 'German',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

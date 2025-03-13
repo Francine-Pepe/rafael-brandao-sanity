@@ -49,7 +49,6 @@ export default defineType({
       title: 'Country',
       type: 'string',
     }),
-
     // Translatable Body Content
     {
       name: 'body',
