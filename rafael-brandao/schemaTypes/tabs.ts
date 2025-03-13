@@ -52,24 +52,45 @@ export default defineType({
       title: 'Body',
       type: 'object',
       fields: [
-        defineField({
+        {
           name: 'pt',
+          type: 'array',
           title: 'Portuguese',
-          type: 'array',
-          of: [{type: 'block'}],
-        }),
-        defineField({
+          of: [
+            {
+              type: 'block', // Standard text block
+            },
+            {
+              type: 'youtube', // Custom YouTube block
+            },
+          ],
+        },
+        {
           name: 'en',
+          type: 'array',
           title: 'English',
-          type: 'array',
-          of: [{type: 'block'}],
-        }),
-        defineField({
+          of: [
+            {
+              type: 'block', // Standard text block
+            },
+            {
+              type: 'youtube', // Custom YouTube block
+            },
+          ],
+        },
+        {
           name: 'de',
-          title: 'German',
           type: 'array',
-          of: [{type: 'block'}],
-        }),
+          title: 'German',
+          of: [
+            {
+              type: 'block', // Standard text block
+            },
+            {
+              type: 'youtube', // Custom YouTube block
+            },
+          ],
+        },
       ],
     },
   ],
