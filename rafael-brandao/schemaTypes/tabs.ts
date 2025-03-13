@@ -25,10 +25,10 @@ export default defineType({
       type: 'string',
     }),
     {
-      name: 'newsTitle',
+      name: 'tabsTitle',
       type: 'object',
       title: 'News Title',
-      description: 'The title of the news in different languages.',
+      description: 'The title of the tabs in different languages.',
       fields: [
         {
           name: 'pt',
