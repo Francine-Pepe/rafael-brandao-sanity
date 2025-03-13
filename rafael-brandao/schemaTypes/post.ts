@@ -33,6 +33,29 @@ export default defineType({
       type: 'string',
     }),
     {
+      name: 'eventTitle',
+      type: 'object',
+      title: 'Event Title',
+      description: 'The title of the event in different languages.',
+      fields: [
+        {
+          name: 'pt',
+          type: 'string',
+          title: 'Portuguese',
+        },
+        {
+          name: 'en',
+          type: 'string',
+          title: 'English',
+        },
+        {
+          name: 'de',
+          type: 'string',
+          title: 'German',
+        },
+      ],
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'object',
