@@ -1,5 +1,5 @@
 import { CloseMenu } from "../../icons/CloseMenu";
-import BlockContent from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
 
 function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body } = props;
@@ -40,9 +40,7 @@ function Modal(props) {
           </div>
           <div className="modal-text">
             <h2>{datas}</h2>
-            <div>
-              <BlockContent blocks={body} />
-            </div>
+            <PortableText value={body} />
           </div>
         </div>
       </div>
