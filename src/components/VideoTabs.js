@@ -40,16 +40,17 @@ export default function VideoTabs() {
     setValue(newValue);
   };
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "tabs" ] { title, slug, label, body } 
-        `
-      )
-      .then((data) => setTabs(data))
-      .catch(console.error);
+    const fetchTabs = async () => {
+      const query = `*[_type == "tabs" ] { title, slug, label, tabsTitle, body } 
+        `;
+      const result = await client.fetch(query);
+      setTabs(result);
+    };
+
+    fetchTabs();
   }, []);
 
   const components = {
@@ -102,7 +103,7 @@ export default function VideoTabs() {
             .sort((a, b) => (a.title > b.title ? 1 : -1))
             .map((item, index) => (
               <Tab
-                label={item.label}
+                label={item.tabsTitle[i18n.language] || item.tabsTitle?.pt}
                 {...a11yProps(item.slug)}
                 key={index}
                 sx={{
@@ -122,7 +123,10 @@ export default function VideoTabs() {
       {tabs.map((item, index) => (
         <CustomTabPanel value={value} index={index} key={index}>
           <div className="tab-content-body animate__fadeInUp">
-            <PortableText value={item.body} components={components} />
+            <PortableText
+              value={item.body[i18n.language] || item.body?.pt}
+              components={components}
+            />
           </div>
         </CustomTabPanel>
       ))}
