@@ -136,12 +136,14 @@ svg
     .navbar-mobile-content
         @include mixins.flex-space-between
         width: 100vw
+        height: 5rem
         position: absolute
         top: 4vh
         left: 50%
         transform: translate(-50%, -50%)
         background-color: white
         z-index: 3
+        border: 1px solid red
 
         .mobile-logo
             padding-left: 2rem
@@ -698,6 +700,7 @@ footer
                 border-color: variables.$dark-cherry-color-opacity
                 margin: 0 2rem
                 height: fit-content
+                border-radius: 0
 
 /* Animations */
 
@@ -920,18 +923,7 @@ footer
 
             input, textarea
                 width: inherit
-    
 
-@media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
-    .logo
-        img
-            width: 12rem
-
-@media screen and (max-width: variables.$breakpoint-md)
-    .grid-container
-        .biografia-grid-content
-            .grid-images
-                width: 42vw
 
     .news-container
         .news-wrapper
@@ -953,6 +945,20 @@ footer
                         width: inherit
                     
                 
+    
+
+@media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
+    .logo
+        img
+            width: 12rem
+
+@media screen and (max-width: variables.$breakpoint-md)
+    .grid-container
+        .biografia-grid-content
+            .grid-images
+                width: 42vw
+
+    
         
 
 @media screen and (max-width: variables.$breakpoint-sm)
