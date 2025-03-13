@@ -16,6 +16,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { useTranslation } from "react-i18next";
 import "./i18n";
 import { useEffect } from "react";
+import { I18nextProvider } from "react-i18next";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -25,22 +26,24 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Header />
-      <ScrollToTop>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/biografia" element={<Biografia />} />
-          <Route path="/agenda" element={<Agenda />} />
-          <Route path="/galeria" element={<Gallery />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </ScrollToTop>
-      <Footer data={FooterLinks} />
-    </BrowserRouter>
+    <I18nextProvider i18n={i18n}>
+      <BrowserRouter>
+        <Header />
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/biografia" element={<Biografia />} />
+            <Route path="/agenda" element={<Agenda />} />
+            <Route path="/galeria" element={<Gallery />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </ScrollToTop>
+        <Footer data={FooterLinks} />
+      </BrowserRouter>
+    </I18nextProvider>
   );
 }
 
