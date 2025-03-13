@@ -7,10 +7,12 @@ import "yet-another-react-lightbox/styles.css";
 import { useEffect, useState } from "react";
 import client from "../client";
 import { PortableText } from "@portabletext/react";
+import { useTranslation } from "react-i18next";
 
 function News() {
-  const [news, setShows] = useState([]);
+  const [news, setNews] = useState([]);
   const [open, setOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const handleClick = (index) => {
     setOpen(!open && index);
@@ -21,16 +23,17 @@ function News() {
   };
 
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "news"] { title, slug, body, link, image {
+    const fetchNews = async () => {
+      const query = `*[_type == "news"] { title, slug, newsTitle, body, link, image {
             asset -> { _id, url },
             alt
           }
-        }`
-      )
-      .then((data) => setShows(data))
-      .catch(console.error);
+        }`;
+      const result = await client.fetch(query);
+      setNews(result);
+    };
+
+    fetchNews();
   }, []);
 
   return (
@@ -42,36 +45,51 @@ function News() {
           {[...news]
             .slice()
             .reverse()
-            .map((item, index) => (
-              <div key={index} className="news-content">
-                <div
-                  className="news-image"
-                  onClick={() => handleClick(item.slug)}
-                >
-                  <img src={item.image.asset.url} alt={item.slug} />
-                  {open === item.slug && (
-                    <Lightbox
-                      styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
-                      open={open}
-                      close={() => closeModal(false)}
-                      slides={[{ src: item.image.asset.url }]}
-                      className="lightbox lightbox-news"
-                    />
-                  )}
-                </div>
+            .map((item) => {
+              const newsTitle = item.newsTitle || {};
+              const text = item.body || {};
 
-                <div className="news-text">
-                  <a
-                    href={item.link}
-                    style={{ display: item.link ? "block" : "none" }}
+              return (
+                <div key={item.slug.current} className="news-content">
+                  <div
+                    className="news-image"
+                    onClick={() => handleClick(item.slug)}
                   >
-                    {item.title}
-                  </a>
-                  <PortableText value={item.body} />
-                  
+                    <img src={item.image.asset.url} alt={item.slug} />
+                    {open === item.slug && (
+                      <Lightbox
+                        styles={{
+                          container: { backgroundColor: "rgba(0, 0, 0, .9)" },
+                        }}
+                        open={open}
+                        close={() => closeModal(false)}
+                        slides={[{ src: item.image.asset.url }]}
+                        className="lightbox lightbox-news"
+                      />
+                    )}
+                  </div>
+
+                  <div className="news-text">
+                    <a
+                      href={item.link}
+/*                       style={{ display: item.link ? "block" : "none" }}
+ */                    >
+                      <h3>
+                        {newsTitle[i18n.language] ||
+                          newsTitle?.pt ||
+                          "No title available"}
+                      </h3>
+                    </a>
+
+                    <PortableText
+                      value={
+                        text[i18n.language] || text?.pt || "No text available"
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </div>
       </section>
     </>
