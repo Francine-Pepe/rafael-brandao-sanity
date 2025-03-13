@@ -1,70 +1,33 @@
-export default {
-  name: 'textTranslation',
-  title: 'Text Translation',
-  type: 'document',
-  fields: [
-    {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    },
-    {
-      name: 'pt',
-      title: 'Portuguese',
-      type: 'text',
-      validation: (Rule: {required: () => any}) => Rule.required(),
-    },
-    {
-      name: 'en',
-      title: 'English',
-      type: 'text',
-    },
-    {
-      name: 'de',
-      title: 'German',
-      type: 'text',
-    },
-  ],
-}
+import {defineType, defineField} from 'sanity'
 
-/* export default {
-  name: 'textTranslation',
-  type: 'document',
-  title: 'Text Translation',
-  fields: [
+const supportedLanguages = [
+  {id: 'pt', title: 'Portuguese', isDefault: true},
+  {id: 'en', title: 'English'},
+  {id: 'de', title: 'German'},
+]
+
+export const baseLanguage = supportedLanguages.find(l => l.isDefault)
+
+
+export const localeString = defineType({
+  title: 'Localized string',
+  name: 'localeString',
+  type: 'object',
+  // Fieldsets can be used to group object fields.
+  // Here we omit a fieldset for the "default language",
+  // making it stand out as the main field.
+  fieldsets: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    },
-    {
-      name: 'textTranslation',
-      type: 'object',
-      title: 'Content',
-      fields: [
-        {name: 'pt', type: 'array', title: 'Portuguese', of: [{type: 'block'}]},
-        {name: 'en', type: 'array', title: 'English', of: [{type: 'block'}]},
-        {name: 'de', type: 'array', title: 'German', of: [{type: 'block'}]},
-      ],
+      title: 'Translations',
+      name: 'translations',
+      options: {collapsible: true},
     },
   ],
-}
- */
+  // Dynamically define one field per language
+  fields: supportedLanguages.map((lang) => ({
+    title: lang.title,
+    name: lang.id,
+    type: 'string',
+    fieldset: lang.isDefault ? undefined : 'translations',
+  })),
+})

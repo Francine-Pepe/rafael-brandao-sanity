@@ -9,7 +9,6 @@ import {youtubeInput} from 'sanity-plugin-youtube-input'
 import {myYoutubeVideos} from './environment'
 import {muxInput} from 'sanity-plugin-mux-input'
 import {documentInternationalization} from '@sanity/document-internationalization'
-import {I18nFields} from 'sanity-plugin-i18n-fields'
 
 export default defineConfig({
   name: 'default',
@@ -25,7 +24,15 @@ export default defineConfig({
     codeInput(),
     youtubeInput({apiKey: `${myYoutubeVideos}`}),
     muxInput(),
-
+    documentInternationalization({
+      supportedLanguages: [
+        {id: 'pt', title: 'Portuguese'},
+        {id: 'en', title: 'English'},
+        {id: 'de', title: 'German'},
+      ],
+      schemaTypes: ['biografia'],
+      languageField: `language`,
+    }),
   ],
 
   schema: {

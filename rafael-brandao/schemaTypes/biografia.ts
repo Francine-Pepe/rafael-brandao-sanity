@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {baseLanguage} from './textTranslation'
 
 export default defineType({
   name: 'biografia',
@@ -50,56 +51,9 @@ export default defineType({
     }),
 
     // Translatable Body Content
-
-    /* defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-    }), */
-    /*   defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'lang',
-              title: 'Language',
-              type: 'string',
-            }),
-            defineField({
-              name: 'content',
-              title: 'Content',
-              type: 'blockContent',
-            }),
-          ],
-        },
-      ],
-    }), */
-
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'pt',
-          title: 'Português',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'en',
-          title: 'English',
-          type: 'blockContent',
-        }),
-        defineField({
-          name: 'de',
-          title: 'Deutsch',
-          type: 'blockContent',
-        }),
-      ],
+      name: 'title',
+      type: 'localeString',
     }),
 
     defineField({
@@ -141,6 +95,7 @@ export default defineType({
     select: {
       title: 'title',
       media: 'image',
+      subtitle: `title.${baseLanguage?.id ?? ''}`,
     },
   },
 })
