@@ -27,7 +27,7 @@ export default defineType({
     {
       name: 'tabsTitle',
       type: 'object',
-      title: 'News Title',
+      title: 'Tabs Title',
       description: 'The title of the tabs in different languages.',
       fields: [
         {
@@ -52,24 +52,24 @@ export default defineType({
       title: 'Body',
       type: 'object',
       fields: [
-        {
+        defineField({
           name: 'pt',
           title: 'Portuguese',
           type: 'array',
-          of: [{type: 'block'}],
-        },
-        {
+          of: [{type: 'blockContent'}],
+        }),
+        defineField({
           name: 'en',
           title: 'English',
           type: 'array',
-          of: [{type: 'block'}],
-        },
-        {
+          of: [{type: 'blockContent'}],
+        }),
+        defineField({
           name: 'de',
           title: 'German',
           type: 'array',
-          of: [{type: 'block'}],
-        },
+          of: [{type: 'blockContent'}],
+        }),
       ],
     },
   ],
