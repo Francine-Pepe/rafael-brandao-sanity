@@ -4,7 +4,6 @@
 .article-page
     margin-top: 15rem
     height: 100vh
-    border: 1px solid red
 
 body, html
     /*margin: 0 auto
@@ -44,8 +43,7 @@ ul
     button
         border: none
         background: none
-        /*padding: 0 0.5rem
-        cursor: pointer
+        padding: 0 0.5rem
         /*color: white
 
         &:hover, &:active
@@ -68,6 +66,7 @@ a
 img
     object-fit: cover
     object-position: center
+    cursor: pointer
 
 .changeLinkColor 
     color: white
@@ -75,6 +74,8 @@ img
 button, textarea, input
     width: fit-content
     padding: 0 2rem
+    cursor: pointer
+
 
     &:hover
         background-color: variables.$cherry-color
@@ -143,7 +144,6 @@ svg
         transform: translate(-50%, -50%)
         background-color: white
         z-index: 3
-        border: 1px solid red
 
         .mobile-logo
             padding-left: 2rem
@@ -383,7 +383,7 @@ footer
     .fixed-bg
         @include mixins.flex-center
         position: fixed
-        top: 10rem
+        top: 0
         left: 0
         bottom: 0
         width: 100%
@@ -392,13 +392,13 @@ footer
     img
         width: inherit
         object-fit: contain
-        background-position: bottom
+        background-position: center
 
 .gallery-header
     position: relative
     z-index: 2
     width: auto
-    height: 60vh
+    /*height: 60vh
 
     p
         @include mixins.flex-center
@@ -407,6 +407,9 @@ footer
         height: 80vh
         font-size: variables.$font-size-medium
         font-weight: 300
+        margin: 0 auto
+        text-align: center
+        padding: 0 0.1rem
 
 .gallery-container
     display: flex
@@ -414,6 +417,22 @@ footer
     position: relative
     z-index: 2
     background-color: variables.$main-background-color
+
+    .image-description
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        background-color: rgba(0, 0, 0, 0.7)
+        color: white
+        padding: 8px
+        text-align: center
+        opacity: 0
+        transition: opacity 0.3s ease
+        z-index: 5
+
+        &:hover 
+            opacity: 1
 
 .agenda-container
 
@@ -556,6 +575,9 @@ footer
     z-index: 2
 
     .biografia-grid-content
+        -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31)
+        box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31)
+        border-radius: 5px
         
         .grid-images
             width: 25vw
@@ -697,7 +719,7 @@ footer
                     object-fit: cover
 
             .news-text
-                border-color: variables.$dark-cherry-color-opacity
+                border-bottom: 1px solid variables.$dark-cherry-color-opacity
                 margin: 0 2rem
                 height: fit-content
                 border-radius: 0
@@ -943,9 +965,13 @@ footer
                 .news-image    
                     img
                         width: inherit
-                    
-                
-    
+
+    .fixed-bg-image-container
+        .fixed-bg          
+            top: -10rem
+
+    .gallery-header p
+        height: 70vh
 
 @media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
     .logo
@@ -958,8 +984,12 @@ footer
             .grid-images
                 width: 42vw
 
-    
-        
+    .fixed-bg-image-container
+        .fixed-bg          
+            top: -20rem
+
+    .gallery-header p
+        height: 50vh
 
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
@@ -992,6 +1022,9 @@ footer
             .grid-images
                 width: 90vw
 
+    .gallery-header p
+        height: 40vh
+
 @media screen and ( max-width: variables.$breakpoint-xs  )
 
     .modal-content 
@@ -1005,6 +1038,16 @@ footer
                     .modal-image3
                         right: 0
                         top: 6rem
+
+    .fixed-bg-image-container
+        .fixed-bg          
+            top: -28rem
+
+    .gallery-header 
+        height: 30vh
+        padding: 0 1rem
+
+        
     
                         
                     

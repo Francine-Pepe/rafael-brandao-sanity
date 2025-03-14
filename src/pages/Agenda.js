@@ -29,7 +29,9 @@ function Agenda() {
       <PageTitle />
       <section className="agenda-container container">
         <div className="agenda-content container">
-          {shows.map((show, index) => {
+          {shows
+          .sort((a, b) => (a.date > b.date ? -1 : 1))
+          .map((show) => {
             const eventTitle = show.eventTitle || {};
             const text = show.body || {};
 
@@ -48,7 +50,7 @@ function Agenda() {
                         "No title available"}
                     </h3>
                     <div className="agenda-date-time">
-                      <h3>{show.date}</h3> | <h3>{show.eventHour} horas</h3>
+                      <h3>{show.date}</h3> | <h3>{show.eventHour}</h3>
                     </div>
                     <PortableText
                       value={
