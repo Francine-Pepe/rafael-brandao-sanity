@@ -12,28 +12,33 @@ export default function ImageMasonry() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(-1);
 
-  const handleClick = (slug) => {
-    setOpen(!open && slug);
-    setIndex(slug + 1);
+  const handleClick = (itemIndex) => {
+    setOpen(true);
+    setIndex(itemIndex);
   };
 
   const closeModal = () => {
-    setOpen(true);
+    setOpen(false);
+    setIndex(-1);
   };
 
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "imageGallery" ] {  slug, alt, image {
-            asset -> {_id, url},
-            alt
-          } }`
+        `*[_type == "imageGallery"] {
+          title,
+          slug,
+          images[] {
+            asset -> { _id, url },
+            alt,
+            description
+          }
+        }`
       )
-      .then((data) => setGallery(data))
+      .then((data) => setGallery(data || []))
       .catch(console.error);
   }, []);
 
-  console.log(gallery);
   return (
     <>
       <FixedImage image={bgImage} />
@@ -47,12 +52,7 @@ export default function ImageMasonry() {
             width: "100%",
             minHeight: 829,
             margin: "0 auto",
-            padding: " 0.5rem",
-            /* "@media(max-width: 1200px)": {
-              width: "90vw",
-              padding: "8rem 0",
-              margin: "0 auto"
-            }, */
+            padding: "0.5rem",
           }}
         >
           <Masonry
@@ -60,38 +60,53 @@ export default function ImageMasonry() {
             columns={{ xs: 1, sm: 2, md: 3 }}
             sx={{ margin: "0 auto" }}
           >
-            {gallery.map((item, index) => (
-              <div
-                key={index}
-                className="gallery-image"
-                onClick={() => handleClick(item.slug)}
-              >
-                <img
-                  srcSet={`${item.image.asset.url}?w=1000&auto=format&dpr=2 2x`}
-                  src={`${item.image.asset.url}?w=1000&auto=format`}
-                  alt={item.alt}
-                  loading="lazy"
-                  style={{
-                    borderRadius: 4,
-                    display: "block",
-                    width: "100%",
-                    quality: 100,
-                  }}
-                />
-                {open === item.slug && (
-                  <Lightbox
-                    open={open}
-                    close={() => closeModal(false)}
-                    slides={[{ src: item.image.asset.url }]}
-                    styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
-
+            {gallery.map((item, itemIndex) =>
+              item.images?.map((image, imageIndex) => (
+                <div
+                  key={`${itemIndex}-${imageIndex}`}
+                  className="gallery-image"
+                  onClick={() => handleClick(imageIndex)}
+                  style={{ position: "relative" }} // Add relative positioning
+                >
+                  <img
+                    srcSet={`${image.asset.url}?w=1000&auto=format&dpr=2 2x`}
+                    src={`${image.asset.url}?w=1000&auto=format`}
+                    alt={image.alt}
+                    loading="lazy"
+                    style={{
+                      borderRadius: 4,
+                      display: "block",
+                      width: "100%",
+                      quality: 100,
+                    }}
                   />
-                )}
-              </div>
-            ))}
+                  {/* Description on Hover */}
+                  <div className="image-description">
+                    <h5>{image.description}</h5>
+                  </div>
+                </div>
+              ))
+            )}
           </Masonry>
         </Box>
       </section>
+
+      {/* Lightbox for Carousel */}
+      {open && (
+        <Lightbox
+          open={open}
+          close={closeModal}
+          index={index}
+          slides={gallery.flatMap((item) =>
+            item.images?.map((image) => ({
+              src: image.asset.url,
+              alt: image.alt,
+              description: image.description,
+            }))
+          )}
+          styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
+        />
+      )}
     </>
   );
 }
