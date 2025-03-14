@@ -84,6 +84,10 @@ i18n
               title: "Contato",
             },
           ],
+          galleryText:
+            "Galeria de recordações e trajetória de uma vida musical",
+          developedBy: "Desenvolvido por Francine Pêpe",
+          rightsReserved: "Todos os direitos reservados",
         },
       },
       en: {
@@ -149,6 +153,9 @@ i18n
           ],
           message: "Message:",
           send: "Send",
+          galleryText: "Gallery of memories and trajectory of a musical life",
+          developedBy: "Developed by Francine Pêpe",
+          rightsReserved: "All rights reserved",
         },
       },
       de: {
@@ -214,6 +221,10 @@ i18n
           ],
           message: "Nachricht:",
           send: "Senden",
+          galleryText:
+            "Galerie der Erinnerungen und des Werdegangs eines musikalischen Lebens",
+          developedBy: "Entwickelt von Francine Pêpe",
+          rightsReserved: "Alle Rechte vorbehalten",
         },
       },
     },
