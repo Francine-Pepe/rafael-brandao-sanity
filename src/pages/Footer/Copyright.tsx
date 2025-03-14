@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Copyright() {
   const getCurrentYear = () => {
     return new Date().getFullYear();
   };
+  const { t } = useTranslation();
 
   return (
     <footer className="copyright-container container">
       <section>
         <small>
-          &copy; Copyright {getCurrentYear()} - Todos os direitos reservados -
+          &copy; Copyright {getCurrentYear()} - {t("rightsReserved")} -
           <span> Rafa Brandão</span>
         </small>
         <small>
@@ -19,7 +21,7 @@ function Copyright() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <cite>Desenvolvido por Francine Pêpe</cite>
+            <small>{t("developedBy")}</small>
           </Link>
         </small>
       </section>
