@@ -20,25 +20,36 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'alt',
-      title: 'Alt',
-      type: 'string',
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt',
+              type: 'string',
+            },
+            {
+              name: 'description',
+              title: 'Description',
+              type: 'string',
+            },
+          ],
+        },
+      ],
     }),
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'image',
+      media: 'images.0.asset', // Use the first image in the array for the preview
     },
   },
 })
-
