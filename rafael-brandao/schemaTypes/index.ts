@@ -7,7 +7,6 @@ import biografia from './biografia'
 import imageGallery from './imageGallery'
 import tabs from './tabs'
 import {youtube} from './youtube'
-import photo from './photo'
 import imagePortableText from './imagePortableText'
 import news from './news'
 
@@ -21,7 +20,6 @@ export const schemaTypes = [
   imageGallery,
   imagePortableText,
   tabs,
-  photo,
   youtube,
   news,
 ]
