@@ -5,16 +5,6 @@ import CarouselImage4 from "../src/assets/_RAF0401.webp";
 import WhereListen from "./components/WhereListen";
 import FooterContact from "./pages/Footer/FooterContact";
 import GridFoto0 from "./assets/kid.webp";
-import GridFoto1 from "./assets/FILE187.webp";
-import GridFoto2 from "./assets/A7C01168-2.webp";
-import GridFoto3 from "./assets/_RAF0170.webp";
-import GridFoto4 from "./assets/_RAF0401.webp";
-import GridFoto5 from "./assets/FILE216.webp";
-import GridFoto6 from "./assets/01 - pb.webp";
-import GridFoto7 from "./assets/FILE200.webp";
-import GridFoto8 from "./assets/01.webp";
-import GridFoto9 from "./assets/01 - pb.webp";
-import { imageListClasses } from "@mui/material";
 
 export const Navigation = [
   {
@@ -88,9 +78,6 @@ export const BiografiaCarouselImages = [
   },
 ];
 
-
-
-
 export const VideoTabsContent = [
   {
     id: 0,
@@ -126,6 +113,5 @@ export const BioText = [
   {
     id: 1,
     text: "Rafa Brandão é um cantor e compositor brasileiro com uma longa trajetória musical iniciada nos anos 1980 em Belo Horizonte, sua cidade natal. Começou como vocalista em diversos grupos e, nos anos 1990, no Rio de Janeiro – onde viveu por muitos anos –, consolidou-se como letrista e compositor ao integrar as bandas Vitrine e Radicais Livres. Nos Radicais Livres, estabeleceu uma parceria com Ronaldo Miragaya, que durou até sua saída do Brasil no final de 2002.\n\nEm 2001, os Radicais Livres lançaram um álbum homônimo, no qual se destacou a canção Ataques, vencedora do concurso Ih Radical, do canal Multishow, com mais de 22 mil votos pela internet. O prêmio garantiu à banda um videoclipe produzido pelo próprio Multishow e grande visibilidade na mídia, com entrevistas e matérias na imprensa.\n\nEntre 2003 e 2012, Rafa viveu em Lisboa, Portugal, onde recomeçou sua carreira, tocando com diversos músicos brasileiros e portugueses e iniciando apresentações em bares no formato voz e violão.\n\nDesde 2012, reside em Hamburgo, Alemanha, onde, em 2018, lançou seu primeiro álbum individual, Solo, no qual escreveu praticamente todas as letras e músicas. O disco foi produzido e arranjado por seu amigo, o guitarrista e compositor Jessé Gomes. Suas influências musicais vão da música popular brasileira, bossa nova, samba, pop e rock à black music americana, incluindo soul, funk e blues. Entre suas grandes referências, destacam-se Caetano Veloso, Cazuza e Mick Jagger.\n\nDesde 2018, Rafa realiza concertos anuais com sua banda, apresentando composições próprias, além de desenvolver um projeto em duo com o percussionista Vitão Cardoso. Também mantém o formato acústico de voz e violão, apresentando-se em festas privadas e em locais de destaque, como o restaurante brasileiro Xodó, em Hamburgo, onde toca todas as quartas-feiras desde julho de 2023.\n\nO álbum Solo, de Rafa Brandão, está disponível nas principais plataformas digitais, como Spotify, Deezer, Apple Music e Amazon Music, além de ser vendido em suas apresentações. O álbum Radicais Livres (2001) também pode ser encontrado no Spotify.\n\nCompositor atento às diversidades do mundo e aos sinais espirituais, letrista essencialmente urbano, que captura em suas canções as nuances das relações humanas, dos amores e desencontros, e, acima de tudo, um cantor que ama cantar e levar sua música a todos os cantos do planeta.\n\nApresento-lhes, Rafa Brandão.",
-  }
-]
-
+  },
+];
