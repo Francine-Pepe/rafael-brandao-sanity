@@ -6,11 +6,13 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import FixedImage from "../components/FixedImage";
 import bgImage from "../assets/_RAF0401.webp";
+import { useTranslation } from "react-i18next";
 
 export default function ImageMasonry() {
   const [gallery, setGallery] = useState([]);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(-1);
+  const { t } = useTranslation();
 
   const handleClick = (itemIndex) => {
     setOpen(true);
@@ -43,7 +45,7 @@ export default function ImageMasonry() {
     <>
       <FixedImage image={bgImage} />
       <section className="gallery-header">
-        <p>Galeria de recordações e trajetória de uma vida musical</p>
+        <p>{t("galleryText")}</p>
       </section>
 
       <section className="gallery-container container">

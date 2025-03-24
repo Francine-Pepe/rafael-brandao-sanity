@@ -37,16 +37,16 @@ i18n
           contactBox: [
             {
               id: 1,
-              text: "Para contato, preencha o formulário, ou entre em contato diretamente pelo e-mail:",
+              text: "Está planejando um evento e procura uma apresentação musical única e cheia de energia? Gostaria de receber um orçamento ou mais informações? Entre em contato usando o formulário de contato ou diretamente por e-mail:",
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
-            {
+            /*             {
               id: 2,
               text: "Para shows:",
               link: "mailto:shows@rafa-brandao.com",
               linkText: "shows@rafa-brandao.com",
-            },
+            }, */
           ],
           contactFormData: [
             {
@@ -95,7 +95,7 @@ i18n
           greeting: "Hello, Welcome!",
           text: "Rafa Brandão is a Brazilian singer and composer with a long musical career that began in the 1980s in Belo Horizonte, his hometown. He started out as a vocalist in several groups and, in the 1990s, in Rio de Janeiro – where he lived for many years –, he established himself as a lyricist and composer by joining the bands Vitrine and Radicais Livres. In Radicais Livres, he established a partnership with Ronaldo Miragaya, which lasted until his departure from Brazil at the end of 2002.\n\nIn 2001, Radicais Livres released a self-titled album, which featured the song Ataques, winner of the Ih Radical contest on the Multishow channel, with more than 22 thousand votes on the internet. The award guaranteed the band a music video produced by Multishow itself and great visibility in the media, with interviews and articles in the press.\n\nBetween 2003 and 2012, Rafa lived in Lisbon, Portugal, where he restarted his career, playing with several musicians Brazilians and Portuguese and began performing in bars with voice and guitar.\n\nSince 2012, he has lived in Hamburg, Germany, where, in 2018, he released his first solo album, Solo, for which he wrote practically all the lyrics and music. The album was produced and arranged by his friend, guitarist and composer Jessé Gomes. His musical influences range from Brazilian popular music, bossa nova, samba, pop and rock to American black music, including soul, funk and blues. Some of his great influences include Caetano Veloso, Cazuza and Mick Jagger.\n\nSince 2018, Rafa has performed annual concerts with his band, presenting his own compositions, in addition to developing a duo project with percussionist Vitão Cardoso. He also maintains the acoustic format of voice and guitar, performing at private parties and in prominent venues, such as the Brazilian restaurant Xodó, in Hamburg, where he has played every Wednesday since July 2023.\n\nRafa Brandão's album Solo is available on the main digital platforms, such as Spotify, Deezer, Apple Music and Amazon Music, in addition to being sold at his performances. The album Radicais Livres (2001) can also be found on Spotify.\n\nA composer attentive to the diversity of the world and spiritual signs, an essentially urban lyricist, who captures in his songs the nuances of human relationships, loves and disagreements, and, above all, a singer who loves to sing and take his music to every corner of the planet.\n\nI present to you, Rafa Brandão.",
           nav: [
-            { name: "Biografie", link: "/biografia" },
+            { name: "Biography", link: "/biografia" },
             {
               name: "Agenda",
               link: "/agenda",
@@ -114,16 +114,16 @@ i18n
           contactBox: [
             {
               id: 1,
-              text: "To contact us, fill out the form, or contact us directly by email:",
+              text: "Are you planning an event and looking for a unique and energetic musical performance? Would you like a quote or more information? Get in touch using the contact form or directly by e-mail:",
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
-            {
+            /*             {
               id: 2,
               text: "For shows:",
               link: "mailto:shows@rafa-brandao.com",
               linkText: "shows@rafa-brandao.com",
-            },
+            }, */
           ],
           contactFormData: [
             {
@@ -182,16 +182,16 @@ i18n
           contactBox: [
             {
               id: 1,
-              text: "Um mit uns Kontakt aufzunehmen, füllen Sie das Formular aus oder kontaktieren Sie uns direkt per E-Mail:",
+              text: "Sie planen eine Veranstaltung und sind auf der Suche nach einer einzigartigen und energiegeladenen musikalischen Darbietung? Möchten Sie ein Angebot oder weitere Informationen? Kontaktieren Sie uns über das Kontaktformular oder direkt per E-Mail:",
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
-            {
+/*             {
               id: 2,
               text: "Für Shows:",
               link: "mailto:shows@rafa-brandao.com",
               linkText: "shows@rafa-brandao.com",
-            },
+            }, */
           ],
           contactFormData: [
             {

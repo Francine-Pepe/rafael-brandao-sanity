@@ -5,7 +5,7 @@ const ImageComponent = ({ value }) => {
 
   const builder = urlBuilder(client);
   const urlFor = (source) => builder.image(source);
-  const imageUrl = urlFor(value.imageUrl).width(600).url(); // Adjust size if needed
+  const imageUrl = urlFor(value.imageUrl).width(600).url(); 
 
   return (
     <div style={{ margin: "20px 0" }}>
