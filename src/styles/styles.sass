@@ -55,6 +55,9 @@ ul
 p
     line-height: 2
     white-space: pre-wrap
+    font-size: clamp(1rem, 0.643rem + 0.952vw, 1.2rem)
+    font-weight: 250
+    text-align: justify
     
 
 a
@@ -83,7 +86,37 @@ button, textarea, input
     a
         color: variables.$cherry-color
 
-.icon
+.forward-icon
+    transform: rotate(180deg)
+
+.landpage-animation-box
+    border: 0.5px solid variables.$white-font-color
+    padding: 2rem 3rem
+    position: absolute
+    z-index: 2
+    top: 70%
+    left: 50%
+    transform: translate(-50%, -50%)
+    text-transform: uppercase
+
+    a
+        color: variables.$white-font-color
+        font-weight: variables.$font-weight-light
+
+
+.navigation-buttons
+    @include mixins.gap
+    width: auto
+    padding: 8rem 0 0 4rem
+    position: fixed
+    z-index: 4
+    margin: 0 auto
+
+.arrow
+    @include mixins.flex-align-center
+    cursor: pointer
+
+.icon, .arrow
     &:hover
         filter: brightness(0) saturate(100%) invert(41%) sepia(69%) saturate(2264%) hue-rotate(357deg) brightness(97%) contrast(96%) !important
 
@@ -105,7 +138,11 @@ svg
     @include mixins.flex-space-around
 
 .colorChange
-    background-color: variables.$main-background-color
+    /* background-color: rgb(255, 255, 255) */ 
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1)  */
+    backdrop-filter: blur(10px) 
+    transition: background 0.3s ease
+    color: variables.$cherry-color
 
 .navlinks-props
     @include mixins.gap-center
@@ -117,7 +154,8 @@ svg
 
 .navbar-container, .navbar-mobile-container
     position: fixed
-    z-index: 3
+    z-index: 10
+    
 
 .navigation-social-media
     @include mixins.flex-space-evenly
@@ -126,7 +164,7 @@ svg
 .navbar-mobile-container
     display: none
     position: relative
-    z-index: 3
+    z-index: 6
     width: 100vw
     background: rgba(255, 255, 255, 0.26)
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
@@ -154,6 +192,7 @@ svg
     .navbar-mobile
         /* background-color: rgba(37, 1, 1, 0.6) */
         width: inherit
+        
 
         a
             font-weight: 300
@@ -161,6 +200,7 @@ svg
         .lng-selector-mobile
             position: relative
             top: 5vh
+
 
 .language-selector
     position: fixed
@@ -276,7 +316,7 @@ footer
 
 .modal 
     position: fixed
-    background-color: rgba(0, 0, 0, 0.8)
+    background-color: rgba(0, 0, 0, 0.15)
     display: flex
     flex-direction: column
     align-items: center
@@ -285,7 +325,11 @@ footer
     left: 0
     right: 0
     height: 100vh
+    transition: opacity 250ms ease
     /*padding-top: 20vh
+
+    &:target
+        opacity: 1
     
 
     .modal-close-button
@@ -304,11 +348,13 @@ footer
         position: relative
         z-index: 100
         margin-top: 10rem
+        
 
         .modal-content-wrap
             display: flex
             width: inherit
             /* height: inherit */
+
         .modal-text
             h2
                 border-bottom: 4px solid variables.$cherry-color
@@ -364,7 +410,7 @@ footer
         position: absolute  
         width: fit-content    
         z-index: inherit 
-        opacity: 0.2
+        /* opacity: 0.2 */
 
         h3
             font-weight: 400  
@@ -434,6 +480,29 @@ footer
         &:hover 
             opacity: 1
 
+/* .image-content
+    width: 100%
+    height: auto
+    position: fixed
+    top: 0
+    left: 0 */
+
+
+.image-content
+    width: 100%
+    height: auto
+    position: absolute
+    top: 0
+    left: 0 
+
+    img
+        width: inherit
+        height: 100%
+        object-fit: cover 
+        opacity: 0.2
+        object-position: top
+
+
 .agenda-container
 
     .agenda-content
@@ -447,7 +516,7 @@ footer
 
             img
                 width: 30%
-                height: 30vh
+                height: 50vh
                 object-fit: cover
 
             .agenda-information-place-time
@@ -456,6 +525,7 @@ footer
 
                 p
                     margin-top: 0
+                    
                 
 
                 .agenda-date-time
@@ -512,6 +582,7 @@ footer
                 background-color: variables.$white-font-color
                 color: variables.$cherry-color
                 border: 1px solid 
+
 
 .contact-container
     display: block
@@ -571,39 +642,47 @@ footer
     display: flex
     flex-wrap: wrap
     gap: 3rem
-    padding: 5rem 0 2rem 0
+    padding: 5rem 0 2rem 0 
     z-index: 2
 
     .biografia-grid-content
-        -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31)
-        box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31)
-        border-radius: 5px
+        /* -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31) */
+        /* box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31) */
+        /* border-radius: 5px */
+
+        .grid-images-text
+
+            h2
+                color: white
+                text-shadow: 2px 2px 2px variables.$dark-cherry-color
+
         
         .grid-images
-            width: 25vw
-            height: 50vh
+            width: 45vw 
+            height: 55vh
             position: relative
             background-color: white
 
             &:hover 
                 
-                .grid-images-text
-                    width: inherit
+            .grid-images-text
+                width: inherit
+  
+                h2
+                    font-size: 2.5rem
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    opacity: 1
+                    transition: margin-right 2s ease-in-out .5s
+                    transition-delay: 500ms
                     
-
-                    h2
-                        font-size: 2.5rem
-                        display: flex
-                        justify-content: center
-                        align-items: center
-                        opacity: 1
-                        transition: margin-right 2s ease-in-out .5s
-                        transition-delay: 500ms
 
                 img
                     object-fit: cover
                     object-position: top
                     filter: grayscale(100%)
+                    
 
                     &:hover
                         filter: grayscale(0)
@@ -613,10 +692,11 @@ footer
                 height: auto
                 position: absolute
                 z-index: 1
-                left: 0
-                top: 50%
-                translate: -50% -50%
-                transform: rotate(-90deg)
+                right: 0
+                
+                /* top: 50% */
+                /* translate: -50% -50%  */
+                /* transform: rotate(-90deg)  */
 
             img
                 width: inherit
@@ -634,6 +714,7 @@ footer
                 left: 0
                 z-index: 1
                 padding: 0 2rem
+                
 
             .grid-images-text, .grid-image-country
                 h2, h3
@@ -641,21 +722,12 @@ footer
                     text-shadow: 2px 2px 2px variables.$dark-cherry-color
 
 
+
 .tab-content-body
     width: 90vw
     padding: 2rem
     margin-bottom: 2rem
     border-top: 1px solid rgba(32, 0, 15, 0.1)
-
-.image-container 
-    max-width: 100%
-    margin: 20px 0
-
-
-.image-container img 
-    width: 100%
-    height: auto
-
 
 .youtube-embed
     width: 100%
@@ -672,17 +744,23 @@ footer
         
 
 .text-container
-    position: relative
-    padding: 4rem 2rem
+    padding: 2rem
     height: auto
-    background-color: variables.$dark-background
     display: flex
     justify-content: center
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    /* background-color: variables.$dark-background */
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) */
 
     .text-content
-        width: 90vw
+        width: 100vw
         height: auto
+        
+        p
+            position: relative
+            z-index: 2
+            width: 90vw
+            margin: 0 auto
+            /* color: variables.$navbar-background-color */
 
 .news-container
     height: 100%
@@ -691,7 +769,7 @@ footer
         height: 100%
 
     .news-wrapper
-        background-image: url("https://live.staticflickr.com/65535/54319069184_ceea7e6148_k.jpg")
+        /* background-image: url("https://live.staticflickr.com/65535/54319069184_ceea7e6148_k.jpg") */
         background-position: 0 0
         background-size: auto 100%
         background-repeat: repeat
@@ -701,12 +779,13 @@ footer
         .news-content
             display: flex
             padding: 1rem 0
+            align-items: flex-start
 
             &:nth-child(2n + 1)
                 flex-direction: row-reverse
 
             .news-image, .news-text
-                width: 50%
+                width: 50% 
                 height: auto
                 padding: 2rem
                 z-index: 1
@@ -717,12 +796,16 @@ footer
                     width: 100%
                     height: 50vh
                     object-fit: cover
+                    flex-shrink: 0
+                    shape-outside: circle(50%)
+                    
 
             .news-text
                 border-bottom: 1px solid variables.$dark-cherry-color-opacity
                 margin: 0 2rem
                 height: fit-content
                 border-radius: 0
+                flex: 1
 
 /* Animations */
 
@@ -749,19 +832,36 @@ footer
     -webkit-animation-name: fadeOutUp
     animation-name: fadeOutUp
 
-.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title
+.animate__fadeIn
+    -webkit-animation-name: fadeIn
+    animation-name: fadeIn
+
+.animate__fadeOut
+    -webkit-animation-name: fadeOut
+    animation-name: fadeOut
+
+.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-content, .news-content
     animation: fadeInUp
     animation-duration: 2s
 
-.title
+.animate__delay-4s	
+    .text-container
+        --animate-delay: 4s
+    
+
+/* .title
     animation: fadeInUp
     animation-duration: 2s 
     transform: scale(1)
-    transform-origin: top left
+    transform-origin: top left */
 
 .modal-content
     animation: fadeInDown
     animation-duration: 2s
+
+.landpage-animation-box
+    animation: fadeIn
+    animation-duration: 4s
 
 .text-container
     @keyframes opacity
@@ -789,7 +889,38 @@ footer
     padding-top: 10rem
     height: 100vh
 
- 
+/* Music wave animation */
+
+@keyframes quiet 
+    25%
+        transform: scaleY(.6)
+    
+    50%
+        transform: scaleY(.4)
+    
+    75%
+        transform: scaleY(.8)
+
+@keyframes normal 
+    25%
+        transform: scaleY(1)
+    
+    50%
+        transform: scaleY(.4)
+    
+    75%
+        transform: scaleY(.6)
+
+@keyframes loud 
+    25%
+        transform: scaleY(1)
+    
+    50%
+        transform: scaleY(.4)
+    
+    75%
+        transform: scaleY(1.2)
+
 
 /* Media Queries */
 
@@ -846,6 +977,12 @@ footer
                         .modal-image3
                             right: 0
                             top: 9rem
+
+    .image-content
+        width: 100%
+        height: 100vh
+        position: fixed
+        
 
     .grid-container 
         /*width: 90vw
@@ -973,17 +1110,19 @@ footer
     .gallery-header p
         height: 70vh
 
+    .grid-container
+        .biografia-grid-content
+            .grid-images
+                width: 42vw
+
+
 @media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
     .logo
         img
             width: 12rem
 
 @media screen and (max-width: variables.$breakpoint-md)
-    .grid-container
-        .biografia-grid-content
-            .grid-images
-                width: 42vw
-
+    
     .fixed-bg-image-container
         .fixed-bg          
             top: -20rem
@@ -1024,6 +1163,10 @@ footer
 
     .gallery-header p
         height: 40vh
+
+    .landpage-animation-box
+        padding: 2rem
+        
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
 

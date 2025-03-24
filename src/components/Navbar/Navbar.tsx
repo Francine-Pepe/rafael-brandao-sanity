@@ -7,14 +7,11 @@ import { Youtube } from "../../icons/Youtube";
 import Logo from "../../icons/Logo";
 import NavbarMobile from "./NavbarMobile";
 import { useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import LanguageFlag from "../LanguageFlag";
 
 function Navbar() {
   const [colorChange, setColorChange] = useState(false);
   const homeUrl = useLocation().pathname;
-
-  const { t, i18n } = useTranslation();
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
@@ -33,7 +30,7 @@ function Navbar() {
           colorChange ? "navbar-container colorChange" : "navbar-container"
         }
         style={{
-          backgroundColor: `${homeUrl === "/" ? "transparent" : "rgb(242, 242, 242"}`,
+          backgroundColor: `${homeUrl === "/" && "transparent" }`,
         }}
       >
         <section className="navigation-logo">
@@ -49,9 +46,9 @@ function Navbar() {
           <LanguageFlag />
         </section>
       </section>
-      <div className="mobile">
+      <section className="mobile">
         <NavbarMobile />
-      </div>
+      </section>
     </>
   );
 }

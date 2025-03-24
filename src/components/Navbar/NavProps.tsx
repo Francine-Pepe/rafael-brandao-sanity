@@ -8,7 +8,7 @@ function NavProps(props: any) {
 
   const { t } = useTranslation();
 
-   return (
+  return (
     <nav className="navlinks-props">
       {(t("nav", { returnObjects: true }) as []).map(
         (item: { name: string; link: string }, index: any) => (
@@ -17,7 +17,7 @@ function NavProps(props: any) {
               <NavLink
                 to={item.link}
                 style={{
-                  color: `${homeUrl === "/" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
+                  color: `${homeUrl === "/" || homeUrl === "/galeria" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
                 }}
               >
                 {item.name}

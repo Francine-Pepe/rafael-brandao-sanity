@@ -72,8 +72,9 @@ function News() {
                   <div className="news-text">
                     <a
                       href={item.link}
-/*                       style={{ display: item.link ? "block" : "none" }}
- */                    >
+                      /*                       style={{ display: item.link ? "block" : "none" }}
+                       */
+                    >
                       <h3>
                         {newsTitle[i18n.language] ||
                           newsTitle?.pt ||
