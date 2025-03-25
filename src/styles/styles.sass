@@ -98,6 +98,7 @@ button, textarea, input
     left: 50%
     transform: translate(-50%, -50%)
     text-transform: uppercase
+    text-align: center
 
     a
         color: variables.$white-font-color
@@ -177,7 +178,7 @@ svg
         width: 100vw
         height: 5rem
         position: absolute
-        top: 4vh
+        top: 5vh
         left: 50%
         transform: translate(-50%, -50%)
         background-color: white
@@ -201,6 +202,9 @@ svg
             position: relative
             top: 5vh
 
+        .navbar-mobile-active
+            @include mixins.flex-column
+            height: 100vh
 
 .language-selector
     position: fixed
@@ -725,7 +729,7 @@ footer
 
 .tab-content-body
     width: 90vw
-    padding: 2rem
+    padding-top: 1rem
     margin-bottom: 2rem
     border-top: 1px solid rgba(32, 0, 15, 0.1)
 
@@ -1031,7 +1035,7 @@ footer
         .agenda-content
             .agenda-information
                 flex-direction: column
-                width: 89vw
+                width: 90vw
                 padding-bottom: 2rem
 
                 img
@@ -1074,7 +1078,10 @@ footer
                 padding: 0
                 .contact-text-container
                     width: inherit
-                    padding: 0 2rem 2rem 2rem 
+                    /* padding: 0 2rem 2rem 2rem */ 
+
+                    p
+                        width: 90vw
 
     .contact-form-container
 
@@ -1086,8 +1093,8 @@ footer
 
     .news-container
         .news-wrapper
-            /*position: unset
             height: 100%
+            padding-top: 0
 
             .news-content
                 @include mixins.flex-column-center-reverse
@@ -1097,7 +1104,7 @@ footer
                     @include mixins.flex-column-center-reverse
 
                 .news-image, .news-text
-                    width: 80vw
+                    width: 90vw
 
                 .news-image    
                     img
@@ -1166,7 +1173,15 @@ footer
 
     .landpage-animation-box
         padding: 2rem
-        
+
+    .navbar-mobile-container
+        .navbar-mobile-content
+            .mobile-logo
+                padding-left: 1rem
+
+            .mobile-menu
+                padding-right: 1rem
+
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
 
