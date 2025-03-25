@@ -88,6 +88,7 @@ i18n
             "Galeria de recordações e trajetória de uma vida musical",
           developedBy: "Desenvolvido por Francine Pêpe",
           rightsReserved: "Todos os direitos reservados",
+          homepageButton: "Cantor e Compositor"
         },
       },
       en: {
@@ -156,6 +157,7 @@ i18n
           galleryText: "Gallery of memories and trajectory of a musical life",
           developedBy: "Developed by Francine Pêpe",
           rightsReserved: "All rights reserved",
+          homepageButton: "Singer and Songwriter"
         },
       },
       de: {
@@ -225,6 +227,7 @@ i18n
             "Galerie der Erinnerungen und des Werdegangs eines musikalischen Lebens",
           developedBy: "Entwickelt von Francine Pêpe",
           rightsReserved: "Alle Rechte vorbehalten",
+          homepageButton: "Sänger und Songwriter"
         },
       },
     },

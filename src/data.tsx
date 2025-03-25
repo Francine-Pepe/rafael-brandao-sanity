@@ -43,7 +43,7 @@ export const Navigation = [
 export const carouselImages = [
   {
     id: 0,
-    image: CarouselImage1,
+    image: CarouselImage6,
   },
   {
     id: 1,
@@ -55,15 +55,11 @@ export const carouselImages = [
   },
   {
     id: 3,
-    image: CarouselImage6,
-  },
-  {
-    id: 4,
     image: CarouselImage4,
   },
   {
-    id: 5,
-    image: CarouselImage3,
+    id: 4,
+    image: CarouselImage1,
   },
 ];
 
