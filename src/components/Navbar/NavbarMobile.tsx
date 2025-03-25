@@ -51,12 +51,12 @@ function NavbarMobile() {
         className={style ? "navbar-mobile changeLinkColor" : "navbar-mobile "}
       >
         {isActive && (
-          <>
+          <div className="navbar-mobile-active">
             <div className="lng-selector-mobile">
               <LanguageSelector />
             </div>
             <NavProps data={Navigation} />
-          </>
+          </div>
         )}
       </div>
     </section>
