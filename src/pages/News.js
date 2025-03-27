@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import client from "../client";
 import { PortableText } from "@portabletext/react";
 import { useTranslation } from "react-i18next";
+import YouTubeComponent from "../components/YouTubeComponent";
 
 function News() {
   const [news, setNews] = useState([]);
@@ -24,7 +25,7 @@ function News() {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const query = `*[_type == "news"] { title, slug, newsTitle, body, link, image {
+      const query = `*[_type == "news"] { title, slug, newsTitle, date, body, link, image {
             asset -> { _id, url },
             alt
           }
@@ -36,6 +37,12 @@ function News() {
     fetchNews();
   }, []);
 
+  const components = {
+    types: {
+      youtube: YouTubeComponent,
+    },
+  };
+
   return (
     <>
       <PageTitle />
@@ -45,6 +52,7 @@ function News() {
           {[...news]
             .slice()
             .reverse()
+            .sort((a, b) => (a.date > b.date ? -1 : 1))
             .map((item) => {
               const newsTitle = item.newsTitle || {};
               const text = item.body || {};
@@ -86,6 +94,7 @@ function News() {
                       value={
                         text[i18n.language] || text?.pt || "No text available"
                       }
+                      components={components}
                     />
                   </div>
                 </div>
