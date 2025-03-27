@@ -26,6 +26,14 @@ export default defineType({
       description: 'Here you can add an external Link to the news.',
     }),
     defineField({
+      name: 'date',
+      title: 'Created at:',
+      type: 'date',
+      options: {
+        dateFormat: 'DD-MM-YYYY',
+      },
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
