@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
-    fallbackLng: "pt",
+    fallbackLng: `${navigator.language}`,
     returnObjects: true,
     lng: "pt",
     resources: {
