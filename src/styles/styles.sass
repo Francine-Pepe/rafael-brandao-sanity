@@ -94,7 +94,7 @@ button, textarea, input
     padding: 2rem 3rem
     position: absolute
     z-index: 2
-    top: 70%
+    top: 90%
     left: 50%
     transform: translate(-50%, -50%)
     text-transform: uppercase
@@ -768,6 +768,7 @@ footer
 
 .news-container
     height: 100%
+    margin: 0 auto
 
     img
         height: 100%
@@ -780,8 +781,36 @@ footer
         padding-top: 2rem
         width: 100%
 
-        .news-content
-            display: flex
+    .news-content
+        width: inherit
+        display: inline-block
+        padding-top: 1rem
+        border-bottom: 1px solid variables.$dark-cherry-color-opacity
+
+        &:nth-child(2n + 1)
+            .news-image
+                float: left
+        
+        .news-image
+            width: 47%
+            float: right 
+            padding: 2rem 2rem 1rem 2rem
+
+            img 
+                width: 100%
+                height: 50vh
+
+        .news-text
+            width: 90vw
+            margin: 0 auto
+            
+
+            p
+                width: 100%
+            
+
+/*         .news-content
+            display: inline-flex
             padding: 1rem 0
             align-items: flex-start
 
@@ -790,26 +819,27 @@ footer
 
             .news-image, .news-text
                 width: 50% 
-                height: auto
                 padding: 2rem
                 z-index: 1
                 top: 0
+                margin-left: auto
+                margin-right: auto
 
             .news-image
+                border: 1px solid red
                 img
                     width: 100%
                     height: 50vh
                     object-fit: cover
                     flex-shrink: 0
-                    shape-outside: circle(50%)
-                    
-
+  
             .news-text
                 border-bottom: 1px solid variables.$dark-cherry-color-opacity
-                margin: 0 2rem
+                margin: 0 1rem
                 height: fit-content
                 border-radius: 0
                 flex: 1
+                border: 1px solid blue  */
 
 /* Animations */
 
@@ -1095,20 +1125,20 @@ footer
         .news-wrapper
             height: 100%
             padding-top: 0
+            display: flex
+            flex-direction: column
+            justify-items: center
 
             .news-content
-                @include mixins.flex-column-center-reverse
-                position: unset
-                
-                &:nth-child(2n + 1)
-                    @include mixins.flex-column-center-reverse
 
                 .news-image, .news-text
-                    width: 90vw
+                    width: auto
 
-                .news-image    
-                    img
-                        width: inherit
+                .news-text
+                    padding: 0 2em
+
+                .news-image  
+                    float: none
 
     .fixed-bg-image-container
         .fixed-bg          
