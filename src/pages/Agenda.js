@@ -37,42 +37,43 @@ function Agenda() {
 
             return (
               <article key={show.slug.current}>
-                <div className="agenda-information animate__fadeInUp ">
-                  <img
-                    src={show.mainImage.asset.url}
-                    alt={show.title}
-                    loading="lazy"
-                  />
-                  <div className="agenda-information-place-time">
-                    <h3>
-                      {eventTitle[i18n.language] ||
-                        eventTitle.pt ||
-                        "No title available"}
-                    </h3>
-                    <div className="agenda-date-time">
-                      <h3>{show.date}</h3> | <h3>{show.eventHour}</h3>
-                    </div>
-                    <PortableText
-                      value={
-                        text[i18n.language] || text.pt || "No text available"
-                      }
-                    />
-
-                    <button style={{ display: show.link ? "block" : "none" }}>
-                      {/* <NavLink to={`/agenda/${show.slug.current}`}>
-                    Ver evento
-                  </NavLink> */}
-                      <NavLink
-                        to={show.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Ticket />
-                        <h4>Tickets</h4>
-                      </NavLink>
-                    </button>
-                  </div>
+              <div className="agenda-information animate__fadeInUp ">
+                <img
+                src={show.mainImage.asset.url}
+                alt={show.title}
+                loading="lazy"
+                />
+                <div className="agenda-information-place-time">
+                <h3>
+                  {eventTitle[navigator.language] ||
+                  eventTitle[i18n.language] ||
+                  eventTitle.pt ||
+                  "No title available"}
+                </h3>
+                <div className="agenda-date-time">
+                  <h3>{show.date}</h3> | <h3>{show.eventHour}</h3>
                 </div>
+                <PortableText
+                  value={
+                  text[navigator.language] ||
+                  text[i18n.language] ||
+                  text.pt ||
+                  "No text available"
+                  }
+                />
+
+                <button style={{ display: show.link ? "block" : "none" }}>
+                  <NavLink
+                  to={show.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >
+                  <Ticket />
+                  <h4>Tickets</h4>
+                  </NavLink>
+                </button>
+                </div>
+              </div>
               </article>
             );
           })}

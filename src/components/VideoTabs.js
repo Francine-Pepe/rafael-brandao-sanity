@@ -60,6 +60,11 @@ export default function VideoTabs() {
     },
   };
 
+  useEffect(() => {
+    const navigatorLanguage = navigator.language || navigator.userLanguage;
+    i18n.changeLanguage(navigatorLanguage.split("-")[0]);
+  }, [i18n]);
+
   return (
     <Box sx={{ width: "100%" }} className="tabs-box-container">
       <Box
@@ -89,8 +94,7 @@ export default function VideoTabs() {
             ".Mui-selected": {
               borderRadius: "5px ",
               border: "none",
-              backgroundColor: "rgba(32, 0, 15, 0.1)",
-              color: "#ffffff",
+              color: "rgb(115, 2, 54)",
             },
             "@media(max-width: 945px)": {
               ".Mui-selected": {
@@ -110,9 +114,13 @@ export default function VideoTabs() {
                   fontFamily: "Jost",
                   fontWeight: "300",
                   color: "rgba(32, 0, 15, 1)",
-                  "&.Mui-selected, &:hover": {
-                    backgroundColor: "rgba(32, 0, 15, 0.1)",
+                  "&.Mui-selected": {
                     color: "rgba(32, 0, 15, 1)",
+                    fontWeight: "600",
+                  },
+                  "&:hover": {
+                    backgroundColor: "rgba(32, 0, 15, 0.1)",
+                    borderRadius: "5px",
                   },
                 }}
               />
@@ -121,12 +129,19 @@ export default function VideoTabs() {
       </Box>
 
       {tabs.map((item, index) => (
-        <CustomTabPanel value={value} index={index} key={index} sx={{padding: 0}}>
+        <CustomTabPanel
+          value={value}
+          index={index}
+          key={index}
+          sx={{ padding: 0 }}
+        >
           <div className="tab-content-body animate__fadeInUp">
-            <PortableText
-              value={item.body[i18n.language] || item.body?.pt}
-              components={components}
-            />
+            {
+              <PortableText
+                value={item.body[i18n.language] || item.body?.pt}
+                components={components}
+              />
+            }
           </div>
         </CustomTabPanel>
       ))}
