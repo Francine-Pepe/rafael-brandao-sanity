@@ -64,19 +64,34 @@ export default defineType({
           name: 'pt',
           title: 'Portuguese',
           type: 'array',
-          of: [{type: 'block'}],
+          of: [
+            {type: 'block'},
+            {
+              type: 'youtube',
+            },
+          ],
         },
         {
           name: 'en',
           title: 'English',
           type: 'array',
-          of: [{type: 'block'}],
+          of: [
+            {type: 'block'},
+            {
+              type: 'youtube',
+            },
+          ],
         },
         {
           name: 'de',
           title: 'German',
           type: 'array',
-          of: [{type: 'block'}],
+          of: [
+            {type: 'block'},
+            {
+              type: 'youtube',
+            },
+          ],
         },
       ],
     },
