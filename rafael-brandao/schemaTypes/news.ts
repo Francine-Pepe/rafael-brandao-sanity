@@ -23,6 +23,7 @@ export default defineType({
       name: 'link',
       title: 'Link',
       type: 'url',
+      description: 'Here you can add an external Link to the news.',
     }),
     defineField({
       name: 'image',
