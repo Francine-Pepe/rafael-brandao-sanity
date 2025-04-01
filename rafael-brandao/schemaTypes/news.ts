@@ -19,37 +19,13 @@ export default defineType({
         maxLength: 96,
       },
     }),
-    {
-      name: 'news_description',
-      title: 'News description',
-      description: 'Here you can describe what News is about',
-      type: 'object',
-      fields: [
-        {
-          name: 'pt',
-          title: 'Portuguese',
-          type: 'array',
-          of: [{type: 'block'}],
-        },
-        {
-          name: 'en',
-          title: 'English',
-          type: 'array',
-          of: [{type: 'block'}],
-        },
-        {
-          name: 'de',
-          title: 'German',
-          type: 'array',
-          of: [{type: 'block'}],
-        },
-      ],
-    },
+
     defineField({
       name: 'link',
       title: 'Link',
       type: 'url',
-      description: 'Here you can add an external Link to the news. Ex: link to the website where this article was published.',
+      description:
+        'Here you can add an external Link to the news. Ex: link to the website where this article was published.',
     }),
     defineField({
       name: 'date',
