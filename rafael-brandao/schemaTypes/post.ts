@@ -19,6 +19,32 @@ export default defineType({
         maxLength: 96,
       },
     }),
+    {
+      name: 'body',
+      title: 'Agenda description',
+      description: 'Here you can describe what Agenda is about',
+      type: 'object',
+      fields: [
+        {
+          name: 'pt',
+          title: 'Portuguese',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+        {
+          name: 'de',
+          title: 'German',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
     defineField({
       name: 'date',
       title: 'Date',
