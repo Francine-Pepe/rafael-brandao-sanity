@@ -30,7 +30,7 @@ function Agenda() {
       <section className="agenda-container container">
         <div className="agenda-content container">
           {shows
-          .sort((a, b) => (a.date > b.date ? -1 : 1))
+          .sort((a, b) => (a.date > b.date ? 1 : -1))
           .map((show) => {
             const eventTitle = show.eventTitle || {};
             const text = show.body || {};
