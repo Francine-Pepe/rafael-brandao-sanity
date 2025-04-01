@@ -20,7 +20,7 @@ export default defineType({
       },
     }),
     {
-      name: 'body',
+      name: 'videos_description',
       title: 'Videos description',
       description: 'Here you can describe what Videos is about',
       type: 'object',

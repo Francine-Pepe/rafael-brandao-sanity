@@ -20,7 +20,7 @@ export default defineType({
       },
     }),
     {
-      name: 'body',
+      name: 'agenda_description',
       title: 'Agenda description',
       description: 'Here you can describe what Agenda is about',
       type: 'object',

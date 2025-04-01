@@ -20,7 +20,7 @@ export default defineType({
       },
     }),
     {
-      name: 'body',
+      name: 'news_description',
       title: 'News description',
       description: 'Here you can describe what News is about',
       type: 'object',
