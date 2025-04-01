@@ -1,5 +1,6 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
+import { Diversity1 } from "@mui/icons-material";
 
 function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body } = props;
@@ -30,6 +31,7 @@ function Modal(props) {
                 className="modal-image2"
                 loading="lazy"
               />
+
               <img
                 src={image3}
                 alt={alt}
