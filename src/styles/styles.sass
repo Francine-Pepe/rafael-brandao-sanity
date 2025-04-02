@@ -537,13 +537,13 @@ footer
             padding: 2rem 
 
             img
-                width: 30%
+                width: 35%
                 height: 50vh
                 object-fit: cover
 
             .agenda-information-place-time
                 @include mixins.flex-column
-                width: 60vw
+                width: 55vw
 
                 p
                     margin-top: 0
@@ -741,13 +741,20 @@ footer
                     color: variables.$main-background-color
                     text-shadow: 2px 2px 2px variables.$dark-cherry-color
 
+.tab-content-body-bg
+    width: 100%
+    margin: 0 auto
+    padding: 0
+    background-color: rgba(160, 129, 143, 0.1)
+    border-top: 1px solid variables.$cherry-color
 
 
-.tab-content-body
-    width: 90vw
-    padding-top: 1rem
-    margin-bottom: 2rem
-    border-top: 1px solid rgba(32, 0, 15, 0.1)
+    .tab-content-body
+        width: 90vw
+        padding-top: 1rem 
+        margin-bottom: 2rem
+        
+
 
 .youtube-embed
     width: 100%
@@ -994,6 +1001,7 @@ footer
             overflow-y: scroll
             height: 80%
             width: 80vw
+            padding: 2rem 2rem 25rem 2rem 
 
             .modal-content-wrap
                 flex-wrap: wrap-reverse
@@ -1086,6 +1094,7 @@ footer
 
                 img
                     width: inherit
+                    height: auto
 
                 .agenda-information-place-time 
                     width: inherit
@@ -1178,11 +1187,7 @@ footer
         img
             width: 12rem
 
-    .agenda-container 
-        .agenda-content 
-            .agenda-information 
-                img
-                    height: 80vh
+
 
 @media screen and (max-width: variables.$breakpoint-md)
     
