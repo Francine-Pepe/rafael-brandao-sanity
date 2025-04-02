@@ -22,8 +22,8 @@ export function Instagram(props: SVGProps<SVGSVGElement>) {
         }}
         className="icon"
         strokeWidth="0.12rem"
-
       >
+        <title>Spotify</title>
         <rect
           width={37}
           height={37}

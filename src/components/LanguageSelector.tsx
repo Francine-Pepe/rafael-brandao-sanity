@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
+import Portuguese from "../assets/FlagPT.png";
+import English from "../assets/FlagEN.png";
+import German from "../assets/FlagDE.png";
 
 const languages = [
-  { code: "pt", language: "PT" },
-  { code: "en", language: "EN" },
-  { code: "de", language: "DE" },
+  { code: "pt", language: Portuguese },
+  { code: "en", language: English },
+  { code: "de", language: German },
 ];
 
 const LanguageSelector = () => {
@@ -29,7 +32,17 @@ const LanguageSelector = () => {
               color: `${homeUrl === "/" ? "rgb(242, 242, 242" : "rgba(32, 0, 15, 1)"}`,
             }}
           >
-            <h3>{lng.language}</h3>
+            {/* <h3>{lng.language}</h3> */}
+            <img
+              src={lng.language}
+              alt={lng.code}
+              style={{
+                width: "2rem",
+                height: "2rem",
+                objectFit: "cover",
+                borderRadius: "5px",
+              }}
+            />
           </button>
         );
       })}

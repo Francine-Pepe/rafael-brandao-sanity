@@ -32,7 +32,7 @@ function ContactForm() {
 
   return (
     <main className="contact-form-container">
-      <form ref={form} onSubmit={sendEmail}>
+      <form ref={form} onSubmit={sendEmail} id="contact-form">
         {(t("contactFormData", { returnObjects: true }) as []).map(
           (item: {
             id: string;
@@ -49,6 +49,7 @@ function ContactForm() {
                 placeholder={item.placeholder}
                 required
                 min="2"
+                id={item.id}
               />
             </div>
           )
