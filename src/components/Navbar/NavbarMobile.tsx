@@ -9,7 +9,6 @@ import LanguageSelector from "../LanguageSelector";
 import { Spotify } from "../../icons/Spotify";
 import { Instagram } from "../../icons/Instagram";
 import { Youtube } from "../../icons/Youtube";
-import LanguageFlag from "../LanguageFlag";
 
 function NavbarMobile() {
   const [isActive, setIsActive] = useState(false);
