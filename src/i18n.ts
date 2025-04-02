@@ -88,7 +88,13 @@ i18n
             "Galeria de recordações e trajetória de uma vida musical",
           developedBy: "Desenvolvido por Francine Pêpe",
           rightsReserved: "Todos os direitos reservados",
-          homepageButton: "Cantor e Compositor"
+          homepageButton: "Cantor e Compositor",
+          pageDescriptionAgenda:
+            "Aqui voce encontrará um pouco mais sobre a minha agenda de shows, eventos e apresentações. Para mais informações, entre em contato.",
+          pageDescriptionVideos:
+            "Aqui você encontrará um pouco mais sobre os meus vídeos, clipes e apresentações. Para mais informações, entre em contato.",
+          pageDescriptionNews:
+            "Aqui você encontrará um pouco mais sobre as minhas notícias, clipes e apresentações. Para mais informações, entre em contato.",
         },
       },
       en: {
@@ -157,7 +163,13 @@ i18n
           galleryText: "Gallery of memories and trajectory of a musical life",
           developedBy: "Developed by Francine Pêpe",
           rightsReserved: "All rights reserved",
-          homepageButton: "Singer and Songwriter"
+          homepageButton: "Singer and Songwriter",
+          pageDescriptionAgenda:
+            "Here you will find a little more about my schedule of shows, events and presentations. For more information, please contact me.",
+          pageDescriptionVideos:
+            "Here you will find a little more about my videos, clips and presentations. For more information, please contact me.",
+          pageDescriptionNews:
+            "Here you will find a little more about my news, clips and presentations. For more information, please contact me.",
         },
       },
       de: {
@@ -188,7 +200,7 @@ i18n
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
-/*             {
+            /*             {
               id: 2,
               text: "Für Shows:",
               link: "mailto:shows@rafa-brandao.com",
@@ -227,7 +239,13 @@ i18n
             "Galerie der Erinnerungen und des Werdegangs eines musikalischen Lebens",
           developedBy: "Entwickelt von Francine Pêpe",
           rightsReserved: "Alle Rechte vorbehalten",
-          homepageButton: "Sänger und Songwriter"
+          homepageButton: "Sänger und Songwriter",
+          pageDescriptionAgenda:
+            "Hier erfahren Sie mehr über meinen Zeitplan für Shows, Veranstaltungen und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
+          pageDescriptionVideos:
+            "Hier erfahren Sie mehr über meine Videos, Clips und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
+          pageDescriptionNews:
+            "Hier finden Sie etwas mehr zu meinen Neuigkeiten, Clips und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
         },
       },
     },
