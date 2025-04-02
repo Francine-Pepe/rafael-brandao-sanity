@@ -12,10 +12,10 @@ function ReturnButton() {
         <path
           fill="none"
           stroke="rgba(32, 0, 15, 1)"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeMiterlimit="10"
+          strokeWidth="2"
           d="m46.196 16.205l-19.392 19.46l19.392 19.46"
         />
       </svg>

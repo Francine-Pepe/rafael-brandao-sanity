@@ -184,6 +184,10 @@ svg
         background-color: white
         z-index: 3
 
+        .mobile-logo, .mobile-menu
+            position: relative
+            top: 0.5rem
+
         .mobile-logo
             padding-left: 2rem
 
@@ -200,7 +204,7 @@ svg
 
         .lng-selector-mobile
             position: relative
-            top: 5vh
+            top: 10vh
             height: auto
 
             hr
@@ -543,8 +547,6 @@ footer
 
                 p
                     margin-top: 0
-                    
-                
 
                 .agenda-date-time
                     @include mixins.gap
@@ -1176,6 +1178,12 @@ footer
         img
             width: 12rem
 
+    .agenda-container 
+        .agenda-content 
+            .agenda-information 
+                img
+                    height: 80vh
+
 @media screen and (max-width: variables.$breakpoint-md)
     
     .fixed-bg-image-container
@@ -1230,6 +1238,9 @@ footer
             .mobile-menu
                 padding-right: 1rem
 
+@media screen and ( max-width: 450px)
+    .navlinks-props
+        gap: 2rem
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
 
@@ -1252,6 +1263,9 @@ footer
     .gallery-header 
         height: 30vh
         padding: 0 1rem
+
+    .navlinks-props
+        gap: 1rem
 
         
     
