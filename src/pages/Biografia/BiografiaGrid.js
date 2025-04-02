@@ -6,7 +6,6 @@ import Text from "../../components/Text";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import { useTranslation } from "react-i18next";
 
-
 function BiografiaGrid() {
   const { t, i18n } = useTranslation();
   const [biografias, setBiografias] = useState([]);
@@ -38,6 +37,7 @@ function BiografiaGrid() {
     <>
       <PageTitle />
       <Text />
+      
       <section className="grid-container container">
         {biografias
           .sort((a, b) => (a.datas > b.datas ? 1 : -1))
@@ -49,7 +49,7 @@ function BiografiaGrid() {
               >
                 <AnimationOnScroll animateIn="animate__fadeInUp ">
                   <div className="grid-images-text">
-                    <h2>{biografia.title}</h2> 
+                    <h2>{biografia.title}</h2>
                   </div>{" "}
                   <div className="grid-images ">
                     <div className="grid-image-country">

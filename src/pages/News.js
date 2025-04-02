@@ -9,6 +9,7 @@ import client from "../client";
 import { PortableText } from "@portabletext/react";
 import { useTranslation } from "react-i18next";
 import YouTubeComponent from "../components/YouTubeComponent";
+import PageDescription from "../components/PageDescription";
 
 function News() {
   const [news, setNews] = useState([]);
@@ -46,6 +47,7 @@ function News() {
   return (
     <>
       <PageTitle />
+      <PageDescription data={t("pageDescriptionNews")} />
       <section className="news-container container">
         {/* <img src={TextBg} alt="Text background" /> */}
         <div className="news-wrapper">
