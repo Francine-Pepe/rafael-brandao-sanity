@@ -6,6 +6,10 @@ import { Navigation } from "../../data";
 import Logo from "../../icons/Logo";
 import { useLocation } from "react-router-dom";
 import LanguageSelector from "../LanguageSelector";
+import { Spotify } from "../../icons/Spotify";
+import { Instagram } from "../../icons/Instagram";
+import { Youtube } from "../../icons/Youtube";
+import LanguageFlag from "../LanguageFlag";
 
 function NavbarMobile() {
   const [isActive, setIsActive] = useState(false);
@@ -54,8 +58,14 @@ function NavbarMobile() {
           <div className="navbar-mobile-active">
             <div className="lng-selector-mobile">
               <LanguageSelector />
+              <NavProps data={Navigation} />
+              <hr />
+              <div className="social-media-mobile">
+                <Spotify />
+                <Instagram />
+                <Youtube />
+              </div>
             </div>
-            <NavProps data={Navigation} />
           </div>
         )}
       </div>
