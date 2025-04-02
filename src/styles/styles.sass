@@ -178,7 +178,7 @@ svg
         width: 100vw
         height: 5rem
         position: absolute
-        top: 5vh
+        top: 4vh
         left: 50%
         transform: translate(-50%, -50%)
         background-color: white
@@ -201,6 +201,16 @@ svg
         .lng-selector-mobile
             position: relative
             top: 5vh
+            height: auto
+
+            hr
+                width: 50%
+
+            .social-media-mobile
+                @include mixins.flex-space-evenly
+                width: 50%
+                padding: 2rem
+                margin: 0 auto
 
         .navbar-mobile-active
             @include mixins.flex-column
@@ -1061,8 +1071,8 @@ footer
 
     .navlinks-props
         @include mixins.flex-column-center
-        gap: 3rem
-        height: 100vh
+        gap: 4rem
+        height: 100%
 
     .agenda-container, .grid-container
         /*@include mixins.smaller-padding-top
@@ -1155,6 +1165,10 @@ footer
         .biografia-grid-content
             .grid-images
                 width: 42vw
+
+    .navbar-mobile-container
+        .navbar-mobile-content
+            top: 3vh
 
 
 @media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
