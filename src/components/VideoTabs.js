@@ -8,6 +8,7 @@ import { PortableText } from "@portabletext/react";
 import ImageComponent from "./ImageComponent";
 import YouTubeComponent from "./YouTubeComponent";
 import { useTranslation } from "react-i18next";
+import { Divider } from "@mui/material";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -20,7 +21,7 @@ function CustomTabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 2 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: "1rem 0 0 0" }}>{children}</Box>}
     </div>
   );
 }
@@ -72,6 +73,7 @@ export default function VideoTabs() {
           borderBottom: "none",
           borderColor: "rgb(115, 2, 54)",
           paddingTop: "2rem",
+
           "@media(max-width: 945px)": {
             borderBottom: "none",
           },
@@ -133,15 +135,18 @@ export default function VideoTabs() {
           value={value}
           index={index}
           key={index}
-          sx={{ padding: 0 }}
+          
         >
-          <div className="tab-content-body animate__fadeInUp">
-            {
-              <PortableText
-                value={item.body[i18n.language] || item.body?.pt}
-                components={components}
-              />
-            }
+          <div className="tab-content-body-bg">
+            <div className="tab-content-body animate__fadeInUp">
+              {
+                <PortableText
+                  value={item.body[i18n.language] || item.body?.pt}
+                  components={components}
+                />
+              }
+              
+            </div>
           </div>
         </CustomTabPanel>
       ))}
