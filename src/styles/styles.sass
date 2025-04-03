@@ -363,7 +363,7 @@ footer
         background-color: variables.$main-background-color
         border-radius: 15px
         height: auto
-        padding: 2rem 2rem 8rem 2rem 
+        padding: 2rem 
         overflow-y: scroll
         position: relative
         z-index: 100
@@ -387,33 +387,38 @@ footer
 
 
             .grid-modal-images
-                position: relative
-                width: 50vw
-
-
+                /* position: relative */
+                @include mixins.flex-wrap-center
+                width: 100%
+                gap: 2rem
+                
             img
-                width: 20vw
+                width: 45%
                 height: auto
                 -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
                 box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
 
-            .modal-image1
-                position: absolute
-                left: 0
+                .modal-image1, .modal-image2, .modal-image3
+                    width: 50%
+                    height: auto
 
-            .modal-image2
+/*             .modal-image1
+                position: absolute
+                left: 0 */
+
+/*             .modal-image2
                 max-width: 25vw
                 position: absolute
                 left: 4rem
                 top: 16rem
-                z-index: 2
+                z-index: 2 */
                 
 
-            .modal-image3
+/*             .modal-image3
                 max-width: 27vw
                 position: absolute
                 right: 4rem
-                top: 5rem
+                top: 5rem */
 .lightbox-news
     .yarl__navigation_next, .yarl__navigation_prev
         display: none
@@ -998,12 +1003,16 @@ footer
             .footer-icons
                 width: 40vw
 
+    .image-content
+        width: 100%
+        height: 100vh
+        position: fixed
+
     .modal
         .modal-content 
             overflow-y: scroll
             height: 80%
             width: 80vw
-            padding: 2rem 2rem 25rem 2rem 
 
             .modal-content-wrap
                 flex-wrap: wrap-reverse
@@ -1011,57 +1020,42 @@ footer
 
                 .modal-image, .modal-text
                     width: 100%
+                    padding: 0
 
                     .grid-modal-images
                         display: flex
                         justify-content: center
                         position: relative
                         width: inherit
+
+                        .modal-image1, .modal-image2, .modal-image3
+                            width: 47%
+                            height: auto
                         
 
-                        .modal-image1, .modal-image2, .modal-image3 
+/*                         .modal-image1, .modal-image2, .modal-image3 
                             position: absolute
 
                             img
-                            width: 50vw
+                            width: 50vw */
 
-                        .modal-image1
+/*                         .modal-image1
                             left: 0
-                            top: 0
+                            top: 0 */
 
-                        .modal-image2
+/*                         .modal-image2
                             left: 4rem
                             top: 20rem
-                            z-index: 2
+                            z-index: 2 */
 
-                        .modal-image3
+/*                         .modal-image3
                             right: 0
-                            top: 9rem
+                            top: 9rem */
 
-    .image-content
-        width: 100%
-        height: 100vh
-        position: fixed
+
         
 
-    .grid-container 
-        /*width: 90vw
 
-    /* .page-title-container
-        top: 10vh
-        left: 1%
-
-        /*.title
-            transform: none
-
-            /*.page-title-bottom-box
-                position: absolute
-                width: 12rem
-                height: 0.1rem
-                background-color: variables.$cherry-color
-                z-index: -1
-                left: 55%
-                top: 3.2%
 
 
 @media screen and (max-width: variables.$breakpoint-lg)
@@ -1203,22 +1197,21 @@ footer
     .gallery-header p
         height: 50vh
 
+    .modal
+        .modal-content 
+            .modal-content-wrap
+                .modal-image, .modal-text
+                    .grid-modal-images
+                        .modal-image1, .modal-image2, .modal-image3
+                            width: inherit
+                            height: auto
+
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
         img
             width: 40vw
 
-    .modal-content 
-        .modal-content-wrap
-            .modal-image, .modal-text
-                .grid-modal-images
-                    .modal-image2
-                        top: 12rem
-                        left: 2rem
 
-                    .modal-image3
-                        right: 0
-                        top: 6rem
 
     .youtube-embed
         padding: 0.5rem 0
@@ -1253,19 +1246,6 @@ footer
         gap: 2rem
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
-
-    .modal-content 
-        .modal-content-wrap
-            .modal-image, .modal-text
-                .grid-modal-images
-                    .modal-image2
-                        top: 12rem
-                        left: 2rem
-
-                    .modal-image3
-                        right: 0
-                        top: 6rem
-
     .fixed-bg-image-container
         .fixed-bg          
             top: -28rem
