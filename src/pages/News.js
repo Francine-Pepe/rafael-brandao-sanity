@@ -10,11 +10,22 @@ import { PortableText } from "@portabletext/react";
 import { useTranslation } from "react-i18next";
 import YouTubeComponent from "../components/YouTubeComponent";
 import PageDescription from "../components/PageDescription";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 function News() {
   const [news, setNews] = useState([]);
   const [open, setOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const [animationDuration, setAnimationDuration] = useState(500);
+  const [maxZoomPixelRatio, setMaxZoomPixelRatio] = useState(1);
+  const [zoomInMultiplier, setZoomInMultiplier] = useState(2);
+  const [doubleTapDelay, setDoubleTapDelay] = useState(300);
+  const [doubleClickDelay, setDoubleClickDelay] = useState(300);
+  const [doubleClickMaxStops, setDoubleClickMaxStops] = useState(2);
+  const [keyboardMoveDistance, setKeyboardMoveDistance] = useState(50);
+  const [wheelZoomDistanceFactor, setWheelZoomDistanceFactor] = useState(100);
+  const [pinchZoomDistanceFactor, setPinchZoomDistanceFactor] = useState(100);
+  const [scrollToZoom, setScrollToZoom] = useState(false);
 
   const handleClick = (index) => {
     setOpen(!open && index);
@@ -68,6 +79,19 @@ function News() {
                     <img src={item.image.asset.url} alt={item.slug} />
                     {open === item.slug && (
                       <Lightbox
+                        animation={{ zoom: animationDuration }}
+                        plugins={[Zoom]}
+                        zoom={{
+                          maxZoomPixelRatio,
+                          zoomInMultiplier,
+                          doubleTapDelay,
+                          doubleClickDelay,
+                          doubleClickMaxStops,
+                          keyboardMoveDistance,
+                          wheelZoomDistanceFactor,
+                          pinchZoomDistanceFactor,
+                          scrollToZoom,
+                        }}
                         styles={{
                           container: { backgroundColor: "rgba(0, 0, 0, .9)" },
                         }}
@@ -87,7 +111,7 @@ function News() {
                       <h3>
                         {newsTitle[i18n.language] ||
                           newsTitle?.pt ||
-                          "No title available"}
+                          ""}
                       </h3>
                     </a>
 

@@ -38,12 +38,6 @@ i18n
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
-            /*             {
-              id: 2,
-              text: "Para shows:",
-              link: "mailto:shows@rafa-brandao.com",
-              linkText: "shows@rafa-brandao.com",
-            }, */
           ],
           contactFormData: [
             {
@@ -104,7 +98,7 @@ i18n
               link: "/news",
             },
             {
-              name: "Agenda",
+              name: "Upcoming",
               link: "/agenda",
             },
             { name: "Gallery", link: "/galeria" },
@@ -122,12 +116,6 @@ i18n
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
-            /*             {
-              id: 2,
-              text: "For shows:",
-              link: "mailto:shows@rafa-brandao.com",
-              linkText: "shows@rafa-brandao.com",
-            }, */
           ],
           contactFormData: [
             {
@@ -179,7 +167,7 @@ i18n
               link: "/news",
             },
             {
-              name: "Agenda",
+              name: "Konzerte",
               link: "/agenda",
             },
             { name: "Galerie", link: "/galeria" },
