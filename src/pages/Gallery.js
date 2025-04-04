@@ -1,8 +1,10 @@
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import client from "../client";
 import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+
 import "yet-another-react-lightbox/styles.css";
 import FixedImage from "../components/FixedImage";
 import bgImage from "../assets/_RAF0401.webp";
@@ -13,7 +15,16 @@ export default function ImageMasonry() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(-1);
   const { t } = useTranslation();
-
+  const [animationDuration, setAnimationDuration] = useState(500);
+  const [maxZoomPixelRatio, setMaxZoomPixelRatio] = useState(1);
+  const [zoomInMultiplier, setZoomInMultiplier] = useState(2);
+  const [doubleTapDelay, setDoubleTapDelay] = useState(300);
+  const [doubleClickDelay, setDoubleClickDelay] = useState(300);
+  const [doubleClickMaxStops, setDoubleClickMaxStops] = useState(2);
+  const [keyboardMoveDistance, setKeyboardMoveDistance] = useState(50);
+  const [wheelZoomDistanceFactor, setWheelZoomDistanceFactor] = useState(100);
+  const [pinchZoomDistanceFactor, setPinchZoomDistanceFactor] = useState(100);
+  const [scrollToZoom, setScrollToZoom] = useState(false);
   const handleClick = (itemIndex) => {
     setOpen(true);
     setIndex(itemIndex);
@@ -106,6 +117,19 @@ export default function ImageMasonry() {
               description: image.description,
             }))
           )}
+          animation={{ zoom: animationDuration }}
+          plugins={[Zoom]}
+          zoom={{
+            maxZoomPixelRatio,
+            zoomInMultiplier,
+            doubleTapDelay,
+            doubleClickDelay,
+            doubleClickMaxStops,
+            keyboardMoveDistance,
+            wheelZoomDistanceFactor,
+            pinchZoomDistanceFactor,
+            scrollToZoom,
+          }}
           styles={{ container: { backgroundColor: "rgba(0, 0, 0, .9)" } }}
         />
       )}
