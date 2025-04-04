@@ -1,14 +1,16 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
-import { Diversity1 } from "@mui/icons-material";
+import { motion } from "motion/react";
+import { useRef } from "react";
 
 function Modal(props) {
-  const { slug, datas, image1, image2, image3, alt, body } = props;
+  const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
+  const scrollRef = useRef(null);
 
   return (
     <section className="modal">
       <div key={slug} className="modal-content " aria-modal="true">
-        <div className="modal-close-button">
+        <div className="modal-close-button" onClick={onClose}>
           <CloseMenu
             style={{
               filter:
