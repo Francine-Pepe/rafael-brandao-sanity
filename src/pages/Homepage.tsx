@@ -1,4 +1,8 @@
-import { carouselImages, carouselImagesMobile } from "../data";
+import {
+  carouselImages,
+  carouselImagesIpad,
+  carouselImagesMobile,
+} from "../data";
 import Carousel from "../components/Carousel";
 import LandpageAnimation from "../components/LandpageAnimation";
 import { useViewport } from "react-viewport-hooks";
@@ -9,8 +13,10 @@ function Homepage() {
     <section className="homepage-container container">
       <div className="carousel-in-homepage">
         <LandpageAnimation />
-        {vw > 768 ? (
+        {vw > 1024 ? (
           <Carousel data={carouselImages} />
+        ) : vw > 768 ? (
+          <Carousel data={carouselImagesIpad} />
         ) : (
           <Carousel data={carouselImagesMobile} />
         )}
