@@ -1,8 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
-/* import RafaLogo from "../assets/rafa-logo-blue.svg"; */
-/* import RafaLogo from "../assets/rafa-logo-blue2.svg"; */
-import RafaLogo from "../assets/rafa-logo-cherry.svg";
-import RafaLogoStroke from "../assets/rafa-logo-cherry-noRect.svg";
+import RafaLogo from "../assets/Rafa-logo.svg";
+import RafaLogoCherry from "../assets/Rafa-logo-cherry_.svg";
+/* import RafaLogoStroke from "../assets/rafa-logo-cherry-noRect.svg"; */
 
 function Logo(props: any) {
   const homeUrl = useLocation().pathname;
@@ -14,7 +13,7 @@ function Logo(props: any) {
         {homeUrl === "/" ? (
           <img src={RafaLogo} alt="Rafa Brandao logo" />
         ) : (
-          <img src={RafaLogoStroke} alt="Rafa Brandao logo" style={style} />
+          <img src={RafaLogoCherry} alt="Rafa Brandao logo" />
         )}
       </NavLink>
     </div>
