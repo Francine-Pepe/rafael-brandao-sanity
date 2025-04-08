@@ -4,7 +4,7 @@ import CarouselImage4 from "../src/assets/_RAF0401.webp";
 import CarouselImage5 from "../src/assets/the band.webp";
 import CarouselImage6 from "../src/assets/rafa-carousel1.webp";
 import CarouselImage3 from "../src/assets/rafa-carousel1-mobile.webp";
-import CarouselImage7 from "../src/assets/rafa-carousel1-mobile.webp";
+import CarouselImage7 from "../src/assets/rafa-carousel-ipad.webp";
 import WhereListen from "./components/WhereListen";
 import FooterContact from "./pages/Footer/FooterContact";
 
