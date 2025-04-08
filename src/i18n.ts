@@ -34,7 +34,7 @@ i18n
           contactBox: [
             {
               id: 1,
-              text: "Está planejando um evento e procura uma apresentação musical única e cheia de energia? Gostaria de receber um orçamento ou mais informações? Entre em contato usando o formulário de contato ou diretamente por e-mail:",
+              text: "Está planejando um evento, uma festa e procura uma apresentação musical única e cheia de energia? Gostaria de receber um orçamento e/ou mais informações sobre o show do artista? Entre em contato usando o formulário de contato ou diretamente por e-mail:",
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
@@ -81,9 +81,9 @@ i18n
           rightsReserved: "Todos os direitos reservados",
           homepageButton: "Cantor e Compositor",
           pageDescriptionAgenda:
-            "Aqui voce encontrará um pouco mais sobre a minha agenda de shows, eventos e apresentações. Para mais informações, entre em contato.",
+            "Aqui você encontrará todos os próximos shows de Rafa Brandão,  em todos os formatos em que o artista atua: voz e violão, duo, trio ou banda. Informações adicionais como endereço, horário e venda de tickets também estarão disponíveis.",
           pageDescriptionVideos:
-            "Aqui você encontrará um pouco mais sobre os meus vídeos, clipes e apresentações. Para mais informações, entre em contato.",
+            "Nesta seção você encontra os vídeos que apresentam os trabalhos de Rafa Brandão em seus principais formatos: voz e violão, duo e com sua banda. Além disso, em “Trabalhos Anteriores”, disponibilizamos uma seleção de vídeos de bandas como Radicais Livres e Vitrine, as bandas cariocas que marcaram a carreira de Rafa no Rio de Janeiro, além de reportagens e entrevistas.",
           pageDescriptionNews:
             "Aqui você encontrará um pouco mais sobre as minhas notícias, clipes e apresentações. Para mais informações, entre em contato.",
         },
@@ -112,7 +112,7 @@ i18n
           contactBox: [
             {
               id: 1,
-              text: "Are you planning an event and looking for a unique and energetic musical performance? Would you like a quote or more information? Get in touch using the contact form or directly by e-mail:",
+              text: "Planning an event or party and looking for a unique and high-energy musical performance? Would you like to receive a quote and/or more information about the artist’s show? Get in touch using the contact form or directly via email:",
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
@@ -145,14 +145,15 @@ i18n
           ],
           message: "Message:",
           send: "Send",
-          galleryText: "Gallery of memories and trajectory of a musical life",
+          galleryText:
+            "A gallery of memories and the journey of a musical life",
           developedBy: "Developed by Francine Pêpe",
           rightsReserved: "All rights reserved",
           homepageButton: "Singer and Songwriter",
           pageDescriptionAgenda:
-            "Here you will find a little more about my schedule of shows, events and presentations. For more information, please contact me.",
+            "Here you will find all upcoming shows by Rafa Brandão, in all the formats in which the artist performs: voice and acoustic guitar, duo, trio, or full band. Additional information such as venue address, time, and ticket sales will also be available.",
           pageDescriptionVideos:
-            "Here you will find a little more about my videos, clips and presentations. For more information, please contact me.",
+            "In this section, you will find videos showcasing Rafa Brandão’s work in his main formats: voice and acoustic guitar, duo, and with his band. Additionally, under “Previous Work,” we offer a selection of videos from bands such as Radicais Livres and Vitrine — two Rio de Janeiro-based bands that marked important moments in Rafa’s career — as well as interviews and media features.",
           pageDescriptionNews:
             "Here you will find a little more about my news, clips and presentations. For more information, please contact me.",
         },
@@ -182,7 +183,7 @@ i18n
           contactBox: [
             {
               id: 1,
-              text: "Sie planen eine Veranstaltung und sind auf der Suche nach einer einzigartigen und energiegeladenen musikalischen Darbietung? Möchten Sie ein Angebot oder weitere Informationen? Kontaktieren Sie uns über das Kontaktformular oder direkt per E-Mail:",
+              text: "Planen Sie eine Veranstaltung oder eine Party und suchen nach einer einzigartigen und energiegeladenen musikalischen Darbietung? Möchten Sie ein Angebot erhalten und/oder weitere Informationen über die Show des Künstlers? Dann nehmen Sie Kontakt über das Formular oder direkt per E-Mail auf:",
               link: "mailto:contato@rafa-brandao.com",
               linkText: "contato@rafa-brandao.com",
             },
@@ -222,14 +223,14 @@ i18n
           message: "Nachricht:",
           send: "Senden",
           galleryText:
-            "Galerie der Erinnerungen und des Werdegangs eines musikalischen Lebens",
+            "Galerie der Erinnerungen und der Reise eines musikalischen Lebens",
           developedBy: "Entwickelt von Francine Pêpe",
           rightsReserved: "Alle Rechte vorbehalten",
           homepageButton: "Sänger und Songwriter",
           pageDescriptionAgenda:
-            "Hier erfahren Sie mehr über meinen Zeitplan für Shows, Veranstaltungen und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
+            "Hier findest du alle kommenden Auftritte von Rafa Brandão, in allen Formaten, in denen der Künstler auftritt: Solo mit Gesang und Gitarre, im Duo, Trio oder mit kompletter Band. Zusätzliche Informationen wie Adresse, Uhrzeit und Ticketverkauf werden ebenfalls verfügbar sein.",
           pageDescriptionVideos:
-            "Hier erfahren Sie mehr über meine Videos, Clips und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
+            "In diesem Abschnitt finden Sie Videos, die die Arbeiten von Rafa Brandão in seinen wichtigsten Formationen präsentieren: Gesang und Akustikgitarre, im Duo sowie mit seiner Band. Außerdem stellen wir unter „Frühere Arbeiten“ eine Auswahl an Videos von Bands wie Radicais Livres und Vitrine zur Verfügung – zwei Bands aus Rio de Janeiro, die Rafa Brandãos Karriere entscheidend geprägt haben – sowie Reportagen und Interviews.",
           pageDescriptionNews:
             "Hier finden Sie etwas mehr zu meinen Neuigkeiten, Clips und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
         },
