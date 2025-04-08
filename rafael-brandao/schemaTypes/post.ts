@@ -19,6 +19,30 @@ export default defineType({
         maxLength: 96,
       },
     }),
+    {
+      name: 'eventDate',
+      type: 'object',
+      title: 'Event Date',
+      description:
+        'Written date of the event in different languages. Ex.: "Todas as quartas-feiras no Xodó." ',
+      fields: [
+        {
+          name: 'pt',
+          type: 'string',
+          title: 'Portuguese',
+        },
+        {
+          name: 'en',
+          type: 'string',
+          title: 'English',
+        },
+        {
+          name: 'de',
+          type: 'string',
+          title: 'German',
+        },
+      ],
+    },
 
     defineField({
       name: 'date',
