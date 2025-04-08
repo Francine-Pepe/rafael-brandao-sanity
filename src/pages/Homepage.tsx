@@ -13,7 +13,7 @@ function Homepage() {
     <section className="homepage-container container">
       <div className="carousel-in-homepage">
         <LandpageAnimation />
-        {vw > 1024 ? (
+        {vw > 1080 ? (
           <Carousel data={carouselImages} />
         ) : vw > 768 ? (
           <Carousel data={carouselImagesIpad} />
