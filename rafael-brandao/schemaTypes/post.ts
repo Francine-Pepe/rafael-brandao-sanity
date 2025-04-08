@@ -47,7 +47,7 @@ export default defineType({
     defineField({
       name: 'date',
       title: 'Date',
-      type: 'date || string',
+      type: 'date',
       options: {
         dateFormat: 'DD-MM-YYYY',
       },
