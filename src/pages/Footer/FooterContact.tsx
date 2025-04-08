@@ -6,7 +6,6 @@ function FooterContact() {
   return (
     <div className="contact-container">
       <Email />
-      <Whatsapp />
     </div>
   );
 }
