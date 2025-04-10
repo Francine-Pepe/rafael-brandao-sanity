@@ -35,7 +35,7 @@ i18n
             {
               id: 1,
               text: "Está planejando um evento, uma festa e procura uma apresentação musical única e cheia de energia? Gostaria de receber um orçamento e/ou mais informações sobre o show do artista? Entre em contato usando o formulário de contato ou diretamente por e-mail:",
-              link: "mailto:contato@rafa-brandao.com",
+              link: "mailto:contato@rafa-brandao.com? bcc=rafabrando@yahoo.com",
               linkText: "contato@rafa-brandao.com",
             },
           ],
@@ -113,7 +113,7 @@ i18n
             {
               id: 1,
               text: "Planning an event or party and looking for a unique and high-energy musical performance? Would you like to receive a quote and/or more information about the artist’s show? Get in touch using the contact form or directly via email:",
-              link: "mailto:contato@rafa-brandao.com",
+              link: "mailto:contato@rafa-brandao.com? bcc=rafabrando@yahoo.com",
               linkText: "contato@rafa-brandao.com",
             },
           ],
@@ -184,7 +184,7 @@ i18n
             {
               id: 1,
               text: "Planen Sie eine Veranstaltung oder eine Party und suchen nach einer einzigartigen und energiegeladenen musikalischen Darbietung? Möchten Sie ein Angebot erhalten und/oder weitere Informationen über die Show des Künstlers? Dann nehmen Sie Kontakt über das Formular oder direkt per E-Mail auf:",
-              link: "mailto:contato@rafa-brandao.com",
+              link: "mailto:contato@rafa-brandao.com? bcc=rafabrando@yahoo.com",
               linkText: "contato@rafa-brandao.com",
             },
             /*             {
