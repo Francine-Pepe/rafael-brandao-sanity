@@ -8,7 +8,6 @@ import { PortableText } from "@portabletext/react";
 import ImageComponent from "./ImageComponent";
 import YouTubeComponent from "./YouTubeComponent";
 import { useTranslation } from "react-i18next";
-import { Divider } from "@mui/material";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

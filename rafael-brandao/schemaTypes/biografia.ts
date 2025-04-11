@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {baseLanguage} from './textTranslation'
 
 export default defineType({
   name: 'biografia',
