@@ -9,11 +9,13 @@ import LanguageSelector from "../LanguageSelector";
 import { Spotify } from "../../icons/Spotify";
 import { Instagram } from "../../icons/Instagram";
 import { Youtube } from "../../icons/Youtube";
+import { useTranslation } from "react-i18next";
 
 function NavbarMobile() {
   const [isActive, setIsActive] = useState(false);
   const [style, setStyle] = useState("#F2F2F2");
   const homeUrl = useLocation().pathname;
+  const { t } = useTranslation();
 
   function toggle() {
     setIsActive((isActive) => !isActive);
@@ -61,7 +63,7 @@ function NavbarMobile() {
           <div className="navbar-mobile-active">
             <div className="lng-selector-mobile">
               <LanguageSelector />
-              <NavProps data={Navigation} />
+              <NavProps data={t("nav", { returnObjects: true }) as []} />
               <hr />
               <div className="social-media-mobile">
                 <Spotify />
