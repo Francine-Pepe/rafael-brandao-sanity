@@ -63,7 +63,12 @@ function NavbarMobile() {
           <div className="navbar-mobile-active">
             <div className="lng-selector-mobile">
               <LanguageSelector />
-              <NavProps data={t("nav", { returnObjects: true }) as []} />
+              <NavProps
+                data={t("nav", { returnObjects: true }) as []}
+                style={{
+                  color: `${homeUrl === "/" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
+                }}
+              />
               <hr />
               <div className="social-media-mobile">
                 <Spotify />
