@@ -31,6 +31,16 @@ i18n
             { name: "Biografia", link: "/biografia" },
             { name: "Contato", link: "/contato" },
           ],
+          navFooter: [
+            {
+              name: "Proteção de dados",
+              link: "/datenschutz",
+            },
+            {
+              name: "Aviso Legal",
+              link: "/impressum",
+            },
+          ],
           contactBox: [
             {
               id: 1,
@@ -85,7 +95,7 @@ i18n
           pageDescriptionVideos:
             "Nesta seção você encontra os vídeos que apresentam os trabalhos de Rafa Brandão em seus principais formatos: voz e violão, duo e com sua banda. Além disso, em “Trabalhos Anteriores”, disponibilizamos uma seleção de vídeos de bandas como Radicais Livres e Vitrine, as bandas cariocas que marcaram a carreira de Rafa no Rio de Janeiro, além de reportagens e entrevistas.",
           pageDescriptionNews:
-            "Aqui você encontrará um pouco mais sobre as minhas notícias, clipes e apresentações. Para mais informações, entre em contato.",
+            "Aqui você encontrará todas as novidades, entrevistas, reportagens e videos mais recentes sobre a carreira de Rafa Brandão. ",
         },
       },
       en: {
@@ -107,6 +117,16 @@ i18n
             {
               name: "Contact",
               link: "/contato",
+            },
+          ],
+          navFooter: [
+            {
+              name: "Data protection",
+              link: "/datenschutz",
+            },
+            {
+              name: "Imprint",
+              link: "/impressum",
             },
           ],
           contactBox: [
@@ -155,7 +175,7 @@ i18n
           pageDescriptionVideos:
             "In this section, you will find videos showcasing Rafa Brandão’s work in his main formats: voice and acoustic guitar, duo, and with his band. Additionally, under “Previous Work,” we offer a selection of videos from bands such as Radicais Livres and Vitrine — two Rio de Janeiro-based bands that marked important moments in Rafa’s career — as well as interviews and media features.",
           pageDescriptionNews:
-            "Here you will find a little more about my news, clips and presentations. For more information, please contact me.",
+            "Here you will find all the latest news, interviews, reports, and videos about Rafa Brandão's career.",
         },
       },
       de: {
@@ -178,6 +198,16 @@ i18n
             {
               name: "Kontakt",
               link: "/contato",
+            },
+          ],
+          navFooter: [
+            {
+              name: "Datenschutz",
+              link: "/datenschutz",
+            },
+            {
+              name: "Impressum",
+              link: "/impressum",
             },
           ],
           contactBox: [
@@ -226,7 +256,7 @@ i18n
           pageDescriptionVideos:
             "In diesem Abschnitt finden Sie Videos, die die Arbeiten von Rafa Brandão in seinen wichtigsten Formationen präsentieren: Gesang und Akustikgitarre, im Duo sowie mit seiner Band. Außerdem stellen wir unter „Frühere Arbeiten“ eine Auswahl an Videos von Bands wie Radicais Livres und Vitrine zur Verfügung – zwei Bands aus Rio de Janeiro, die Rafa Brandãos Karriere entscheidend geprägt haben – sowie Reportagen und Interviews.",
           pageDescriptionNews:
-            "Hier finden Sie etwas mehr zu meinen Neuigkeiten, Clips und Präsentationen. Für weitere Informationen kontaktieren Sie uns bitte.",
+            "Hier findest du alle Neuigkeiten, Interviews, Reportagen und die neuesten Videos über die Karriere von Rafa Brandão.",
         },
       },
     },
