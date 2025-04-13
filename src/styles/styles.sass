@@ -282,6 +282,10 @@ footer
     background-color: variables.$dark-cherry-color
     color: variables.$white-font-color
     padding-bottom: 1rem
+
+    .navlinks-props
+        @include mixins.gap-center
+        gap: 5rem
     
     a
         font-size: 0.7rem
@@ -1204,6 +1208,10 @@ footer
     .youtube-embed
         iframe
             width: inherit
+
+.navbar-footer-container 
+    .navlinks-props
+        gap: 0.8rem
 
 @media screen and (min-width: variables.$breakpoint-sm) and (max-width: variables.$breakpoint-lg)
     .logo
