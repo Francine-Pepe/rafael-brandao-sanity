@@ -34,6 +34,14 @@ ul
                 transition: 0.5s ease-in
                 color: variables.$dark-cherry-color
 
+.nav-links
+
+
+    .cherry-background
+        background-color: variables.$cherry-color
+
+    .transparent-background
+        background-color: transparent
 
 .btn-container 
     @include mixins.flex-center
@@ -269,6 +277,16 @@ svg
 footer
     margin-top: auto
 
+.navbar-footer-container
+    @include mixins.flex-center
+    background-color: variables.$dark-cherry-color
+    color: variables.$white-font-color
+    padding-bottom: 1rem
+    
+    a
+        font-size: 0.7rem
+
+
 .footer-container, .copyright-container
     @include mixins.flex-space-between
     background-color: variables.$dark-cherry-color
@@ -289,6 +307,11 @@ footer
             @include mixins.flex-space-between
             width: 30vw
             padding-bottom: 1.5rem 
+
+
+
+.nav-footer
+    padding: 2rem 3rem
 
 
 .listen-container, .contact-container

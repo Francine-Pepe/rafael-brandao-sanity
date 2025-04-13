@@ -17,6 +17,8 @@ import { useTranslation } from "react-i18next";
 import "./i18n";
 import { useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
+import Datenschutz from "./pages/Datenschutz";
+import Impressum from "./pages/Impressum";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -38,6 +40,8 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/videos" element={<Videos />} />
             <Route path="/contato" element={<Contato />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
+            <Route path="/impressum" element={<Impressum />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </ScrollToTop>

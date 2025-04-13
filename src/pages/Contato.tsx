@@ -11,7 +11,8 @@ function Contato() {
 
   return (
     <section className="contact-container">
-      <PageTitle />
+      <PageTitle data={t("nav", { returnObjects: true })} />
+
       <div className="contact-content">
         <div className="contact">
           {(t("contactBox", { returnObjects: true }) as []).map(

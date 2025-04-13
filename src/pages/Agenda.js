@@ -47,7 +47,7 @@ function Agenda() {
 
   return (
     <>
-      <PageTitle />
+      <PageTitle data={t("nav", { returnObjects: true })} />
       <PageDescription data={t("pageDescriptionAgenda")} />
       <section className="agenda-container container">
         <div className="agenda-content container">

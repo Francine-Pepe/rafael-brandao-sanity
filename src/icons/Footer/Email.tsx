@@ -6,7 +6,7 @@ export function Email(props: SVGProps<SVGSVGElement>) {
   return (
     <>
       <Link
-        to="mailto:contato@rafa-brandao.com"
+        to="mailto:contato@rafa-brandao.com?bcc=rafabrando@yahoo.com"
         target="_blank"
         rel="noopener noreferrer"
       >

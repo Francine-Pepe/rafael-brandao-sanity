@@ -1,8 +1,10 @@
+import NavbarFooter from "../../components/Navbar/NavbarFooter";
 import Logo from "../../icons/Logo";
 import Copyright from "./Copyright";
 
 function Footer(props: any) {
   const { data } = props;
+  
 
   return (
     <>
@@ -26,6 +28,7 @@ function Footer(props: any) {
       </footer>
       <footer>
         <Copyright />
+        <NavbarFooter />
       </footer>
     </>
   );
