@@ -57,7 +57,7 @@ function News() {
 
   return (
     <>
-      <PageTitle />
+      <PageTitle data={t("nav", { returnObjects: true })} />
       <PageDescription data={t("pageDescriptionNews")} />
       <section className="news-container container">
         {/* <img src={TextBg} alt="Text background" /> */}

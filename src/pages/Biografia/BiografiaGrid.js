@@ -3,14 +3,13 @@ import client from "../../client";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import Text from "../../components/Text";
-import { AnimationOnScroll } from "react-animation-on-scroll";
 import { useTranslation } from "react-i18next";
-import { motion } from "motion/react";
 
 function BiografiaGrid() {
   const { i18n } = useTranslation();
   const [biografias, setBiografias] = useState([]);
   const [selectedBiografia, setSelectedBiografia] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchBiografias = async () => {
@@ -36,7 +35,7 @@ function BiografiaGrid() {
 
   return (
     <>
-      <PageTitle />
+      <PageTitle data={t("nav", { returnObjects: true })} />
       <Text />
 
       <section className="grid-container container">

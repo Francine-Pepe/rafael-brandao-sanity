@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import client from "../client";
 import VideoTabs from "../components/VideoTabs";
 import PageTitle from "../components/PageTitle";
-import { Navigation } from "../data";
-import YoutubeVideos from "../components/YouTubeComponent";
 import PageDescription from "../components/PageDescription";
 import { useTranslation } from "react-i18next";
 
@@ -24,7 +22,7 @@ function Videos() {
   }, []);
   return (
     <div>
-      <PageTitle />
+      <PageTitle data={t("nav", { returnObjects: true })} />
       <PageDescription data={t("pageDescriptionVideos")} />
       <VideoTabs />
     </div>
