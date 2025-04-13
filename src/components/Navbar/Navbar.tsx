@@ -8,10 +8,12 @@ import Logo from "../../icons/Logo";
 import NavbarMobile from "./NavbarMobile";
 import { useLocation } from "react-router-dom";
 import LanguageFlag from "../LanguageFlag";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [colorChange, setColorChange] = useState(false);
   const homeUrl = useLocation().pathname;
+  const { t } = useTranslation();
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
@@ -41,7 +43,10 @@ function Navbar() {
           />
         </section>
         <section className="navigation-links">
-          <NavProps data={Navigation} style={{ color: "rgba(32, 0, 15, 1)" }} />
+          <NavProps
+            data={t("nav", { returnObjects: true }) as []}
+            style={{color: `${homeUrl === "/" || homeUrl === "/galeria" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`}}
+          />
         </section>
         <section className="navigation-social-media">
           <Spotify />
