@@ -5,13 +5,6 @@ const YouTubeComponent = ({ value }) => {
   const { url } = value; // Extract the YouTube URL from the value prop
 
   // Extract the video ID from the YouTube URL
-  const videoId = url.split("v=")[1]?.split("&")[0];
-  console.log("YouTube URL from Sanity:", videoId);
-
-  if (!videoId) {
-    return <p>Invalid YouTube URL</p>;
-  }
-
   const isValidYoutubeUrl = (url) => {
     try {
       const parsed = new URL(url);
@@ -22,6 +15,20 @@ const YouTubeComponent = ({ value }) => {
       return false;
     }
   };
+
+  if (!isValidYoutubeUrl(url)) {
+    console.error("Invalid YouTube URL:", url);
+    return <p>Invalid YouTube URL</p>;
+  }
+
+  const videoId = url.includes("v=")
+    ? url.split("v=")[1]?.split("&")[0]
+    : url.split("/").pop();
+  console.log("YouTube Video ID:", videoId);
+
+  if (!videoId) {
+    return <p>Invalid YouTube URL</p>;
+  }
 
   return (
     <div className="youtube-embed">
