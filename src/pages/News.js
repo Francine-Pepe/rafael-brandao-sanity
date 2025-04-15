@@ -60,7 +60,6 @@ function News() {
       <PageTitle data={t("nav", { returnObjects: true })} />
       <PageDescription data={t("pageDescriptionNews")} />
       <section className="news-container container">
-        {/* <img src={TextBg} alt="Text background" /> */}
         <div className="news-wrapper">
           {[...news]
             .slice()
