@@ -1171,9 +1171,11 @@ iframe, .youtube-consent-container
             justify-items: center
 
             .news-content
+                display: flex
+                flex-direction: column-reverse
 
                 .news-image, .news-text
-                    width: auto
+                    width: -webkit-fill-available
 
                 .news-text
                     padding: 0 2em
