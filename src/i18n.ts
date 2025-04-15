@@ -125,7 +125,7 @@ i18n
               link: "/datenschutz",
             },
             {
-              name: "Imprint",
+              name: "Legal Notice",
               link: "/impressum",
             },
           ],
