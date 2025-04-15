@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import Datenschutz from "./pages/Datenschutz";
 import Impressum from "./pages/Impressum";
+import { CookieBanner } from "./components/CookieBanner"
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -27,9 +28,29 @@ function App() {
     i18n.changeLanguage(navigator.language);
   }, []);
 
+  useEffect(() => {
+    const cookieValue =
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("youtube_consent="))
+        ?.split("=")[1] || "No cookie consent found";
+    const localStorageValue =
+    localStorage.removeItem("youtube_consent") 
+    console.log(
+      "YouTube Cookie value:",
+      cookieValue,
+      "YouTube LocalStorage value:",
+      localStorageValue
+    );
+    console.log("CookieBanner mounted");
+    
+  }, []);
+  
+
   return (
     <I18nextProvider i18n={i18n}>
       <BrowserRouter>
+        <CookieBanner />
         <Header />
         <ScrollToTop>
           <Routes>
