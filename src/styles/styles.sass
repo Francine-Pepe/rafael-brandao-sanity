@@ -538,14 +538,6 @@ footer
         &:hover 
             opacity: 1
 
-/* .image-content
-    width: 100%
-    height: auto
-    position: fixed
-    top: 0
-    left: 0 */
-
-
 .image-content
     width: 100%
     height: auto
@@ -749,10 +741,7 @@ footer
                 position: absolute
                 z-index: 1
                 right: 0
-                
-                /* top: 50% */
-                /* translate: -50% -50%  */
-                /* transform: rotate(-90deg)  */
+            
 
             img
                 width: inherit
@@ -799,11 +788,11 @@ footer
     display: flex
     justify-content: center
 
-    iframe
-        width: 90%
-        height: auto
-        border: none
-        aspect-ratio: 16/9
+iframe, .youtube-consent-container
+    width: 90%
+    height: auto
+    border: none
+    aspect-ratio: 16/9
         
 
 .text-container
@@ -811,8 +800,6 @@ footer
     height: auto
     display: flex
     justify-content: center
-    /* background-color: variables.$dark-background */
-    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) */
 
     .text-content
         width: 100vw
@@ -823,7 +810,6 @@ footer
             z-index: 2
             width: 90vw
             margin: 0 auto
-            /* color: variables.$navbar-background-color */
 
 .news-container
     height: 100%
@@ -843,7 +829,7 @@ footer
     .news-content
         width: inherit
         display: inline-block
-        padding-top: 1rem
+        padding: 1rem 0
         border-bottom: 1px solid variables.$dark-cherry-color-opacity
 
         &:nth-child(2n + 1)
@@ -866,39 +852,45 @@ footer
 
             p
                 width: 100%
-            
 
-/*         .news-content
-            display: inline-flex
-            padding: 1rem 0
-            align-items: flex-start
+.react-cookie-consent 
+    display: block !important
+    position: fixed !important
+    z-index: 9999 !important
 
-            &:nth-child(2n + 1)
-                flex-direction: row-reverse
 
-            .news-image, .news-text
-                width: 50% 
-                padding: 2rem
-                z-index: 1
-                top: 0
-                margin-left: auto
-                margin-right: auto
 
-            .news-image
-                border: 1px solid red
-                img
-                    width: 100%
-                    height: 50vh
-                    object-fit: cover
-                    flex-shrink: 0
-  
-            .news-text
-                border-bottom: 1px solid variables.$dark-cherry-color-opacity
-                margin: 0 1rem
-                height: fit-content
-                border-radius: 0
-                flex: 1
-                border: 1px solid blue  */
+
+.youtube-consent-container
+    @include mixins.flex-center
+    
+    background-color: variables.$black-opacity-color-hover
+    height: 100%
+
+
+    .youtube-consent-content
+        @include mixins.flex-column-center
+        text-align: center
+        
+
+    .youtube-consent-placeholder 
+        text-align: center
+        padding: 0.5rem 1rem 
+        background: #4CAF50
+        color: variables.$main-background-color
+        border: none
+        border-radius: 5px
+        margin: 1rem
+        cursor: pointer
+
+/* .youtube-consent-placeholder
+    @include mixins.flex-column-center
+    background-color: variables.$black
+    aspect-ratio: "16/9"
+    color: variables.$white-font-color
+    text-align:  center
+    padding: 1rem
+    box-sizing: border-box */
 
 /* Animations */
 
