@@ -1,10 +1,11 @@
 import NavbarFooter from "../../components/Navbar/NavbarFooter";
 import Logo from "../../icons/Logo";
 import Copyright from "./Copyright";
+import { useTranslation } from "react-i18next";
 
 function Footer(props: any) {
   const { data } = props;
-  
+  const { t } = useTranslation();
 
   return (
     <>
@@ -16,14 +17,16 @@ function Footer(props: any) {
                 "brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(54%) hue-rotate(174deg) brightness(113%) contrast(90%)",
             }}
           />
-          <div className="footer-icons">
-            {data.map((item: { title: string; icons: any }, index: any) => (
+            <div className="footer-icons">
+            {(t("footerContact", { returnObjects: true }) as []).map(
+              (item: { title: string }, index: number) => (
               <div key={index}>
-                <h3> {item.title} </h3>
-                {item.icons}
+                <h3>{item.title}</h3>
+                {data[index]?.icons}
               </div>
-            ))}
-          </div>
+              )
+            )}
+            </div>
         </section>
       </footer>
       <footer>
