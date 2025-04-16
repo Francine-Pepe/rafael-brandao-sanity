@@ -4,14 +4,17 @@ import PageTitle from "../components/PageTitle";
 import { Link } from "react-router-dom";
 import RBLogo from "../icons/RBLogo";
 import { useTranslation } from "react-i18next";
+import BioImage from "../components/BioImage";
+import Background from "../assets/Contact-bg.webp";
+import Text from "../components/Text";
 
 function Contato() {
-
   const { t } = useTranslation();
 
   return (
     <section className="contact-container">
       <PageTitle data={t("nav", { returnObjects: true })} />
+      <BioImage image={Background} />
 
       <div className="contact-content">
         <div className="contact">
@@ -28,16 +31,11 @@ function Contato() {
               </div>
             )
           )}
-
-          
-          <div className="contact-logo">
-            <RBLogo />
-          </div>
         </div>
 
-        <div className="contact-form">
+        {/*         <div className="contact-form">
           <ContactForm />
-        </div>
+        </div> */}
       </div>
     </section>
   );
