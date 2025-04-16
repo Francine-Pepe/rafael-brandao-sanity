@@ -5,12 +5,13 @@
     margin-top: 15rem
     height: 100vh
 
+
 body, html
     /*margin: 0 auto
     background-color: variables.$main-background-color
     font-family: variables.$font-family
     max-width: 100%
-    min-height: 100vh
+    min-height: 100vh   
     overflow-x: hidden
     scroll-behavior: smooth
 
@@ -28,10 +29,10 @@ ul
 
         a
             color: variables.$white-font-color
+            transition: 0.5s ease-in
 
             &:hover, &:active
                 font-weight: variables.$font-weight-bold
-                transition: 0.5s ease-in
                 color: variables.$dark-cherry-color
 
 .nav-links
@@ -47,16 +48,17 @@ ul
     @include mixins.flex-center
     position: relative
     z-index: 3
+    transition: 0.5s ease-in
 
     button
         border: none
         background: none
         padding: 0 0.5rem
+        
         /*color: white
 
         &:hover, &:active
             font-weight: variables.$font-weight-bold
-            transition: 0.5s ease-in
             color: variables.$dark-cherry-color
             background-color: transparent
             
@@ -66,6 +68,8 @@ p
     font-size: clamp(1rem, 0.643rem + 0.952vw, 1.2rem)
     font-weight: 250
     text-align: justify
+    position: relative
+    
     
 
 a
@@ -135,7 +139,6 @@ button, textarea, input
 
 .footer-logo img
     width: 15vw
-
 svg
     color: variables.$white-font-color
 
@@ -277,10 +280,14 @@ svg
 footer
     margin-top: auto
 
-.navbar-footer-container
-    @include mixins.flex-center
+.navbar-footer-container, .footer-container, .copyright-container
     background-color: variables.$dark-cherry-color
     color: variables.$white-font-color
+    position: relative
+    z-index: 2
+
+.navbar-footer-container
+    @include mixins.flex-center
     padding-bottom: 1rem
 
     .navlinks-props
@@ -293,10 +300,6 @@ footer
 
 .footer-container, .copyright-container
     @include mixins.flex-space-between
-    background-color: variables.$dark-cherry-color
-    color: variables.$white-font-color
-    position: relative
-    z-index: 2
 
     h3
         color: variables.$white-font-color
@@ -311,7 +314,6 @@ footer
             @include mixins.flex-space-between
             width: 30vw
             padding-bottom: 1.5rem 
-
 
 
 .nav-footer
@@ -583,12 +585,13 @@ footer
                     color: variables.$dark-blue
 
                 button 
+                    transition: 0.5s ease-in
                     .ticket
                         display: none
 
                 button:hover
                     transform: scale(1.1)
-                    transition: 0.5s ease-in
+                    
 
                     .ticket
                         display: block
@@ -634,38 +637,60 @@ footer
 
 .contact-container
     display: block
+    position: relative
+    overflow: hidden    
 
-    .icon
-        padding: 0.5rem
+    img
+        opacity: 1
+        height: auto
+        pointer-events: none
 
     .contact-content
         display: flex
         padding-top: 2rem
-
-
-        .contact-logo
-            position: absolute
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%)
-            opacity: 0.08 
+        height: 100vh
 
         .contact
             @include mixins.flex-column
-            position: relative  
+            position: relative
+            justify-content: center
+            margin: 0 auto
+            width: 80vw
+            padding: 2rem 4rem
+
 
             .contact-text-container
-                padding: 0 0 2rem 2rem
-
+                width: 100%
+                text-align: center
+                display: flex
+                flex-direction: column
+                align-items: flex-end
+                margin-top: -20%
+ 
                 p
-                    margin-top: 0
+                    width: 50vw
+                    font-weight: 250
+                    font-size: variables.$font-size-text-component
+                    background-color: variables.$main-background-color-opacity
+                    padding: 1rem
+
+                a
+                    font-size: variables.$font-size-text-component
+                    padding: 1rem
+                    transition: background-color 0.5s ease-in, color 0.5s ease-in, border-radius 0.5s ease-in
+
+                    &:hover
+                        background-color: variables.$dark-cherry-color
+                        color: variables.$main-background-color
+                        border-radius: 5px
+                       
+                    
 
         .contact-form 
             background-color: variables.$navbar-background-color
             border-radius: 10px 0 0 0 
 
-        .contact, .contact-form
-            width: 50vw
+        .contact-form
             padding: 2rem     
 
             input, textarea
@@ -730,7 +755,6 @@ footer
                     object-fit: cover
                     object-position: top
                     filter: grayscale(100%)
-                    
 
                     &:hover
                         filter: grayscale(0)
@@ -925,7 +949,7 @@ iframe, .youtube-consent-container
     -webkit-animation-name: fadeOut
     animation-name: fadeOut
 
-.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-content, .news-content
+.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-container, .news-content, .contact-container, .image-content
     animation: fadeInUp
     animation-duration: 2s
 
@@ -1051,30 +1075,6 @@ iframe, .youtube-consent-container
                             height: auto
                         
 
-/*                         .modal-image1, .modal-image2, .modal-image3 
-                            position: absolute
-
-                            img
-                            width: 50vw */
-
-/*                         .modal-image1
-                            left: 0
-                            top: 0 */
-
-/*                         .modal-image2
-                            left: 4rem
-                            top: 20rem
-                            z-index: 2 */
-
-/*                         .modal-image3
-                            right: 0
-                            top: 9rem */
-
-
-        
-
-
-
 
 @media screen and (max-width: variables.$breakpoint-lg)
     .navbar-mobile-container
@@ -1135,8 +1135,16 @@ iframe, .youtube-consent-container
 
     .contact-container
 
+        img
+            height: 100vh
+
         .contact-content
+            display: flex
             flex-wrap: wrap
+            padding-top: 2rem
+            height: 100%
+            margin: 20rem 0
+            
 
             .contact
                 @include mixins.flex-column   
@@ -1147,12 +1155,15 @@ iframe, .youtube-consent-container
 
             .contact
                 padding: 0
+                margin-right: 2rem
                 .contact-text-container
                     width: inherit
+                    
                     /* padding: 0 2rem 2rem 2rem */ 
 
                     p
-                        width: 90vw
+                        /* width: 90vw */
+                        margin-top: 0
 
     .contact-form-container
 
@@ -1232,6 +1243,17 @@ iframe, .youtube-consent-container
                             width: inherit
                             height: auto
 
+    .contact-container
+        .contact-content
+            .contact
+                .contact-text-container
+                    p
+                        /* width: 80vw */
+                        margin-top: -9rem
+
+
+
+
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
         img
@@ -1267,9 +1289,31 @@ iframe, .youtube-consent-container
             .mobile-menu
                 padding-right: 1rem
 
+    .contact-container
+        .contact-content
+            .contact
+                .contact-text-container
+
+                    p
+                        /* width: 80vw */
+                        margin-top: -10rem
+                        
+                        
+
 @media screen and ( max-width: 450px)
     .navlinks-props
         gap: 2rem
+
+    .contact-container
+        .contact-content
+            .contact
+                margin-right: 0
+                .contact-text-container
+                    align-items: center
+                    p
+                        width: 80vw
+                        margin-top: -15rem
+                        
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
     .fixed-bg-image-container
