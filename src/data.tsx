@@ -45,22 +45,27 @@ export const carouselImages = [
   {
     id: 0,
     image: CarouselImage6,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 1,
     image: CarouselImage5,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 2,
     image: CarouselImage2,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 3,
     image: CarouselImage4,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 4,
     image: CarouselImage1,
+    alt: "Rafa Brandao - cantor e compositor",
   },
 ];
 
@@ -68,22 +73,27 @@ export const carouselImagesIpad = [
   {
     id: 0,
     image: CarouselImage7,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 1,
     image: CarouselImage5,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 2,
     image: CarouselImage2,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 3,
     image: CarouselImage4,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 4,
     image: CarouselImage1,
+    alt: "Rafa Brandao - cantor e compositor",
   },
 ];
 
@@ -91,22 +101,27 @@ export const carouselImagesMobile = [
   {
     id: 0,
     image: CarouselImage3,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 1,
     image: CarouselImage5,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 2,
     image: CarouselImage2,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 3,
     image: CarouselImage4,
+    alt: "Rafa Brandao - cantor e compositor",
   },
   {
     id: 4,
     image: CarouselImage1,
+    alt: "Rafa Brandao - cantor e compositor",
   },
 ];
 
