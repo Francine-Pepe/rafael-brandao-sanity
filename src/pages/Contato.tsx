@@ -1,12 +1,9 @@
 import React from "react";
-import ContactForm from "../components/ContactForm";
 import PageTitle from "../components/PageTitle";
 import { Link } from "react-router-dom";
-import RBLogo from "../icons/RBLogo";
 import { useTranslation } from "react-i18next";
 import BioImage from "../components/BioImage";
 import Background from "../assets/Contact-bg.webp";
-import Text from "../components/Text";
 
 function Contato() {
   const { t } = useTranslation();
