@@ -4,10 +4,12 @@ import VideoTabs from "../components/VideoTabs";
 import PageTitle from "../components/PageTitle";
 import PageDescription from "../components/PageDescription";
 import { useTranslation } from "react-i18next";
+import { Suspense } from "react";
 
 function Videos() {
   const [videos, setVideos] = useState([]);
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     client
@@ -22,9 +24,10 @@ function Videos() {
   }, []);
   return (
     <div>
-      <PageTitle data={t("nav", { returnObjects: true })} />
-      <PageDescription data={t("pageDescriptionVideos")} />
-      <VideoTabs />
+      <Suspense fallback={<div>Loading...</div>}>
+        <PageTitle data={t("nav", { returnObjects: true })} />
+        <VideoTabs currentLanguage={i18n.language} />
+      </Suspense>
     </div>
   );
 }
