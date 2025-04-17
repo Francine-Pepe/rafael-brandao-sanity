@@ -106,6 +106,14 @@ i18n
               title: "Contato",
             },
           ],
+          cookieBannerTitle: "Consentimento de Cookies",
+          cookieBannerText:
+            "Utilizamos incorporações do YouTube que podem utilizar cookies. Selecione:",
+          youtubeBlocked: "Conteúdo do YouTube bloqueado",
+          cookieDeclined: "Você recusou o consentimento de cookies para vídeos do YouTube.",
+          allowYoutubeVideos: "Permitir cookies do YouTube",
+          cookieButtonAccept: "Aceitar",
+          cookieButtonDecline: "Rejeitar",
         },
       },
       en: {
@@ -186,16 +194,24 @@ i18n
             "In this section, you will find videos showcasing Rafa Brandão’s work in his main formats: voice and acoustic guitar, duo, and with his band. Additionally, under “Previous Work,” we offer a selection of videos from bands such as Radicais Livres and Vitrine — two Rio de Janeiro-based bands that marked important moments in Rafa’s career — as well as interviews and media features.",
           pageDescriptionNews:
             "Here you will find all the latest news, interviews, reports, and videos about Rafa Brandão's career.",
-            footerContact: [
-              {
-                id: 0,
-                title: "Listen on",
-              },
-              {
-                id: 1,
-                title: "Contact",
-              },
-            ],
+          footerContact: [
+            {
+              id: 0,
+              title: "Listen on",
+            },
+            {
+              id: 1,
+              title: "Contact",
+            },
+          ],
+          cookieBannerTitle: "Cookie Consent",
+          cookieBannerText:
+            "We use YouTube embeds that may use cookies. Please choose:",
+          youtubeBlocked: "YouTube Content Blocked",
+          cookieDeclined: "You declined cookie consent for YouTube videos.",
+          allowYoutubeVideos: "Allow YouTube Cookies",
+          cookieButtonAccept: "Accept",
+          cookieButtonDecline: "Decline",
         },
       },
       de: {
@@ -277,16 +293,24 @@ i18n
             "In diesem Abschnitt finden Sie Videos, die die Arbeiten von Rafa Brandão in seinen wichtigsten Formationen präsentieren: Gesang und Akustikgitarre, im Duo sowie mit seiner Band. Außerdem stellen wir unter „Frühere Arbeiten“ eine Auswahl an Videos von Bands wie Radicais Livres und Vitrine zur Verfügung – zwei Bands aus Rio de Janeiro, die Rafa Brandãos Karriere entscheidend geprägt haben – sowie Reportagen und Interviews.",
           pageDescriptionNews:
             "Hier findest du alle Neuigkeiten, Interviews, Reportagen und die neuesten Videos über die Karriere von Rafa Brandão.",
-            footerContact: [
-              {
-                id: 0,
-                title: "Wo zuhören",
-              },
-              {
-                id: 1,
-                title: "Kontakt",
-              },
-            ],
+          footerContact: [
+            {
+              id: 0,
+              title: "Wo zuhören",
+            },
+            {
+              id: 1,
+              title: "Kontakt",
+            },
+          ],
+          cookieBannerTitle: "Cookies-Einwilligungspräferenzen",
+          cookieBannerText:
+            "Wir verwenden eingebettete YouTube-Videos, die möglicherweise Cookies verwenden. Bitte wählen Sie:",
+          youtubeBlocked: "YouTube-Inhalte blockiert",
+          cookieDeclined: "Sie haben die Cookie-Zustimmung für YouTube-Videos abgelehnt.",
+          allowYoutubeVideos: "YouTube-Cookies zulassen",
+          cookieButtonAccept: "Akzeptieren",
+          cookieButtonDecline: "Ablehnen",
         },
       },
     },
