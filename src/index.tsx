@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <CookiesProvider defaultSetOptions={{ path: "/" }}>
-      <Suspense fallback="...loading">
+      <Suspense fallback={<div>Loading...</div>}>
         <App />
       </Suspense>
     </CookiesProvider>
