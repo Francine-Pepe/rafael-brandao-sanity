@@ -25,8 +25,12 @@ function App() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    i18n.changeLanguage(navigator.language);
-  }, []);
+    const savedLanguage = localStorage.getItem('userLanguage');
+    const navigatorLanguage = navigator.language;
+    i18n.changeLanguage(savedLanguage || navigatorLanguage.split("-")[0]);
+  }, [i18n]); 
+
+  
 
   useEffect(() => {
     const cookieValue =
