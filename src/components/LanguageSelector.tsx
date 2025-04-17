@@ -33,11 +33,12 @@ const LanguageSelector = () => {
             style={{
               color: `${homeUrl === "/" ? "rgb(242, 242, 242" : "rgba(32, 0, 15, 1)"}`,
             }}
+            type="button"
+            
           >
-            {/* <h3>{lng.language}</h3> */}
             <img
               src={lng.language}
-              alt={lng.code}
+              alt={lng.language}
               style={{
                 width: "2rem",
                 height: "2rem",
