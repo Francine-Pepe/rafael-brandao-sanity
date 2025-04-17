@@ -1,4 +1,5 @@
 import { CookieConsent } from "react-cookie-consent";
+import { useTranslation } from "react-i18next";
 
 declare global {
   interface Window {
@@ -7,6 +8,8 @@ declare global {
 }
 
 export const CookieBanner = () => {
+  const { t } = useTranslation();
+
   const handleDecline = () => {
     document.cookie = "youtube_consent=false; path=/; max-age=31536000";
     localStorage.setItem("youtube_consent", "false");
@@ -42,17 +45,16 @@ export const CookieBanner = () => {
         color: "rgb(242, 242, 242)",
         zIndex: 9999,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
       }}
-      buttonText="Accept"
+      buttonText={t("cookieButtonAccept")}
       buttonStyle={{
         background: "#4CAF50",
         color: "white",
         fontSize: "1rem",
         marginLeft: "1rem",
-        
       }}
-      declineButtonText="Decline"
+      declineButtonText={t("cookieButtonDecline")}
       declineButtonStyle={{
         background: "#f44336",
         color: "rgb(242, 242, 242)",
@@ -66,8 +68,8 @@ export const CookieBanner = () => {
       overlayStyle={{ background: "rgba(0, 0, 0, 0.53)" }}
     >
       <div className="cookie-banner" style={{ padding: "10px" }}>
-        <h2>Cookie Consent</h2>
-        <p>We use YouTube embeds that may use cookies. Please choose:</p>
+        <h2>{t("cookieBannerTitle")}</h2>
+        <p>{t("cookieBannerText")}</p>
       </div>
     </CookieConsent>
   );
