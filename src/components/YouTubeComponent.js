@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const COOKIE_NAME = "youtube_consent";
 
 const YouTubeComponent = ({ value }) => {
   const { url } = value;
   const [hasConsent, setHasConsent] = useState(false);
+  const { t } = useTranslation();
 
   // Load consent on mount
   useEffect(() => {
@@ -58,8 +60,8 @@ const YouTubeComponent = ({ value }) => {
     return (
       <div className="youtube-consent-container">
         <div className="youtube-consent-content">
-          <h4>YouTube Content Blocked</h4>
-          <p>You declined cookie consent for YouTube videos.</p>
+          <h4>{t("youtubeBlocked")}</h4>
+          <p>{t("cookieDeclined")}</p>
           <button
             className="youtube-consent-placeholder"
             onClick={() => {
@@ -71,7 +73,7 @@ const YouTubeComponent = ({ value }) => {
               setHasConsent(true); // Just in case
             }}
           >
-            Allow YouTube Cookies
+            {t("allowYoutubeVideos")}
           </button>
         </div>
       </div>
