@@ -9,6 +9,13 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
+    detection: {
+      order: ["localStorage", "navigator"],
+      caches: ["localStorage"],
+    },
+    interpolation: {
+      escapeValue: false,
+    },
     fallbackLng: `${navigator.language}`,
     returnObjects: true,
     lng: "pt",
@@ -94,6 +101,7 @@ i18n
             "Aqui você encontrará todos os próximos shows de Rafa Brandão,  em todos os formatos em que o artista atua: voz e violão, duo, trio ou banda. Informações adicionais como endereço, horário e venda de tickets também estarão disponíveis.",
           pageDescriptionVideos:
             "Nesta seção você encontra os vídeos que apresentam os trabalhos de Rafa Brandão em seus principais formatos: voz e violão, duo e com sua banda. Além disso, em “Trabalhos Anteriores”, disponibilizamos uma seleção de vídeos de bandas como Radicais Livres e Vitrine, as bandas cariocas que marcaram a carreira de Rafa no Rio de Janeiro, além de reportagens e entrevistas.",
+
           pageDescriptionNews:
             "Aqui você encontrará todas as novidades, entrevistas, reportagens e videos mais recentes sobre a carreira de Rafa Brandão. ",
           footerContact: [
@@ -110,7 +118,8 @@ i18n
           cookieBannerText:
             "Utilizamos incorporações do YouTube que podem utilizar cookies. Selecione:",
           youtubeBlocked: "Conteúdo do YouTube bloqueado",
-          cookieDeclined: "Você recusou o consentimento de cookies para vídeos do YouTube.",
+          cookieDeclined:
+            "Você recusou o consentimento de cookies para vídeos do YouTube.",
           allowYoutubeVideos: "Permitir cookies do YouTube",
           cookieButtonAccept: "Aceitar",
           cookieButtonDecline: "Rejeitar",
@@ -307,7 +316,8 @@ i18n
           cookieBannerText:
             "Wir verwenden eingebettete YouTube-Videos, die möglicherweise Cookies verwenden. Bitte wählen Sie:",
           youtubeBlocked: "YouTube-Inhalte blockiert",
-          cookieDeclined: "Sie haben die Cookie-Zustimmung für YouTube-Videos abgelehnt.",
+          cookieDeclined:
+            "Sie haben die Cookie-Zustimmung für YouTube-Videos abgelehnt.",
           allowYoutubeVideos: "YouTube-Cookies zulassen",
           cookieButtonAccept: "Akzeptieren",
           cookieButtonDecline: "Ablehnen",
