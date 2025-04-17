@@ -676,6 +676,7 @@ footer
 
                 a
                     font-size: variables.$font-size-text-component
+                    font-weight: 350
                     padding: 1rem
                     transition: background-color 0.5s ease-in, color 0.5s ease-in, border-radius 0.5s ease-in
 
@@ -1253,13 +1254,10 @@ iframe, .youtube-consent-container
 
 
 
-
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
         img
             width: 40vw
-
-
 
     .youtube-embed
         padding: 0.5rem 0
@@ -1290,15 +1288,8 @@ iframe, .youtube-consent-container
                 padding-right: 1rem
 
     .contact-container
-        .contact-content
-            .contact
-                .contact-text-container
-
-                    p
-                        /* width: 80vw */
-                        margin-top: -10rem
-                        
-                        
+        .image-content
+            top: 3rem
 
 @media screen and ( max-width: 450px)
     .navlinks-props
@@ -1307,13 +1298,14 @@ iframe, .youtube-consent-container
     .contact-container
         .contact-content
             .contact
-                margin-right: 0
                 .contact-text-container
-                    align-items: center
+                    @include mixins.flex-column-center
+                    justify-content: center
+                    width: 100vw
                     p
-                        width: 80vw
-                        margin-top: -15rem
                         
+                        width: 80vw
+                        background-color: variables.$main-background-color-darker-opacity
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
     .fixed-bg-image-container
@@ -1326,6 +1318,29 @@ iframe, .youtube-consent-container
 
     .navlinks-props
         gap: 1rem
+
+@media screen and (max-width: variables.$breakpoint-xs) and (max-height: variables.$breakpoint-sm)
+    .navlinks-props
+        height: unset
+
+        ul li a
+            font-size: variables.$font-size-small
+
+    .bnt-container, svg
+        width: 1.5rem
+        height: 1.5rem
+
+    .contact-container
+        .contact-content
+            .contact
+                .contact-text-container
+                    p
+                        margin-top: -12rem
+                        background-color: variables.$main-background-color-darker-opacity
+
+                    a
+                        font-weight: 350
+                        
 
         
     
