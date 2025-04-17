@@ -34,9 +34,9 @@ function Carousel(props: any) {
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {data.map((item: { image: any }, index: any) => (
+        {data.map((item: { image: string, alt: string }, index: any) => (
           <div className="slide" key={index}>
-            <img src={item.image} alt="" />
+            <img src={item.image} alt={item.alt} />
           </div>
         ))}
       </div>

@@ -40,7 +40,7 @@ export default function LanguageFlag() {
 
   const changeLanguage = (option: any) => {
     i18n.changeLanguage(option);
-    localStorage.setItem('userLanguage', option);
+    localStorage.setItem("userLanguage", option);
   };
 
   return (
@@ -53,11 +53,6 @@ export default function LanguageFlag() {
           listbox: {
             sx: {
               "--ListItemDecorator-size": "2rem",
-              /* backgroundColor: "transparent",
-
-              "&:hover": {
-                backgroundColor: "transparent",
-              }, */
             },
           },
           button: {
@@ -94,12 +89,6 @@ export default function LanguageFlag() {
               onClick={() => {
                 changeLanguage(option.value);
               }}
-/*               sx={{
-                backgroundColor: "trasparent",
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-              }} */
             >
               <ListItemDecorator sx={{ margin: "0 auto" }}>
                 <Avatar
@@ -117,10 +106,6 @@ export default function LanguageFlag() {
                   sx={{
                     width: "2rem",
                     height: "auto",
-                    /* backgroundColor: "transparent",
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                    }, */
                   }}
                   variant="rounded"
                 />
