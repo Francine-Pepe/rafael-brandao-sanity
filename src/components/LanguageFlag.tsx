@@ -40,6 +40,7 @@ export default function LanguageFlag() {
 
   const changeLanguage = (option: any) => {
     i18n.changeLanguage(option);
+    localStorage.setItem('userLanguage', option);
   };
 
   return (

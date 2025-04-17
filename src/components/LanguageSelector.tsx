@@ -18,7 +18,9 @@ const LanguageSelector = () => {
 
   const changeLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
+    localStorage.setItem('userLanguage', lng);
   };
+
 
   return (
     <div className="btn-container">
