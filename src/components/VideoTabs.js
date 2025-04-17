@@ -35,6 +35,7 @@ function a11yProps(index) {
 export default function VideoTabs() {
   const [value, setValue] = React.useState(0);
   const [tabs, setTabs] = useState([]);
+  const [key, setKey] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -44,14 +45,13 @@ export default function VideoTabs() {
 
   useEffect(() => {
     const fetchTabs = async () => {
-      const query = `*[_type == "tabs" ] { title, slug, label, tabsTitle, body } 
-        `;
+      const query = `*[_type == "tabs" ] { title, slug, label, tabsTitle, body }`;
       const result = await client.fetch(query);
       setTabs(result);
     };
 
     fetchTabs();
-  }, []);
+  }, [i18n.language]); 
 
   const components = {
     types: {
@@ -61,12 +61,14 @@ export default function VideoTabs() {
   };
 
   useEffect(() => {
-    const navigatorLanguage = navigator.language || navigator.userLanguage;
-    i18n.changeLanguage(navigatorLanguage.split("-")[0]);
+    if (!i18n.language) {
+      const navigatorLanguage = navigator.language || navigator.userLanguage;
+      i18n.changeLanguage(navigatorLanguage.split("-")[0]);
+    }
   }, [i18n]);
 
   return (
-    <Box sx={{ width: "100%" }} className="tabs-box-container">
+    <Box sx={{ width: "100%" }} className="tabs-box-container" key={key}>
       <Box
         sx={{
           borderBottom: "none",
@@ -130,12 +132,7 @@ export default function VideoTabs() {
       </Box>
 
       {tabs.map((item, index) => (
-        <CustomTabPanel
-          value={value}
-          index={index}
-          key={index}
-          
-        >
+        <CustomTabPanel value={value} index={index} key={index}>
           <div className="tab-content-body-bg">
             <div className="tab-content-body animate__fadeInUp">
               {
@@ -144,7 +141,6 @@ export default function VideoTabs() {
                   components={components}
                 />
               }
-              
             </div>
           </div>
         </CustomTabPanel>
