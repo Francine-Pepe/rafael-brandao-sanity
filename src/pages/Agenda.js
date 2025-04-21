@@ -105,7 +105,7 @@ function Agenda() {
                         <h3>
                           {eventDate[navigator.language] ||
                             eventDate[i18n.language] ||
-                            eventDate.pt || <h3>{show.date}</h3>}
+                            eventDate.pt || <span>{show.date}</span>}
                         </h3>
 
                         <span>|</span>
