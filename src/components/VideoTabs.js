@@ -51,7 +51,7 @@ export default function VideoTabs() {
     };
 
     fetchTabs();
-  }, [i18n.language]); 
+  }, [i18n.language]);
 
   const components = {
     types: {
@@ -68,7 +68,19 @@ export default function VideoTabs() {
   }, [i18n]);
 
   return (
-    <Box sx={{ width: "100%" }} className="tabs-box-container" key={key}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+      className="tabs-box-container"
+      key={key}
+    >
       <Box
         sx={{
           borderBottom: "none",
@@ -131,20 +143,22 @@ export default function VideoTabs() {
         </Tabs>
       </Box>
 
-      {tabs.map((item, index) => (
-        <CustomTabPanel value={value} index={index} key={index}>
-          <div className="tab-content-body-bg">
-            <div className="tab-content-body animate__fadeInUp">
-              {
-                <PortableText
-                  value={item.body[i18n.language] || item.body?.pt}
-                  components={components}
-                />
-              }
+      <Box sx={{ flex: 1 }}>
+        {tabs.map((item, index) => (
+          <CustomTabPanel value={value} index={index} key={index}>
+            <div className="tab-content-body-bg">
+              <div className="tab-content-body animate__fadeInUp">
+                {
+                  <PortableText
+                    value={item.body[i18n.language] || item.body?.pt}
+                    components={components}
+                  />
+                }
+              </div>
             </div>
-          </div>
-        </CustomTabPanel>
-      ))}
+          </CustomTabPanel>
+        ))}
+      </Box>
     </Box>
   );
 }
