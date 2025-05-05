@@ -18,22 +18,24 @@ body, html
 h1, h2, h3, h4, h5
     font-weight: 450
 
-ul 
-    margin: 0
-    padding: 0
-    
-    li
-        font-size: variables.$font-size-small
-        list-style-type: none
-        text-transform: uppercase
+nav
 
-        a
-            color: variables.$white-font-color
-            transition: 0.5s ease-in
+    ul 
+        margin: 0
+        padding: 0
+        
+        li
+            font-size: variables.$font-size-small
+            list-style-type: none
+            text-transform: uppercase
 
-            &:hover, &:active
-                font-weight: variables.$font-weight-bold
-                color: variables.$dark-cherry-color
+            a
+                color: variables.$white-font-color
+                transition: 0.5s ease-in
+
+                &:hover, &:active
+                    font-weight: variables.$font-weight-bold
+                    color: variables.$dark-cherry-color
 
 .nav-links
 
@@ -317,6 +319,8 @@ footer
 
 
 .nav-footer
+    width: 90vw
+    margin: 0 auto
     padding: 2rem 3rem
 
 
@@ -723,6 +727,7 @@ footer
         /* -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31) */
         /* box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31) */
         /* border-radius: 5px */
+        
 
         .grid-images-text
 
