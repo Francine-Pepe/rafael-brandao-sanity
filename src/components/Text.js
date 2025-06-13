@@ -29,12 +29,12 @@ function Text() {
         {bioText.map((item, index) => {
           const text = item.body || {};
           return (
-            <div key={index} className="nav-footer">
+            <div key={index} className="biografia-text">
               <PortableText value={text[i18n.language] || text.pt} />
             </div>
           );
         })}
-        <p>{t("text")}</p>
+        {/* <p>{t("text")}</p> */}
       </div>
     </section>
   );
