@@ -34,7 +34,6 @@ function Text() {
             </div>
           );
         })}
-        {/* <p>{t("text")}</p> */}
       </div>
     </section>
   );
