@@ -10,6 +10,7 @@ import imagePortableText from './imagePortableText'
 import news from './news'
 import datenschutz from './datenschutz'
 import impressum from './impressum'
+import biografiaText from './biografiaText'
 
 export const schemaTypes = [
   post,
@@ -24,4 +25,5 @@ export const schemaTypes = [
   news,
   datenschutz,
   impressum,
+  biografiaText
 ]
