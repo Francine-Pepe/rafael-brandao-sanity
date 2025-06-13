@@ -3,12 +3,9 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Masonry from "@mui/lab/Masonry";
 import { styled } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
-import { CloseMenu } from "../../icons/CloseMenu";
 import PageTitle from "../../components/PageTitle";
-import { Navigation } from "../../data";
 import client from "../../client";
 
 const Label = styled(Paper)(({ theme }) => ({
