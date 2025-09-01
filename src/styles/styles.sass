@@ -56,8 +56,6 @@ nav
         border: none
         background: none
         padding: 0 0.5rem
-        
-        /*color: white
 
         &:hover, &:active
             font-weight: variables.$font-weight-bold
@@ -71,8 +69,7 @@ p
     font-weight: 250
     text-align: justify
     position: relative
-    
-    
+
 
 a
     text-decoration: none
@@ -168,7 +165,7 @@ svg
 
 .navbar-container, .navbar-mobile-container
     position: fixed
-    z-index: 10
+    z-index: 20
     
 
 .navigation-social-media
@@ -178,7 +175,7 @@ svg
 .navbar-mobile-container
     display: none
     position: relative
-    z-index: 6
+    z-index: 20
     width: 100vw
     background: rgba(255, 255, 255, 0.26)
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
@@ -379,8 +376,6 @@ footer
     right: 0
     height: 100vh
     transition: opacity 250ms ease
-    
-    
     /*padding-top: 20vh
 
     &:target
@@ -437,23 +432,6 @@ footer
                     width: 50%
                     height: auto
 
-/*             .modal-image1
-                position: absolute
-                left: 0 */
-
-/*             .modal-image2
-                max-width: 25vw
-                position: absolute
-                left: 4rem
-                top: 16rem
-                z-index: 2 */
-                
-
-/*             .modal-image3
-                max-width: 27vw
-                position: absolute
-                right: 4rem
-                top: 5rem */
 .lightbox-news
     .yarl__navigation_next, .yarl__navigation_prev
         display: none
@@ -482,50 +460,55 @@ footer
             text-transform: uppercase
             letter-spacing: 0.3rem
 
-        
-.fixed-bg-image-container
+/* Gallery fixed image */
+
+
+.gallery-fixed-bg-image-container 
     position: relative
     width: 100%
+    height: 95vh
+    z-index: 3
 
-    .fixed-image-opacity-box
-        width: 100vw
-        top: 0
-    .fixed-bg
-        @include mixins.flex-center
+    .gallery-fixed-bg 
         position: fixed
         top: 0
         left: 0
-        bottom: 0
         width: 100%
-        z-index: 1
+        height: 100vh
+        z-index: 7
+        overflow: hidden
 
-    img
-        width: inherit
-        object-fit: contain
-        background-position: center
+    img 
+        width: 100%
+        height: 100%
+        object-fit: cover
+    
 
-.gallery-header
-    position: relative
-    z-index: 2
-    width: auto
-    /*height: 60vh
-
-    p
+    .gallery-text 
         @include mixins.flex-center
-        color: variables.$white-font-color
-        width: inherit
-        height: 80vh
-        font-size: variables.$font-size-medium
-        font-weight: 300
+        position: absolute
+        top: 0
+        left: 0
+        width: 90%
+        height: 100%
+        z-index: 20
+        padding: 0 5%
         margin: 0 auto
-        text-align: center
-        padding: 0 0.1rem
+
+        p 
+            color: variables.$white-font-color
+            font-size: variables.$font-size-medium
+            font-weight: 300
+            margin: 0 auto
+            text-align: center
+
 
 .gallery-container
     display: flex
     width: 100%
     position: relative
-    z-index: 2
+    top: auto
+    z-index: 4
     background-color: variables.$main-background-color
 
     .image-description
@@ -1077,14 +1060,29 @@ iframe, .youtube-consent-container
                         .modal-image1, .modal-image2, .modal-image3
                             width: 47%
                             height: auto
-                        
+
+    .agenda-container, .grid-container
+        /*@include mixins.smaller-padding-top
+        .agenda-content
+            .agenda-information
+                flex-direction: column
+                width: 90vw
+                padding-bottom: 2rem
+
+                img
+                    width: inherit
+                    height: auto
+
+                .agenda-information-place-time 
+                    width: inherit
+                    padding-top: 2rem
 
 
-@media screen and (max-width: variables.$breakpoint-lg)
+@media screen and (max-width: variables.$breakpoint-IpadPro)
     .navbar-mobile-container
         display: block
         position: fixed
-        z-index: 3
+        z-index: 20
         width: 100vw
 
 
@@ -1102,21 +1100,6 @@ iframe, .youtube-consent-container
         gap: 4rem
         height: 100%
 
-    .agenda-container, .grid-container
-        /*@include mixins.smaller-padding-top
-        .agenda-content
-            .agenda-information
-                flex-direction: column
-                width: 90vw
-                padding-bottom: 2rem
-
-                img
-                    width: inherit
-                    height: auto
-
-                .agenda-information-place-time 
-                    width: inherit
-                    padding-top: 2rem
 
     .footer-container
         padding-top: 1rem
@@ -1193,13 +1176,6 @@ iframe, .youtube-consent-container
                 .news-image  
                     float: none
 
-    .fixed-bg-image-container
-        .fixed-bg          
-            top: -10rem
-
-    .gallery-header p
-        height: 70vh
-
     .grid-container
         .biografia-grid-content
             .grid-images
@@ -1225,14 +1201,6 @@ iframe, .youtube-consent-container
 
 
 @media screen and (max-width: variables.$breakpoint-md)
-    
-    .fixed-bg-image-container
-        .fixed-bg          
-            top: -20rem
-
-    .gallery-header p
-        height: 50vh
-
     .modal
         .modal-content 
             .modal-content-wrap
@@ -1306,13 +1274,6 @@ iframe, .youtube-consent-container
                         background-color: variables.$main-background-color-darker-opacity
 
 @media screen and ( max-width: variables.$breakpoint-xs  )
-    .fixed-bg-image-container
-        .fixed-bg          
-            top: -28rem
-
-    .gallery-header 
-        height: 30vh
-        padding: 0 1rem
 
     .navlinks-props
         gap: 1rem
