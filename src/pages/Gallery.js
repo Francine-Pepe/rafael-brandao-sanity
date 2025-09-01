@@ -1,20 +1,17 @@
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import client from "../client";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-
 import "yet-another-react-lightbox/styles.css";
-import FixedImage from "../components/FixedImage";
 import bgImage from "../assets/_RAF0401.webp";
-import { useTranslation } from "react-i18next";
+import GalleryFixedImage from "../components/GalleryFixedImage";
 
 export default function ImageMasonry() {
   const [gallery, setGallery] = useState([]);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(-1);
-  const { t } = useTranslation();
   const [animationDuration, setAnimationDuration] = useState(500);
   const [maxZoomPixelRatio, setMaxZoomPixelRatio] = useState(1);
   const [zoomInMultiplier, setZoomInMultiplier] = useState(2);
@@ -54,10 +51,7 @@ export default function ImageMasonry() {
 
   return (
     <>
-      <FixedImage image={bgImage} />
-      <section className="gallery-header">
-        <p>{t("galleryText")}</p>
-      </section>
+      <GalleryFixedImage image={bgImage} />
 
       <section className="gallery-container container">
         <Box
@@ -66,6 +60,8 @@ export default function ImageMasonry() {
             minHeight: 829,
             margin: "0 auto",
             padding: "0.5rem",
+            position: "relative",
+            zIndex: 10,
           }}
         >
           <Masonry
@@ -79,7 +75,7 @@ export default function ImageMasonry() {
                   key={`${itemIndex}-${imageIndex}`}
                   className="gallery-image"
                   onClick={() => handleClick(imageIndex)}
-                  style={{ position: "relative" }} // Add relative positioning
+                  style={{ position: "relative", zIndex: 10 }}
                 >
                   <img
                     srcSet={`${image.asset.url}?w=1000&auto=format&dpr=2 2x`}
