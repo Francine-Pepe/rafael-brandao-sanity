@@ -108,6 +108,7 @@ export default function VideoTabsVertical() {
             borderRadius: "5px 0 0 5px ",
             border: "none",
             color: "rgb(115, 2, 54)",
+            fontWeight: "400",
           },
           ".MuiTabs-indicator": {
             backgroundColor: "rgb(115, 2, 54)",
