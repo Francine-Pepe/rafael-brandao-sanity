@@ -122,6 +122,7 @@ export default function VideoTabs() {
                 label={item.tabsTitle[i18n.language] || item.tabsTitle?.pt}
                 {...a11yProps(item.slug)}
                 key={index}
+                selected={true}
                 sx={{
                   fontFamily: "Jost",
                   fontWeight: "300",
