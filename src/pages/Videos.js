@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from "react";
-import client from "../client";
-import VideoTabs from "../components/VideoTabs";
+import { useEffect, useState } from "react";
+import VideoTabs from "./VideoTabs/VideoTabs";
 import PageTitle from "../components/PageTitle";
-import PageDescription from "../components/PageDescription";
 import { useTranslation } from "react-i18next";
 import { Suspense } from "react";
+import VideoTabsVertical from "./VideoTabs/VideoTabsVertical";
 
 function Videos() {
-  const [videos, setVideos] = useState([]);
   const { t } = useTranslation();
   const { i18n } = useTranslation();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "videos"] {image, description {
-              asset -> {_id, url},
-              alt
-            } }`
-      )
-      .then((data) => setVideos(data))
-      .catch(console.error);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         <PageTitle data={t("nav", { returnObjects: true })} />
-        <VideoTabs currentLanguage={i18n.language} />
+        {isMobile ? (
+          <VideoTabs currentLanguage={i18n.language} />
+        ) : (
+          <VideoTabsVertical currentLanguage={i18n.language} />
+        )}
       </Suspense>
     </div>
   );

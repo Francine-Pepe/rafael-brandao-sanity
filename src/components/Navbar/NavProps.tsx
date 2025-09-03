@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 function NavProps(props: any) {
   const { data, style } = props;

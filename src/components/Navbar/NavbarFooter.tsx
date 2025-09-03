@@ -9,7 +9,6 @@ function NavbarFooter() {
       <NavProps
         data={t("navFooter", { returnObjects: true }) as []}
         style={{
-          /* color: "rgb(242, 242, 242)", */
           backgroundColor: "rgba(32, 0, 15, 1)",
         }}
       />

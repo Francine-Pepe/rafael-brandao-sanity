@@ -55,25 +55,13 @@ function ContactForm() {
           )
         )}
 
-        
         <div className="contact-label">
           <label htmlFor="message">{t("message")}</label>
           <textarea id="message" name="message" required />
         </div>
 
-        <button
-          className="contact-button"
-          type="submit"
-          value="Send"
-          /* onClick={() =>
-            swal({
-              text: "Thanks for contacting me! I will get back to you soon! 📧",
-              icon: "success",
-            })
-          } */
-        >
-          {
-            t("send")}
+        <button className="contact-button" type="submit" value="Send">
+          {t("send")}
         </button>
       </form>
     </main>
