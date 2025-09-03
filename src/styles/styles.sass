@@ -781,6 +781,9 @@ footer
     width: 90%
     min-height: 100vh
 
+    iframe
+        width: 90%
+
 .tab-content-body-bg
     width: auto    
     min-height: 100vh
@@ -851,7 +854,8 @@ iframe, .youtube-consent-container
                 float: left
         
         .news-image
-            object-fit: contain
+            width: 47%
+            float: right  
             padding: 2rem 2rem 1rem 2rem
 
             img 
@@ -861,7 +865,6 @@ iframe, .youtube-consent-container
         .news-text
             width: 90vw
             margin: 0 auto
-            
 
             p
                 width: 100%
@@ -870,9 +873,6 @@ iframe, .youtube-consent-container
     display: block !important
     position: fixed !important
     z-index: 9999 !important
-
-
-
 
 .youtube-consent-container
     @include mixins.flex-center
@@ -1162,6 +1162,8 @@ iframe, .youtube-consent-container
 
 
     .news-container
+        width: 90%
+        margin: 0 auto
         .news-wrapper
             height: 100%
             padding-top: 0
@@ -1174,13 +1176,19 @@ iframe, .youtube-consent-container
                 flex-direction: column-reverse
 
                 .news-image, .news-text
-                    width: -webkit-fill-available
-
-                .news-text
-                    padding: 0 2em
+                    width: 100%
+                    padding: 0
+                    margin-top: 2rem
+                    object-position: center
 
                 .news-image  
                     float: none
+
+                .news-image img
+                    height: auto
+
+                iframe
+                    width: 90vw
 
     .grid-container
         .biografia-grid-content
@@ -1191,9 +1199,7 @@ iframe, .youtube-consent-container
         .navbar-mobile-content
             top: 3vh
 
-    .youtube-embed
-        iframe
-            width: 60vw
+    
 
 .navbar-footer-container 
     .navlinks-props
