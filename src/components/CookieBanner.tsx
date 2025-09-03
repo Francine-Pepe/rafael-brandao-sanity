@@ -22,7 +22,6 @@ export const CookieBanner = () => {
     console.log("YouTube cookies accepted");
   };
 
-  // Optional: Helper for development to reset consent
   if (process.env.NODE_ENV === "development") {
     window.resetConsent = () => {
       document.cookie =
