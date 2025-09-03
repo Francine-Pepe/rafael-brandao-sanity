@@ -3,10 +3,10 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
-import client from "../client";
+import client from "../../client";
 import { PortableText } from "@portabletext/react";
-import ImageComponent from "./ImageComponent";
-import YouTubeComponent from "./YouTubeComponent";
+import ImageComponent from "../../components/ImageComponent";
+import YouTubeComponent from "../../components/YouTubeComponent";
 import { useTranslation } from "react-i18next";
 
 function CustomTabPanel(props) {
@@ -20,7 +20,7 @@ function CustomTabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: "1rem 0 0 0" }}>{children}</Box>}
+      {value === index && <Box sx={{ p: "0" }}>{children}</Box>}
     </div>
   );
 }
@@ -77,6 +77,7 @@ export default function VideoTabs() {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
+        bgcolor: "rgb(242, 242, 242)",
       }}
       className="tabs-box-container"
       key={key}
@@ -84,12 +85,8 @@ export default function VideoTabs() {
       <Box
         sx={{
           borderBottom: "none",
-          borderColor: "rgb(115, 2, 54)",
+          borderColor: "rgba(0, 0, 0, 0.12)",
           paddingTop: "2rem",
-
-          "@media(max-width: 945px)": {
-            borderBottom: "none",
-          },
         }}
       >
         <Tabs
@@ -107,7 +104,7 @@ export default function VideoTabs() {
               display: "none",
             },
             ".Mui-selected": {
-              borderRadius: "5px ",
+              borderRadius: "5px 5px 0 0 ",
               border: "none",
               color: "rgb(115, 2, 54)",
             },
@@ -130,13 +127,16 @@ export default function VideoTabs() {
                   fontWeight: "300",
                   color: "rgba(32, 0, 15, 1)",
                   "&.Mui-selected": {
-                    color: "rgba(32, 0, 15, 1)",
-                    fontWeight: "600",
+                    color: "#F2F2F2",
+                    fontWeight: "400",
+                    backgroundColor: "rgb(115, 2, 54)",
                   },
                   "&:hover": {
-                    backgroundColor: "rgba(32, 0, 15, 0.1)",
-                    borderRadius: "5px",
-                  },
+                  backgroundColor: "rgb(242, 242, 242)",
+                  borderRadius: "5px",
+                  color: "rgb(115, 2, 54)",
+                  fontWeight: "400",
+                },
                 }}
               />
             ))}
