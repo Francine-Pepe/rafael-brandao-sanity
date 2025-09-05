@@ -458,6 +458,35 @@ footer
             text-transform: uppercase
             letter-spacing: 0.3rem
 
+/* Image grid */
+
+.image-grid-section
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: variables.$main-background-color
+
+    .image-grid-container
+        width: 100%
+        height: 100%
+        resize: horizontal
+        overflow-x: hidden
+        padding: 1em
+
+        .columns
+            column-count: 3   
+            column-gap: 1em
+
+        img
+            width: 100%
+            object-fit: cover
+            border-radius: 5px
+            border: none
+            margin-bottom: 1em
+            display: block
+            break-inside: avoid
+
+
 /* Gallery fixed image */
 
 
@@ -1085,6 +1114,11 @@ iframe, .youtube-consent-container
 
 
 @media screen and (max-width: variables.$breakpoint-IpadPro)
+    .image-grid-section
+        .image-grid-container 
+            .columns
+                column-count: 2
+
     .navbar-mobile-container
         display: block
         position: fixed
@@ -1199,7 +1233,6 @@ iframe, .youtube-consent-container
         .navbar-mobile-content
             top: 3vh
 
-    
 
 .navbar-footer-container 
     .navlinks-props
@@ -1213,6 +1246,12 @@ iframe, .youtube-consent-container
 
 
 @media screen and (max-width: variables.$breakpoint-md)
+
+    .image-grid-section
+        .image-grid-container 
+            .columns
+                column-count: 1
+
     .modal
         .modal-content 
             .modal-content-wrap
