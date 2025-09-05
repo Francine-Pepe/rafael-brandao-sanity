@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import Masonry from "@mui/lab/Masonry";
 import { useEffect, useState } from "react";
 import client from "../client";
 import Lightbox from "yet-another-react-lightbox";
@@ -64,39 +63,32 @@ export default function ImageMasonry() {
             zIndex: 10,
           }}
         >
-          <Masonry
-            spacing={1}
-            columns={{ xs: 1, sm: 2, md: 3 }}
-            sx={{ margin: "0 auto" }}
-          >
-            {gallery.map((item, itemIndex) =>
-              item.images?.map((image, imageIndex) => (
-                <div
-                  key={`${itemIndex}-${imageIndex}`}
-                  className="gallery-image"
-                  onClick={() => handleClick(imageIndex)}
-                  style={{ position: "relative", zIndex: 10 }}
-                >
-                  <img
-                    srcSet={`${image.asset.url}?w=1000&auto=format&dpr=2 2x`}
-                    src={`${image.asset.url}?w=1000&auto=format`}
-                    alt={image.alt}
-                    loading="lazy"
-                    style={{
-                      borderRadius: 4,
-                      display: "block",
-                      width: "100%",
-                      quality: 100,
-                    }}
-                  />
-                  {/* Description on Hover */}
-                  <div className="image-description">
-                    <h5>{image.description}</h5>
-                  </div>
-                </div>
-              ))
-            )}
-          </Masonry>
+          <section className="image-grid-section">
+            <div className="image-grid-container container">
+              <div className="columns">
+                {gallery.map((item, itemIndex) =>
+                  item.images?.map((image, imageIndex) => (
+                    <div
+                      key={`${itemIndex}-${imageIndex}`}
+                      onClick={() => handleClick(imageIndex)}
+                    >
+                      <img
+                        src={image.asset.url}
+                        alt={image.alt || "gallery image"}
+                        loading="lazy"
+                        style={{
+                          quality: 100,
+                        }}
+                      />
+                      <div className="image-description">
+                        <h5>{image.description}</h5>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </section>
         </Box>
       </section>
 
