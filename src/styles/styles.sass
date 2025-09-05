@@ -374,7 +374,6 @@ footer
     right: 0
     height: 100vh
     transition: opacity 250ms ease
-    /*padding-top: 20vh
 
     &:target
         opacity: 1
@@ -493,7 +492,7 @@ footer
 .gallery-fixed-bg-image-container 
     position: relative
     width: 100%
-    height: 95vh
+    height: 99vh
     z-index: 3
 
     .gallery-fixed-bg 
@@ -734,11 +733,6 @@ footer
     z-index: 2
 
     .biografia-grid-content
-        /* -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31) */
-        /* box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.31) */
-        /* border-radius: 5px */
-        
-
         .grid-images-text
 
             h2
@@ -925,15 +919,6 @@ iframe, .youtube-consent-container
         margin: 1rem
         cursor: pointer
 
-/* .youtube-consent-placeholder
-    @include mixins.flex-column-center
-    background-color: variables.$black
-    aspect-ratio: "16/9"
-    color: variables.$white-font-color
-    text-align:  center
-    padding: 1rem
-    box-sizing: border-box */
-
 /* Animations */
 
 @keyframes fadeInUp 
@@ -967,12 +952,12 @@ iframe, .youtube-consent-container
     -webkit-animation-name: fadeOut
     animation-name: fadeOut
 
-.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-container, .news-content, .contact-container, .image-content
-    animation: fadeInUp
+.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-container, .news-content, .news-text, .news-image, , .gallery-fixed-bg img, .contact-container, .image-content
+    animation: fadeIn
     animation-duration: 2s
 
 .gallery-text p
-    animation: fadeInUp
+    animation: fadeIn
     animation-duration: 4s
 
 .animate__delay-4s	
@@ -1005,12 +990,12 @@ iframe, .youtube-consent-container
             transform: translate3d(0, 0, 0)
 
     
-    -webkit-animation-name: fadeInUp
-    animation-name: fadeInUp
+        -webkit-animation-name: fadeInUp
+        animation-name: fadeInUp
 
-    
-    animation: fadeInUp
-    animation-duration: 2s
+        
+        animation: fadeInUp
+        animation-duration: 2s
 
 .error-page
     @include mixins.flex-column-center
@@ -1062,6 +1047,18 @@ iframe, .youtube-consent-container
             /* width: 85vw */
 
 @media screen and (max-width: variables.$breakpoint-xl)
+    .agenda-container, .grid-container
+        .agenda-content
+            .agenda-information
+                width: 90vw
+
+                img
+                    width: 50%
+                    height: 40%
+
+                .agenda-information-place-time 
+                    width: 45%
+
     .footer-container
         .footer-content
             .footer-icons
@@ -1096,24 +1093,11 @@ iframe, .youtube-consent-container
                             width: 47%
                             height: auto
 
-    .agenda-container, .grid-container
-        /*@include mixins.smaller-padding-top
-        .agenda-content
-            .agenda-information
-                flex-direction: column
-                width: 90vw
-                padding-bottom: 2rem
-
-                img
-                    width: inherit
-                    height: auto
-
-                .agenda-information-place-time 
-                    width: inherit
-                    padding-top: 2rem
+    
 
 
 @media screen and (max-width: variables.$breakpoint-IpadPro)
+
     .image-grid-section
         .image-grid-container 
             .columns
@@ -1246,6 +1230,26 @@ iframe, .youtube-consent-container
 
 
 @media screen and (max-width: variables.$breakpoint-md)
+    .agenda-container
+        .agenda-content
+            .agenda-information
+                flex-direction: column
+                width: 90vw
+                padding-bottom: 2rem
+
+                img
+                    width: inherit
+                    height: 50vh
+
+                .agenda-information-place-time 
+                    width: inherit
+                    padding-top: 2rem
+
+        
+    .grid-container
+        .biografia-grid-content
+            .grid-images
+                width: 90vw
 
     .image-grid-section
         .image-grid-container 
@@ -1288,10 +1292,7 @@ iframe, .youtube-consent-container
     .page-title-container
         padding: 5.5rem 0 2rem 0
 
-    .grid-container
-        .biografia-grid-content
-            .grid-images
-                width: 90vw
+
 
     .gallery-header p
         height: 40vh
