@@ -3,7 +3,18 @@ import { PortableText } from "@portabletext/react";
 import { motion } from "motion/react";
 import { useRef } from "react";
 
-function Modal(props) {
+interface ModalProps {
+  slug: string;
+  datas: string;
+  image1: string;
+  image2: string;
+  image3: string;
+  alt: string;
+  body: any;
+  onClose: () => void;
+}
+
+function Modal(props: ModalProps) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
   const scrollRef = useRef(null);
 

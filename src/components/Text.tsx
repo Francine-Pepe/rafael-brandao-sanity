@@ -3,11 +3,17 @@ import client from "../client";
 import { PortableText } from "@portabletext/react";
 import { useTranslation } from "react-i18next";
 import BioImage from "./BioImage";
-import BioTextImage from "../assets/headshot - pb-2.webp";
+import BioTextImage from "../assets/headshot-pb-2.webp";
 
 function Text() {
   const { t, i18n } = useTranslation();
-  const [bioText, setBioText] = useState([]);
+  type BioTextItem = {
+    title?: string;
+    slug?: any;
+    body?: Record<string, any>;
+  };
+
+  const [bioText, setBioText] = useState<BioTextItem[]>([]);
 
   useEffect(() => {
     const fetchBioText = async () => {
