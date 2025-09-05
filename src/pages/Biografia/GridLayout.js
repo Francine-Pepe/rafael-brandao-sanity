@@ -1,9 +1,8 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import PageTitle from "../../components/PageTitle";
 import client from "../../client";
+import { useEffect, useState } from "react";
 
 export default function Gridlayout() {
   const [visibleDetails, setVisibleDetails] = useState(false);
@@ -41,7 +40,7 @@ export default function Gridlayout() {
                 .sort((a, b) => (a.datas > b.datas ? 1 : -1))
                 .map((item, index) => {
                   return (
-                    <div div key={index}>
+                    <div key={index}>
                       <img
                         srcSet={item.image.asset.url}
                         src={item.image.asset.url}
