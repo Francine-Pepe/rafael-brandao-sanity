@@ -1,0 +1,1 @@
+export const myYoutubeVideos = import.meta.env.VITE_SANITY_STUDIO_YOUTUBE_KEY;
