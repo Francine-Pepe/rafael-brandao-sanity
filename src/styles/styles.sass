@@ -723,6 +723,8 @@ footer
             position: relative
             background-color: white
 
+            &:hover 
+                
             .grid-images-text
                 width: inherit
   
@@ -825,7 +827,6 @@ iframe, .youtube-consent-container
             z-index: 2
             width: 90vw
             margin: 0 auto
-            font-weight: 300
 
 .news-container
     height: 100%
@@ -937,7 +938,7 @@ iframe, .youtube-consent-container
     -webkit-animation-name: fadeOut
     animation-name: fadeOut
 
-.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-container, .news-content, .contact-container
+.grid-images, .gallery-header, .gallery-image img, .agenda-information, .tabs-box-container, .tab-content-body, .contact-content, .title, .text-container, .news-content, .contact-container, .image-content
     animation: fadeInUp
     animation-duration: 2s
 
@@ -975,17 +976,49 @@ iframe, .youtube-consent-container
             transform: translate3d(0, 0, 0)
 
     
-        -webkit-animation-name: fadeInUp
-        animation-name: fadeInUp
+    -webkit-animation-name: fadeInUp
+    animation-name: fadeInUp
 
-        
-        animation: fadeInUp
-        animation-duration: 2s
+    
+    animation: fadeInUp
+    animation-duration: 2s
 
 .error-page
     @include mixins.flex-column-center
     padding-top: 10rem
     height: 100vh
+
+/* Music wave animation */
+
+@keyframes quiet 
+    25%
+        transform: scaleY(.6)
+    
+    50%
+        transform: scaleY(.4)
+    
+    75%
+        transform: scaleY(.8)
+
+@keyframes normal 
+    25%
+        transform: scaleY(1)
+    
+    50%
+        transform: scaleY(.4)
+    
+    75%
+        transform: scaleY(.6)
+
+@keyframes loud 
+    25%
+        transform: scaleY(1)
+    
+    50%
+        transform: scaleY(.4)
+    
+    75%
+        transform: scaleY(1.2)
 
 
 /* Media Queries */
@@ -1034,33 +1067,24 @@ iframe, .youtube-consent-container
                             width: 47%
                             height: auto
 
-@media screen and (min-width: variables.$breakpoint-IpadPro) and (max-width: variables.$breakpoint-xl)
     .agenda-container, .grid-container
+        /*@include mixins.smaller-padding-top
         .agenda-content
             .agenda-information
+                flex-direction: column
                 width: 90vw
+                padding-bottom: 2rem
 
                 img
-                    width: 45%
-                    height: 40%
+                    width: inherit
+                    height: auto
 
                 .agenda-information-place-time 
-                    width: 50%
+                    width: inherit
+                    padding-top: 2rem
 
 
 @media screen and (max-width: variables.$breakpoint-IpadPro)
-    .agenda-container, .grid-container
-        .agenda-content
-            .agenda-information
-                width: 90vw
-
-                img
-                    width: 45%
-                    height: 40%
-
-                .agenda-information-place-time 
-                    width: 50%
-
     .navbar-mobile-container
         display: block
         position: fixed
@@ -1175,6 +1199,8 @@ iframe, .youtube-consent-container
         .navbar-mobile-content
             top: 3vh
 
+    
+
 .navbar-footer-container 
     .navlinks-props
         gap: 0.8rem
@@ -1208,27 +1234,6 @@ iframe, .youtube-consent-container
         iframe
             width: 90vw
 
-    .agenda-container, .grid-container
-        .agenda-content
-            .agenda-information
-                flex-direction: column
-                width: 90vw
-                padding-bottom: 2rem
-
-                img
-                    width: inherit
-                    height: 40vh
-                    
-
-                .agenda-information-place-time 
-                    width: inherit
-                    padding-top: 2rem
-
-    .grid-container
-        .biografia-grid-content
-            .grid-images
-                width: 90vw
-
 
 @media screen and (max-width: variables.$breakpoint-sm)
     .logo
@@ -1243,6 +1248,11 @@ iframe, .youtube-consent-container
 
     .page-title-container
         padding: 5.5rem 0 2rem 0
+
+    .grid-container
+        .biografia-grid-content
+            .grid-images
+                width: 90vw
 
     .gallery-header p
         height: 40vh
