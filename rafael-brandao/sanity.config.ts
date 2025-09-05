@@ -6,7 +6,7 @@ import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
 import {media} from 'sanity-plugin-media'
 import {codeInput} from '@sanity/code-input'
 import {youtubeInput} from 'sanity-plugin-youtube-input'
-import {myYoutubeVideos} from './environment'
+import {myYoutubeVideos} from '../environment'
 import {muxInput} from 'sanity-plugin-mux-input'
 
 export default defineConfig({
