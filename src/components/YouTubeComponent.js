@@ -3,13 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const COOKIE_NAME = "youtube_consent";
 
-interface YouTubeComponentProps {
-  value: {
-    url: string;
-  };
-}
-
-const YouTubeComponent = ({ value }: YouTubeComponentProps) => {
+const YouTubeComponent = ({ value }) => {
   const { url } = value;
   const [hasConsent, setHasConsent] = useState(false);
   const { t } = useTranslation();
@@ -38,7 +32,7 @@ const YouTubeComponent = ({ value }: YouTubeComponentProps) => {
     };
   }, []);
 
-  const isValidYoutubeUrl = (url: string | URL) => {
+  const isValidYoutubeUrl = (url) => {
     try {
       const parsed = new URL(url);
       return (
