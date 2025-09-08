@@ -460,9 +460,7 @@ footer
 /* Image grid */
 
 .image-grid-section
-    display: flex
-    justify-content: center
-    align-items: center
+    @include mixins.flex-center
     background-color: variables.$main-background-color
 
     .image-grid-container
@@ -470,11 +468,11 @@ footer
         height: 100%
         resize: horizontal
         overflow-x: hidden
-        padding: 1em
+        padding: 0.5rem
 
         .columns
             column-count: 3   
-            column-gap: 1em
+            column-gap: 1rem
 
         img
             width: 100%
@@ -851,7 +849,7 @@ iframe, .youtube-consent-container
             width: 90vw
             margin: 0 auto
 
-.news-container
+/* .news-container
     height: 100%
     margin: 0 auto
 
@@ -859,7 +857,6 @@ iframe, .youtube-consent-container
         height: 100%
 
     .news-wrapper
-        /* background-image: url("https://live.staticflickr.com/65535/54319069184_ceea7e6148_k.jpg") */
         background-position: 0 0
         background-size: auto 100%
         background-repeat: repeat
@@ -890,7 +887,48 @@ iframe, .youtube-consent-container
             margin: 0 auto
 
             p
+                width: 100% */
+
+.news-container 
+    margin: 0 auto
+    max-width: 90vw
+    padding: 2rem 1rem
+
+    .news-wrapper 
+        display: grid
+        gap: 2rem 
+  
+
+    .news-content 
+        display: grid
+        grid-template-columns: 1fr 1fr 
+        gap: 2rem
+        align-items: flex-start
+        border-bottom: 1px solid variables.$dark-cherry-color-opacity
+        padding-bottom: 2rem
+
+        &:nth-child(2n) 
+            grid-template-columns: 1fr 1fr
+            direction: rtl 
+
+        .news-text 
+            direction: ltr 
+
+
+        .news-image 
+            img 
                 width: 100%
+                height: auto
+                border-radius: 0.5rem
+                object-fit: cover
+                max-height: 50vh
+
+
+        .news-text 
+            p 
+                margin-bottom: 1rem
+                line-height: 1.6
+
 
 .react-cookie-consent 
     display: block !important

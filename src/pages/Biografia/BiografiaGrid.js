@@ -75,7 +75,7 @@ function BiografiaGrid() {
                       image1={selectedBiografia.image1.asset.url}
                       image2={selectedBiografia.image2.asset.url}
                       image3={selectedBiografia.image3.asset.url}
-                      onClose={closeModal} // Pass the closeModal function as a prop
+                      onClose={closeModal} 
                     />
                   )}
                 </div>
