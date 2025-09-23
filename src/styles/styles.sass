@@ -387,11 +387,12 @@ footer
 
     .modal-content 
         width: 90vw
+        max-height: 90vh
+        height: auto
         background-color: variables.$main-background-color
         border-radius: 15px
-        height: auto
         padding: 2rem 
-        overflow-y: scroll
+        overflow-y: auto
         position: relative
         z-index: 100
         margin-top: 10rem
@@ -400,8 +401,7 @@ footer
         .modal-content-wrap
             display: flex
             width: inherit
-            
-            /* height: inherit */
+
 
         .modal-text
             h2
@@ -414,14 +414,16 @@ footer
 
 
             .grid-modal-images
-                /* position: relative */
                 @include mixins.flex-wrap-center
                 width: 100%
+
                 gap: 2rem
                 
             img
                 width: 45%
                 height: auto
+                object-fit: cover
+                transform-origin: center center
                 -webkit-box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
                 box-shadow: 0px 0px 23px -2px rgba(41, 41, 41, 0.82)
 
