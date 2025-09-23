@@ -1,6 +1,5 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
-import { motion } from "motion/react";
 import { useRef } from "react";
 
 function Modal(props) {
@@ -10,12 +9,13 @@ function Modal(props) {
   return (
     <section className="modal">
       <div key={slug} className="modal-content " aria-modal="true">
-        <div className="modal-close-button" onClick={onClose}>
+        <div className="modal-close-button">
           <CloseMenu
             style={{
               filter:
                 "brightness(0) saturate(100%) invert(8%) sepia(13%) saturate(2785%) hue-rotate(279deg) brightness(94%) contrast(112%)",
             }}
+            onClick={onClose}
           />
         </div>
         <div className="modal-content-wrap">
