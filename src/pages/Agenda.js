@@ -59,9 +59,9 @@ function Agenda() {
               const text = show.body || {};
 
               return (
-                <article key={show.slug.current}>
+                <article key={show.slug.current} className="individual-agenda-content ">
                   <div
-                    className="agenda-information animate__fadeInUp "
+                    className="agenda-information  "
                     onClick={() => handleClick(show.slug)}
                   >
                     <img
