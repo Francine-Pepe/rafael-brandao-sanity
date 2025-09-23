@@ -431,6 +431,26 @@ footer
                     width: 50%
                     height: auto
 
+.image-overlay 
+    @include mixins.flex-center
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: rgba(0, 0, 0, 0.85)
+    z-index: 9999
+    cursor: zoom-out
+
+
+.image-overlay-content 
+    max-width: 90%
+    max-height: 90%
+    object-fit: contain
+    border-radius: 8px
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
+
+
 .lightbox-news
     .yarl__navigation_next, .yarl__navigation_prev
         display: none
