@@ -80,6 +80,7 @@ export default function ImageMasonry() {
                           quality: 100,
                         }}
                       />
+
                       <div className="image-description">
                         <h5>{image.description}</h5>
                       </div>
