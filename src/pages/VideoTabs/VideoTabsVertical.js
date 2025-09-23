@@ -155,7 +155,7 @@ export default function VideoTabsVertical() {
       {tabs.map((item, index) => (
         <TabPanel value={value} index={index} key={index}>
           <div className="tab-vertical-content-body-bg">
-            <div className="tab-vertical-content-body animate__fadeInUp">
+            <div className="tab-vertical-content-body">
               {
                 <PortableText
                   value={item.body[i18n.language] || item.body?.pt}

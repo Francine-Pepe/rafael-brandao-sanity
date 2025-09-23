@@ -148,7 +148,7 @@ export default function VideoTabs() {
         {tabs.map((item, index) => (
           <CustomTabPanel value={value} index={index} key={index}>
             <div className="tab-content-body-bg">
-              <div className="tab-content-body animate__fadeInUp">
+              <div className="tab-content-body">
                 {
                   <PortableText
                     value={item.body[i18n.language] || item.body?.pt}
