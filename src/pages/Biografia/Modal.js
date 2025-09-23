@@ -1,10 +1,8 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
-import { useRef } from "react";
 
 function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
-  const scrollRef = useRef(null);
 
   return (
     <section className="modal">
@@ -21,25 +19,30 @@ function Modal(props) {
         <div className="modal-content-wrap">
           <div className="modal-image">
             <div className="grid-modal-images">
-              <img
-                src={image1}
-                alt={alt}
-                className="modal-image1"
-                loading="lazy"
-              />
-              <img
-                src={image2}
-                alt={alt}
-                className="modal-image2"
-                loading="lazy"
-              />
-
-              <img
-                src={image3}
-                alt={alt}
-                className="modal-image3"
-                loading="lazy"
-              />
+              {image1 && (
+                <img
+                  src={image1}
+                  alt={alt}
+                  className="modal-image1"
+                  loading="lazy"
+                />
+              )}
+              {image2 && (
+                <img
+                  src={image2}
+                  alt={alt}
+                  className="modal-image2"
+                  loading="lazy"
+                />
+              )}
+              {image3 && (
+                <img
+                  src={image3}
+                  alt={alt}
+                  className="modal-image3"
+                  loading="lazy"
+                />
+              )}
             </div>
           </div>
           <div className="modal-text">
