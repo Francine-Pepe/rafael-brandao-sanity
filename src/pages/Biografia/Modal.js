@@ -1,8 +1,14 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
+import { useState } from "react";
 
 function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
+
+  const [fullImage, setFullImage] = useState(null);
+
+  const openFull = (url) => setFullImage(url);
+  const closeFull = () => setFullImage(null);
 
   return (
     <section className="modal">
@@ -25,6 +31,12 @@ function Modal(props) {
                   alt={alt}
                   className="modal-image1"
                   loading="lazy"
+                  onClick={() => openFull(image1)}
+                  style={{
+                    cursor: "zoom-in",
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
                 />
               )}
               {image2 && (
@@ -33,6 +45,12 @@ function Modal(props) {
                   alt={alt}
                   className="modal-image2"
                   loading="lazy"
+                  style={{
+                    cursor: "zoom-in",
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
+                  onClick={() => openFull(image2)}
                 />
               )}
               {image3 && (
@@ -41,6 +59,12 @@ function Modal(props) {
                   alt={alt}
                   className="modal-image3"
                   loading="lazy"
+                  style={{
+                    cursor: "zoom-in",
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
+                  onClick={() => openFull(image3)}
                 />
               )}
             </div>
@@ -51,6 +75,11 @@ function Modal(props) {
           </div>
         </div>
       </div>
+      {fullImage && (
+        <div className="image-overlay" onClick={closeFull} aria-hidden="true">
+          <img src={fullImage} alt={alt} className="image-overlay-content" />
+        </div>
+      )}
     </section>
   );
 }

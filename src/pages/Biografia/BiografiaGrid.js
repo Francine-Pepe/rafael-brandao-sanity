@@ -33,6 +33,8 @@ function BiografiaGrid() {
     setSelectedBiografia(null);
   };
 
+
+
   return (
     <>
       <PageTitle data={t("nav", { returnObjects: true })} />
