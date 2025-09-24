@@ -18,19 +18,19 @@ function Modal(props) {
   const coolingDownRef = useRef(false);
   const doubleTapTimeoutRef = useRef(null);
 
-  // Improved touch handling
-  const preventDefault = useCallback(
-    (e) => {
-      if (e.touches.length > 1 && isZoomed) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    },
-    [isZoomed]
-  );
+  // Use CSS touch-action instead of preventDefault for most cases
+  const getTouchAction = useCallback(() => {
+    return isZoomed ? "none" : "pan-x pan-y";
+  }, [isZoomed]);
 
   const handleImageTouchStart = useCallback(
     (e) => {
+      if (e.touches.length > 1) {
+        // For multi-touch, we need to use non-passive event listeners
+        e.stopPropagation();
+        return;
+      }
+
       if (e.touches.length === 1) {
         touchStartRef.current = {
           x: e.touches[0].clientX,
@@ -39,7 +39,6 @@ function Modal(props) {
         };
 
         if (isZoomed) {
-          // Start dragging for panning
           setIsDragging(true);
           dragStartRef.current = {
             x: e.touches[0].clientX - imagePosition.x,
@@ -55,15 +54,14 @@ function Modal(props) {
     (e) => {
       if (!isZoomed || !isDragging) return;
 
-      if (e.touches.length === 1) {
-        e.preventDefault();
-        e.stopPropagation();
+      // Don't use preventDefault() in passive listeners
+      e.stopPropagation();
 
+      if (e.touches.length === 1) {
         const touch = e.touches[0];
         const newX = touch.clientX - dragStartRef.current.x;
         const newY = touch.clientY - dragStartRef.current.y;
 
-        // Calculate boundaries to prevent dragging beyond image edges
         const imageRect = imageRef.current?.getBoundingClientRect();
         const overlayRect = overlayRef.current?.getBoundingClientRect();
 
@@ -94,29 +92,24 @@ function Modal(props) {
       const deltaY = Math.abs(endY - touchStartRef.current.y);
       const deltaTime = Date.now() - touchStartRef.current.time;
 
-      // If dragging/panning, don't trigger tap actions
       if (isZoomed && (deltaX > 5 || deltaY > 5)) {
         return;
       }
 
-      // If it's a tap (not drag) and within reasonable time/distance
       if (deltaTime < 300 && deltaX < 10 && deltaY < 10) {
         const now = Date.now();
         if (now - lastTouchRef.current < 300) {
-          // Double tap detected
           if (doubleTapTimeoutRef.current) {
             clearTimeout(doubleTapTimeoutRef.current);
             doubleTapTimeoutRef.current = null;
           }
           handleDoubleTap();
         } else {
-          // Single tap
           lastTouchRef.current = now;
           doubleTapTimeoutRef.current = setTimeout(() => {
             if (!isZoomed) {
               openFull(imageUrl);
             } else {
-              // Single tap when zoomed - close zoom or reset position
               resetImagePosition();
             }
             doubleTapTimeoutRef.current = null;
@@ -127,7 +120,51 @@ function Modal(props) {
     [isZoomed]
   );
 
-  // Mouse event handlers for desktop
+  // Use non-passive event listeners for multi-touch prevention
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    const image = imageRef.current;
+
+    if (!overlay || !image) return;
+
+    // Handler that can use preventDefault (non-passive)
+    const handleTouchStartNonPassive = (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    const handleTouchMoveNonPassive = (e) => {
+      if (isZoomed && e.touches.length > 1) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    // Add event listeners with passive: false
+    overlay.addEventListener("touchstart", handleTouchStartNonPassive, {
+      passive: false,
+    });
+    overlay.addEventListener("touchmove", handleTouchMoveNonPassive, {
+      passive: false,
+    });
+    image.addEventListener("touchstart", handleTouchStartNonPassive, {
+      passive: false,
+    });
+    image.addEventListener("touchmove", handleTouchMoveNonPassive, {
+      passive: false,
+    });
+
+    return () => {
+      overlay.removeEventListener("touchstart", handleTouchStartNonPassive);
+      overlay.removeEventListener("touchmove", handleTouchMoveNonPassive);
+      image.removeEventListener("touchstart", handleTouchStartNonPassive);
+      image.removeEventListener("touchmove", handleTouchMoveNonPassive);
+    };
+  }, [isZoomed]);
+
+  // Mouse event handlers
   const handleMouseDown = useCallback(
     (e) => {
       if (!isZoomed) return;
@@ -150,7 +187,6 @@ function Modal(props) {
       const newX = e.clientX - dragStartRef.current.x;
       const newY = e.clientY - dragStartRef.current.y;
 
-      // Calculate boundaries
       const imageRect = imageRef.current?.getBoundingClientRect();
       const overlayRect = overlayRef.current?.getBoundingClientRect();
 
@@ -177,11 +213,9 @@ function Modal(props) {
 
   const handleDoubleTap = useCallback(() => {
     if (isZoomed) {
-      // Double tap when zoomed - zoom out or reset position
       setIsZoomed(false);
       resetImagePosition();
     } else {
-      // Double tap when not zoomed - zoom in
       setIsZoomed(true);
     }
   }, [isZoomed]);
@@ -192,6 +226,7 @@ function Modal(props) {
     resetImagePosition();
     setImageLoaded(false);
     document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none"; // Use CSS instead of preventDefault
   }, []);
 
   const closeFull = useCallback(() => {
@@ -200,6 +235,7 @@ function Modal(props) {
     resetImagePosition();
     coolingDownRef.current = true;
     document.body.style.overflow = "";
+    document.body.style.touchAction = "";
 
     setTimeout(() => {
       coolingDownRef.current = false;
@@ -239,15 +275,12 @@ function Modal(props) {
   useEffect(() => {
     if (fullImage) {
       document.addEventListener("keydown", handleKeyPress);
-      document.body.style.touchAction = "none";
     } else {
       document.removeEventListener("keydown", handleKeyPress);
-      document.body.style.touchAction = "";
     }
 
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
-      document.body.style.touchAction = "";
       if (doubleTapTimeoutRef.current) {
         clearTimeout(doubleTapTimeoutRef.current);
       }
@@ -270,6 +303,7 @@ function Modal(props) {
           cursor: "zoom-in",
           maxWidth: "100%",
           height: "auto",
+          touchAction: "pan-y pinch-zoom", // Use CSS instead of preventDefault
         }}
       />
     );
@@ -308,6 +342,9 @@ function Modal(props) {
           ref={overlayRef}
           className="image-overlay"
           onClick={handleOverlayClick}
+          style={{
+            touchAction: getTouchAction(), // Control touch behavior via CSS
+          }}
         >
           <div
             className={`image-container ${isZoomed ? "zoomed" : ""} ${imageLoaded ? "loaded" : "loading"} ${isDragging ? "dragging" : ""}`}
@@ -338,13 +375,12 @@ function Modal(props) {
                 position: isZoomed ? "relative" : "static",
                 left: isZoomed ? `${imagePosition.x}px` : "auto",
                 top: isZoomed ? `${imagePosition.y}px` : "auto",
-                touchAction: isZoomed ? "none" : "pan-x pan-y pinch-zoom",
+                touchAction: isZoomed ? "none" : "pan-x pan-y pinch-zoom", // CSS-based prevention
               }}
             />
             {!imageLoaded && <div className="image-loading">Loading...</div>}
           </div>
 
-          {/* Controls */}
           <div className="image-controls">
             <button
               onClick={(e) => {
@@ -372,7 +408,6 @@ function Modal(props) {
             </button>
           </div>
 
-          {/* Navigation hint when zoomed */}
           {isZoomed && (
             <div className="zoom-hint">
               Drag to navigate • Double-tap to zoom out

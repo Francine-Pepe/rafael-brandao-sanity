@@ -396,12 +396,10 @@ footer
         margin-top: 10rem
         touch-action: pan-y
         max-height: 90vh
-        
 
         .modal-content-wrap
             display: flex
             width: inherit
-
 
         .modal-text
             h2
@@ -416,7 +414,6 @@ footer
             .grid-modal-images
                 @include mixins.flex-wrap-center
                 width: 100%
-
                 gap: 2rem
                 
             img
@@ -462,10 +459,14 @@ footer
 
     &.zoomed 
         cursor: grab
-        
-        &.dragging 
-            cursor: grabbing
+        touch-action: none
 
+    &:not(.zoomed) 
+        touch-action: pan-x pan-y
+    
+        
+    &.dragging 
+        cursor: grabbing
 
 .image-overlay-content 
     max-width: 90%
@@ -488,7 +489,7 @@ footer
         z-index: 10000
       
         .zoom-button, .close-button 
-            background: rgba(0, 0, 0, 0.7)
+            background: rgb(115, 2, 54)
             color: white
             border: none
             border-radius: 50%
@@ -509,18 +510,18 @@ footer
                 transform: scale(0.95)
 
 .image-controls 
+    @include mixins.flex-center
     position: absolute
     bottom: 2rem
     right: 2rem
-    display: flex
-    justify-content: center
     gap: 1rem
     z-index: 10000
     left: 50%
     transform: translateX(-50%)
       
     .control-button 
-        background: rgba(0, 0, 0, 0.7)
+        @include mixins.flex-center
+        background: rgb(115, 2, 54)
         color: white
         border: none
         border-radius: 2rem
@@ -528,9 +529,6 @@ footer
         height: 3rem
         font-size: 1.5rem
         cursor: pointer
-        display: flex
-        align-items: center
-        justify-content: center
         transition: all 0.3s ease
         
         
@@ -539,7 +537,7 @@ footer
             /* transform: scale(1.1) */
 
         &:active 
-          transform: scale(0.95)
+            transform: scale(0.95)
 
 .zoom-hint 
     position: absolute
@@ -554,7 +552,7 @@ footer
     animation: fadeInOut 3s ease-in-out
 
 
-// iOS specific fixes
+// iOS specific fixes for modal image
 @supports (-webkit-touch-callout: none) 
     .modal 
         .image-overlay 
@@ -562,12 +560,11 @@ footer
 
             .image-container.zoomed 
                 .image-overlay-content 
-                -webkit-transform: translateZ(0)
-                transform: translateZ(0)
-                
+                    -webkit-transform: translateZ(0)
+                    transform: translateZ(0)
         
         .image-overlay-content 
-            -webkit-transform: translateZ(0px) // Hardware acceleration
+            -webkit-transform: translateZ(0) // Hardware acceleration
 
 
 // Prevent zoom on double tap for iOS
@@ -1000,46 +997,6 @@ iframe, .youtube-consent-container
             width: 90vw
             margin: 0 auto
 
-/* .news-container
-    height: 100%
-    margin: 0 auto
-
-    img
-        height: 100%
-
-    .news-wrapper
-        background-position: 0 0
-        background-size: auto 100%
-        background-repeat: repeat
-        padding-top: 2rem
-        width: 100%
-
-    .news-content
-        width: inherit
-        display: inline-block
-        padding: 1rem 0
-        border-bottom: 1px solid variables.$dark-cherry-color-opacity
-
-        &:nth-child(2n + 1)
-            .news-image
-                float: left
-        
-        .news-image
-            width: 47%
-            float: right  
-            padding: 2rem 2rem 1rem 2rem
-
-            img 
-                width: 100%
-                height: 50vh
-
-        .news-text
-            width: 90vw
-            margin: 0 auto
-
-            p
-                width: 100% */
-
 .news-container 
     margin: 0 auto
     max-width: 90vw
@@ -1432,7 +1389,7 @@ iframe, .youtube-consent-container
             .image-container.zoomed 
                 .image-overlay-content 
                 // Allow zooming but prevent page zoom
-                touch-action: pan-x pan-y
+                    touch-action: pan-x pan-y
             
 
 
