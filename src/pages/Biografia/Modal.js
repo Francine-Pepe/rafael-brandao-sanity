@@ -7,21 +7,40 @@ function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
 
   const [fullImage, setFullImage] = useState(null);
-  const [isPinching, setIsPinching] = useState(false);
+  const [coolingDown, setCoolingDown] = useState(false);
+  const zoomLevelRef = useRef(1);
 
   const openFull = (url) => setFullImage(url);
   const closeFull = () => setFullImage(null);
 
-  const lastPinchTime = useRef(0);
-
-  const handleTouchStart = (e) => {
-    if (e.touches.length > 1) {
-      lastPinchTime.current = Date.now();
-    }
+  const getZoom = () => {
+    // window.visualViewport.scale is iOS-supported
+    return window.visualViewport ? window.visualViewport.scale : 1;
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const currentZoom = getZoom();
+      if (Math.abs(currentZoom - zoomLevelRef.current) > 0.01) {
+        zoomLevelRef.current = currentZoom;
+        setCoolingDown(true);
+        // reset after 500 ms
+        setTimeout(() => setCoolingDown(false), 500);
+      }
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+    }
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
+
   const handleOverlayClick = () => {
-    if (Date.now() - lastPinchTime.current < 400) return;
+    if (coolingDown) return; // ignore ghost click during/after zoom
     closeFull();
   };
 
@@ -91,12 +110,7 @@ function Modal(props) {
         </div>
       </div>
       {fullImage && (
-        <div
-          className="image-overlay"
-          onTouchStart={handleTouchStart}
-          onClick={handleOverlayClick}
-          aria-hidden="true"
-        >
+        <div className="image-overlay" onClick={handleOverlayClick}>
           <img
             src={fullImage}
             alt={alt}
