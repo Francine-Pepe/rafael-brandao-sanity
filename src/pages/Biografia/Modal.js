@@ -387,12 +387,13 @@ function Modal(props) {
                 e.stopPropagation();
                 if (isZoomed) {
                   resetImagePosition();
+                  setIsZoomed(false);
                 } else {
-                  setIsZoomed(!isZoomed);
+                  setIsZoomed(true);
                 }
               }}
               className="control-button"
-              aria-label={isZoomed ? "Reset position" : "Zoom in"}
+              aria-label={isZoomed ? "Reset zoom" : "Zoom in"}
             >
               {isZoomed ? "↺" : "+"}
             </button>
