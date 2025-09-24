@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import client from "../client";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -31,20 +31,52 @@ export default function ImageMasonry() {
     setIndex(-1);
   };
 
+  // Custom hook for intersection observer
+const useIntersectionObserver = (options = {}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+      ...options
+    });
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [options]);
+
+  return [ref, isIntersecting];
+};
+
   useEffect(() => {
     client
       .fetch(
         `*[_type == "imageGallery"] {
-          title,
-          slug,
-          images[] {
-            asset -> { _id, url },
-            alt,
-            description
-          }
-        }`
+        title,
+        slug,
+        images[] {
+          asset -> { 
+            _id, 
+            url,
+            metadata { dimensions } // Get dimensions for aspect ratio
+          },
+          alt,
+          description
+        }
+      }[0]` 
       )
-      .then((data) => setGallery(data || []))
+      .then((data) => setGallery(data ? [data] : [])) 
       .catch(console.error);
   }, []);
 
@@ -71,6 +103,8 @@ export default function ImageMasonry() {
                     <div
                       key={`${itemIndex}-${imageIndex}`}
                       onClick={() => handleClick(imageIndex)}
+                      className="fade-in-on-scroll visible "
+                      style={{ '--delay': `${imageIndex * 0.1}s` }}
                     >
                       <img
                         src={image.asset.url}
