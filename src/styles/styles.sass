@@ -513,15 +513,18 @@ footer
     bottom: 2rem
     right: 2rem
     display: flex
+    justify-content: center
     gap: 1rem
     z-index: 10000
+    left: 50%
+    transform: translateX(-50%)
       
     .control-button 
         background: rgba(0, 0, 0, 0.7)
         color: white
         border: none
-        border-radius: 50%
-        width: 3rem
+        border-radius: 2rem
+        width: 1.5rem
         height: 3rem
         font-size: 1.5rem
         cursor: pointer
@@ -530,31 +533,25 @@ footer
         justify-content: center
         transition: all 0.3s ease
         
+        
         &:hover 
             background: rgba(0, 0, 0, 0.9)
-            transform: scale(1.1)
+            /* transform: scale(1.1) */
 
         &:active 
           transform: scale(0.95)
 
 .zoom-hint 
     position: absolute
-    bottom: 1rem
+    bottom: 7rem
     left: 50%
     transform: translateX(-50%)
     background: rgba(0, 0, 0, 0.7)
     color: white
     padding: 0.5rem 1rem
-    border-radius: 50%
+    border-radius: 50px
     font-size: 0.9rem
     animation: fadeInOut 3s ease-in-out
-
-
-@keyframes fadeInOut 
-    0%, 100% 
-        opacity: 0 
-    20%, 80% 
-        opacity: 1 
 
 
 // iOS specific fixes
@@ -574,8 +571,6 @@ footer
 
 
 // Prevent zoom on double tap for iOS
-
-
 
 .lightbox-news
     .yarl__navigation_next, .yarl__navigation_prev
