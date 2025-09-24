@@ -432,7 +432,7 @@ footer
                     height: auto
 
 .image-overlay 
-    @include mixins.flex-center
+    @include mixins.flex-column-center
     position: fixed
     top: 0
     left: 0
@@ -443,6 +443,23 @@ footer
     cursor: zoom-out
     touch-action: pan-x pan-y pinch-zoom
 
+    .image-container 
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        height: 100%
+      
+    &.loading 
+        .image-overlay-content 
+            opacity: 0
+ 
+      
+    &.loaded 
+        .image-overlay-content 
+            opacity: 1
+
 
 .image-overlay-content 
     max-width: 90%
@@ -451,6 +468,53 @@ footer
     border-radius: 8px
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
     touch-action: manipulation
+    transition: transform 0.3s ease, opacity 0.3s ease
+
+    &:active 
+        cursor: grabbing
+
+    .zoom-controls 
+        position: absolute
+        bottom: 2rem
+        right: 2rem
+        display: flex
+        gap: 1rem
+        z-index: 10000
+      
+        .zoom-button, .close-button 
+            background: rgba(0, 0, 0, 0.7)
+            color: white
+            border: none
+            border-radius: 50%
+            width: 3rem
+            height: 3rem
+            font-size: 1.5rem
+            cursor: pointer
+            display: flex
+            align-items: center
+            justify-content: center
+            transition: background-color 0.3s ease
+        
+            &:hover 
+                background: rgba(0, 0, 0, 0.9)
+            
+        
+            &:active 
+                transform: scale(0.95)
+
+// iOS specific fixes
+@supports (-webkit-touch-callout: none) 
+    .modal 
+        .image-overlay 
+            -webkit-overflow-scrolling: touch
+        
+        .image-overlay-content 
+            -webkit-transform: translateZ(0px) // Hardware acceleration
+
+
+// Prevent zoom on double tap for iOS
+
+
 
 .lightbox-news
     .yarl__navigation_next, .yarl__navigation_prev
@@ -1305,6 +1369,15 @@ iframe, .youtube-consent-container
     .logo
         img
             width: 12rem
+
+@media screen and (max-width: 768px) 
+    .modal 
+        .image-overlay 
+            .image-container.zoomed 
+                .image-overlay-content 
+                // Allow zooming but prevent page zoom
+                touch-action: pan-x pan-y
+            
 
 
 
