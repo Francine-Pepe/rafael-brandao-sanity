@@ -1,14 +1,27 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
 
   const [fullImage, setFullImage] = useState(null);
+  const [touchZoom, setTouchZoom] = useState(false);
 
   const openFull = (url) => setFullImage(url);
   const closeFull = () => setFullImage(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.touches?.length > 1) setTouchZoom(true);
+    };
+    window.addEventListener("touchstart", handler, { passive: true });
+    window.addEventListener("touchend", () => setTouchZoom(false));
+    return () => {
+      window.removeEventListener("touchstart", handler);
+      window.removeEventListener("touchend", () => setTouchZoom(false));
+    };
+  }, []);
 
   return (
     <section className="modal">
@@ -76,8 +89,19 @@ function Modal(props) {
         </div>
       </div>
       {fullImage && (
-        <div className="image-overlay" onClick={closeFull} aria-hidden="true">
-          <img src={fullImage} alt={alt} className="image-overlay-content" />
+        <div
+          className="image-overlay"
+          aria-hidden="true"
+          onClick={() => {
+            if (!touchZoom) closeFull();
+          }}
+        >
+          <img
+            src={fullImage}
+            alt={alt}
+            className="image-overlay-content"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </section>
