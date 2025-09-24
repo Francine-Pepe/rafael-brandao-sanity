@@ -90,13 +90,10 @@ body, html, .container, .slideshow, .page-title-container, .fixed-image-opacity-
     margin: 0 auto
 
 
-@mixin theme-colors($light-theme: true) 
-    @if $light-theme 
-        background-color: variables.$light-background
-        color: variables.$light-text
-    @else 
-        background-color: variables.$dark-background
-        color: variables.$dark-text
+@media (prefers-color-scheme: dark) 
+    html, body 
+        background-color: #ffffff
+        color-scheme: light
 
 
 .banner 

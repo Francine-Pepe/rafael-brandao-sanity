@@ -6,20 +6,28 @@ function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
 
   const [fullImage, setFullImage] = useState(null);
-  const [touchZoom, setTouchZoom] = useState(false);
+  const [isPinching, setIsPinching] = useState(false);
 
   const openFull = (url) => setFullImage(url);
   const closeFull = () => setFullImage(null);
 
   useEffect(() => {
-    const handler = (e) => {
-      if (e.touches?.length > 1) setTouchZoom(true);
+    const handleStart = (e) => {
+      if (e.touches && e.touches.length > 1) setIsPinching(true);
     };
-    window.addEventListener("touchstart", handler, { passive: true });
-    window.addEventListener("touchend", () => setTouchZoom(false));
+    const handleEnd = (e) => {
+      // when all fingers lifted, allow closing again
+      if (!e.touches || e.touches.length === 0) setIsPinching(false);
+    };
+
+    window.addEventListener("touchstart", handleStart, { passive: true });
+    window.addEventListener("touchend", handleEnd, { passive: true });
+    window.addEventListener("touchcancel", handleEnd, { passive: true });
+
     return () => {
-      window.removeEventListener("touchstart", handler);
-      window.removeEventListener("touchend", () => setTouchZoom(false));
+      window.removeEventListener("touchstart", handleStart);
+      window.removeEventListener("touchend", handleEnd);
+      window.removeEventListener("touchcancel", handleEnd);
     };
   }, []);
 
@@ -91,10 +99,10 @@ function Modal(props) {
       {fullImage && (
         <div
           className="image-overlay"
-          aria-hidden="true"
           onClick={() => {
-            if (!touchZoom) closeFull();
+            if (!isPinching) closeFull();
           }}
+          aria-hidden="true"
         >
           <img
             src={fullImage}
