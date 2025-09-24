@@ -1,6 +1,7 @@
 import { CloseMenu } from "../../icons/CloseMenu";
 import { PortableText } from "@portabletext/react";
 import { useState, useEffect } from "react";
+import { useRef } from "react";
 
 function Modal(props) {
   const { slug, datas, image1, image2, image3, alt, body, onClose } = props;
@@ -11,25 +12,18 @@ function Modal(props) {
   const openFull = (url) => setFullImage(url);
   const closeFull = () => setFullImage(null);
 
-  useEffect(() => {
-    const handleStart = (e) => {
-      if (e.touches && e.touches.length > 1) setIsPinching(true);
-    };
-    const handleEnd = (e) => {
-      // when all fingers lifted, allow closing again
-      if (!e.touches || e.touches.length === 0) setIsPinching(false);
-    };
+  const lastPinchTime = useRef(0);
 
-    window.addEventListener("touchstart", handleStart, { passive: true });
-    window.addEventListener("touchend", handleEnd, { passive: true });
-    window.addEventListener("touchcancel", handleEnd, { passive: true });
+  const handleTouchStart = (e) => {
+    if (e.touches.length > 1) {
+      lastPinchTime.current = Date.now();
+    }
+  };
 
-    return () => {
-      window.removeEventListener("touchstart", handleStart);
-      window.removeEventListener("touchend", handleEnd);
-      window.removeEventListener("touchcancel", handleEnd);
-    };
-  }, []);
+  const handleOverlayClick = () => {
+    if (Date.now() - lastPinchTime.current < 400) return;
+    closeFull();
+  };
 
   return (
     <section className="modal">
@@ -99,9 +93,8 @@ function Modal(props) {
       {fullImage && (
         <div
           className="image-overlay"
-          onClick={() => {
-            if (!isPinching) closeFull();
-          }}
+          onTouchStart={handleTouchStart}
+          onClick={handleOverlayClick}
           aria-hidden="true"
         >
           <img
