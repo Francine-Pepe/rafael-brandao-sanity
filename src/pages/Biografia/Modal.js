@@ -8,89 +8,197 @@ function Modal(props) {
   const [fullImage, setFullImage] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   const overlayRef = useRef(null);
   const imageRef = useRef(null);
   const lastTouchRef = useRef(0);
   const touchStartRef = useRef({ x: 0, y: 0 });
+  const dragStartRef = useRef({ x: 0, y: 0 });
   const coolingDownRef = useRef(false);
   const doubleTapTimeoutRef = useRef(null);
 
-  // Improved touch handling with useCallback
-  const preventDefault = useCallback((e) => {
-    if (e.touches.length > 1) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  }, []);
-
-  const handleImageTouchStart = useCallback((e) => {
-    if (e.touches.length === 1) {
-      touchStartRef.current = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY,
-        time: Date.now(),
-      };
-    }
-  }, []);
-
-  const handleImageTouchEnd = useCallback((e, imageUrl) => {
-    if (e.touches.length > 0) return;
-
-    const touch = e.changedTouches[0];
-    const endX = touch.clientX;
-    const endY = touch.clientY;
-    const deltaX = Math.abs(endX - touchStartRef.current.x);
-    const deltaY = Math.abs(endY - touchStartRef.current.y);
-    const deltaTime = Date.now() - touchStartRef.current.time;
-
-    // If it's a tap (not swipe) and within reasonable time/distance
-    if (deltaTime < 300 && deltaX < 10 && deltaY < 10) {
-      // Check for double tap
-      const now = Date.now();
-      if (now - lastTouchRef.current < 300) {
-        // Double tap detected - toggle zoom
-        if (doubleTapTimeoutRef.current) {
-          clearTimeout(doubleTapTimeoutRef.current);
-          doubleTapTimeoutRef.current = null;
-        }
-        handleDoubleTap(imageUrl);
-      } else {
-        // Single tap - open full image after a delay to distinguish from double tap
-        lastTouchRef.current = now;
-        doubleTapTimeoutRef.current = setTimeout(() => {
-          openFull(imageUrl);
-          doubleTapTimeoutRef.current = null;
-        }, 300);
-      }
-    }
-  }, []);
-
-  const handleDoubleTap = useCallback(
-    (imageUrl) => {
-      if (fullImage === imageUrl) {
-        // Toggle zoom state
-        setIsZoomed(!isZoomed);
-      } else {
-        openFull(imageUrl);
-        setIsZoomed(true);
+  // Improved touch handling
+  const preventDefault = useCallback(
+    (e) => {
+      if (e.touches.length > 1 && isZoomed) {
+        e.preventDefault();
+        e.stopPropagation();
       }
     },
-    [fullImage, isZoomed]
+    [isZoomed]
   );
+
+  const handleImageTouchStart = useCallback(
+    (e) => {
+      if (e.touches.length === 1) {
+        touchStartRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY,
+          time: Date.now(),
+        };
+
+        if (isZoomed) {
+          // Start dragging for panning
+          setIsDragging(true);
+          dragStartRef.current = {
+            x: e.touches[0].clientX - imagePosition.x,
+            y: e.touches[0].clientY - imagePosition.y,
+          };
+        }
+      }
+    },
+    [isZoomed, imagePosition]
+  );
+
+  const handleImageTouchMove = useCallback(
+    (e) => {
+      if (!isZoomed || !isDragging) return;
+
+      if (e.touches.length === 1) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const touch = e.touches[0];
+        const newX = touch.clientX - dragStartRef.current.x;
+        const newY = touch.clientY - dragStartRef.current.y;
+
+        // Calculate boundaries to prevent dragging beyond image edges
+        const imageRect = imageRef.current?.getBoundingClientRect();
+        const overlayRect = overlayRef.current?.getBoundingClientRect();
+
+        if (imageRect && overlayRect) {
+          const maxX = Math.max(0, (imageRect.width - overlayRect.width) / 2);
+          const maxY = Math.max(0, (imageRect.height - overlayRect.height) / 2);
+
+          const constrainedX = Math.max(-maxX, Math.min(maxX, newX));
+          const constrainedY = Math.max(-maxY, Math.min(maxY, newY));
+
+          setImagePosition({ x: constrainedX, y: constrainedY });
+        }
+      }
+    },
+    [isZoomed, isDragging]
+  );
+
+  const handleImageTouchEnd = useCallback(
+    (e, imageUrl) => {
+      setIsDragging(false);
+
+      if (e.touches.length > 0) return;
+
+      const touch = e.changedTouches[0];
+      const endX = touch.clientX;
+      const endY = touch.clientY;
+      const deltaX = Math.abs(endX - touchStartRef.current.x);
+      const deltaY = Math.abs(endY - touchStartRef.current.y);
+      const deltaTime = Date.now() - touchStartRef.current.time;
+
+      // If dragging/panning, don't trigger tap actions
+      if (isZoomed && (deltaX > 5 || deltaY > 5)) {
+        return;
+      }
+
+      // If it's a tap (not drag) and within reasonable time/distance
+      if (deltaTime < 300 && deltaX < 10 && deltaY < 10) {
+        const now = Date.now();
+        if (now - lastTouchRef.current < 300) {
+          // Double tap detected
+          if (doubleTapTimeoutRef.current) {
+            clearTimeout(doubleTapTimeoutRef.current);
+            doubleTapTimeoutRef.current = null;
+          }
+          handleDoubleTap();
+        } else {
+          // Single tap
+          lastTouchRef.current = now;
+          doubleTapTimeoutRef.current = setTimeout(() => {
+            if (!isZoomed) {
+              openFull(imageUrl);
+            } else {
+              // Single tap when zoomed - close zoom or reset position
+              resetImagePosition();
+            }
+            doubleTapTimeoutRef.current = null;
+          }, 300);
+        }
+      }
+    },
+    [isZoomed]
+  );
+
+  // Mouse event handlers for desktop
+  const handleMouseDown = useCallback(
+    (e) => {
+      if (!isZoomed) return;
+
+      e.preventDefault();
+      setIsDragging(true);
+      dragStartRef.current = {
+        x: e.clientX - imagePosition.x,
+        y: e.clientY - imagePosition.y,
+      };
+    },
+    [isZoomed, imagePosition]
+  );
+
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (!isZoomed || !isDragging) return;
+
+      e.preventDefault();
+      const newX = e.clientX - dragStartRef.current.x;
+      const newY = e.clientY - dragStartRef.current.y;
+
+      // Calculate boundaries
+      const imageRect = imageRef.current?.getBoundingClientRect();
+      const overlayRect = overlayRef.current?.getBoundingClientRect();
+
+      if (imageRect && overlayRect) {
+        const maxX = Math.max(0, (imageRect.width - overlayRect.width) / 2);
+        const maxY = Math.max(0, (imageRect.height - overlayRect.height) / 2);
+
+        const constrainedX = Math.max(-maxX, Math.min(maxX, newX));
+        const constrainedY = Math.max(-maxY, Math.min(maxY, newY));
+
+        setImagePosition({ x: constrainedX, y: constrainedY });
+      }
+    },
+    [isZoomed, isDragging]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const resetImagePosition = useCallback(() => {
+    setImagePosition({ x: 0, y: 0 });
+  }, []);
+
+  const handleDoubleTap = useCallback(() => {
+    if (isZoomed) {
+      // Double tap when zoomed - zoom out or reset position
+      setIsZoomed(false);
+      resetImagePosition();
+    } else {
+      // Double tap when not zoomed - zoom in
+      setIsZoomed(true);
+    }
+  }, [isZoomed]);
 
   const openFull = useCallback((url) => {
     setFullImage(url);
     setIsZoomed(false);
+    resetImagePosition();
     setImageLoaded(false);
-    // Prevent body scroll when modal is open
     document.body.style.overflow = "hidden";
   }, []);
 
   const closeFull = useCallback(() => {
     setFullImage(null);
     setIsZoomed(false);
+    resetImagePosition();
     coolingDownRef.current = true;
-    // Restore body scroll
     document.body.style.overflow = "";
 
     setTimeout(() => {
@@ -100,34 +208,13 @@ function Modal(props) {
 
   const handleOverlayClick = useCallback(
     (e) => {
-      if (coolingDownRef.current || isZoomed) return;
+      if (coolingDownRef.current) return;
 
-      // Additional iOS-specific protection
-      if (e.type === "touchend" && e.changedTouches.length > 0) {
-        const touch = e.changedTouches[0];
-        const now = Date.now();
-
-        if (now - lastTouchRef.current < 500) return;
-        lastTouchRef.current = now;
-
-        // Check if this is actually a scroll/zoom gesture
-        const deltaX = Math.abs(touch.clientX - touchStartRef.current.x);
-        const deltaY = Math.abs(touch.clientY - touchStartRef.current.y);
-
-        if (deltaX > 10 || deltaY > 10) return; // Likely a gesture, not a click
+      if (!isZoomed) {
+        closeFull();
       }
-
-      closeFull();
     },
     [isZoomed, closeFull]
-  );
-
-  const handleImageClick = useCallback(
-    (e, imageUrl) => {
-      e.stopPropagation();
-      openFull(imageUrl);
-    },
-    [openFull]
   );
 
   const handleFullImageLoad = useCallback(() => {
@@ -136,18 +223,22 @@ function Modal(props) {
 
   const handleKeyPress = useCallback(
     (e) => {
-      if (e.key === "Escape" && fullImage) {
-        closeFull();
+      if (e.key === "Escape") {
+        if (isZoomed) {
+          setIsZoomed(false);
+          resetImagePosition();
+        } else {
+          closeFull();
+        }
       }
     },
-    [fullImage, closeFull]
+    [isZoomed, closeFull]
   );
 
   // Effect for event listeners
   useEffect(() => {
     if (fullImage) {
       document.addEventListener("keydown", handleKeyPress);
-      // Prevent background scroll on iOS
       document.body.style.touchAction = "none";
     } else {
       document.removeEventListener("keydown", handleKeyPress);
@@ -174,15 +265,11 @@ function Modal(props) {
         alt={alt}
         className={className}
         loading="lazy"
-        onClick={(e) => handleImageClick(e, imageUrl)}
-        onTouchStart={handleImageTouchStart}
-        onTouchEnd={(e) => handleImageTouchEnd(e, imageUrl)}
-        onTouchMove={preventDefault}
+        onClick={() => openFull(imageUrl)}
         style={{
           cursor: "zoom-in",
           maxWidth: "100%",
           height: "auto",
-          touchAction: "manipulation",
         }}
       />
     );
@@ -221,61 +308,76 @@ function Modal(props) {
           ref={overlayRef}
           className="image-overlay"
           onClick={handleOverlayClick}
-          onTouchStart={preventDefault}
-          onTouchMove={preventDefault}
         >
           <div
-            className={`image-container ${isZoomed ? "zoomed" : ""} ${imageLoaded ? "loaded" : "loading"}`}
+            className={`image-container ${isZoomed ? "zoomed" : ""} ${imageLoaded ? "loaded" : "loading"} ${isDragging ? "dragging" : ""}`}
           >
             <img
               ref={imageRef}
               src={fullImage}
               alt={alt}
               className="image-overlay-content"
-              onClick={(e) => {
-                e.stopPropagation();
-                if (isZoomed) {
-                  setIsZoomed(false);
-                } else {
-                  handleDoubleTap(fullImage);
-                }
-              }}
+              onClick={(e) => e.stopPropagation()}
               onTouchStart={handleImageTouchStart}
+              onTouchMove={handleImageTouchMove}
               onTouchEnd={(e) => handleImageTouchEnd(e, fullImage)}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
               onLoad={handleFullImageLoad}
               style={{
                 transform: isZoomed ? "scale(2)" : "scale(1)",
-                transition: "transform 0.3s ease",
-                cursor: isZoomed ? "zoom-out" : "zoom-in",
+                transformOrigin: "center center",
+                transition: isDragging ? "none" : "transform 0.3s ease",
+                cursor: isZoomed
+                  ? isDragging
+                    ? "grabbing"
+                    : "grab"
+                  : "zoom-in",
+                position: isZoomed ? "relative" : "static",
+                left: isZoomed ? `${imagePosition.x}px` : "auto",
+                top: isZoomed ? `${imagePosition.y}px` : "auto",
                 touchAction: isZoomed ? "none" : "pan-x pan-y pinch-zoom",
               }}
             />
             {!imageLoaded && <div className="image-loading">Loading...</div>}
           </div>
 
-          {/* Zoom controls */}
-          <div className="zoom-controls">
+          {/* Controls */}
+          <div className="image-controls">
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setIsZoomed(!isZoomed);
+                if (isZoomed) {
+                  resetImagePosition();
+                } else {
+                  setIsZoomed(!isZoomed);
+                }
               }}
-              className="zoom-button"
-              aria-label={isZoomed ? "Zoom out" : "Zoom in"}
+              className="control-button"
+              aria-label={isZoomed ? "Reset position" : "Zoom in"}
             >
-              {isZoomed ? "−" : "+"}
+              {isZoomed ? "↺" : "+"}
             </button>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 closeFull();
               }}
-              className="close-button"
+              className="control-button"
               aria-label="Close image"
             >
               ×
             </button>
           </div>
+
+          {/* Navigation hint when zoomed */}
+          {isZoomed && (
+            <div className="zoom-hint">
+              Drag to navigate • Double-tap to zoom out
+            </div>
+          )}
         </div>
       )}
     </section>
