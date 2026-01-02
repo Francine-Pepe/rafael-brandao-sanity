@@ -44,7 +44,7 @@ export const Navigation = [
 export const carouselImages = [
   {
     id: 0,
-    image: CarouselImage6,
+    image: CarouselImage2,
     alt: "Rafa Brandao - cantor e compositor",
   },
   {
@@ -54,7 +54,7 @@ export const carouselImages = [
   },
   {
     id: 2,
-    image: CarouselImage2,
+    image: CarouselImage6,
     alt: "Rafa Brandao - cantor e compositor",
   },
   {
@@ -72,7 +72,7 @@ export const carouselImages = [
 export const carouselImagesIpad = [
   {
     id: 0,
-    image: CarouselImage7,
+    image: CarouselImage2,
     alt: "Rafa Brandao - cantor e compositor",
   },
   {
@@ -82,7 +82,7 @@ export const carouselImagesIpad = [
   },
   {
     id: 2,
-    image: CarouselImage2,
+    image: CarouselImage7,
     alt: "Rafa Brandao - cantor e compositor",
   },
   {
@@ -100,7 +100,7 @@ export const carouselImagesIpad = [
 export const carouselImagesMobile = [
   {
     id: 0,
-    image: CarouselImage3,
+    image: CarouselImage2,
     alt: "Rafa Brandao - cantor e compositor",
   },
   {
@@ -110,7 +110,7 @@ export const carouselImagesMobile = [
   },
   {
     id: 2,
-    image: CarouselImage2,
+    image: CarouselImage3,
     alt: "Rafa Brandao - cantor e compositor",
   },
   {
