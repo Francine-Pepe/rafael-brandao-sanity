@@ -52,7 +52,7 @@ function Agenda() {
       <section className="agenda-container container">
         <div className="agenda-content container">
           {shows
-            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
             .map((show) => {
               const eventTitle = show.eventTitle || {};
               const eventDate = show.eventDate || {};
