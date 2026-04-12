@@ -63,8 +63,7 @@ function News() {
         <div className="news-wrapper">
           {[...news]
             .slice()
-            .reverse()
-            .sort((a, b) => (a.date > b.date ? -1 : 1))
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
             .map((item) => {
               const newsTitle = item.newsTitle || {};
               const text = item.body || {};
