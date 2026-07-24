@@ -43,9 +43,10 @@ nav
                 color: variables.$white-font-color
                 transition: 0.5s ease-in
 
-                &:hover, &:active
+                &:hover, &:active, &:visited
                     font-weight: variables.$font-weight-bold
                     color: variables.$dark-cherry-color
+                    -webkit-tap-highlight-color: transparent
 
 .nav-links
     .cherry-background
@@ -65,10 +66,11 @@ nav
         background: none
         padding: 0 0.5rem
 
-        &:hover, &:active
+        &:hover, &:active, &:visited
             font-weight: variables.$font-weight-bold
             color: variables.$dark-cherry-color
             background-color: transparent
+            -webkit-tap-highlight-color: transparent
             
 p
     line-height: 2
