@@ -1,6 +1,13 @@
 @use 'variables'
 @use 'mixins'
 
+@font-face
+    font-family: "DIN"
+    src: url("./fonts/DIN-Regular.otf") format("opentype")
+    font-weight: 400
+    font-style: normal
+    font-display: swap
+
 .article-page
     margin-top: 15rem
     height: 100vh
@@ -9,7 +16,7 @@
 body, html
     /*margin: 0 auto
     background-color: variables.$main-background-color !important
-    font-family: variables.$font-family !important
+    font-family: variables.$font-family !important 
     max-width: 100%
     min-height: 100vh   
     overflow-x: hidden
@@ -115,7 +122,7 @@ button, textarea, input
     a
         color: variables.$white-font-color
         font-weight: variables.$font-weight-light
-
+    
 
 .navigation-buttons
     @include mixins.gap
@@ -1428,6 +1435,9 @@ iframe, .youtube-consent-container
                 .image-overlay-content 
                 // Allow zooming but prevent page zoom
                     touch-action: pan-x pan-y
+
+    p
+        font-weight: bold
             
 
 
