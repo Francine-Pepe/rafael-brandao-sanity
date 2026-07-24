@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import RafaLogo from "../assets/Rafa-logo-white.svg";
+import RafaLogo from "../assets/Rafa-logo-cherry-.svg";
 
-function Logo(props: any) {
+function LogoCherry(props: any) {
   const { style } = props;
 
   return (
@@ -13,4 +13,4 @@ function Logo(props: any) {
   );
 }
 
-export default Logo;
+export default LogoCherry;
