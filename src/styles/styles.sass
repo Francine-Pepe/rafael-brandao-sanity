@@ -18,6 +18,8 @@ body, html
 
 h1, h2, h3, h4, h5
     font-weight: 450
+    font-family: inherit
+    line-height: 1.5
 
 nav
 
@@ -775,7 +777,7 @@ footer
 
                 .agenda-date-time
                     @include mixins.gap
-                    align-items: flex-start
+                    align-items: baseline
                     width: auto
                     color: variables.$dark-blue
 
@@ -796,6 +798,8 @@ footer
 
                 h3
                     margin: 0 0 1rem 0
+                    text-transform: uppercase
+                    text-shadow: 1px 1px 1px variables.$black-opacity-color-hover
 
 .contact-form-container 
 
