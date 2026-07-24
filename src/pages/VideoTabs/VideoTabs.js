@@ -35,7 +35,7 @@ function a11yProps(index) {
 export default function VideoTabs() {
   const [value, setValue] = React.useState(0);
   const [tabs, setTabs] = useState([]);
-  const [key, setKey] = useState(0);
+  const [key] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
