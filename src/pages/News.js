@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageTitle from "../components/PageTitle";
-import { Navigation } from "../data";
-import TextBg from "../assets/paper_background.jpg";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { useEffect, useState } from "react";
 import client from "../client";
 import { PortableText } from "@portabletext/react";
 import { useTranslation } from "react-i18next";
@@ -16,23 +13,24 @@ function News() {
   const [news, setNews] = useState([]);
   const [open, setOpen] = useState(false);
   const { t, i18n } = useTranslation();
-  const [animationDuration, setAnimationDuration] = useState(500);
-  const [maxZoomPixelRatio, setMaxZoomPixelRatio] = useState(1);
-  const [zoomInMultiplier, setZoomInMultiplier] = useState(2);
-  const [doubleTapDelay, setDoubleTapDelay] = useState(300);
-  const [doubleClickDelay, setDoubleClickDelay] = useState(300);
-  const [doubleClickMaxStops, setDoubleClickMaxStops] = useState(2);
-  const [keyboardMoveDistance, setKeyboardMoveDistance] = useState(50);
-  const [wheelZoomDistanceFactor, setWheelZoomDistanceFactor] = useState(100);
-  const [pinchZoomDistanceFactor, setPinchZoomDistanceFactor] = useState(100);
-  const [scrollToZoom, setScrollToZoom] = useState(false);
 
-  const handleClick = (index) => {
-    setOpen(!open && index);
+  const [animationDuration] = useState(500);
+  const [maxZoomPixelRatio] = useState(1);
+  const [zoomInMultiplier] = useState(2);
+  const [doubleTapDelay] = useState(300);
+  const [doubleClickDelay] = useState(300);
+  const [doubleClickMaxStops] = useState(2);
+  const [keyboardMoveDistance] = useState(50);
+  const [wheelZoomDistanceFactor] = useState(100);
+  const [pinchZoomDistanceFactor] = useState(100);
+  const [scrollToZoom] = useState(false);
+
+  const handleClick = (slug) => {
+    setOpen(slug);
   };
 
   const closeModal = () => {
-    setOpen(true);
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -72,10 +70,10 @@ function News() {
                 <div key={item.slug.current} className="news-content">
                   <div
                     className="news-image"
-                    onClick={() => handleClick(item.slug)}
+                    onClick={() => handleClick(item.slug.current)}
                   >
                     <img src={item.image.asset.url} alt={item.slug} />
-                    {open === item.slug && (
+                    {open === item.slug.current && (
                       <Lightbox
                         animation={{ zoom: animationDuration }}
                         plugins={[Zoom]}
@@ -93,8 +91,8 @@ function News() {
                         styles={{
                           container: { backgroundColor: "rgba(0, 0, 0, .9)" },
                         }}
-                        open={open}
-                        close={() => closeModal(false)}
+                        open={Boolean(open)}
+                        close={closeModal}
                         slides={[{ src: item.image.asset.url }]}
                         className="lightbox lightbox-news"
                       />
@@ -106,11 +104,7 @@ function News() {
                       href={item.link}
                       /* style={{ display: item.link ? "block" : "none" }} */
                     >
-                      <h3>
-                        {newsTitle[i18n.language] ||
-                          newsTitle?.pt ||
-                          ""}
-                      </h3>
+                      <h3>{newsTitle[i18n.language] || newsTitle?.pt || ""}</h3>
                     </a>
 
                     <PortableText
