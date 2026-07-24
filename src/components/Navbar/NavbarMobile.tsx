@@ -42,7 +42,7 @@ function NavbarMobile() {
         <div className="mobile-logo">
           <Logo
             style={{
-              filter: `${homeUrl === "/" ? " brightness(0) saturate(100%) invert(99%) sepia(73%) saturate(60%) hue-rotate(239deg) brightness(116%) contrast(90%)" : "brightness(0) saturate(100%) invert(10%) sepia(55%) saturate(6527%) hue-rotate(313deg) brightness(95%) contrast(100%)"}`,
+              webkitFilter: `${homeUrl === "/" ? " brightness(0) saturate(100%) invert(99%) sepia(73%) saturate(60%) hue-rotate(239deg) brightness(116%) contrast(90%)" : "brightness(0) saturate(100%) invert(10%) sepia(55%) saturate(6527%) hue-rotate(313deg) brightness(95%) contrast(100%)"}`,
             }}
           />
         </div>
