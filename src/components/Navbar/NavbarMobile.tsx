@@ -3,6 +3,7 @@ import { CloseMenu } from "../../icons/CloseMenu";
 import { OpenMenu } from "../../icons/OpenMenu";
 import NavProps from "./NavProps";
 import Logo from "../../icons/Logo";
+import LogoCherry from "../../icons/LogoCherry";
 import { useLocation } from "react-router-dom";
 import LanguageSelector from "../LanguageSelector";
 import { Spotify } from "../../icons/Spotify";
@@ -28,11 +29,6 @@ function NavbarMobile() {
     }
   };
 
-  const logoFilter =
-    homeUrl === "/"
-      ? "brightness(0) saturate(100%) invert(99%) sepia(73%) saturate(60%) hue-rotate(239deg) brightness(116%) contrast(90%)"
-      : "brightness(0) saturate(100%) invert(10%) sepia(55%) saturate(6527%) hue-rotate(313deg) brightness(95%) contrast(100%)";
-
   return (
     <section className="navbar-mobile-container container">
       <div
@@ -43,12 +39,7 @@ function NavbarMobile() {
         }}
       >
         <div className="mobile-logo">
-          <Logo
-            style={{
-              filter: logoFilter,
-              WebkitFilter: logoFilter,
-            }}
-          />
+          {homeUrl === "/" ? <Logo /> : <LogoCherry />}
         </div>
         <div className="mobile-menu">
           {isActive ? <CloseMenu /> : <OpenMenu />}
