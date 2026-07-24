@@ -1,32 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const delay = 4000;
 
-function Carousel(props: any) {
-  const [index, setIndex] = useState(0);
-  const timeoutRef = useRef<ReturnType<typeof setInterval>>();
-  const { data } = props;
+type CarouselItem = {
+  image: string;
+  alt: string;
+};
 
-  function resetTimeout() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }
+type CarouselProps = {
+  data: CarouselItem[];
+};
+
+function Carousel({ data }: CarouselProps) {
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === data.length - 1 ? 0 : prevIndex + 1
-        ),
-      delay
-    );
+    if (data.length <= 1) {
+      setIndex(0);
+      return;
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      setIndex((previousIndex) =>
+        previousIndex === data.length - 1 ? 0 : previousIndex + 1,
+      );
+    }, delay);
 
     return () => {
-      resetTimeout();
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
-  }, [index]);
+  }, [index, data.length]);
 
   return (
     <div className="slideshow">
@@ -34,8 +40,8 @@ function Carousel(props: any) {
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {data.map((item: { image: string, alt: string }, index: any) => (
-          <div className="slide" key={index}>
+        {data.map((item, itemIndex) => (
+          <div className="slide" key={item.image || itemIndex}>
             <img src={item.image} alt={item.alt} />
           </div>
         ))}
