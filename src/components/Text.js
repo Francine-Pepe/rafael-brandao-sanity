@@ -6,7 +6,7 @@ import BioImage from "./BioImage";
 import BioTextImage from "../assets/headshot - pb-2.webp";
 
 function Text() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [bioText, setBioText] = useState([]);
 
   useEffect(() => {
