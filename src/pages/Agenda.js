@@ -98,7 +98,7 @@ function Agenda() {
                       />
                     )}
                     <div className="agenda-information-place-time">
-                      <h3>
+                      <h3 className="event-title">
                         {eventTitle[navigator.language] ||
                           eventTitle[i18n.language] ||
                           eventTitle.pt ||
@@ -112,7 +112,7 @@ function Agenda() {
                         </h3>
 
                         <span>|</span>
-                        <h3>{show.eventHour}</h3>
+                        <h3 className="event-hour">{show.eventHour}</h3>
                       </div>
                       <PortableText
                         value={
