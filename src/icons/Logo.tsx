@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import RafaLogo from "../assets/Rafa-logo-white.svg";
 
-
 function Logo(props: any) {
   const { style } = props;
 
