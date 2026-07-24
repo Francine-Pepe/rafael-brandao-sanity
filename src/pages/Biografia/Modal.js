@@ -10,6 +10,7 @@ function Modal(props) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+
   const overlayRef = useRef(null);
   const imageRef = useRef(null);
   const lastTouchRef = useRef(0);
@@ -18,7 +19,31 @@ function Modal(props) {
   const coolingDownRef = useRef(false);
   const doubleTapTimeoutRef = useRef(null);
 
-  // Use CSS touch-action instead of preventDefault for most cases
+  const resetImagePosition = useCallback(() => {
+    setImagePosition({ x: 0, y: 0 });
+  }, []);
+
+  const openFull = useCallback(
+    (url) => {
+      setFullImage(url);
+      setIsZoomed(false);
+      resetImagePosition();
+      setImageLoaded(false);
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    },
+    [resetImagePosition],
+  );
+
+  const handleDoubleTap = useCallback(() => {
+    if (isZoomed) {
+      setIsZoomed(false);
+      resetImagePosition();
+    } else {
+      setIsZoomed(true);
+    }
+  }, [isZoomed, resetImagePosition]);
+
   const getTouchAction = useCallback(() => {
     return isZoomed ? "none" : "pan-x pan-y";
   }, [isZoomed]);
@@ -26,7 +51,6 @@ function Modal(props) {
   const handleImageTouchStart = useCallback(
     (e) => {
       if (e.touches.length > 1) {
-        // For multi-touch, we need to use non-passive event listeners
         e.stopPropagation();
         return;
       }
@@ -47,14 +71,13 @@ function Modal(props) {
         }
       }
     },
-    [isZoomed, imagePosition]
+    [isZoomed, imagePosition],
   );
 
   const handleImageTouchMove = useCallback(
     (e) => {
       if (!isZoomed || !isDragging) return;
 
-      // Don't use preventDefault() in passive listeners
       e.stopPropagation();
 
       if (e.touches.length === 1) {
@@ -69,14 +92,14 @@ function Modal(props) {
           const maxX = Math.max(0, (imageRect.width - overlayRect.width) / 2);
           const maxY = Math.max(0, (imageRect.height - overlayRect.height) / 2);
 
-          const constrainedX = Math.max(-maxX, Math.min(maxX, newX));
-          const constrainedY = Math.max(-maxY, Math.min(maxY, newY));
-
-          setImagePosition({ x: constrainedX, y: constrainedY });
+          setImagePosition({
+            x: Math.max(-maxX, Math.min(maxX, newX)),
+            y: Math.max(-maxY, Math.min(maxY, newY)),
+          });
         }
       }
     },
-    [isZoomed, isDragging]
+    [isZoomed, isDragging],
   );
 
   const handleImageTouchEnd = useCallback(
@@ -86,48 +109,46 @@ function Modal(props) {
       if (e.touches.length > 0) return;
 
       const touch = e.changedTouches[0];
-      const endX = touch.clientX;
-      const endY = touch.clientY;
-      const deltaX = Math.abs(endX - touchStartRef.current.x);
-      const deltaY = Math.abs(endY - touchStartRef.current.y);
+      const deltaX = Math.abs(touch.clientX - touchStartRef.current.x);
+      const deltaY = Math.abs(touch.clientY - touchStartRef.current.y);
       const deltaTime = Date.now() - touchStartRef.current.time;
 
-      if (isZoomed && (deltaX > 5 || deltaY > 5)) {
-        return;
-      }
+      if (isZoomed && (deltaX > 5 || deltaY > 5)) return;
 
       if (deltaTime < 300 && deltaX < 10 && deltaY < 10) {
         const now = Date.now();
+
         if (now - lastTouchRef.current < 300) {
           if (doubleTapTimeoutRef.current) {
             clearTimeout(doubleTapTimeoutRef.current);
             doubleTapTimeoutRef.current = null;
           }
+
           handleDoubleTap();
         } else {
           lastTouchRef.current = now;
+
           doubleTapTimeoutRef.current = setTimeout(() => {
             if (!isZoomed) {
               openFull(imageUrl);
             } else {
               resetImagePosition();
             }
+
             doubleTapTimeoutRef.current = null;
           }, 300);
         }
       }
     },
-    [isZoomed]
+    [isZoomed, handleDoubleTap, openFull, resetImagePosition],
   );
 
-  // Use non-passive event listeners for multi-touch prevention
   useEffect(() => {
     const overlay = overlayRef.current;
     const image = imageRef.current;
 
     if (!overlay || !image) return;
 
-    // Handler that can use preventDefault (non-passive)
     const handleTouchStartNonPassive = (e) => {
       if (e.touches.length > 1) {
         e.preventDefault();
@@ -142,7 +163,6 @@ function Modal(props) {
       }
     };
 
-    // Add event listeners with passive: false
     overlay.addEventListener("touchstart", handleTouchStartNonPassive, {
       passive: false,
     });
@@ -164,7 +184,6 @@ function Modal(props) {
     };
   }, [isZoomed]);
 
-  // Mouse event handlers
   const handleMouseDown = useCallback(
     (e) => {
       if (!isZoomed) return;
@@ -176,7 +195,7 @@ function Modal(props) {
         y: e.clientY - imagePosition.y,
       };
     },
-    [isZoomed, imagePosition]
+    [isZoomed, imagePosition],
   );
 
   const handleMouseMove = useCallback(
@@ -184,9 +203,9 @@ function Modal(props) {
       if (!isZoomed || !isDragging) return;
 
       e.preventDefault();
+
       const newX = e.clientX - dragStartRef.current.x;
       const newY = e.clientY - dragStartRef.current.y;
-
       const imageRect = imageRef.current?.getBoundingClientRect();
       const overlayRect = overlayRef.current?.getBoundingClientRect();
 
@@ -194,39 +213,17 @@ function Modal(props) {
         const maxX = Math.max(0, (imageRect.width - overlayRect.width) / 2);
         const maxY = Math.max(0, (imageRect.height - overlayRect.height) / 2);
 
-        const constrainedX = Math.max(-maxX, Math.min(maxX, newX));
-        const constrainedY = Math.max(-maxY, Math.min(maxY, newY));
-
-        setImagePosition({ x: constrainedX, y: constrainedY });
+        setImagePosition({
+          x: Math.max(-maxX, Math.min(maxX, newX)),
+          y: Math.max(-maxY, Math.min(maxY, newY)),
+        });
       }
     },
-    [isZoomed, isDragging]
+    [isZoomed, isDragging],
   );
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  }, []);
-
-  const resetImagePosition = useCallback(() => {
-    setImagePosition({ x: 0, y: 0 });
-  }, []);
-
-  const handleDoubleTap = useCallback(() => {
-    if (isZoomed) {
-      setIsZoomed(false);
-      resetImagePosition();
-    } else {
-      setIsZoomed(true);
-    }
-  }, [isZoomed]);
-
-  const openFull = useCallback((url) => {
-    setFullImage(url);
-    setIsZoomed(false);
-    resetImagePosition();
-    setImageLoaded(false);
-    document.body.style.overflow = "hidden";
-    document.body.style.touchAction = "none"; // Use CSS instead of preventDefault
   }, []);
 
   const closeFull = useCallback(() => {
@@ -240,18 +237,15 @@ function Modal(props) {
     setTimeout(() => {
       coolingDownRef.current = false;
     }, 300);
-  }, []);
+  }, [resetImagePosition]);
 
-  const handleOverlayClick = useCallback(
-    (e) => {
-      if (coolingDownRef.current) return;
+  const handleOverlayClick = useCallback(() => {
+    if (coolingDownRef.current) return;
 
-      if (!isZoomed) {
-        closeFull();
-      }
-    },
-    [isZoomed, closeFull]
-  );
+    if (!isZoomed) {
+      closeFull();
+    }
+  }, [isZoomed, closeFull]);
 
   const handleFullImageLoad = useCallback(() => {
     setImageLoaded(true);
@@ -268,26 +262,23 @@ function Modal(props) {
         }
       }
     },
-    [isZoomed, closeFull]
+    [isZoomed, closeFull, resetImagePosition],
   );
 
-  // Effect for event listeners
   useEffect(() => {
     if (fullImage) {
       document.addEventListener("keydown", handleKeyPress);
-    } else {
-      document.removeEventListener("keydown", handleKeyPress);
     }
 
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
+
       if (doubleTapTimeoutRef.current) {
         clearTimeout(doubleTapTimeoutRef.current);
       }
     };
   }, [fullImage, handleKeyPress]);
 
-  // Render image with proper touch handlers
   const renderImage = (imageUrl, className, key) => {
     if (!imageUrl) return null;
 
@@ -303,7 +294,7 @@ function Modal(props) {
           cursor: "zoom-in",
           maxWidth: "100%",
           height: "auto",
-          touchAction: "pan-y pinch-zoom", // Use CSS instead of preventDefault
+          touchAction: "pan-y pinch-zoom",
         }}
       />
     );
@@ -322,6 +313,7 @@ function Modal(props) {
             aria-label="Close modal"
           />
         </div>
+
         <div className="modal-content-wrap">
           <div className="modal-image">
             <div className="grid-modal-images">
@@ -330,6 +322,7 @@ function Modal(props) {
               {renderImage(image3, "modal-image3", "image3")}
             </div>
           </div>
+
           <div className="modal-text">
             <h2>{datas}</h2>
             <PortableText value={body} />
@@ -342,12 +335,12 @@ function Modal(props) {
           ref={overlayRef}
           className="image-overlay"
           onClick={handleOverlayClick}
-          style={{
-            touchAction: getTouchAction(), // Control touch behavior via CSS
-          }}
+          style={{ touchAction: getTouchAction() }}
         >
           <div
-            className={`image-container ${isZoomed ? "zoomed" : ""} ${imageLoaded ? "loaded" : "loading"} ${isDragging ? "dragging" : ""}`}
+            className={`image-container ${isZoomed ? "zoomed" : ""} ${
+              imageLoaded ? "loaded" : "loading"
+            } ${isDragging ? "dragging" : ""}`}
           >
             <img
               ref={imageRef}
@@ -375,9 +368,10 @@ function Modal(props) {
                 position: isZoomed ? "relative" : "static",
                 left: isZoomed ? `${imagePosition.x}px` : "auto",
                 top: isZoomed ? `${imagePosition.y}px` : "auto",
-                touchAction: isZoomed ? "none" : "pan-x pan-y pinch-zoom", // CSS-based prevention
+                touchAction: isZoomed ? "none" : "pan-x pan-y pinch-zoom",
               }}
             />
+
             {!imageLoaded && <div className="image-loading">Loading...</div>}
           </div>
 
@@ -385,6 +379,7 @@ function Modal(props) {
             <button
               onClick={(e) => {
                 e.stopPropagation();
+
                 if (isZoomed) {
                   resetImagePosition();
                   setIsZoomed(false);
@@ -397,6 +392,7 @@ function Modal(props) {
             >
               {isZoomed ? "↺" : "+"}
             </button>
+
             <button
               onClick={(e) => {
                 e.stopPropagation();

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import NavProps from "./NavProps";
-import { Navigation } from "../../data";
 import { Spotify } from "../../icons/Spotify";
 import { Instagram } from "../../icons/Instagram";
 import { Youtube } from "../../icons/Youtube";
@@ -45,7 +44,9 @@ function Navbar() {
         <section className="navigation-links">
           <NavProps
             data={t("nav", { returnObjects: true }) as []}
-            style={{color: `${homeUrl === "/" || homeUrl === "/galeria" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`}}
+            style={{
+              color: `${homeUrl === "/" || homeUrl === "/galeria" ? "#F2F2F2" : "rgba(32, 0, 15, 1)"}`,
+            }}
           />
         </section>
         <section className="navigation-social-media">

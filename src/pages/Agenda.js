@@ -13,16 +13,16 @@ function Agenda() {
   const [shows, setShows] = useState([]);
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
-  const [animationDuration, setAnimationDuration] = useState(500);
-  const [maxZoomPixelRatio, setMaxZoomPixelRatio] = useState(1);
-  const [zoomInMultiplier, setZoomInMultiplier] = useState(2);
-  const [doubleTapDelay, setDoubleTapDelay] = useState(300);
-  const [doubleClickDelay, setDoubleClickDelay] = useState(300);
-  const [doubleClickMaxStops, setDoubleClickMaxStops] = useState(2);
-  const [keyboardMoveDistance, setKeyboardMoveDistance] = useState(50);
-  const [wheelZoomDistanceFactor, setWheelZoomDistanceFactor] = useState(100);
-  const [pinchZoomDistanceFactor, setPinchZoomDistanceFactor] = useState(100);
-  const [scrollToZoom, setScrollToZoom] = useState(false);
+  const [animationDuration] = useState(500);
+  const [maxZoomPixelRatio] = useState(1);
+  const [zoomInMultiplier] = useState(2);
+  const [doubleTapDelay] = useState(300);
+  const [doubleClickDelay] = useState(300);
+  const [doubleClickMaxStops] = useState(2);
+  const [keyboardMoveDistance] = useState(50);
+  const [wheelZoomDistanceFactor] = useState(100);
+  const [pinchZoomDistanceFactor] = useState(100);
+  const [scrollToZoom] = useState(false);
 
   useEffect(() => {
     const fetchAgenda = async () => {
@@ -59,7 +59,10 @@ function Agenda() {
               const text = show.body || {};
 
               return (
-                <article key={show.slug.current} className="individual-agenda-content ">
+                <article
+                  key={show.slug.current}
+                  className="individual-agenda-content "
+                >
                   <div
                     className="agenda-information  "
                     onClick={() => handleClick(show.slug)}

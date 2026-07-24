@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CloseMenu } from "../../icons/CloseMenu";
 import { OpenMenu } from "../../icons/OpenMenu";
 import NavProps from "./NavProps";
-import { Navigation } from "../../data";
 import Logo from "../../icons/Logo";
 import { useLocation } from "react-router-dom";
 import LanguageSelector from "../LanguageSelector";
