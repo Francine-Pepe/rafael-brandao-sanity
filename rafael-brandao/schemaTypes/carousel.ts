@@ -11,9 +11,52 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
-      name: 'images',
-      title: 'Images',
+      name: 'desktopImages',
+      title: 'Desktop Images',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'tabletImages',
+      title: 'Tablet Images',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'mobileImages',
+      title: 'Mobile Images',
       type: 'array',
       of: [
         {
