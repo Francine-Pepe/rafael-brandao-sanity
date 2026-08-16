@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import client from "../client";
-import { urlFor } from "../sanity/lib/image";
 
 const delay = 4000;
 
@@ -8,19 +7,22 @@ const carouselQuery = `
   *[_type == "carousel"][0] {
     _id,
     title,
+
     desktopImages[] {
       _key,
-      asset,
+      "url": asset->url,
       alt
     },
+
     tabletImages[] {
       _key,
-      asset,
+      "url": asset->url,
       alt
     },
+
     mobileImages[] {
       _key,
-      asset,
+      "url": asset->url,
       alt
     }
   }
@@ -28,9 +30,7 @@ const carouselQuery = `
 
 type SanityImage = {
   _key?: string;
-  asset: {
-    _ref: string;
-  };
+  url?: string;
   alt?: string;
 };
 
@@ -53,9 +53,10 @@ function Carousel() {
     const fetchCarousel = async () => {
       try {
         const data = await client.fetch<CarouselData>(carouselQuery);
+
         setCarousel(data);
       } catch (error) {
-        console.error("Error fetching carousel:", error);
+        console.error("Error fetching carousel from Sanity:", error);
       }
     };
 
@@ -72,7 +73,7 @@ function Carousel() {
     mobileImages.length,
   );
 
-  // Carousel timer
+  // Automatically change slides
   useEffect(() => {
     if (slideCount <= 1) {
       setIndex(0);
@@ -92,7 +93,7 @@ function Carousel() {
     };
   }, [index, slideCount]);
 
-  // Don't render until Sanity data is available
+  // Don't render anything while loading
   if (!carousel || slideCount === 0) {
     return null;
   }
@@ -110,39 +111,33 @@ function Carousel() {
           const tablet = tabletImages[itemIndex];
           const mobile = mobileImages[itemIndex];
 
+          // Use desktop as the default, then tablet, then mobile
           const fallbackImage = desktop || tablet || mobile;
 
-          if (!fallbackImage) {
+          // Skip the slide if there is no valid image URL
+          if (!fallbackImage?.url) {
             return null;
           }
 
           return (
             <div
               className="slide"
-              key={
-                desktop?._key ||
-                tablet?._key ||
-                mobile?._key ||
-                fallbackImage.asset._ref
-              }
+              key={desktop?._key || tablet?._key || mobile?._key || itemIndex}
             >
               <picture>
-                {mobile && (
-                  <source
-                    media="(max-width: 767px)"
-                    srcSet={urlFor(mobile).auto("format").url()}
-                  />
+                {/* Mobile */}
+                {mobile?.url && (
+                  <source media="(max-width: 767px)" srcSet={mobile.url} />
                 )}
 
-                {tablet && (
-                  <source
-                    media="(max-width: 1023px)"
-                    srcSet={urlFor(tablet).auto("format").url()}
-                  />
+                {/* Tablet */}
+                {tablet?.url && (
+                  <source media="(max-width: 1023px)" srcSet={tablet.url} />
                 )}
 
+                {/* Desktop / fallback */}
                 <img
-                  src={urlFor(fallbackImage).auto("format").url()}
+                  src={fallbackImage.url}
                   alt={desktop?.alt || tablet?.alt || mobile?.alt || ""}
                 />
               </picture>
