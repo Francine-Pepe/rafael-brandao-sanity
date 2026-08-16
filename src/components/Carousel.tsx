@@ -42,6 +42,10 @@ type CarouselData = {
   mobileImages?: SanityImage[];
 };
 
+function getImageUrl(url: string, width: number) {
+  return `${url}?w=${width}&auto=format&fit=max&q=80`;
+}
+
 function Carousel() {
   const [carousel, setCarousel] = useState<CarouselData | null>(null);
   const [index, setIndex] = useState(0);
@@ -53,7 +57,6 @@ function Carousel() {
     const fetchCarousel = async () => {
       try {
         const data = await client.fetch<CarouselData>(carouselQuery);
-
         setCarousel(data);
       } catch (error) {
         console.error("Error fetching carousel from Sanity:", error);
@@ -93,7 +96,6 @@ function Carousel() {
     };
   }, [index, slideCount]);
 
-  // Don't render anything while loading
   if (!carousel || slideCount === 0) {
     return null;
   }
@@ -111,10 +113,8 @@ function Carousel() {
           const tablet = tabletImages[itemIndex];
           const mobile = mobileImages[itemIndex];
 
-          // Use desktop as the default, then tablet, then mobile
           const fallbackImage = desktop || tablet || mobile;
 
-          // Skip the slide if there is no valid image URL
           if (!fallbackImage?.url) {
             return null;
           }
@@ -127,17 +127,23 @@ function Carousel() {
               <picture>
                 {/* Mobile */}
                 {mobile?.url && (
-                  <source media="(max-width: 767px)" srcSet={mobile.url} />
+                  <source
+                    media="(max-width: 767px)"
+                    srcSet={getImageUrl(mobile.url, 768)}
+                  />
                 )}
 
                 {/* Tablet */}
                 {tablet?.url && (
-                  <source media="(max-width: 1023px)" srcSet={tablet.url} />
+                  <source
+                    media="(max-width: 1023px)"
+                    srcSet={getImageUrl(tablet.url, 1280)}
+                  />
                 )}
 
-                {/* Desktop / fallback */}
+                {/* Desktop */}
                 <img
-                  src={fallbackImage.url}
+                  src={getImageUrl(fallbackImage.url, 1920)}
                   alt={desktop?.alt || tablet?.alt || mobile?.alt || ""}
                 />
               </picture>
