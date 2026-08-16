@@ -246,7 +246,7 @@ svg
     width: 100%
     height: 100vh
 
-.slideshow
+/* .slideshow
     overflow: hidden
     max-width: 100%
 
@@ -279,7 +279,34 @@ svg
             background-color: #c4c4c4
 
         .active
-            background-color: #6a0dad
+            background-color: #6a0dad */
+
+.slideshow
+    max-width: 100%
+    overflow: hidden
+
+    .slideshowSlider
+        white-space: nowrap
+        transition: ease-in 2000ms
+        display: flex
+        width: 100%
+
+    .slide
+        flex: 0 0 100%
+        width: 100%
+        min-width: 100%
+        height: 100vh
+
+        picture
+            display: block
+            width: 100%
+            height: 100vh
+
+        img
+            display: block
+            width: 100%
+            height: 100vh
+            object-fit: cover
 
 footer
     margin-top: auto
