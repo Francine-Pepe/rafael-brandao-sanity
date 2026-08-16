@@ -43,7 +43,7 @@ type CarouselData = {
 };
 
 function getImageUrl(url: string, width: number) {
-  return `${url}?w=${width}&auto=format&fit=max&q=80`;
+  return `${url}?w=${width}&auto=format&fit=max&q=85`;
 }
 
 function Carousel() {
@@ -129,7 +129,7 @@ function Carousel() {
                 {mobile?.url && (
                   <source
                     media="(max-width: 767px)"
-                    srcSet={getImageUrl(mobile.url, 768)}
+                    srcSet={getImageUrl(mobile.url, 1080)}
                   />
                 )}
 
@@ -137,7 +137,7 @@ function Carousel() {
                 {tablet?.url && (
                   <source
                     media="(max-width: 1023px)"
-                    srcSet={getImageUrl(tablet.url, 1280)}
+                    srcSet={getImageUrl(tablet.url, 1440)}
                   />
                 )}
 
