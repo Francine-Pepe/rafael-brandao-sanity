@@ -42,10 +42,6 @@ type CarouselData = {
   mobileImages?: SanityImage[];
 };
 
-function getImageUrl(url: string, width: number) {
-  return `${url}?w=${width}&auto=format&fit=max&q=85`;
-}
-
 function Carousel() {
   const [carousel, setCarousel] = useState<CarouselData | null>(null);
   const [index, setIndex] = useState(0);
@@ -57,6 +53,7 @@ function Carousel() {
     const fetchCarousel = async () => {
       try {
         const data = await client.fetch<CarouselData>(carouselQuery);
+
         setCarousel(data);
       } catch (error) {
         console.error("Error fetching carousel from Sanity:", error);
@@ -119,32 +116,27 @@ function Carousel() {
             return null;
           }
 
+          const isFirstSlide = itemIndex === 0;
+
           return (
             <div
               className="slide"
               key={desktop?._key || tablet?._key || mobile?._key || itemIndex}
             >
               <picture>
-                {/* Mobile */}
                 {mobile?.url && (
-                  <source
-                    media="(max-width: 767px)"
-                    srcSet={getImageUrl(mobile.url, 1080)}
-                  />
+                  <source media="(max-width: 767px)" srcSet={mobile.url} />
                 )}
 
-                {/* Tablet */}
                 {tablet?.url && (
-                  <source
-                    media="(max-width: 1023px)"
-                    srcSet={getImageUrl(tablet.url, 1440)}
-                  />
+                  <source media="(max-width: 1023px)" srcSet={tablet.url} />
                 )}
 
-                {/* Desktop */}
                 <img
-                  src={getImageUrl(fallbackImage.url, 1920)}
+                  src={fallbackImage.url}
                   alt={desktop?.alt || tablet?.alt || mobile?.alt || ""}
+                  loading={isFirstSlide ? "eager" : "lazy"}
+                  fetchPriority={isFirstSlide ? "high" : "auto"}
                 />
               </picture>
             </div>
