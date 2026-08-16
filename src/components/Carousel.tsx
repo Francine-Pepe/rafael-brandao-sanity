@@ -1,7 +1,30 @@
 import { useEffect, useRef, useState } from "react";
+import client from "../client";
 import { urlFor } from "../sanity/lib/image";
 
 const delay = 4000;
+
+const carouselQuery = `
+  *[_type == "carousel"][0] {
+    _id,
+    title,
+    desktopImages[] {
+      _key,
+      asset,
+      alt
+    },
+    tabletImages[] {
+      _key,
+      asset,
+      alt
+    },
+    mobileImages[] {
+      _key,
+      asset,
+      alt
+    }
+  }
+`;
 
 type SanityImage = {
   _key?: string;
@@ -12,22 +35,36 @@ type SanityImage = {
 };
 
 type CarouselData = {
+  _id: string;
+  title: string;
   desktopImages?: SanityImage[];
   tabletImages?: SanityImage[];
   mobileImages?: SanityImage[];
 };
 
-type CarouselProps = {
-  data: CarouselData;
-};
-
-function Carousel({ data }: CarouselProps) {
+function Carousel() {
+  const [carousel, setCarousel] = useState<CarouselData | null>(null);
   const [index, setIndex] = useState(0);
+
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const desktopImages = data.desktopImages ?? [];
-  const tabletImages = data.tabletImages ?? [];
-  const mobileImages = data.mobileImages ?? [];
+  // Fetch carousel from Sanity
+  useEffect(() => {
+    const fetchCarousel = async () => {
+      try {
+        const data = await client.fetch<CarouselData>(carouselQuery);
+        setCarousel(data);
+      } catch (error) {
+        console.error("Error fetching carousel:", error);
+      }
+    };
+
+    fetchCarousel();
+  }, []);
+
+  const desktopImages = carousel?.desktopImages ?? [];
+  const tabletImages = carousel?.tabletImages ?? [];
+  const mobileImages = carousel?.mobileImages ?? [];
 
   const slideCount = Math.max(
     desktopImages.length,
@@ -35,6 +72,7 @@ function Carousel({ data }: CarouselProps) {
     mobileImages.length,
   );
 
+  // Carousel timer
   useEffect(() => {
     if (slideCount <= 1) {
       setIndex(0);
@@ -53,6 +91,11 @@ function Carousel({ data }: CarouselProps) {
       }
     };
   }, [index, slideCount]);
+
+  // Don't render until Sanity data is available
+  if (!carousel || slideCount === 0) {
+    return null;
+  }
 
   return (
     <div className="slideshow">
