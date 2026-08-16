@@ -11,6 +11,7 @@ import news from './news'
 import datenschutz from './datenschutz'
 import impressum from './impressum'
 import biografiaText from './biografiaText'
+import carousel from './carousel'
 
 export const schemaTypes = [
   post,
@@ -25,5 +26,6 @@ export const schemaTypes = [
   news,
   datenschutz,
   impressum,
-  biografiaText
+  biografiaText,
+  carousel
 ]
