@@ -24,13 +24,35 @@ function Agenda() {
   const [pinchZoomDistanceFactor] = useState(100);
   const [scrollToZoom] = useState(false);
 
+  // Format Sanity date as DD.MM.YYYY
+  const formatDate = (date) => {
+    if (!date) return "";
+
+    return new Intl.DateTimeFormat("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }).format(new Date(date));
+  };
+
   useEffect(() => {
     const fetchAgenda = async () => {
-      const query = `*[_type == "post"] { title, eventDate, date, eventHour, link, description, slug, eventTitle, body, mainImage {
+      const query = `*[_type == "post"] {
+        title,
+        eventDate,
+        date,
+        eventHour,
+        link,
+        description,
+        slug,
+        eventTitle,
+        body,
+        mainImage {
           asset -> { _id, url },
           alt
         }
       }`;
+
       const result = await client.fetch(query);
       setShows(result);
     };
@@ -41,6 +63,7 @@ function Agenda() {
   const handleClick = (index) => {
     setOpen(!open && index);
   };
+
   const closeModal = () => {
     setOpen(true);
   };
@@ -49,10 +72,12 @@ function Agenda() {
     <>
       <PageTitle data={t("nav", { returnObjects: true })} />
       <PageDescription data={t("pageDescriptionAgenda")} />
+
       <section className="agenda-container container">
         <div className="agenda-content container">
           {shows
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            // Earliest date → latest date
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
             .map((show) => {
               const eventTitle = show.eventTitle || {};
               const eventDate = show.eventDate || {};
@@ -61,10 +86,10 @@ function Agenda() {
               return (
                 <article
                   key={show.slug.current}
-                  className="individual-agenda-content "
+                  className="individual-agenda-content"
                 >
                   <div
-                    className="agenda-information  "
+                    className="agenda-information"
                     onClick={() => handleClick(show.slug)}
                   >
                     <img
@@ -89,7 +114,9 @@ function Agenda() {
                           scrollToZoom,
                         }}
                         styles={{
-                          container: { backgroundColor: "rgba(0, 0, 0, .9)" },
+                          container: {
+                            backgroundColor: "rgba(0, 0, 0, .9)",
+                          },
                         }}
                         open={open}
                         close={() => closeModal(false)}
@@ -97,6 +124,7 @@ function Agenda() {
                         className="lightbox lightbox-news"
                       />
                     )}
+
                     <div className="agenda-information-place-time">
                       <h3 className="event-title">
                         {eventTitle[navigator.language] ||
@@ -104,16 +132,33 @@ function Agenda() {
                           eventTitle.pt ||
                           ""}
                       </h3>
-                      <div className="agenda-date-time">
-                        <h3>
-                          {eventDate[navigator.language] ||
-                            eventDate[i18n.language] ||
-                            eventDate.pt || <span>{show.date}</span>}
-                        </h3>
 
-                        <span>|</span>
-                        <h3 className="event-hour">{show.eventHour}</h3>
+                      <div className="agenda-date-time">
+                        {show.date ? (
+                          <h3>{formatDate(show.date)}</h3>
+                        ) : (
+                          <h3>
+                            {eventDate[navigator.language] ||
+                              eventDate[i18n.language] ||
+                              eventDate.pt ||
+                              ""}
+                          </h3>
+                        )}
+
+                        {show.eventHour && <span>|</span>}
+
+                        {show.eventHour && (
+                          <h3 className="event-hour">{show.eventHour}</h3>
+                        )}
                       </div>
+
+                      {/* <div className="event-date-description">
+                        {eventDate[navigator.language] ||
+                          eventDate[i18n.language] ||
+                          eventDate.pt ||
+                          ""}
+                      </div> */}
+
                       <PortableText
                         value={
                           text[navigator.language] ||
@@ -123,7 +168,11 @@ function Agenda() {
                         }
                       />
 
-                      <button style={{ display: show.link ? "block" : "none" }}>
+                      <button
+                        style={{
+                          display: show.link ? "block" : "none",
+                        }}
+                      >
                         <NavLink
                           to={show.link}
                           target="_blank"
